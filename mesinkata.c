@@ -47,11 +47,6 @@ void ADVWORD(){
    	}
 }
 
-void Anagram(){
-	START();
-		
-}
-
 void CopyWord(){
 	/* Mengakuisisi kata, menyimpan dalam currentWord
    I.S. : currentChar adalah karakter pertama dari kata
