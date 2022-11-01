@@ -3,53 +3,24 @@
 
 /* ********** KONSTRUKTOR ********** */
 /* Konstruktor : create tabel kosong */
-void MakeEmpty (TabInt *T){
+void MakeEmpty (Tab *T){
 /* I.S. sembarang */
 /* F.S. Terbentuk tabel T kosong */
 	T->Neff = 0;
-	T->TI[MaxEl];
-}
-
-/* ********** SELEKTOR ********** */
-/* *** Banyaknya elemen *** */
-int NbElmt (TabInt T){
-/* Mengirimkan banyaknya elemen efektif tabel */
-/* Mengirimkan nol jika tabel kosong */
-	return T.Neff;
-}
-
-
-/* *** Daya tampung container *** */
-int MaxNbEl (TabInt T){
-/* Mengirimkan maksimum elemen yang dapat ditampung oleh tabel */
-	return MaxEl;
-}
-
-/* *** Selektor INDEKS *** */
-IdxType GetFirstIdx (TabInt T){
-/* Prekondisi : Tabel T tidak kosong */
-/* Mengirimkan indeks elemen pertama */
-	return IdxMin;
-}
-
-IdxType GetLastIdx (TabInt T){
-/* Prekondisi : Tabel T tidak kosong */
-/* Mengirimkan indeks elemen terakhir */
-	return T.Neff;
+	T->buffer[MaxEl];
 }
 
 /* *** Selektor SET : Mengubah nilai TABEL dan elemen tabel *** */
 /* Untuk type private/limited private pada bahasa tertentu */
-void SetNeff (TabInt *T, IdxType N){
+void SetNeff (Tab *T, IdxType N){
 /* I.S. T terdefinisi, sembarang */
 /* F.S. Nilai indeks efektif T bernilai N */
 /* Mengeset nilai indeks elemen efektif sehingga bernilai N */
-//Mengubah Neff
 	T->Neff = N;
 }
 
 /* ********** Test Indeks yang valid ********** */
-boolean IsIdxValid (TabInt T, IdxType i){
+boolean IsIdxValid (Tab T, IdxType i){
 /* Prekondisi : i sembarang */
 /* Mengirimkan true jika i adalah indeks yang valid utk ukuran tabel */
 /* yaitu antara indeks yang terdefinisi utk container*/
@@ -57,7 +28,7 @@ boolean IsIdxValid (TabInt T, IdxType i){
 	return (IdxMin <= i) && (i < MaxEl);
 }
 
-boolean IsIdxEff (TabInt T, IdxType i){
+boolean IsIdxEff (Tab T, IdxType i){
 /* Prekondisi : i sembarang*/
 /* Mengirimkan true jika i adalah indeks yang terdefinisi utk tabel */
 /* yaitu antara FirstIdx(T)..LastIdx(T) */
@@ -67,20 +38,36 @@ boolean IsIdxEff (TabInt T, IdxType i){
 
 /* ********** TEST KOSONG/PENUH ********** */
 /* *** Test tabel kosong *** */
-boolean IsEmpty (TabInt T){
+boolean IsEmpty (Tab T){
 /* Mengirimkan true jika tabel T kosong, mengirimkan false jika tidak */
-//KOSONG JIKA T.NEFF = 0
 	return (T.Neff == 0);
 }
 
 /* *** Test tabel penuh *** */
-boolean IsFull (TabInt T){
+boolean IsFull (Tab T){
 /* Mengirimkan true jika tabel T penuh, mengirimkan false jika tidak */
-//Penuh jika Neff = MaxEl
 	return (T.Neff == MaxEl);
 }
 
+/* ********** MODIFIKASI TAB ********** */
+void Insert(Tab *T, int label, int durasi, int ketahanan, int harga){
+	Label(T->buffer[Neff(*T)])[0] = 'M';
+	Label(T->buffer[Neff(*T)])[1] = label + '0';
+	Durasi(T->buffer[Neff(*T)]) = durasi;
+	Ketahanan(T->buffer[Neff(*T)]) = ketahanan;
+	Harga(T->buffer[Neff(*T)]) = harga;
+	Neff(*T)++;
+}
+/* Memasukkan suatu pesanan ke dalam Tab */
+
+void Delete(Tab *T, int label);
+/* Menghapus suatu pesanan ke dalam Tab */
+
 /* ********** BACA dan TULIS dengan INPUT/OUTPUT device ********** */
-void TulisIsi (TabInt T){
-	
+void TulisIsi (Tab T){
+	if (!(IsEmpty(T))){
+		for(int i=0;i<T.Neff;i++){
+			printf("%c%c       | %d       | %d       | %d\n",Label(T.buffer[i])[0], Label(T.buffer[i])[1], Durasi(T.buffer[i]), Ketahanan(T.buffer[i]), Harga(T.buffer[i]));
+		}
+	}
 }

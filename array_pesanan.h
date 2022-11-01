@@ -12,7 +12,7 @@
 /* Definisi elemen dan koleksi objek */
 typedef int IdxType;
 typedef struct {
-    char label[2];
+    char label[3];
     int durasi;
     int ketahanan;
     int harga;
@@ -20,60 +20,55 @@ typedef struct {
 
 typedef struct
 	{
-		Pesanan TI [MaxEl]; /* memori tempat penyimpan elemen (container) */
+		Pesanan buffer[MaxEl]; /* memori tempat penyimpan elemen (container) */
 		int Neff; /* banyaknya elemen efektif */
-	} TabInt;
+	} Tab;
+
+#define Neff(A) (A).Neff
+#define Harga(P) P.harga
+#define Ketahanan(P) P.ketahanan
+#define Durasi(P) P.durasi 
+#define Label(P) P.label
 
 /* ********** KONSTRUKTOR ********** */
 /* Konstruktor : create tabel kosong */
-void MakeEmpty (TabInt *T);
+void MakeEmpty (Tab *T);
 /* I.S. sembarang */
-/* F.S. Terbentuk tabel T kosong dengan kapasitas MaxEl-IdxMin+1 */
-
-/* ********** SELEKTOR ********** */
-/* *** Banyaknya elemen *** */
-int NbElmt (TabInt T);
-/* Mengirimkan banyaknya elemen efektif tabel */
-/* Mengirimkan nol jika tabel kosong */
-/* *** Daya tampung container *** */
-int MaxNbEl (TabInt T);
-/* Mengirimkan maksimum elemen yang dapat ditampung oleh tabel */
-/* *** Selektor INDEKS *** */
-IdxType GetFirstIdx (TabInt T);
-/* Prekondisi : Tabel T tidak kosong */
-/* Mengirimkan indeks elemen pertama */
-IdxType GetLastIdx (TabInt T);
-/* Prekondisi : Tabel T tidak kosong */
-/* Mengirimkan indeks elemen terakhir */
-/* *** Menghasilkan sebuah elemen *** */
+/* F.S. Terbentuk tabel T kosong dengan kapasitas MaxEl */
 
 /* *** Selektor SET : Mengubah nilai TABEL dan elemen tabel *** */
 /* Untuk type private/limited private pada bahasa tertentu */
-void SetNeff (TabInt *T, IdxType N);
+void SetNeff (Tab *T, IdxType N);
 /* I.S. T terdefinisi, sembarang */
 /* F.S. Nilai indeks efektif T bernilai N */
 /* Mengeset nilai indeks elemen efektif sehingga bernilai N */
 
 /* ********** Test Indeks yang valid ********** */
-boolean IsIdxValid (TabInt T, IdxType i);
+boolean IsIdxValid (Tab T, IdxType i);
 /* Prekondisi : i sembarang */
 /* Mengirimkan true jika i adalah indeks yang valid utk ukuran tabel */
 /* yaitu antara indeks yang terdefinisi utk container*/
-boolean IsIdxEff (TabInt T, IdxType i);
+boolean IsIdxEff (Tab T, IdxType i);
 /* Prekondisi : i sembarang*/
 /* Mengirimkan true jika i adalah indeks yang terdefinisi utk tabel */
-/* yaitu antara FirstIdx(T)..LastIdx(T) */
 
 /* ********** TEST KOSONG/PENUH ********** */
 /* *** Test tabel kosong *** */
-boolean IsEmpty (TabInt T);
+boolean IsEmpty (Tab T);
 /* Mengirimkan true jika tabel T kosong, mengirimkan false jika tidak */
 /* *** Test tabel penuh *** */
-boolean IsFull (TabInt T);
+boolean IsFull (Tab T);
 /* Mengirimkan true jika tabel T penuh, mengirimkan false jika tidak */
 
+/* ********** MODIFIKASI TAB ********** */
+void Insert(Tab *T, int label, int durasi, int ketahanan, int harga); 
+/* Memasukkan suatu pesanan ke dalam Tab */
+
+void Delete(Tab *T, int label);
+/* Menghapus suatu pesanan ke dalam Tab */
+
 /* ********** BACA dan TULIS dengan INPUT/OUTPUT device ********** */
-void TulisIsi (TabInt T);
+void TulisIsi (Tab T);
 /*Menuliskan Isi Tabel pada Layar Sesuai Format*/
 
 #endif
