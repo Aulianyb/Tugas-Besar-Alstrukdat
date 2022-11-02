@@ -60,14 +60,36 @@ void Insert(Tab *T, int label, int durasi, int ketahanan, int harga){
 }
 /* Memasukkan suatu pesanan ke dalam Tab */
 
-void Delete(Tab *T, int label);
+void Delete(Tab *T, int label){
+	boolean found=false;
+	char clabel = label + '0';
+	int i=0;
+	while (i < Neff(*T) && !found){
+		if (Label(T->buffer[i])[1] == clabel){
+			found = true;
+		}
+		else{
+			i++;
+		}
+	}
+	for (int j=i;j<Neff(*T)-1;j++){
+		Label(T->buffer[j])[1] = Label(T->buffer[j+1])[1];
+		Durasi(T->buffer[j]) = Durasi(T->buffer[j+1]);
+		Ketahanan(T->buffer[j]) = Ketahanan(T->buffer[j]);
+		Harga(T->buffer[j]) = Harga(T->buffer[j]);
+	}
+	Neff(*T)--; 
+}
 /* Menghapus suatu pesanan ke dalam Tab */
 
 /* ********** BACA dan TULIS dengan INPUT/OUTPUT device ********** */
 void TulisIsi (Tab T){
 	if (!(IsEmpty(T))){
 		for(int i=0;i<T.Neff;i++){
-			printf("%c%c       | %d       | %d       | %d\n",Label(T.buffer[i])[0], Label(T.buffer[i])[1], Durasi(T.buffer[i]), Ketahanan(T.buffer[i]), Harga(T.buffer[i]));
+			printf(" %c%c      | %d              | %d         | %d\n",Label(T.buffer[i])[0], Label(T.buffer[i])[1], Durasi(T.buffer[i]), Ketahanan(T.buffer[i]), Harga(T.buffer[i]));
 		}
+	}
+	else{
+		printf("         |                |           |  \n"); 
 	}
 }
