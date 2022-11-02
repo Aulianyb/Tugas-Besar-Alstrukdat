@@ -12,7 +12,7 @@
 /* Definisi elemen dan koleksi objek */
 typedef int IdxType;
 typedef struct {
-    char label[3];
+    char label[4];
     int durasi;
     int ketahanan;
     int harga;
@@ -64,8 +64,8 @@ boolean IsFull (Tab T);
 void Insert(Tab *T, int label, int durasi, int ketahanan, int harga); 
 /* Memasukkan suatu pesanan ke dalam Tab */
 
-void Delete(Tab *T, int label);
-/* Menghapus suatu pesanan ke dalam Tab */
+void Delete(Tab *T, int label, Pesanan *val);
+/* Menghapus suatu pesanan ke dalam Tab dan menyimpannya dalam val*/
 
 /* ********** BACA dan TULIS dengan INPUT/OUTPUT device ********** */
 void TulisIsi (Tab T);

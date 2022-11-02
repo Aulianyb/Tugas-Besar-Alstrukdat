@@ -60,23 +60,29 @@ void Insert(Tab *T, int label, int durasi, int ketahanan, int harga){
 }
 /* Memasukkan suatu pesanan ke dalam Tab */
 
-void Delete(Tab *T, int label){
+void Delete(Tab *T, int label, Pesanan *val){
 	boolean found=false;
-	char clabel = label + '0';
 	int i=0;
 	while (i < Neff(*T) && !found){
-		if (Label(T->buffer[i])[1] == clabel){
+		if (Label(T->buffer[i])[1] == label + '0'){
 			found = true;
 		}
 		else{
 			i++;
 		}
 	}
+
+	val->label[0] =  Label(T->buffer[i])[0];
+	val->label[1] =  Label(T->buffer[i])[1];
+	val->durasi = Durasi(T->buffer[i]);
+	val->ketahanan = Ketahanan(T->buffer[i]);
+	val->harga = Harga(T->buffer[i]);
+
 	for (int j=i;j<Neff(*T)-1;j++){
 		Label(T->buffer[j])[1] = Label(T->buffer[j+1])[1];
 		Durasi(T->buffer[j]) = Durasi(T->buffer[j+1]);
-		Ketahanan(T->buffer[j]) = Ketahanan(T->buffer[j]);
-		Harga(T->buffer[j]) = Harga(T->buffer[j]);
+		Ketahanan(T->buffer[j]) = Ketahanan(T->buffer[j+1]);
+		Harga(T->buffer[j]) = Harga(T->buffer[j+1]);
 	}
 	Neff(*T)--; 
 }
