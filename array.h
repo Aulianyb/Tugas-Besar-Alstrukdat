@@ -11,13 +11,13 @@
 
 /* Definisi elemen dan koleksi objek */
 typedef int IdxType;
-typedef int ElType;
+typedef char* ElType;
 
 typedef struct
 	{
 		ElType TI [IdxMax-IdxMin+1]; /* memori tempat penyimpan elemen (container) */
 		int Neff; /* banyaknya elemen efektif */
-	} TabInt;
+	} TabGame;
 
 /* Indeks yang digunakan [IdxMin..IdxMax] */
 /* Jika T adalah TabInt, cara deklarasi dan akses: */
@@ -33,65 +33,65 @@ typedef struct
 
 /* ********** KONSTRUKTOR ********** */
 /* Konstruktor : create tabel kosong */
-void MakeEmpty (TabInt *T);
+void MakeEmpty (TabGame *T);
 /* I.S. sembarang */
 /* F.S. Terbentuk tabel T kosong dengan kapasitas IdxMax-IdxMin+1 */
 
 /* ********** SELEKTOR ********** */
 /* *** Banyaknya elemen *** */
-int NbElmt (TabInt T);
+int NbElmt (TabGame T);
 /* Mengirimkan banyaknya elemen efektif tabel */
 /* Mengirimkan nol jika tabel kosong */
 /* *** Daya tampung container *** */
-int MaxNbEl (TabInt T);
+int MaxNbEl (TabGame T);
 /* Mengirimkan maksimum elemen yang dapat ditampung oleh tabel */
 /* *** Selektor INDEKS *** */
-IdxType GetFirstIdx (TabInt T);
+IdxType GetFirstIdx (TabGame T);
 /* Prekondisi : Tabel T tidak kosong */
 /* Mengirimkan indeks elemen pertama */
-IdxType GetLastIdx (TabInt T);
+IdxType GetLastIdx (TabGame T);
 /* Prekondisi : Tabel T tidak kosong */
 /* Mengirimkan indeks elemen terakhir */
 /* *** Menghasilkan sebuah elemen *** */
-ElType GetElmt (TabInt T, IdxType i);
+ElType GetElmt (TabGame T, IdxType i);
 /* Prekondisi : Tabel tidak kosong, i antara FirstIdx(T)..LastIdx(T) */
 /* Mengirimkan elemen tabel yang ke-i */
 
 /* *** Selektor SET : Mengubah nilai TABEL dan elemen tabel *** */
 /* Untuk type private/limited private pada bahasa tertentu */
-void SetTab (TabInt Tin, TabInt *Tout);
+void SetTab (TabGame Tin, TabGame *Tout);
 /* I.S. Tin terdefinisi, sembarang */
 /* F.S. Tout berisi salinan Tin */
 /* Assignment THsl -> Tin */
-void SetEl (TabInt *T, IdxType i, ElType v);
+void SetEl (TabGame *T, IdxType i, ElType v);
 /* I.S. T terdefinisi, sembarang */
 /* F.S. Elemen T yang ke-i bernilai v */
 /* Mengeset nilai elemen tabel yang ke-i sehingga bernilai v */
-void SetNeff (TabInt *T, IdxType N);
+void SetNeff (TabGame *T, IdxType N);
 /* I.S. T terdefinisi, sembarang */
 /* F.S. Nilai indeks efektif T bernilai N */
 /* Mengeset nilai indeks elemen efektif sehingga bernilai N */
 
 /* ********** Test Indeks yang valid ********** */
-boolean IsIdxValid (TabInt T, IdxType i);
+boolean IsIdxValid (TabGame T, IdxType i);
 /* Prekondisi : i sembarang */
 /* Mengirimkan true jika i adalah indeks yang valid utk ukuran tabel */
 /* yaitu antara indeks yang terdefinisi utk container*/
-boolean IsIdxEff (TabInt T, IdxType i);
+boolean IsIdxEff (TabGame T, IdxType i);
 /* Prekondisi : i sembarang*/
 /* Mengirimkan true jika i adalah indeks yang terdefinisi utk tabel */
 /* yaitu antara FirstIdx(T)..LastIdx(T) */
 
 /* ********** TEST KOSONG/PENUH ********** */
 /* *** Test tabel kosong *** */
-boolean IsEmpty (TabInt T);
+boolean IsEmpty (TabGame T);
 /* Mengirimkan true jika tabel T kosong, mengirimkan false jika tidak */
 /* *** Test tabel penuh *** */
-boolean IsFull (TabInt T);
+boolean IsFull (TabGame T);
 /* Mengirimkan true jika tabel T penuh, mengirimkan false jika tidak */
 
 /* ********** BACA dan TULIS dengan INPUT/OUTPUT device ********** */
-void TulisIsi (TabInt T);
+void TulisIsi (TabGame T);
 /* Proses : Menuliskan isi tabel dengan traversal */
 /* I.S. T boleh kosong */
 /* F.S. Jika T tidak kosong : indeks dan elemen tabel ditulis berderet ke bawah */
@@ -101,33 +101,4 @@ void TulisIsi (TabInt T);
 2:3
 */
 /* Jika T kosong : Hanya menulis "Tabel kosong" */
-
-/* ********** OPERATOR ARITMATIKA ********** */
-/* *** Aritmatika tabel : Penjumlahan, pengurangan, perkalian, ... *** */
-TabInt PlusTab (TabInt T1, TabInt T2);
-/* Prekondisi : T1 dan T2 berukuran sama dan tidak kosong */
-/* Mengirimkan T1 + T2 */
-TabInt MinusTab (TabInt T1, TabInt T2);
-/* Prekondisi : T1 dan T2 berukuran sama dan tidak kosong */
-/* Mengirimkan T1 - T2 */
-
-/* ********** NILAI EKSTREM ********** */
-ElType ValMax (TabInt T);
-/* Prekondisi : Tabel T tidak kosong */
-/* Mengirimkan nilai maksimum tabel */
-
-ElType ValMin (TabInt T);
-/* Prekondisi : Tabel T tidak kosong */
-/* Mengirimkan nilai minimum tabel */
-
-/* *** Mengirimkan indeks elemen bernilai ekstrem *** */
-IdxType IdxMaxTab (TabInt T);
-/* Prekondisi : Tabel T tidak kosong */
-/* Mengirimkan indeks i dengan elemen ke-i adalah nilai maksimum pada tabel */
-
-IdxType IdxMinTab (TabInt T);
-/* Prekondisi : Tabel tidak kosong */
-/* Mengirimkan indeks i */
-/* dengan elemen ke-i nilai minimum pada tabel */
-
 #endif
