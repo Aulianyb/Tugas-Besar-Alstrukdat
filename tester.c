@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include "array_pesanan.h"
 #include "queue_cook.h"
 
 //INI FILE BUAT NYOBA NYOBA AJA
@@ -9,23 +10,32 @@ boolean isServe(char *command){
 
 
 int main(){
-	Tab Tester;
+	Tab Tester, Cook;
 	Pesanan val;
 	MakeEmpty(&Tester);
-	Insert(&Tester, 1, 2, 3, 10000);
-	Insert(&Tester, 2, 4, 2, 15300);
-	Insert(&Tester, 3, 5, 2, 56290);
-	Insert(&Tester, 4, 5, 2, 50000);
-	Delete(&Tester, 4, &val);
-	TulisIsi_Cook(Tester);
+	MakeEmpty(&Cook);
+	Insert(&Tester, 0, 2, 3, 10000);
+	Insert(&Tester, 1, 3, 1, 15300);
+	Insert(&Tester, 2, 1, 4, 56290);
+	Insert(&Tester, 4, 4, 2, 50000);
+	Delete(&Tester, 0, &val);
+	enqueue(&Cook, val);
+	Delete(&Tester, 1, &val);
+	enqueue(&Cook, val);
+	Delete(&Tester, 2, &val);
+	enqueue(&Cook, val);
+	printf("---------------------------------------------\n");
+	TulisIsi(Tester);
+	printf("---------------------------------------------\n");
+	TulisIsi_Cook(Cook);
 	char command[8];
 
-	printf(" MASUKKAN COMMAND:");
-	scanf("%[^\n]", command);
+	// printf(" MASUKKAN COMMAND:");
+	// scanf("%[^\n]", command);
 
-	if (isServe(command)){
-		printf("VALID");
-	}
+	// if (isServe(command)){
+	// 	printf("VALID");
+	// }
 	// char test[3];
 	// test[0] = 'M';
 	// test[1] = 1 + '0';

@@ -3,6 +3,10 @@
 #ifndef QUEUE_H
 #define QUEUE_H
 
+
+void enqueue (Tab *T, Pesanan val);
+/*Memasukkan elemen ke dalam Queue dalam urutan Prioritas*/
+
 void dequeue (Tab *T, Pesanan *val);
 /*Memasukkan elemen ke dalam Tab*/
 

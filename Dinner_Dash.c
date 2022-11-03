@@ -71,9 +71,16 @@ int main(){
 		if (isCook(command) || isServe(command)){
 			UpdateCook_Tab(&Cook);
 			UpdateServed_Tab(&Served);
+			int ctr=0;
+			while ((Durasi(Cook.buffer[ctr]) == 0) && !(IsEmpty(Cook))){
+				dequeue(&Cook, &temp);
+				enqueue(&Served, temp);
+				ctr++;
+			}
+
 			if (isCook(command)) {
 				Delete(&Orders, command[6] - 48, &temp);
-				Insert(&Cook, Label(temp)[1] - 48, Durasi(temp), Ketahanan(temp), Harga(temp));
+				enqueue(&Cook, temp);
 				printf("Berhasil Memasak M%d\n", command[6] - 48);
 				empty_stdin();
 			}
@@ -83,6 +90,7 @@ int main(){
 				served_ctr++;
 				empty_stdin();
 			}
+
 		}
 		else{
 			printf(" TIDAK VALID\n");
