@@ -55,7 +55,7 @@ void CopyWord(){
           currentChar adalah karakter sesudah karakter terakhir yang diakuisisi.
           Jika panjang kata melebihi NMax, maka sisa kata "dipotong" */
 	int i = 0;
-	while ((currentChar != MARK) && (currentChar != BLANK)){
+	while ((currentChar != MARK) && (currentChar != '\n')){
 		if (i < NMax){
 			currentWord.TabWord[i] = currentChar;
 			i++;
@@ -63,4 +63,33 @@ void CopyWord(){
 		ADV();
 	}
 	currentWord.Length = i; 
+}
+
+int WordToInt(Word word)
+{
+    int hasil = 0;
+    hasil += word.TabWord[0] - 48;
+    if (word.Length > 1)
+    {
+        for (int i = 1; i < word.Length; i++)
+        {
+            hasil *= 10;
+            hasil += word.TabWord[i] - 48;
+        }
+    }
+    return hasil;
+}
+
+void STARTFILE()
+{
+    START();
+    if (currentChar == '\0')
+    {
+        EndWord = true;
+    }
+    else
+    {
+        EndWord = false;
+        CopyWord();
+    }
 }

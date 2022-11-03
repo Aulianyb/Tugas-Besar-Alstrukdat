@@ -1,6 +1,6 @@
 #include <stdio.h>
-#include "array_pesanan.c"
-#include "queue_cook.c"
+#include "array_pesanan.h"
+#include "queue_cook.h"
 
 //INI FILE BUAT NYOBA NYOBA AJA
 

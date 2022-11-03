@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "mesinkarakter.h"
 
-char cc;
+char currentChar;
 boolean eop;
 
 
@@ -23,8 +23,8 @@ void START(){
           Jika currentChar = MARK maka EOP akan menyala (true) */
 
 void ADV(){
-	retval = fscanf(pita, "%c", &cc);
-	eop = (cc == MARK);
+	retval = fscanf(pita, "%c", &currentChar);
+	eop = (currentChar == MARK);
 	if (eop){
 		fclose(pita);
 	}
@@ -35,12 +35,12 @@ void ADV(){
           currentChar mungkin = MARK
           Jika  currentChar = MARK maka EOP akan menyala (true) */
 
-char GetCC(){
-	return cc;
+char GetcurrentChar(){
+	return currentChar;
 }
 /* Mengirimkan currentChar */
 
 boolean IsEOP(){
-	return (cc == MARK);
+	return (currentChar == MARK);
 }
 /* Mengirimkan true jika currentChar = MARK */
