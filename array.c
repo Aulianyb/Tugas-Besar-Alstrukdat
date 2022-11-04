@@ -137,7 +137,7 @@ void TulisIsi (TabGame T){
 /* Jika T kosong : Hanya menulis "Tabel kosong" */
 
 void DeleteAt (TabGame *T, IdxType x){
-	for(int i=x; i<(*T).Neff; i++){
+	for(int i=x; i<=(*T).Neff; i++){
 		(*T).TI[i] = (*T).TI[i+1];
 	}
 	(*T).Neff = (*T).Neff-1;
