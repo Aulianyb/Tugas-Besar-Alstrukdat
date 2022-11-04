@@ -28,6 +28,13 @@ int main(){
 	TulisIsi(Tester);
 	printf("---------------------------------------------\n");
 	TulisIsi_Cook(Cook);
+	printf("---------------------------------------------\n");
+	if (isMember(Cook, 1)){
+		printf("FOUND\n");
+	}
+	else{
+		printf("NOT FOUND\n");
+	}
 	char command[8];
 
 	// printf(" MASUKKAN COMMAND:");

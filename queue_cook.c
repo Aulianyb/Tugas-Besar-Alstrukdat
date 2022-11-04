@@ -88,3 +88,21 @@ void UpdateServed_Tab(Tab *T){
 	}
 }
 /*Update seluruh anggota Tab*/
+
+boolean isMember(Tab T, int label){
+	char c_label = label + '0';
+	boolean found = false;
+	int i=0;
+	while ((i < Neff(T)) && (!found)){
+		if (Label(T.buffer[i])[1] == c_label){
+			found = true; 
+		}
+		else{
+			i++;
+		}
+	}
+	return found;
+}
+
+
+/*Cek apakah pesanan dengan label yang dimasukkan pengguna ada di dalam Queue/Array atau tidak*/

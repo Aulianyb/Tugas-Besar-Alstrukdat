@@ -22,5 +22,8 @@ void UpdateCook_Tab(Tab *T);
 void UpdateServed_Tab(Tab *T);
 /*Update seluruh anggota Tab*/
 
+boolean isMember(Tab T, int label);
+/*Cek apakah pesanan dengan label yang dimasukkan pengguna ada di dalam Queue/Array atau tidak*/
+
 #endif
 

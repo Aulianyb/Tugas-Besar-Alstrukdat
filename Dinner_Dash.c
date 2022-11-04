@@ -33,7 +33,7 @@ int main(){
 	MakeEmpty(&Cook);
 	MakeEmpty(&Served);
 	Insert(&Orders, 0, 2, 3, 10000);
-	Insert(&Orders, 1, 3, 1, 20000);
+	Insert(&Orders, 1, 1, 1, 20000);
 	Insert(&Orders, 2, 1, 4, 30000);
 	printf("\n");
 	printf("===================== Selamat Datang di ... =====================\n");
