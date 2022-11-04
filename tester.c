@@ -14,14 +14,6 @@ void Printtest(char *INPUT){
 	printf("HASIL : %s\n", INPUT);
 }
 
-void PrintKata(Word W){
-	// printf("LENGTH : %d\n", W.Length);
-	for (int i=0; i<W.Length ; i++){
-		printf("%c", W.TabWord[i]);
-	}
-	printf("\n");
-}
-
 int main(){
 	Tab Tester, Cook;
 	Pesanan val;
@@ -42,23 +34,32 @@ int main(){
 	printf("---------------------------------------------\n");
 	TulisIsi_Cook(Cook);
 	printf("---------------------------------------------\n");
-	if (isMember(Cook, 1)){
-		printf("FOUND\n");
-	}
-	else{
-		printf("NOT FOUND\n");
-	}
-	// printf("%d", GenRand(1, 5));
-	char command[8];
-	printf("len : %d", StringLen("AULIA NADHIRAH YASMIN")); 
+	// if (isMember(Cook, 1)){
+	// 	printf("FOUND\n");
+	// }
+	// else{
+	// 	printf("NOT FOUND\n");
+	// }
+	// // printf("%d", GenRand(1, 5));
+	// char command[8];
+	// printf("len : %d\n", StringLen("AULIA NADHIRAH YASMIN")); 
+	Word Kata;
+	Kata.TabWord[0] = 'M'; 
+	Kata.Length = 1;
+	// printf("LEN = %d", IntToWord(15).Length);
+	// MergeWord(&Kata, IntToWord(0)); 
+	PrintKata(GetLabel(Label(*Tester.buffer[0])));
+	printf("  0 = %d\n", WordToInt((GetLabel(Label(*Tester.buffer[0])))));
+	// PrintKata(Kata);
 	boolean a=false;
-	while (!a){
+	while (a){
 		printf(" MASUKKAN COMMAND:");
 		STARTFILE();
 		PrintKata(GetKataFirst(currentWord));
 		PrintKata(GetKataSecond(currentWord));
 		PrintKata(currentWord);
-		if (isWordEqual(currentWord, "COOK")){
+		PrintKata(GetLabel(currentWord));
+		if (isWordEqual(GetKataFirst(currentWord), "COOK")){
 			printf("IT WORKS!\n");
 			a=true;
 		}

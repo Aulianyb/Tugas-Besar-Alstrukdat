@@ -66,4 +66,18 @@ int StringLen(char *Input);
 boolean isWordEqual(Word W, char *W2);
 //Cek apakah Kata sama dengan input yang dimasukkan
 
+Word GetLabel(Word W);
+//Ambil Label dari suatu Command
+
+Word IntToWord(int X);
+//ubah INT menjadi WORD
+
+void MergeWord(Word *W1, Word W2);
+//Menggabungkan dua kata dan menyimpannya dalam W1
+
+void Move(Word *W1, Word W2);
+//Copy W2 ke W1;
+
+void PrintKata(Word W);
+//PRINT KATA
 #endif

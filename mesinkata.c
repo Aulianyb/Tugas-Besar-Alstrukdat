@@ -153,3 +153,55 @@ boolean isWordEqual(Word W, char *W2){
     }
 }
 //Cek apakah Kata sama dengan input yang dimasukkan
+
+Word GetLabel(Word W){
+    Word Label;
+    Label.Length=0; 
+    int i = 1; 
+    while (i<W.Length){
+        Label.TabWord[i-1] = W.TabWord[i];
+        Label.Length++;
+        i++;
+    }
+    return Label; 
+}
+//Ambil Label dari suatu Command
+
+Word IntToWord(int X){
+    Word Kata;
+    int i=0, temp=X;
+    Kata.Length=0;  
+    while (X >= 10){
+        Kata.TabWord[i] = (X / 10) + '0';
+        Kata.Length++;
+        i++;
+        X %= 10; 
+    }
+    Kata.TabWord[i] = X + '0';
+    Kata.Length++;
+    return Kata;
+}
+//ubah INT menjadi WORD
+
+void MergeWord(Word *W1, Word W2){
+    int Len = W1->Length;
+    for (int i=Len;i < Len + W2.Length;i++){
+        W1->TabWord[i] = W2.TabWord[i-Len];
+    }
+    W1->Length += W2.Length;
+}
+//Menggabungkan dua kata dan menyimpannya dalam W1
+
+void Move(Word *W1, Word W2){
+    for(int i=0;i<W2.Length;i++){
+        W1->TabWord[i] = W2.TabWord[i];
+    }
+    W1->Length = W2.Length;
+}
+
+void PrintKata(Word W){
+    for (int i=0; i<W.Length ; i++){
+        printf("%c", W.TabWord[i]);
+    }
+}
+//PRINT KATA

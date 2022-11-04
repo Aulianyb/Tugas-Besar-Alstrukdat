@@ -4,6 +4,7 @@
 #include "queue_cook.h"
 #include "random_generator.h"
 #include "mesinkata.h"
+
 /*Ini masih nyoba nyoba aja
 Butuh ADT Queue dan Mesin Kata untuk prosesnya
 */
@@ -14,12 +15,12 @@ void empty_stdin(void) {
         c = getchar();
 }
 
-boolean isCook(char *command){
-	return (command[0] == 'C') && (command[1] == 'O') && (command[2] == 'O') && (command[3] == 'K') && (command[4] == ' ') && (command[5] == 'M');
+boolean isCook(Word Kata){
+	return isWordEqual(GetKataFirst(Kata), "COOK");
 }
 
-boolean isServe(char *command){
-	return (command[0] == 'S') && (command[1] == 'E') && (command[2] == 'R') && (command[3] == 'V') && (command[4] == 'E') && (command[5] == ' ') && (command[6] == 'M');;
+boolean isServe(Word Kata){
+	return isWordEqual(GetKataFirst(Kata), "SERVE");
 }
 
 
@@ -64,14 +65,25 @@ int main(){
 		TulisIsi_Served(Served);
 		printf("\n\n");
 
-		//UNTUK WIP VALIDASI INPUT NANTI
 		valid=false; 
-		// while (!valid){
-		// }
+		//VALIDASI
+		while (!valid){
+			printf(" MASUKKAN COMMAND: ");
+			STARTFILE();
+			if ((isCook(currentWord) || isServe(currentWord)) && GetKataSecond(currentWord).TabWord[0] == 'M'){
+				if (isCook(currentWord)){
+					if (isMember(Orders, ))
+				}
+			}
+			else{
+				printf(" Maaf, Input tidak valid... :(\n");
+			}
+
+		}
 
 		printf(" MASUKKAN COMMAND: ");
 		scanf("%[^\n]", command);
-		if (isCook(command) || isServe(command)){
+		if (isCook(currentWord) || isServe(currentWord)){
 			UpdateCook_Tab(&Cook);
 			UpdateServed_Tab(&Served);
 			int ctr=0;
@@ -81,7 +93,7 @@ int main(){
 				ctr++;
 			}
 
-			if (isCook(command)) {
+			if (isCook(currentWord)) {
 				Delete(&Orders, command[6] - 48, &temp);
 				enqueue(&Cook, temp);
 				printf(" Berhasil Memasak M%d\n", command[6] - 48);

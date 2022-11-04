@@ -2,6 +2,7 @@
 #define ARRAY_H
 
 #include "boolean.h"
+#include "mesinkata.h"
 
 /* Kamus Umum */
 
@@ -12,7 +13,7 @@
 /* Definisi elemen dan koleksi objek */
 typedef int IdxType;
 typedef struct {
-    char label[4];
+    Word label[4];
     int durasi;
     int ketahanan;
     int harga;
@@ -70,5 +71,8 @@ void Delete(Tab *T, int label, Pesanan *val);
 /* ********** BACA dan TULIS dengan INPUT/OUTPUT device ********** */
 void TulisIsi (Tab T);
 /*Menuliskan Isi Tabel pada Layar Sesuai Format*/
+
+int Label_int(Pesanan P);
+//MENGAMBIL NILAI INT LABEL;
 
 #endif

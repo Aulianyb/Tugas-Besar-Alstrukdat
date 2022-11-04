@@ -51,8 +51,9 @@ boolean IsFull (Tab T){
 
 /* ********** MODIFIKASI TAB ********** */
 void Insert(Tab *T, int label, int durasi, int ketahanan, int harga){
-	Label(T->buffer[Neff(*T)])[0] = 'M';
-	Label(T->buffer[Neff(*T)])[1] = label + '0';
+	Label(T->buffer[Neff(*T)])->TabWord[0] = 'M';
+	Label(T->buffer[Neff(*T)])->Length = 1;
+	MergeWord(Label(T->buffer[Neff(*T)]), IntToWord(label));
 	Durasi(T->buffer[Neff(*T)]) = durasi;
 	Ketahanan(T->buffer[Neff(*T)]) = ketahanan;
 	Harga(T->buffer[Neff(*T)]) = harga;
@@ -64,7 +65,7 @@ void Delete(Tab *T, int label, Pesanan *val){
 	boolean found=false;
 	int i=0;
 	while (i < Neff(*T) && !found){
-		if (Label(T->buffer[i])[1] == label + '0'){
+		if (WordToInt((GetLabel(Label(*T->buffer[i])))) == label){
 			found = true;
 		}
 		else{
@@ -72,19 +73,20 @@ void Delete(Tab *T, int label, Pesanan *val){
 		}
 	}
 
-	val->label[0] =  Label(T->buffer[i])[0];
-	val->label[1] =  Label(T->buffer[i])[1];
-	val->durasi = Durasi(T->buffer[i]);
-	val->ketahanan = Ketahanan(T->buffer[i]);
-	val->harga = Harga(T->buffer[i]);
+	if (found){
+		Move(val->label, Label(*T->buffer[i]));
+		val->durasi = Durasi(T->buffer[i]);
+		val->ketahanan = Ketahanan(T->buffer[i]);
+		val->harga = Harga(T->buffer[i]);
 
-	for (int j=i;j<Neff(*T)-1;j++){
-		Label(T->buffer[j])[1] = Label(T->buffer[j+1])[1];
+		for (int j=i;j<Neff(*T)-1;j++){
+		Move(Label(T->buffer[j]), Label(*T->buffer[j+1]));
 		Durasi(T->buffer[j]) = Durasi(T->buffer[j+1]);
 		Ketahanan(T->buffer[j]) = Ketahanan(T->buffer[j+1]);
 		Harga(T->buffer[j]) = Harga(T->buffer[j+1]);
+		}
+		Neff(*T)--; 
 	}
-	Neff(*T)--; 
 }
 /* Menghapus suatu pesanan ke dalam Tab */
 
@@ -92,10 +94,17 @@ void Delete(Tab *T, int label, Pesanan *val){
 void TulisIsi (Tab T){
 	if (!(IsEmpty(T))){
 		for(int i=0;i<T.Neff;i++){
-			printf(" %c%c      | %d              | %d         | %d\n",Label(T.buffer[i])[0], Label(T.buffer[i])[1], Durasi(T.buffer[i]), Ketahanan(T.buffer[i]), Harga(T.buffer[i]));
+			printf(" ");
+			PrintKata(Label(*T.buffer[i]));
+			printf("      | %d              | %d         | %d\n", Durasi(T.buffer[i]), Ketahanan(T.buffer[i]), Harga(T.buffer[i]));
 		}
 	}
 	else{
 		printf("         |                |           |  \n"); 
 	}
 }
+
+int Label_int(Pesanan P){
+    return WordToInt((GetLabel(Label(*P)))); 
+}
+//MENGAMBIL NILAI INT LABEL
