@@ -101,4 +101,6 @@ void TulisIsi (TabGame T);
 2:3
 */
 /* Jika T kosong : Hanya menulis "Tabel kosong" */
+
+void DeleteAt (TabGame *T, IdxType i);
 #endif
