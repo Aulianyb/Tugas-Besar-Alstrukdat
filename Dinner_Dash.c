@@ -3,6 +3,7 @@
 #include "array_pesanan.h"
 #include "queue_cook.h"
 #include "random_generator.h"
+#include "mesinkata.h"
 /*Ini masih nyoba nyoba aja
 Butuh ADT Queue dan Mesin Kata untuk prosesnya
 */
@@ -25,7 +26,7 @@ boolean isServe(char *command){
 int main(){
 	boolean play = true;
 	char command[8];
-	int saldo=0, order_ctr=2, cook_ctr=0, served_ctr=0, made_ctr=3; 
+	int saldo=0, order_ctr=3, cook_ctr=0, served_ctr=0, made_ctr=2; 
 	Tab Orders, Cook, Served;
 	Pesanan temp; 
 	boolean valid=false; 
@@ -65,6 +66,8 @@ int main(){
 
 		//UNTUK WIP VALIDASI INPUT NANTI
 		valid=false; 
+		// while (!valid){
+		// }
 
 		printf(" MASUKKAN COMMAND: ");
 		scanf("%[^\n]", command);
@@ -107,5 +110,10 @@ int main(){
 		}
 		printf("=====================================================\n");
 	}
+	printf(" _____ _____ _____ _____    _____ _____ _____ _____ \n");
+	printf("|   __|  _  |     |   __|  |     |  |  |   __| __  |\n");
+	printf("|  |  |     | | | |   __|  |  |  |  |  |   __|    -|\n");
+	printf("|_____|__|__|_|_|_|_____|  |_____|\\___/|_____|__|__|\n\n");
+	printf("SCORE AKHIR : %d\n", saldo);                                                                  
 	return 0; 
 }

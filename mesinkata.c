@@ -93,3 +93,63 @@ void STARTFILE()
         CopyWord();
     }
 }
+
+Word GetKataFirst(Word W){
+    Word Kata;
+    int i = 0;
+    while ((i<W.Length) && (W.TabWord[i] != ' ')){
+        if (i < NMax){
+            Kata.TabWord[i] = W.TabWord[i];
+            i++;
+        }
+    }
+    Kata.Length = i; 
+    return Kata;
+}
+//Ambil Kata Pertama
+
+Word GetKataSecond(Word W){
+    Word Kata;
+    int i=0;
+    while ((i<W.Length) && (W.TabWord[i] != ' ')){
+        i++;
+    }
+    i++;
+    int start = i;
+    Kata.Length=0; 
+    while (i<W.Length){
+        if (i < NMax){
+            Kata.TabWord[i-start] = W.TabWord[i];
+            Kata.Length++;
+            i++;
+        }
+    }
+    return Kata;
+}
+//Ambil Kata Terakhir
+
+int StringLen(char *Input){
+    int i=0, len=0;
+    while (Input[i] != '\0'){
+        i++;
+        len++;
+    }
+    return len;
+}
+//Return Panjang String
+
+boolean isWordEqual(Word W, char *W2){ 
+    if (W.Length != StringLen(W2)){
+        return false;
+    }
+    else{
+        int error=0;
+        for(int i=0;i < W.Length;i++){
+            if(W.TabWord[i] != W2[i]){
+                error++; 
+            }
+        }
+        return (error == 0);
+    }
+}
+//Cek apakah Kata sama dengan input yang dimasukkan

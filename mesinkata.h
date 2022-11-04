@@ -52,4 +52,18 @@ int WordToInt(Word word);
    F.S. : kata berubah menjadi bentuk integer*/
 
 void STARTFILE();
+/*Ambil Input*/
+
+Word GetKataFirst(Word W);
+//Ambil Kata Pertama
+
+Word GetKataSecond(Word W);
+//Ambil Kata Terakhir
+
+int StringLen(char *Input);
+//Return Panjang String
+
+boolean isWordEqual(Word W, char *W2);
+//Cek apakah Kata sama dengan input yang dimasukkan
+
 #endif
