@@ -1,11 +1,8 @@
-#include <stdio.h>
-#include "array.h"
+#include "Create_Game.h"
 
 void CreateGame(TabGame* List_Game) {
-    char game[50];
-
     printf("Masukkan nama game yang akan ditambahkan: ");
-    scanf("%[^\n]",game);
+    STARTFILE();
 
     int i = IdxMin;
     boolean found = false;
@@ -13,8 +10,8 @@ void CreateGame(TabGame* List_Game) {
     while (i <= (*List_Game).Neff && !found) {
         int k = 0;
         boolean equal = true;
-        while ((*List_Game).TI[i][k] != '\0' && game[k] != '\0' && equal) {
-            if ((*List_Game).TI[i][k] != game[k]) {
+        while ((*List_Game).TI[i][k] != '\0' && currentWord.TabWord[k] != '\0' && equal) {
+            if ((*List_Game).TI[i][k] != currentWord.TabWord[k]) {
                 equal = false;
             }
             else {
@@ -29,7 +26,7 @@ void CreateGame(TabGame* List_Game) {
         }
     }
     if (!found) {
-        SetEl(List_Game,i,game);
+        SetEl(List_Game,i,currentWord.TabWord);
         printf("Game berhasil ditambahkan\n");
     }
     else {
