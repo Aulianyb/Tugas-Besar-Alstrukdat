@@ -2,13 +2,13 @@
 #include "boolean.h"
 #include "array_pesanan.h"
 #include "queue_cook.h"
+#include "random_generator.h"
 /*Ini masih nyoba nyoba aja
 Butuh ADT Queue dan Mesin Kata untuk prosesnya
 */
 
 void empty_stdin(void) {
     int c = getchar();
-
     while (c != '\n' && c != EOF)
         c = getchar();
 }
@@ -21,20 +21,20 @@ boolean isServe(char *command){
 	return (command[0] == 'S') && (command[1] == 'E') && (command[2] == 'R') && (command[3] == 'V') && (command[4] == 'E') && (command[5] == ' ') && (command[6] == 'M');;
 }
 
+
 int main(){
 	boolean play = true;
 	char command[8];
-	int saldo=0, cook_ctr=0,served_ctr=0; 
+	int saldo=0, order_ctr=2, cook_ctr=0, served_ctr=0, made_ctr=3; 
 	Tab Orders, Cook, Served;
 	Pesanan temp; 
 	boolean valid=false; 
-
 	MakeEmpty(&Orders);
 	MakeEmpty(&Cook);
 	MakeEmpty(&Served);
-	Insert(&Orders, 0, 2, 3, 10000);
-	Insert(&Orders, 1, 1, 1, 20000);
-	Insert(&Orders, 2, 1, 4, 30000);
+	Insert(&Orders, 0, GenRand(1,5), GenRand(1,5), GenRand(10000,50000));
+	Insert(&Orders, 1, GenRand(1,5), GenRand(1,5), GenRand(10000,50000));
+	Insert(&Orders, 2, GenRand(1,5), GenRand(1,5), GenRand(10000,50000));
 	printf("\n");
 	printf("===================== Selamat Datang di ... =====================\n");
 	printf(" ____  _____ _____ _____ _____ _____    ____  _____ _____ _____\n");
@@ -81,14 +81,23 @@ int main(){
 			if (isCook(command)) {
 				Delete(&Orders, command[6] - 48, &temp);
 				enqueue(&Cook, temp);
-				printf("Berhasil Memasak M%d\n", command[6] - 48);
+				printf(" Berhasil Memasak M%d\n", command[6] - 48);
 				empty_stdin();
 			}
 			else{
 				dequeue(&Served, &temp);
 				saldo += Harga(temp);
 				served_ctr++;
+				printf(" Berhasil Menyajikan M%d\n", command[6] - 48);
 				empty_stdin();
+			}
+			made_ctr++;
+			Insert(&Orders, made_ctr, GenRand(1,5), GenRand(1,5), GenRand(10000,50000));
+			
+			for (int i=0; i < Neff(Served);i++){
+				if (Ketahanan(Served.buffer[i]) == 0){
+					play = false; 		
+				}
 			}
 
 		}

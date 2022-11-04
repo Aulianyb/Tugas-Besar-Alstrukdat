@@ -1,8 +1,7 @@
-#include "array_pesanan.h"
-
 #ifndef QUEUE_H
 #define QUEUE_H
 
+#include "array_pesanan.h"
 
 void enqueue (Tab *T, Pesanan val);
 /*Memasukkan elemen ke dalam Queue dalam urutan Prioritas*/
