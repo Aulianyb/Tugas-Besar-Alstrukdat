@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "array_pesanan.h"
 #include "queue_cook.h"
+#include "random_generator.h"
 
 //INI FILE BUAT NYOBA NYOBA AJA
 
@@ -35,6 +36,7 @@ int main(){
 	else{
 		printf("NOT FOUND\n");
 	}
+	printf("%d", GenRand(1, 5));
 	char command[8];
 
 	// printf(" MASUKKAN COMMAND:");
