@@ -6,7 +6,7 @@
 
 /* Kamus Umum */
 
-#define MaxEl 7
+#define MaxEl 50 /*Sebenarnya bisa lebih dari 15, misalnya loop terus mengakibatkan terus generate data*/
 #define IdxMin 0
 #define IdxUndef -999 /* indeks tak terdefinisi*/
 

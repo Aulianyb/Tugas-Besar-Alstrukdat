@@ -80,4 +80,8 @@ void Move(Word *W1, Word W2);
 
 void PrintKata(Word W);
 //PRINT KATA
+
+int CommandInt(Word W);
+//Ambil Label dari Input Word
+
 #endif

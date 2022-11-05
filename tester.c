@@ -23,12 +23,20 @@ int main(){
 	Insert(&Tester, 1, 3, 1, 15300);
 	Insert(&Tester, 2, 1, 4, 56290);
 	Insert(&Tester, 4, 4, 2, 50000);
+
+
 	Delete(&Tester, 0, &val);
 	enqueue(&Cook, val);
 	Delete(&Tester, 1, &val);
 	enqueue(&Cook, val);
 	Delete(&Tester, 2, &val);
 	enqueue(&Cook, val);
+	Delete(&Tester, 4, &val);
+	enqueue(&Cook, val);
+	dequeue(&Cook, &val);
+	dequeue(&Cook, &val);
+	dequeue(&Cook, &val);
+
 	printf("---------------------------------------------\n");
 	TulisIsi(Tester);
 	printf("---------------------------------------------\n");
@@ -48,8 +56,8 @@ int main(){
 	Kata.Length = 1;
 	// printf("LEN = %d", IntToWord(15).Length);
 	// MergeWord(&Kata, IntToWord(0)); 
-	PrintKata(GetLabel(Label(*Tester.buffer[0])));
-	printf("  0 = %d\n", WordToInt((GetLabel(Label(*Tester.buffer[0])))));
+	// PrintKata(GetLabel(Label(*Tester.buffer[0])));
+	// printf("  0 = %d\n", WordToInt((GetLabel(Label(*Tester.buffer[1])))));
 	// PrintKata(Kata);
 	boolean a=false;
 	while (a){

@@ -204,4 +204,8 @@ void PrintKata(Word W){
         printf("%c", W.TabWord[i]);
     }
 }
+
+int CommandInt(Word W){
+    return (WordToInt((GetLabel(GetKataSecond(currentWord))))); 
+}
 //PRINT KATA
