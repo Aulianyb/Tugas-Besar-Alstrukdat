@@ -3,38 +3,37 @@
 #include "array_pesanan.h"
 #include "queue_cook.h"
 #include "random_generator.h"
+#include "mesinkata.h"
+
 /*Ini masih nyoba nyoba aja
 Butuh ADT Queue dan Mesin Kata untuk prosesnya
 */
-
-void empty_stdin(void) {
-    int c = getchar();
-    while (c != '\n' && c != EOF)
-        c = getchar();
+boolean isCook(Word Kata){
+	return isWordEqual(GetKataFirst(Kata), "COOK");
 }
 
-boolean isCook(char *command){
-	return (command[0] == 'C') && (command[1] == 'O') && (command[2] == 'O') && (command[3] == 'K') && (command[4] == ' ') && (command[5] == 'M');
-}
-
-boolean isServe(char *command){
-	return (command[0] == 'S') && (command[1] == 'E') && (command[2] == 'R') && (command[3] == 'V') && (command[4] == 'E') && (command[5] == ' ') && (command[6] == 'M');;
+boolean isServe(Word Kata){
+	return isWordEqual(GetKataFirst(Kata), "SERVE");
 }
 
 
 int main(){
 	boolean play = true;
 	char command[8];
-	int saldo=0, order_ctr=2, cook_ctr=0, served_ctr=0, made_ctr=3; 
-	Tab Orders, Cook, Served;
+	int saldo=0, order_ctr=3, cook_ctr=0, served_ctr=0, made_ctr=2; 
+	Tab Orders, Cook, Served, Data;
 	Pesanan temp; 
 	boolean valid=false; 
 	MakeEmpty(&Orders);
 	MakeEmpty(&Cook);
 	MakeEmpty(&Served);
-	Insert(&Orders, 0, GenRand(1,5), GenRand(1,5), GenRand(10000,50000));
-	Insert(&Orders, 1, GenRand(1,5), GenRand(1,5), GenRand(10000,50000));
-	Insert(&Orders, 2, GenRand(1,5), GenRand(1,5), GenRand(10000,50000));
+	MakeEmpty(&Data);
+
+	for (int i = 0;i<3;i++){
+		Insert(&Orders, i, 2, GenRand(1,5), GenRand(10000,50000));
+		Insert(&Data, i, Durasi(Orders.buffer[i]), Ketahanan(Orders.buffer[i]), Harga(Orders.buffer[i]));
+	}
+
 	printf("\n");
 	printf("===================== Selamat Datang di ... =====================\n");
 	printf(" ____  _____ _____ _____ _____ _____    ____  _____ _____ _____\n");
@@ -43,6 +42,7 @@ int main(){
 	printf("|____/|_____|_|___|_|___|_____|__|__|  |____/|__|__|_____|__|__|\n\n");
 	printf("==================================================================\n\n");
 	while (play){
+
 		printf(" SALDO : %d\n\n", saldo);
 
 		printf(" Daftar Pesanan\n");
@@ -63,49 +63,94 @@ int main(){
 		TulisIsi_Served(Served);
 		printf("\n\n");
 
-		//UNTUK WIP VALIDASI INPUT NANTI
 		valid=false; 
-
-		printf(" MASUKKAN COMMAND: ");
-		scanf("%[^\n]", command);
-		if (isCook(command) || isServe(command)){
-			UpdateCook_Tab(&Cook);
-			UpdateServed_Tab(&Served);
-			int ctr=0;
-			while ((Durasi(Cook.buffer[ctr]) == 0) && !(IsEmpty(Cook))){
-				dequeue(&Cook, &temp);
-				enqueue(&Served, temp);
-				ctr++;
-			}
-
-			if (isCook(command)) {
-				Delete(&Orders, command[6] - 48, &temp);
-				enqueue(&Cook, temp);
-				printf(" Berhasil Memasak M%d\n", command[6] - 48);
-				empty_stdin();
-			}
-			else{
-				dequeue(&Served, &temp);
-				saldo += Harga(temp);
-				served_ctr++;
-				printf(" Berhasil Menyajikan M%d\n", command[6] - 48);
-				empty_stdin();
-			}
-			made_ctr++;
-			Insert(&Orders, made_ctr, GenRand(1,5), GenRand(1,5), GenRand(10000,50000));
-			
-			for (int i=0; i < Neff(Served);i++){
-				if (Ketahanan(Served.buffer[i]) == 0){
-					play = false; 		
+		//VALIDASI INPUT
+		while (!valid){
+			printf(" MASUKKAN COMMAND: ");
+			STARTFILE();
+			if ((isCook(currentWord) || isServe(currentWord)) && GetKataSecond(currentWord).TabWord[0] == 'M'){
+				if (isCook(currentWord)){
+					if (made_ctr >= CommandInt(currentWord)){
+						if (cook_ctr < 5){
+							valid=true;
+						}
+						else{
+							printf("Jumlah Maksimal Yang dapat dimasak adalah 5 Pesanan!\n");
+						}
+					}
+					else{
+						printf(" Belum ada yang memesan M%d!\n", CommandInt(currentWord));
+					}
+				}
+				else{
+					if (isMember(Served, CommandInt(currentWord))){
+						if (served_ctr >= CommandInt(currentWord)){
+							valid=true;
+						}
+						else{
+							printf(" Pesanan M%d belum dapat disajikan karena antrian sebelumnya belum disajikan!\n", CommandInt(currentWord));
+						}
+					}
+					else{
+						printf(" Pesanan M%d belum selesai dimasak!\n", CommandInt(currentWord));
+					}
 				}
 			}
+			else{
+				printf(" UH OH, INPUT TIDAK VALID !\n");
+			}
+		}
 
+		//UPDATE TABLE
+		UpdateCook_Tab(&Cook);
+		UpdateServed_Tab(&Served);
+
+		//ALGORITMA UTAMA
+		if (isCook(currentWord)) {
+			Delete(&Orders, CommandInt(currentWord), &temp);
+			temp = Data.buffer[CommandInt(currentWord)];
+			enqueue(&Cook, temp);
+			cook_ctr++; 
+			printf(" Berhasil Memasak M%d\n", CommandInt(currentWord));
 		}
+
 		else{
-			printf(" TIDAK VALID\n");
-			play = false;	
+			dequeue(&Served, &temp);
+			saldo += Harga(temp);
+			served_ctr++;
+			printf(" Berhasil Menyajikan M%d\n", CommandInt(currentWord));
 		}
+
+		made_ctr++;
+		Insert(&Orders, made_ctr, GenRand(1,5), GenRand(1,5), GenRand(10000,50000));
+		Insert(&Data, made_ctr, Durasi(Orders.buffer[Neff(Orders)-1]), Ketahanan(Orders.buffer[Neff(Orders)-1]), Harga(Orders.buffer[Neff(Orders)-1]));
+		
+		int ctr=0;
+		while ((ctr < Neff(Cook)) && !(IsEmpty(Cook))){
+			printf("CEK DURASI : %d\n", Durasi(Cook.buffer[ctr]));
+			if (Durasi(Cook.buffer[ctr]) < 1){
+				dequeue(&Cook, &temp);
+				enqueue(&Served, temp);
+				cook_ctr--;
+			}
+			ctr++;
+		}
+
+		for (int i=0; i < Neff(Served);i++){
+			if (Ketahanan(Served.buffer[i]) == 0){
+				printf(" PESANAN M%d HANGUS! PESANAN HARUS DIMASAK ULANG!\n", Label_int(Served.buffer[i]));
+				temp = Data.buffer[Label_int(Served.buffer[i])];
+				enqueue(&Orders, temp);
+				Delete(&Served, Label_int(Served.buffer[i]), &temp);
+			}
+		}
+
 		printf("=====================================================\n");
 	}
+	printf(" _____ _____ _____ _____    _____ _____ _____ _____ \n");
+	printf("|   __|  _  |     |   __|  |     |  |  |   __| __  |\n");
+	printf("|  |  |     | | | |   __|  |  |  |  |  |   __|    -|\n");
+	printf("|_____|__|__|_|_|_|_____|  |_____|\\___/|_____|__|__|\n\n");
+	printf("SCORE AKHIR : %d\n", saldo);                                                                  
 	return 0; 
 }

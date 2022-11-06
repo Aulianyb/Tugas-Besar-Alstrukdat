@@ -93,3 +93,119 @@ void STARTFILE()
         CopyWord();
     }
 }
+
+Word GetKataFirst(Word W){
+    Word Kata;
+    int i = 0;
+    while ((i<W.Length) && (W.TabWord[i] != ' ')){
+        if (i < NMax){
+            Kata.TabWord[i] = W.TabWord[i];
+            i++;
+        }
+    }
+    Kata.Length = i; 
+    return Kata;
+}
+//Ambil Kata Pertama
+
+Word GetKataSecond(Word W){
+    Word Kata;
+    int i=0;
+    while ((i<W.Length) && (W.TabWord[i] != ' ')){
+        i++;
+    }
+    i++;
+    int start = i;
+    Kata.Length=0; 
+    while (i<W.Length){
+        if (i < NMax){
+            Kata.TabWord[i-start] = W.TabWord[i];
+            Kata.Length++;
+            i++;
+        }
+    }
+    return Kata;
+}
+//Ambil Kata Terakhir
+
+int StringLen(char *Input){
+    int i=0, len=0;
+    while (Input[i] != '\0'){
+        i++;
+        len++;
+    }
+    return len;
+}
+//Return Panjang String
+
+boolean isWordEqual(Word W, char *W2){ 
+    if (W.Length != StringLen(W2)){
+        return false;
+    }
+    else{
+        int error=0;
+        for(int i=0;i < W.Length;i++){
+            if(W.TabWord[i] != W2[i]){
+                error++; 
+            }
+        }
+        return (error == 0);
+    }
+}
+//Cek apakah Kata sama dengan input yang dimasukkan
+
+Word GetLabel(Word W){
+    Word Label;
+    Label.Length=0; 
+    int i = 1; 
+    while (i<W.Length){
+        Label.TabWord[i-1] = W.TabWord[i];
+        Label.Length++;
+        i++;
+    }
+    return Label; 
+}
+//Ambil Label dari suatu Command
+
+Word IntToWord(int X){
+    Word Kata;
+    int i=0, temp=X;
+    Kata.Length=0;  
+    while (X >= 10){
+        Kata.TabWord[i] = (X / 10) + '0';
+        Kata.Length++;
+        i++;
+        X %= 10; 
+    }
+    Kata.TabWord[i] = X + '0';
+    Kata.Length++;
+    return Kata;
+}
+//ubah INT menjadi WORD
+
+void MergeWord(Word *W1, Word W2){
+    int Len = W1->Length;
+    for (int i=Len;i < Len + W2.Length;i++){
+        W1->TabWord[i] = W2.TabWord[i-Len];
+    }
+    W1->Length += W2.Length;
+}
+//Menggabungkan dua kata dan menyimpannya dalam W1
+
+void Move(Word *W1, Word W2){
+    for(int i=0;i<W2.Length;i++){
+        W1->TabWord[i] = W2.TabWord[i];
+    }
+    W1->Length = W2.Length;
+}
+
+void PrintKata(Word W){
+    for (int i=0; i<W.Length ; i++){
+        printf("%c", W.TabWord[i]);
+    }
+}
+
+int CommandInt(Word W){
+    return (WordToInt((GetLabel(GetKataSecond(currentWord))))); 
+}
+//PRINT KATA
