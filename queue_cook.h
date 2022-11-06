@@ -1,5 +1,5 @@
-#ifndef QUEUE_H
-#define QUEUE_H
+#ifndef QUEUECOOK_H
+#define QUEUECOOK_H
 
 #include "array_pesanan.h"
 

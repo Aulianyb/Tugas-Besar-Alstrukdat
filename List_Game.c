@@ -1,3 +1,5 @@
+#include <stdio.h>
+#include "array.h"
 #include "List_Game.h"
 
 void ListGame(TabGame List_Game) {

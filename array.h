@@ -103,4 +103,7 @@ void TulisIsi (TabGame T);
 /* Jika T kosong : Hanya menulis "Tabel kosong" */
 
 void DeleteAt (TabGame *T, IdxType i);
+/* Proses : Menghapus elemen index ke-i pada T */
+/* I.S. T tidak kosong */
+/* F.S. Elemen T pada index ke-i dihapus, elemen efektif berkurang 1*/
 #endif
