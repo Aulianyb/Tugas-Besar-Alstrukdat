@@ -10,9 +10,9 @@
 #define CAPACITY 100
 
 /* Definisi elemen dan address */
-typedef int ElType;
+typedef char* ElType;
 typedef struct {
-	ElType buffer[CAPACITY];
+	ElType buffer[CAPACITY]; 
 	int idxHead;
 	int idxTail;
 } Queue;
@@ -57,8 +57,8 @@ void dequeue(Queue *q, ElType *val);
 
 /* *** Display Queue *** */
 void displayQueue(Queue q);
-/* Proses : Menuliskan isi Queue dengan traversal, Queue ditulis di antara kurung
-   siku; antara dua elemen dipisahkan dengan separator "koma", tanpa tambahan
+/* Proses : Menuliskan isi Queue dengan traversal, Queue ditulis di antara kurung 
+   siku; antara dua elemen dipisahkan dengan separator "koma", tanpa tambahan 
    karakter di depan, di tengah, atau di belakang, termasuk spasi dan enter */
 /* I.S. q boleh kosong */
 /* F.S. Jika q tidak kosong: [e1,e2,...,en] */
