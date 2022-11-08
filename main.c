@@ -1,11 +1,18 @@
 #include <stdio.h>
 #include "boolean.h"
+#include "Create_Game.h"
+#include "List_Game.h"
 #include "mesinkata.h"
+#include "deletegame.h"
 #include "array.h"
 #include "help.h"
+#include "queuegame.h"
+#include "queue.h"
 
 int main(){
 	boolean on=false;
+	TabGame T;
+	Queue Q; 
 	char command[10]; //ini placeholder
 	printf("========== WELCOME TO ==========\n");
 	printf(" ______ _______ _______ _______\n");
@@ -29,7 +36,16 @@ int main(){
 		}
 	}
 	if (isWordEqual(currentWord, "START")){
-		printf("START STATE\n");//PLACEHOLDER
+		// PLACEHOLDER
+    	MakeEmpty(&T);
+
+    	SetEl(&T,1,"RNG");
+    	SetEl(&T,2,"LUNCH SLOW");
+	    SetEl(&T,3,"DINOSAUR IN EARTH");
+	    SetEl(&T,4,"RISEWOMAN");
+	    SetEl(&T,5,"EIFFEL TOWER");
+
+	    CreateQueue(&Q);
 	}
 	else if (isWordEqual(GetKataFirst(currentWord), "START")){
 		printf("LOAD STATE\n");//PLACEHOLDER
@@ -38,28 +54,31 @@ int main(){
 		printf("ENTER COMMAND : ");
 		STARTFILE();
 		if (isWordEqual(GetKataFirst(currentWord),"SAVE")){
-			printf("COMMAND SAVE\n");
+			printf("COMMAND SAVE\n"); //PLACEHOLDER
 		}
 		else if(isWordEqual(currentWord,"CREATE GAME")){
-			printf("CREATE GAME\n");
+			CreateGame(&T);
 		}
 		else if(isWordEqual(currentWord, "LIST GAME")){
-			printf("LIST GAME\n");
+			ListGame(T);
 		}
 		else if(isWordEqual(currentWord, "DELETE GAME")){
-			printf("DELETE GAME\n");
+			DeleteGame(&T);
 		}	
 		else if(isWordEqual(currentWord, "QUEUE GAME")){
-			printf("QUEUE GAME\n");
+			printf("QUEUE GAME\n"); //PLACEHOLDER, MASIH KOSONG
 		}
 		else if(isWordEqual(GetKataFirst(currentWord), "SKIPGAME")){
-			printf("SKIP GAME\n");
+			printf("SKIP GAME\n"); //PLACEHOLDER, TYPE DATA GAK MATCH
 		}
 		else if(isWordEqual(currentWord, "QUIT")){
 			on=false;
 		}
 		else if (isWordEqual(currentWord, "HELP")){
 			help(1);
+		}
+		else if(isWordEqual(currentWord, "PLAY GAME")){
+			printf("PLAY GAME\n"); 
 		}
 		else{
 			printf("Command tidak dikenali, silahkan masukkan command yang valid.\n");
