@@ -1,6 +1,8 @@
 #include "Create_Game.h"
 
 void CreateGame(TabGame* List_Game) {
+/* I.S. TabGame List_Game terdefinisi */
+/* F.S. Game baru hasil masukan pengguna berhasil ditambahkan ke dalam TabGame List_Game */
     printf("Masukkan nama game yang akan ditambahkan: ");
     STARTFILE();
 
