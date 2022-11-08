@@ -30,6 +30,9 @@ void ADVLOAD();
 char* wordToString(Word word);
 // Melakukan convert dari ADT Word ke string
 
+int wordtoInt(Word word);
+// Melakukan convert dari ADT Word ke integer
+
 void loadGAME(char* filename, TabGame *listGame);
 // Melakukan pembacaan file
 

@@ -2,7 +2,7 @@
 #include "mesinkarakter.h"
 
 char currentChar;
-boolean eop;
+boolean EOP;
 
 
 static FILE *pita;
@@ -24,8 +24,8 @@ void START(){
 
 void ADV(){
 	retval = fscanf(pita, "%c", &currentChar);
-	eop = (currentChar == MARK);
-	if (eop){
+	EOP = (currentChar == MARK);
+	if (EOP){
 		fclose(pita);
 	}
 }

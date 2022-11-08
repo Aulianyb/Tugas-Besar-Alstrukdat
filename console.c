@@ -60,6 +60,16 @@ char* wordToString(Word word)
   return str;
 }
 
+int wordtoInt(Word word)
+{
+  int result = 0;
+  for (int i = 0; i < word.Length; i++){
+      result = result*10 + (word.TabWord[i] - '0');
+      i++;
+  }
+  return result;
+}
+
 void startGAME(TabGame *listGame){
     loadGAME("config.txt", listGame);
     printf("File konfigurasi BNMO berhasil dibaca. GLHF!!\n");
@@ -68,7 +78,9 @@ void startGAME(TabGame *listGame){
 void loadGAME(char* filename, TabGame *listGame)
 {
     startLOAD(filename);
-    int countGame = currentChar - '0';
+    ADVWORDLOAD();
+    int countGame = wordtoInt(currentWord);
+    printf("%d\n", countGame);
 
     ADVLOAD();
     char* title;
@@ -76,6 +88,8 @@ void loadGAME(char* filename, TabGame *listGame)
     {
         ADVWORDLOAD();
         title = wordToString(currentWord);
+        PrintKata(currentWord);
+        printf("\n");
         SetEl(listGame, i, title);
     }
     fclose(fptr);
