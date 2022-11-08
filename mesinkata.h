@@ -54,6 +54,9 @@ int WordToInt(Word word);
 void STARTFILE();
 /*Ambil Input*/
 
+void resetCurrWord(Word word);
+/*Mereset currentWord*/
+
 Word GetKataFirst(Word W);
 //Ambil Kata Pertama
 
