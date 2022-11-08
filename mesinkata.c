@@ -94,6 +94,12 @@ void STARTFILE()
     }
 }
 
+void resetCurrWord(Word word) {
+    for (int i = 0; i < word.Length; i++) {
+        word.TabWord[i] = '\0';
+    }
+}
+
 Word GetKataFirst(Word W){
     Word Kata;
     int i = 0;
