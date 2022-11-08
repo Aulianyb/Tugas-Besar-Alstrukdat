@@ -5,9 +5,7 @@
 #include "random_generator.h"
 #include "mesinkata.h"
 
-/*Ini masih nyoba nyoba aja
-Butuh ADT Queue dan Mesin Kata untuk prosesnya
-*/
+
 boolean isCook(Word Kata){
 	return isWordEqual(GetKataFirst(Kata), "COOK");
 }
@@ -30,7 +28,7 @@ int main(){
 	MakeEmpty(&Data);
 
 	for (int i = 0;i<3;i++){
-		Insert(&Orders, i, 2, GenRand(1,5), GenRand(10000,50000));
+		buat_pesanan(&Orders, i);
 		Insert(&Data, i, Durasi(Orders.buffer[i]), Ketahanan(Orders.buffer[i]), Harga(Orders.buffer[i]));
 	}
 
@@ -105,8 +103,19 @@ int main(){
 		UpdateCook_Tab(&Cook);
 		UpdateServed_Tab(&Served);
 
+		int ctr=0;
+		while ((ctr < Neff(Cook)) && !(IsEmpty(Cook))){
+			if (Durasi(Cook.buffer[ctr]) < 1){
+				Delete(&Cook, Label_int(Cook.buffer[ctr]), &temp);
+				enqueue(&Served, temp);
+				cook_ctr--;
+			}
+			ctr++;
+		}
+
 		//ALGORITMA UTAMA
 		if (isCook(currentWord)) {
+			order_ctr--;
 			Delete(&Orders, CommandInt(currentWord), &temp);
 			temp = Data.buffer[CommandInt(currentWord)];
 			enqueue(&Cook, temp);
@@ -121,20 +130,11 @@ int main(){
 			printf(" Berhasil Menyajikan M%d\n", CommandInt(currentWord));
 		}
 
+		//UPDATE PESANAN
 		made_ctr++;
-		Insert(&Orders, made_ctr, GenRand(1,5), GenRand(1,5), GenRand(10000,50000));
+		buat_pesanan(&Orders, made_ctr);
+		order_ctr++; 
 		Insert(&Data, made_ctr, Durasi(Orders.buffer[Neff(Orders)-1]), Ketahanan(Orders.buffer[Neff(Orders)-1]), Harga(Orders.buffer[Neff(Orders)-1]));
-		
-		int ctr=0;
-		while ((ctr < Neff(Cook)) && !(IsEmpty(Cook))){
-			printf("CEK DURASI : %d\n", Durasi(Cook.buffer[ctr]));
-			if (Durasi(Cook.buffer[ctr]) < 1){
-				dequeue(&Cook, &temp);
-				enqueue(&Served, temp);
-				cook_ctr--;
-			}
-			ctr++;
-		}
 
 		for (int i=0; i < Neff(Served);i++){
 			if (Ketahanan(Served.buffer[i]) == 0){
@@ -142,15 +142,22 @@ int main(){
 				temp = Data.buffer[Label_int(Served.buffer[i])];
 				enqueue(&Orders, temp);
 				Delete(&Served, Label_int(Served.buffer[i]), &temp);
+				order_ctr++;
 			}
 		}
 
-		printf("=====================================================\n");
+
+
+		printf("\n=====================================================\n");
+		if (served_ctr == 15 || order_ctr > 7){
+			play=false;
+		}
 	}
 	printf(" _____ _____ _____ _____    _____ _____ _____ _____ \n");
 	printf("|   __|  _  |     |   __|  |     |  |  |   __| __  |\n");
 	printf("|  |  |     | | | |   __|  |  |  |  |  |   __|    -|\n");
 	printf("|_____|__|__|_|_|_|_____|  |_____|\\___/|_____|__|__|\n\n");
-	printf("SCORE AKHIR : %d\n", saldo);                                                                  
+	printf(" SCORE AKHIR : %d\n", saldo);         
+	printf(" Served Meals : %d\n", served_ctr);                                                      
 	return 0; 
 }

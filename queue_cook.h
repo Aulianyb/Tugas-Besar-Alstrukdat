@@ -2,6 +2,7 @@
 #define QUEUECOOK_H
 
 #include "array_pesanan.h"
+#include "random_generator.h"
 
 void enqueue (Tab *T, Pesanan val);
 /*Memasukkan elemen ke dalam Queue dalam urutan Prioritas*/
@@ -23,6 +24,9 @@ void UpdateServed_Tab(Tab *T);
 
 boolean isMember(Tab T, int label);
 /*Cek apakah pesanan dengan label yang dimasukkan pengguna ada di dalam Queue/Array atau tidak*/
+
+void buat_pesanan(Tab *T, int label);
+/*fungsi untuk membuat pesanan*/
 
 #endif
 
