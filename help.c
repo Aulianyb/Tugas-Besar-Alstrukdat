@@ -1,7 +1,14 @@
 #include <stdio.h>
+#include "help.h"
 
 //parameter state untuk membedakan help yang dipanggil sebelum start dan setelah start
 void help(int state) {
+/*
+I.S. Sembarang
+F.S. Menampilkan seluruh command yang dapat dipanggil di dalam sistem
+     berdasarkan statenya. Bila state = 0, maka hanya menampilkan START. Bila
+     state = 1, menampilkan sisa command yang lain.
+*/
     printf("Daftar Command yang dapat dipanggil : \n");
     if (state == 0) {
         printf("================== HELP ===================\n");
