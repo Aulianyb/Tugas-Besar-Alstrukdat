@@ -96,6 +96,14 @@ void loadGAME(char* filename, TabGame *listGame)
 }
 
 void saveGAME(char* filename, TabGame listGame){
+    char path[100] = "data/";
+    int i = 5;
+    while (*filename != '\0')
+    {
+        path[i] = *filename;
+        i++;
+        *filename++;
+    }
     fptr = fopen(filename, "w");
     if (fptr == NULL){
         printf("Tidak berhasil menyimpan file!");
