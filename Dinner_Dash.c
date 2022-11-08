@@ -14,6 +14,10 @@ boolean isServe(Word Kata){
 	return isWordEqual(GetKataFirst(Kata), "SERVE");
 }
 
+boolean isSkip(Word Kata){
+	return isWordEqual(GetKataFirst(Kata), "SKIP");	
+}
+
 
 int main(){
 	boolean play = true;
@@ -33,12 +37,12 @@ int main(){
 	}
 
 	printf("\n");
-	printf("===================== Selamat Datang di ... =====================\n");
-	printf(" ____  _____ _____ _____ _____ _____    ____  _____ _____ _____\n");
-	printf("|    \\|     |   | |   | |   __| __  |  |    \\|  _  |   __|  |  |\n");
-	printf("|  |  |-   -| | | | | | |   __|    -|  |  |  |     |__   |     |\n");
-	printf("|____/|_____|_|___|_|___|_____|__|__|  |____/|__|__|_____|__|__|\n\n");
-	printf("==================================================================\n\n");
+	printf(" ===================== Selamat Datang di ... =====================\n");
+	printf("  ____  _____ _____ _____ _____ _____    ____  _____ _____ _____\n");
+	printf(" |    \\|     |   | |   | |   __| __  |  |    \\|  _  |   __|  |  |\n");
+	printf(" |  |  |-   -| | | | | | |   __|    -|  |  |  |     |__   |     |\n");
+	printf(" |____/|_____|_|___|_|___|_____|__|__|  |____/|__|__|_____|__|__|\n\n");
+	printf(" ==================================================================\n\n");
 	while (play){
 
 		printf(" SALDO : %d\n\n", saldo);
@@ -66,7 +70,7 @@ int main(){
 		while (!valid){
 			printf(" MASUKKAN COMMAND: ");
 			STARTFILE();
-			if ((isCook(currentWord) || isServe(currentWord)) && GetKataSecond(currentWord).TabWord[0] == 'M'){
+			if (((isCook(currentWord) || isServe(currentWord)) && GetKataSecond(currentWord).TabWord[0] == 'M') || (isSkip(currentWord))){
 				if (isCook(currentWord)){
 					if (made_ctr >= CommandInt(currentWord)){
 						if (cook_ctr < 5){
@@ -80,7 +84,7 @@ int main(){
 						printf(" Belum ada yang memesan M%d!\n", CommandInt(currentWord));
 					}
 				}
-				else{
+				else if(isServe(currentWord)){
 					if (isMember(Served, CommandInt(currentWord))){
 						if (served_ctr >= CommandInt(currentWord)){
 							valid=true;
@@ -92,6 +96,9 @@ int main(){
 					else{
 						printf(" Pesanan M%d belum selesai dimasak!\n", CommandInt(currentWord));
 					}
+				}
+				else{
+					valid=true; 
 				}
 			}
 			else{
@@ -123,7 +130,7 @@ int main(){
 			printf(" Berhasil Memasak M%d\n", CommandInt(currentWord));
 		}
 
-		else{
+		else if(isServe(currentWord)){
 			dequeue(&Served, &temp);
 			saldo += Harga(temp);
 			served_ctr++;
@@ -148,15 +155,15 @@ int main(){
 
 
 
-		printf("\n=====================================================\n");
+		printf("\n =====================================================\n");
 		if (served_ctr == 15 || order_ctr > 7){
 			play=false;
 		}
 	}
-	printf(" _____ _____ _____ _____    _____ _____ _____ _____ \n");
-	printf("|   __|  _  |     |   __|  |     |  |  |   __| __  |\n");
-	printf("|  |  |     | | | |   __|  |  |  |  |  |   __|    -|\n");
-	printf("|_____|__|__|_|_|_|_____|  |_____|\\___/|_____|__|__|\n\n");
+	printf("  _____ _____ _____ _____    _____ _____ _____ _____ \n");
+	printf(" |   __|  _  |     |   __|  |     |  |  |   __| __  |\n");
+	printf(" |  |  |     | | | |   __|  |  |  |  |  |   __|    -|\n");
+	printf(" |_____|__|__|_|_|_|_____|  |_____|\\___/|_____|__|__|\n\n");
 	printf(" SCORE AKHIR : %d\n", saldo);         
 	printf(" Served Meals : %d\n", served_ctr);                                                      
 	return 0; 
