@@ -1,4 +1,5 @@
 #include "boolean.h"
+#include "mesinkata.h"
 
 #ifndef ARRAY_H
 #define ARRAY_H
@@ -11,11 +12,10 @@
 
 /* Definisi elemen dan koleksi objek */
 typedef int IdxType;
-typedef char* ElType;
 
 typedef struct
 	{
-		ElType TI [IdxMax-IdxMin+1]; /* memori tempat penyimpan elemen (container) */
+		Word TI [IdxMax-IdxMin+1]; /* memori tempat penyimpan elemen (container) */
 		int Neff; /* banyaknya elemen efektif */
 	} TabGame;
 
@@ -53,7 +53,7 @@ IdxType GetLastIdx (TabGame T);
 /* Prekondisi : Tabel T tidak kosong */
 /* Mengirimkan indeks elemen terakhir */
 /* *** Menghasilkan sebuah elemen *** */
-ElType GetElmt (TabGame T, IdxType i);
+Word GetElmt (TabGame T, IdxType i);
 /* Prekondisi : Tabel tidak kosong, i antara FirstIdx(T)..LastIdx(T) */
 /* Mengirimkan elemen tabel yang ke-i */
 
@@ -63,7 +63,7 @@ void SetTab (TabGame Tin, TabGame *Tout);
 /* I.S. Tin terdefinisi, sembarang */
 /* F.S. Tout berisi salinan Tin */
 /* Assignment THsl -> Tin */
-void SetEl (TabGame *T, IdxType i, ElType v);
+void SetEl (TabGame *T, IdxType i, Word v);
 /* I.S. T terdefinisi, sembarang */
 /* F.S. Elemen T yang ke-i bernilai v */
 /* Mengeset nilai elemen tabel yang ke-i sehingga bernilai v */
@@ -106,4 +106,5 @@ void DeleteAt (TabGame *T, IdxType i);
 /* Proses : Menghapus elemen index ke-i pada T */
 /* I.S. T tidak kosong */
 /* F.S. Elemen T pada index ke-i dihapus, elemen efektif berkurang 1*/
+
 #endif

@@ -82,6 +82,7 @@ int WordToInt(Word word)
 
 void STARTFILE()
 {
+    resetCurrWord(currentWord);
     START();
     if (currentChar == '\0')
     {
@@ -95,21 +96,23 @@ void STARTFILE()
 }
 
 void resetCurrWord(Word word) {
-    for (int i = 0; i < word.Length; i++) {
+    for (int i = 0; i < NMax; i++) {
         word.TabWord[i] = '\0';
     }
+    word.Length = 0;
 }
 
 Word GetKataFirst(Word W){
     Word Kata;
     int i = 0;
+    resetCurrWord(Kata);
     while ((i<W.Length) && (W.TabWord[i] != ' ')){
         if (i < NMax){
             Kata.TabWord[i] = W.TabWord[i];
             i++;
         }
     }
-    Kata.Length = i; 
+    Kata.Length = i;
     return Kata;
 }
 //Ambil Kata Pertama
