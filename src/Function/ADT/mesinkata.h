@@ -69,6 +69,9 @@ int StringLen(char *Input);
 boolean isWordEqual(Word W, char *W2);
 //Cek apakah Kata sama dengan input yang dimasukkan
 
+boolean isTwoWordEqual(Word W1, Word W2);
+//Cek apakah Word W1 dan W2 sama
+
 Word GetLabel(Word W);
 //Ambil Label dari suatu Command
 
@@ -87,4 +90,6 @@ void PrintKata(Word W);
 int CommandInt(Word W);
 //Ambil Label dari Input Word
 
+Word strToWord(char* string);
+//Mengubah string menjadi Word
 #endif
