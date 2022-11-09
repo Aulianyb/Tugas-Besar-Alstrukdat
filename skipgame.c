@@ -8,6 +8,7 @@ void SkipGame(Queue game_queue, int n){
     printf("Berikut ini adalah daftar Game-mu : \n");
     PrintQueueGame(game_queue);
     char *val;
+    dequeue(&game_queue, &val);
     for (int i = 0; i < n; i++) {
         dequeue(&game_queue, &val);
     }
