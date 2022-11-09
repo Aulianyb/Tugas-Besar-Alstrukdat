@@ -103,8 +103,4 @@ boolean isMember(Tab T, int label){
 	return found;
 }
 
-void buat_pesanan(Tab *T, int label){
-	Insert(T, label, GenRand(1,5,5), (GenRand(1,5,5) % 5) + 1, GenRand(10000,50000,50000));
-}
-
 /*Cek apakah pesanan dengan label yang dimasukkan pengguna ada di dalam Queue/Array atau tidak*/

@@ -14,6 +14,9 @@ boolean isCook(Word Kata);
 boolean isServe(Word Kata);
 /* Mengembalikan apakah kata input merupakan "SERVE" atau bukan*/
 
+void buat_pesanan(Tab *T, int label);
+/* Membuat Pesanan berdasarkan input */
+
 void Dinner_Dash();
 //MAIN GAME
 

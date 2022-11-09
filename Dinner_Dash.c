@@ -13,6 +13,10 @@ boolean isSkip(Word Kata){
 	return isWordEqual(GetKataFirst(Kata), "SKIP");	
 }
 
+void buat_pesanan(Tab *T, int label){
+	Insert(T, label, GenRand(1,5,5), (GenRand(1,5,5) % 5) + 1, GenRand(10000,50000,50000));
+}
+
 
 void Dinner_Dash(){
 	boolean play = true;
