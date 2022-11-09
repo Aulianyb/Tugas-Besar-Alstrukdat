@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "array.h"
 #include "queue.h"
-// declare the tabgame with 00 elements
-
+#include "RNG.h"
+#include "Diner DASH.h"
+#include "RockPaperScissors.h"
 
 void playgame(Queue Queue_game){
     printf("Berikut ini adalah daftar Game-mu : \n");
@@ -21,7 +21,11 @@ void playgame(Queue Queue_game){
         printf("Loading %s .....\n",val);
         // Play RNG
     }
-    else {
+    else if (val == "RockPaperScissors") {
+        printf("Loading %s .....\n",val);
+        // Play RockPaperScissors
+    }
+    else{
         printf("Game %s masih dalam maintenance, belum dapat dimainkan. Silahkan pilih game lain.\n", val);
     }
 
