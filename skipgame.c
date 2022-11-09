@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "queue.h"
 #include "RNG.h"
-#include "Dinner_DASH.h"
+#include "Dinner_Dash.h"
 #include "RockPaperScissor.h"
 
 void skipgame(Queue game_queue, int n){

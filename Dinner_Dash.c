@@ -84,7 +84,7 @@ void Dinner_Dash(){
 					}
 				}
 				else if(isServe(currentWord)){
-					if (isMember(Served, CommandInt(currentWord))){
+					if (isMember_cook(Served, CommandInt(currentWord))){
 						if (served_ctr >= CommandInt(currentWord)){
 							valid=true;
 						}
@@ -110,9 +110,11 @@ void Dinner_Dash(){
 		UpdateServed_Tab(&Served);
 		int ctr = 0;
 		while ((ctr < Neff(Cook)) && !(IsEmpty(Cook))){
+			printf("CEK M%d = %d\n", Label_int(Cook.buffer[ctr]), (Durasi(Cook.buffer[ctr]))); //-> CHECKER
 			if (Durasi(Cook.buffer[ctr]) < 1){
 				Delete(&Cook, Label_int(Cook.buffer[ctr]), &temp);
-				enqueue(&Served, temp);
+				printf("MOVED\n");
+				enqueue_cook(&Served, temp);
 				cook_ctr--;
 			}
 			ctr++;
@@ -123,13 +125,13 @@ void Dinner_Dash(){
 			order_ctr--;
 			Delete(&Orders, CommandInt(currentWord), &temp);
 			temp = Data.buffer[CommandInt(currentWord)];
-			enqueue(&Cook, temp);
+			enqueue_cook(&Cook, temp);
 			cook_ctr++; 
 			printf(" Berhasil Memasak M%d\n", CommandInt(currentWord));
 		}
 
 		else if(isServe(currentWord)){
-			dequeue(&Served, &temp);
+			dequeue_cook(&Served, &temp);
 			saldo += Harga(temp);
 			served_ctr++;
 			printf(" Berhasil Menyajikan M%d\n", CommandInt(currentWord));
@@ -145,7 +147,7 @@ void Dinner_Dash(){
 			if (Ketahanan(Served.buffer[i]) == 0){
 				printf(" PESANAN M%d HANGUS! PESANAN HARUS DIMASAK ULANG!\n", Label_int(Served.buffer[i]));
 				temp = Data.buffer[Label_int(Served.buffer[i])];
-				enqueue(&Orders, temp);
+				enqueue_cook(&Orders, temp);
 				Delete(&Served, Label_int(Served.buffer[i]), &temp);
 				order_ctr++;
 			}

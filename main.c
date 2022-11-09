@@ -13,6 +13,7 @@
 #include "console.h"
 #include "skipgame.h"
 #include "playgame.h"
+#include "Dinner_dash.h"
 
 int main(){
 	boolean on=false;
