@@ -80,9 +80,8 @@ int main(){
 			QueueGame(&Q, T); //PLACEHOLDER, MASIH KOSONG
 		}
 		else if(isWordEqual(GetKataFirst(currentWord), "SKIPGAME")){
-			printf("SKIP GAME\n"); //PLACEHOLDER, TYPE DATA GAK MATCH
-			// int n = wordtoInt(GetKataSecond(currentWord));
-			// skipgame(Queue_game,n)
+			int n = wordtoInt(GetKataSecond(currentWord));
+			skipgame(Queue_game,n);
 		}
 		else if(isWordEqual(currentWord, "QUIT")){
 			while(!isEmpty(Q)){
@@ -94,7 +93,7 @@ int main(){
 			help(1);
 		}
 		else if(isWordEqual(currentWord, "PLAY GAME")){
-			printf("PLAY GAME\n"); 
+			playgame(Queue_game);
 		}
 		else{
 			printf("Command tidak dikenali, silahkan masukkan command yang valid.\n");
