@@ -71,7 +71,7 @@ int wordtoInt(Word word)
 }
 
 void startGAME(TabGame *listGame){
-    loadGAME("config.txt", listGame);
+    loadGAME("data/config.txt", listGame);
     printf("File konfigurasi BNMO berhasil dibaca. GLHF!!\n");
 }
 
@@ -104,7 +104,7 @@ void saveGAME(char* filename, TabGame listGame){
         i++;
         *filename++;
     }
-    fptr = fopen(filename, "w");
+    fptr = fopen(path, "w");
     if (fptr == NULL){
         printf("Tidak berhasil menyimpan file!");
     }
