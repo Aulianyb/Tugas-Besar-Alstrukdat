@@ -11,6 +11,8 @@
 #include "queuegame.h"
 #include "queue.h"
 #include "console.h"
+#include "skipgame.h"
+#include "playgame.h"
 
 int main(){
 	boolean on=false;
@@ -81,7 +83,7 @@ int main(){
 		}
 		else if(isWordEqual(GetKataFirst(currentWord), "SKIPGAME")){
 			int n = wordtoInt(GetKataSecond(currentWord));
-			skipgame(Queue_game,n);
+			skipgame(Q,n);
 		}
 		else if(isWordEqual(currentWord, "QUIT")){
 			while(!isEmpty(Q)){
@@ -93,7 +95,7 @@ int main(){
 			help(1);
 		}
 		else if(isWordEqual(currentWord, "PLAY GAME")){
-			playgame(Queue_game);
+			playgame(Q);
 		}
 		else{
 			printf("Command tidak dikenali, silahkan masukkan command yang valid.\n");

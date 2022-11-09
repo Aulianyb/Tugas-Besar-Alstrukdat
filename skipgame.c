@@ -2,8 +2,8 @@
 #include <stdlib.h>
 #include "queue.h"
 #include "RNG.h"
-#include "Diner DASH.h"
-#include "RockPaperScissors.h"
+#include "Dinner_DASH.h"
+#include "RockPaperScissor.h"
 
 void skipgame(Queue game_queue, int n){
     printf("Berikut ini adalah daftar Game-mu : \n");

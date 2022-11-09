@@ -1,10 +1,9 @@
-#include "queue.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include "queue.h"
 #include "RNG.h"
-#include "Diner DASH.h"
-#include "RockPaperScissors.h"
+#include "Dinner_DASH.h"
+#include "RockPaperScissor.h"
 
 
 #ifndef playgame_h
