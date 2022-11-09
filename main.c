@@ -81,7 +81,7 @@ int main(){
 		}
 		else if(isWordEqual(GetKataFirst(currentWord), "SKIPGAME")){
 			int n = wordtoInt(GetKataSecond(currentWord));
-			skipgame(Queue_game,n)
+			skipgame(Queue_game,n);
 		}
 		else if(isWordEqual(currentWord, "QUIT")){
 			while(!isEmpty(Q)){
@@ -93,7 +93,7 @@ int main(){
 			help(1);
 		}
 		else if(isWordEqual(currentWord, "PLAY GAME")){
-			playgame(Queue_game) 
+			playgame(Queue_game);
 		}
 		else{
 			printf("Command tidak dikenali, silahkan masukkan command yang valid.\n");
