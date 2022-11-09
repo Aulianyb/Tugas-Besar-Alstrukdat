@@ -14,7 +14,7 @@ boolean isSkip(Word Kata){
 }
 
 void buat_pesanan(Tab *T, int label){
-	Insert(T, label, GenRand(1,5,5), (GenRand(1,5,5) % 5) + 1, GenRand(10000,50000,50000));
+	Insert(T, label, GenRand(1,5,5), (GenRand(1,5,5) % 5) + 1, GenRand(10,50,50) * 1000);
 }
 
 
@@ -110,14 +110,16 @@ void Dinner_Dash(){
 		UpdateServed_Tab(&Served);
 		int ctr = 0;
 		while ((ctr < Neff(Cook)) && !(IsEmpty(Cook))){
-			printf("CEK M%d = %d\n", Label_int(Cook.buffer[ctr]), (Durasi(Cook.buffer[ctr]))); //-> CHECKER
+			// printf("CEK M%d = %d\n", Label_int(Cook.buffer[ctr]), (Durasi(Cook.buffer[ctr]))); //-> CHECKER
 			if (Durasi(Cook.buffer[ctr]) < 1){
 				Delete(&Cook, Label_int(Cook.buffer[ctr]), &temp);
 				printf("MOVED\n");
 				enqueue_cook(&Served, temp);
 				cook_ctr--;
 			}
-			ctr++;
+			else{
+				ctr++;
+			}
 		}
 
 		//ALGORITMA UTAMA
