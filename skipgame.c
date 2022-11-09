@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "array.h"
 #include "queue.h"
-
-
+#include "RNG.h"
+#include "Diner DASH.h"
+#include "RockPaperScissors.h"
 
 void skipgame(Queue Queue_game, int n){
     printf("Berikut ini adalah daftar Game-mu : \n");
@@ -23,6 +23,10 @@ void skipgame(Queue Queue_game, int n){
     else if ((val == "RNG")) {
         printf("Loading %s .....\n",val);
         // Play RNG
+    }
+    else if ((val == "RockPaperScissors")) {
+        printf("Loading %s .....\n",val);
+        // Play RockPaperScissors
     }
     else if ((n <= length(Queue_game)) && val != "Diner DASH" && val != "RNG") {
         printf("Game %s masih dalam maintenance, belum dapat dimainkan. Silahkan pilih game lain.\n", val);

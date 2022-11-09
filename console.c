@@ -71,12 +71,20 @@ int wordtoInt(Word word)
 }
 
 void startGAME(TabGame *listGame){
-    loadGAME("config.txt", listGame);
+    loadGAME("data/config.txt", listGame);
     printf("File konfigurasi BNMO berhasil dibaca. GLHF!!\n");
 }
 
 void loadGAME(char* filename, TabGame *listGame)
 {
+    char path[100] = "data/";
+    int i = 5;
+    while (*filename != '\0')
+    {
+        path[i] = *filename;
+        i++;
+        *filename++;
+    }
     startLOAD(filename);
     ADVWORDLOAD();
     int countGame = wordtoInt(currentWord);
@@ -96,7 +104,15 @@ void loadGAME(char* filename, TabGame *listGame)
 }
 
 void saveGAME(char* filename, TabGame listGame){
-    fptr = fopen(filename, "w");
+    char path[100] = "data/";
+    int i = 5;
+    while (*filename != '\0')
+    {
+        path[i] = *filename;
+        i++;
+        *filename++;
+    }
+    fptr = fopen(path, "w");
     if (fptr == NULL){
         printf("Tidak berhasil menyimpan file!");
     }
