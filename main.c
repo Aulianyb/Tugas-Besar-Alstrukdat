@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <stdlib.h>
+
 #include "boolean.h"
 #include "Create_Game.h"
 #include "List_Game.h"
@@ -8,6 +10,7 @@
 #include "help.h"
 #include "queuegame.h"
 #include "queue.h"
+#include "console.h"
 
 int main(){
 	boolean on=false;
@@ -27,9 +30,11 @@ int main(){
 		printf(" - START\n - LOAD \n");
 		printf("ENTER COMMAND : ");
 		STARTFILE();
-		if (isWordEqual(currentWord, "START") || isWordEqual(currentWord, "LOAD")){
-			valid=true;
-			on=true;
+		if (isWordEqual(currentWord, "START")){
+			startGAME(&T);
+		} else if (isWordEqual(GetKataFirst(currentWord),"SAVE")) {
+			char* filename = wordToString(GetKataSecond(currentWord));
+			loadGAME(filename, &T);
 		}
 		else{
 			printf("Command tidak dikenali, silahkan masukkan command yang valid.\n");
@@ -54,7 +59,8 @@ int main(){
 		printf("ENTER COMMAND : ");
 		STARTFILE();
 		if (isWordEqual(GetKataFirst(currentWord),"SAVE")){
-			printf("COMMAND SAVE\n"); //PLACEHOLDER
+			char* filename = wordToString(GetKataSecond(currentWord));
+			saveGAME(filename, T);
 		}
 		else if(isWordEqual(currentWord,"CREATE GAME")){
 			CreateGame(&T);

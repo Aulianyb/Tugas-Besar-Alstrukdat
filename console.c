@@ -77,6 +77,14 @@ void startGAME(TabGame *listGame){
 
 void loadGAME(char* filename, TabGame *listGame)
 {
+    char path[100] = "data/";
+    int i = 5;
+    while (*filename != '\0')
+    {
+        path[i] = *filename;
+        i++;
+        *filename++;
+    }
     startLOAD(filename);
     ADVWORDLOAD();
     int countGame = wordtoInt(currentWord);
