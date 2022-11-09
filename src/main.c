@@ -19,7 +19,6 @@ int main(){
 	boolean on=false;
 	TabGame T;
 	Queue Q; 
-	char* val;
 	char command[10]; //ini placeholder
 	printf("========== WELCOME TO ==========\n");
 	printf(" ______ _______ _______ _______\n");
@@ -52,11 +51,31 @@ int main(){
 		// PLACEHOLDER
     	MakeEmpty(&T);
 
-    	SetEl(&T,1,"RNG");
-    	SetEl(&T,2,"LUNCH SLOW");
-	    SetEl(&T,3,"DINOSAUR IN EARTH");
-	    SetEl(&T,4,"RISEWOMAN");
-	    SetEl(&T,5,"EIFFEL TOWER");
+		//inisiasi word RNG
+		Word wordRNG;
+		wordRNG.TabWord[0] = 'R';
+		wordRNG.TabWord[1] = 'N';
+		wordRNG.TabWord[2] = 'G';
+		wordRNG.Length = 3;
+
+		//inisialisasi word RISEWOMAN
+		Word wordRISEWOMAN;
+		wordRISEWOMAN.TabWord[0] = 'R';
+		wordRISEWOMAN.TabWord[1] = 'I';
+		wordRISEWOMAN.TabWord[2] = 'S';
+		wordRISEWOMAN.TabWord[3] = 'E';
+		wordRISEWOMAN.TabWord[4] = 'W';
+		wordRISEWOMAN.TabWord[5] = 'O';
+		wordRISEWOMAN.TabWord[6] = 'M';
+		wordRISEWOMAN.TabWord[7] = 'A';
+		wordRISEWOMAN.TabWord[8] = 'N';
+		wordRISEWOMAN.Length = 9;
+
+    	SetEl(&T,1,wordRNG);
+    	SetEl(&T,2,wordRISEWOMAN);
+	    //SetEl(&T,3,"DINOSAUR IN EARTH");
+	    //SetEl(&T,4,"RISEWOMAN");
+	    //SetEl(&T,5,"EIFFEL TOWER");
 
 	    CreateQueue(&Q);
 	}
@@ -64,6 +83,7 @@ int main(){
 		printf("LOAD STATE\n");//PLACEHOLDER
 	}
 	while (on){
+		resetCurrWord(currentWord);
 		printf("ENTER COMMAND : ");
 		STARTFILE();
 		if (isWordEqual(GetKataFirst(currentWord),"SAVE")){
@@ -80,23 +100,19 @@ int main(){
 			DeleteGame(&T);
 		}	
 		else if(isWordEqual(currentWord, "QUEUE GAME")){
-			QueueGame(&Q, T); //PLACEHOLDER, MASIH KOSONG
+			printf("QUEUE GAME\n"); //PLACEHOLDER, MASIH KOSONG
 		}
 		else if(isWordEqual(GetKataFirst(currentWord), "SKIPGAME")){
-			// int n = wordtoInt(GetKataSecond(currentWord));
-			// SkipGame(Q,n);
+			printf("SKIP GAME\n"); //PLACEHOLDER, TYPE DATA GAK MATCH
 		}
 		else if(isWordEqual(currentWord, "QUIT")){
-			while(!isEmpty(Q)){
-				dequeue(&Q, &val);
-			}
 			on=false;
 		}
 		else if (isWordEqual(currentWord, "HELP")){
 			help(1);
 		}
 		else if(isWordEqual(currentWord, "PLAY GAME")){
-			// PlayGame(Q);
+			printf("PLAY GAME\n"); 
 		}
 		else{
 			printf("Command tidak dikenali, silahkan masukkan command yang valid.\n");

@@ -8,6 +8,7 @@
 #include "Dinner_dash.h"
 #include "rng.h"
 #include "RockPaperScissor.h"
+#include "../ADT/mesinkata.h"
 
 void SkipGame(Queue game_queue, int n);
 

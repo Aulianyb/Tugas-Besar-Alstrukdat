@@ -5,12 +5,13 @@
 #define QUEUE_H
 
 #include "../../boolean.h"
+#include "../ADT/mesinkata.h"
 
 #define IDX_UNDEF -1
 #define CAPACITY 100
 
 /* Definisi elemen dan address */
-typedef char* ElType;
+typedef Word ElType;
 typedef struct {
 	ElType buffer[CAPACITY]; 
 	int idxHead;
@@ -67,7 +68,8 @@ void displayQueue(Queue q);
 
 void PrintQueueGame(Queue q);
 
-// boolean isEqual(char* str1, char* str2);
+/*boolean isEqual(char* str1, char* str2);*/
 // Mengirimkan TRUE apabila kedua string sama persis
+
 
 #endif
