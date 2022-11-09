@@ -160,6 +160,24 @@ boolean isWordEqual(Word W, char *W2){
 }
 //Cek apakah Kata sama dengan input yang dimasukkan
 
+boolean isTwoWordEqual(Word W1, Word W2) {
+    if (W1.Length != W2.Length) {
+        return false;
+    }
+    else {
+        int i = 0;
+        boolean equal = true;
+        while (i < W1.Length && equal) {
+            if (W1.TabWord[i] != W2.TabWord[i]) {
+                equal = false;
+            }
+            i++;
+        }
+        return equal;
+    }
+}
+//Cek apakah Word W1 dan W2 sama
+
 Word GetLabel(Word W){
     Word Label;
     Label.Length=0; 
@@ -214,4 +232,17 @@ void PrintKata(Word W){
 int CommandInt(Word W){
     return (WordToInt((GetLabel(GetKataSecond(currentWord))))); 
 }
+
+Word strToWord(char* string) {
+    Word W;
+    int i = 0;
+    while (string[i] != '\0') {
+        W.TabWord[i] = string[i];
+        i++;
+    }
+    W.Length = StringLen(string);
+
+    return W;
+}
+//Mengubah string menjadi Word
 //PRINT KATA
