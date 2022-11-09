@@ -10,7 +10,7 @@
 #ifndef playgame_h
 #define playgame_h
 
-void playgame(Queue Queue_game);
+void playgame(Queue game_queue);
 
 // I.S. Sembarang
 // F.S. Menampilkan seluruh game yang terdapat di queue dan memainkan game yang pertama muncul di queue
