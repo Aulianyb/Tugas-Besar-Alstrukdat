@@ -32,40 +32,72 @@ int main(){
 		printf("ENTER COMMAND : ");
 		STARTFILE();
 		if (isWordEqual(currentWord, "START")){
-			// startGAME(&T);
+	    	MakeEmpty(&T);
+    		startGAME(&T);
+	    	CreateQueue(&Q);
+
 			valid = true;
 			on = true;
-		} else if (isWordEqual(GetKataFirst(currentWord),"SAVE")) {
-			//char* filename = wordToString(GetKataSecond(currentWord));
-			//loadGAME(filename, &T);
-			valid = true;
-			on = true;
+
+		} else if (isWordEqual(GetKataFirst(currentWord),"LOAD")) {
+			char* filename = wordToString(GetKataSecond(currentWord));
+
+			char path[100] = "data/";
+			int i = 5;
+			while (*filename != '\0')
+			{
+				path[i] = *filename;
+				i++;
+				*filename++;
+			}
+
+			path[i] = '.'; i++;
+			path[i] = 't'; i++;
+			path[i] = 'x'; i++;
+			path[i] = 't'; i++;
+
+			loadGAME(path, &T);
+
+			if (fptr != NULL){
+				printf("Konfigurasi berhasil dibaca\n");
+				valid = true;
+				on = true;
+			}
 		}
-		else{
-			printf("Command tidak dikenali, silahkan masukkan command yang valid.\n");
-		}
+		else printf("Command tidak dikenali, silahkan masukkan command yang valid.\n");
 	}
 	if (isWordEqual(currentWord, "START")){
 		// PLACEHOLDER
     	MakeEmpty(&T);
 
-    	SetEl(&T,1,"RNG");
-    	SetEl(&T,2,"LUNCH SLOW");
-	    SetEl(&T,3,"DINOSAUR IN EARTH");
-	    SetEl(&T,4,"RISEWOMAN");
-	    SetEl(&T,5,"EIFFEL TOWER");
+    	startGAME(&T);
 
 	    CreateQueue(&Q);
 	}
-	else if (isWordEqual(GetKataFirst(currentWord), "START")){
-		printf("LOAD STATE\n");//PLACEHOLDER
+	else if (isWordEqual(GetKataFirst(currentWord), "LOAD")){
+		char* filename = wordToString(GetKataSecond(currentWord));
+	    char path[100] = "data/";
+		int i = 5;
+		while (*filename != '\0')
+		{
+			path[i] = *filename;
+			i++;
+			*filename++;
+		}
+		path[i] = '.'; i++;
+		path[i] = 't'; i++;
+		path[i] = 'x'; i++;
+		path[i] = 't'; i++;
+		loadGAME(path, &T);
+		printf("Konfigurasi berhasil dibaca\n");
+		printf("%d\n", T.Neff);
 	}
 	while (on){
 		printf("ENTER COMMAND : ");
 		STARTFILE();
 		if (isWordEqual(GetKataFirst(currentWord),"SAVE")){
-			//char* filename = wordToString(GetKataSecond(currentWord));
-			//saveGAME(filename, T);
+			char* filename = wordToString(GetKataSecond(currentWord));
+			saveGAME(filename, T);
 		}
 		else if(isWordEqual(currentWord,"CREATE GAME")){
 			CreateGame(&T);
@@ -81,7 +113,7 @@ int main(){
 		}
 		else if(isWordEqual(GetKataFirst(currentWord), "SKIPGAME")){
 			int n = wordtoInt(GetKataSecond(currentWord));
-			skipgame(Queue_game,n)
+			//skipgame(Queue_game,n)
 		}
 		else if(isWordEqual(currentWord, "QUIT")){
 			while(!isEmpty(Q)){
@@ -93,7 +125,7 @@ int main(){
 			help(1);
 		}
 		else if(isWordEqual(currentWord, "PLAY GAME")){
-			playgame(Queue_game) 
+			//playgame(Queue_game) 
 		}
 		else{
 			printf("Command tidak dikenali, silahkan masukkan command yang valid.\n");

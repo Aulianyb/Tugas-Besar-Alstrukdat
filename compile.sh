@@ -1,0 +1,1 @@
+gcc main.c mesinkata.c mesinkarakter.c array.c help.c List_Game.c Create_Game.c deletegame.c queuegame.c queue.c console.c -o main
