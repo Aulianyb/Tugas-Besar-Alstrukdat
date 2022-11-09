@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "array.h"
+#include "mesinkata.h"
 
 /* ********** KONSTRUKTOR ********** */
 /* Konstruktor : create tabel kosong */
@@ -41,7 +42,7 @@ IdxType GetLastIdx (TabGame T){
 }
 
 /* *** Menghasilkan sebuah elemen *** */
-ElType GetElmt (TabGame T, IdxType i){
+Word GetElmt (TabGame T, IdxType i){
 	/* Prekondisi : Tabel tidak kosong, i antara FirstIdx(T)..LastIdx(T) */
 	/* Mengirimkan elemen tabel yang ke-i */
 	return T.TI[i];
@@ -64,9 +65,16 @@ void SetTab (TabGame Tin, TabGame *Tout){
 	//Menyimpan value
 }
 
-void SetEl (TabGame *T, IdxType i, ElType v){
+void SetEl (TabGame *T, IdxType i, Word v){
 	//KENAPA HARUS ADA NEFF AKU JUGA GATAU
-	T->TI[i]=v;
+	int j = 0;
+	T->TI[i].Length = v.Length;
+	while (v.TabWord[j] != '\0') {
+		T->TI[i].TabWord[j] = v.TabWord[j];
+		j++;
+	}
+	
+	//T->TI[i]=v;
 	T->Neff++;
 }
 /* I.S. T terdefinisi, sembarang */
