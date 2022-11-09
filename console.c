@@ -72,32 +72,35 @@ int wordtoInt(Word word)
 
 void startGAME(TabGame *listGame){
     loadGAME("data/config.txt", listGame);
+    printf("File konfigurasi BNMO berhasil dibaca. GLHF!!\n");
 }
 
 void loadGAME(char* filename, TabGame *listGame)
 {
+    char path[100] = "data/";
+    int i = 5;
+    while (*filename != '\0')
+    {
+        path[i] = *filename;
+        i++;
+        *filename++;
+    }
     startLOAD(filename);
-    if (fptr == NULL){
-        listGame->Neff = -1;
-        printf("file tidak ditemukan!\n");
-    }
-    else {
+    ADVWORDLOAD();
+    int countGame = wordtoInt(currentWord);
+    printf("%d\n", countGame);
+
+    ADVLOAD();
+    char* title;
+    for (int i = 0; i < countGame; i++)
+    {
         ADVWORDLOAD();
-        int countGame = wordtoInt(currentWord);
-
-        ADVLOAD();
-        char* title;
-        int i;
-        for ( i = IdxMin; i <= countGame; i++)
-        {
-            ADVWORDLOAD();
-            title = wordToString(currentWord);
-            SetEl(listGame, i, title);
-        }
-        listGame->Neff = countGame;
-        printf("File konfigurasi BNMO berhasil dibaca. GLHF!!\n");      
+        title = wordToString(currentWord);
+        PrintKata(currentWord);
+        printf("\n");
+        SetEl(listGame, i, title);
     }
-
+    fclose(fptr);
 }
 
 void saveGAME(char* filename, TabGame listGame){
@@ -109,24 +112,18 @@ void saveGAME(char* filename, TabGame listGame){
         i++;
         *filename++;
     }
-    path[i] = '.'; i++;
-    path[i] = 't'; i++;
-    path[i] = 'x'; i++;
-    path[i] = 't'; i++;
-
     fptr = fopen(path, "w");
-
     if (fptr == NULL){
         printf("Tidak berhasil menyimpan file!");
     }
     else
     {
         fprintf(fptr, "%d\n", listGame.Neff);
-        for (int i = IdxMin; i <= listGame.Neff-1; i++)
+        for (int i = 0; i < listGame.Neff-1; i++)
         {
             fprintf(fptr, "%s\n", listGame.TI[i]);   
         }
-        fprintf(fptr, "%s", listGame.TI[listGame.Neff]);
+        fprintf(fptr, "%s", listGame.TI[listGame.Neff-1]);
         fclose(fptr);
         printf("Berhasil melakukan save\n");
     }
