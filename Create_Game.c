@@ -8,7 +8,6 @@ void CreateGame(TabGame* List_Game) {
 
     int i = IdxMin;
     boolean found = false;
-
     while (i <= (*List_Game).Neff && !found) {
         int k = 0;
         boolean equal = true;
