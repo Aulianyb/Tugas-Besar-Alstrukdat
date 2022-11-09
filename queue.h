@@ -65,5 +65,10 @@ void displayQueue(Queue q);
 /* Contoh : jika ada tiga elemen bernilai 1, 20, 30 akan dicetak: [1,20,30] */
 /* Jika Queue kosong : menulis [] */
 
+void PrintQueueGame(Queue q);
+
+boolean isEqual(char* str1, char* str2);
+// Mengirimkan TRUE apabila kedua string sama persis
+
 
 #endif

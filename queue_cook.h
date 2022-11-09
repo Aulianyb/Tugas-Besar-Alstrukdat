@@ -4,10 +4,10 @@
 #include "array_pesanan.h"
 #include "random_generator.h"
 
-void enqueue (Tab *T, Pesanan val);
+void enqueue_cook(Tab *T, Pesanan val);
 /*Memasukkan elemen ke dalam Queue dalam urutan Prioritas*/
 
-void dequeue (Tab *T, Pesanan *val);
+void dequeue_cook (Tab *T, Pesanan *val);
 /*Memasukkan elemen ke dalam Tab*/
 
 void TulisIsi_Cook(Tab T);
@@ -22,11 +22,8 @@ void UpdateCook_Tab(Tab *T);
 void UpdateServed_Tab(Tab *T);
 /*Update seluruh anggota Tab*/
 
-boolean isMember(Tab T, int label);
+boolean isMember_cook(Tab T, int label);
 /*Cek apakah pesanan dengan label yang dimasukkan pengguna ada di dalam Queue/Array atau tidak*/
-
-void buat_pesanan(Tab *T, int label);
-/*fungsi untuk membuat pesanan*/
 
 #endif
 

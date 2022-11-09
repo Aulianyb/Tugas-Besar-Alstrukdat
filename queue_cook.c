@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "queue_cook.h"
 
-void enqueue (Tab *T, Pesanan val){
+void enqueue_cook (Tab *T, Pesanan val){
 	int i=0;
 	boolean found=false;
 	if(IsEmpty(*T)){
@@ -31,7 +31,7 @@ void enqueue (Tab *T, Pesanan val){
 	}
 }
 
-void dequeue (Tab *T, Pesanan *val){
+void dequeue_cook (Tab *T, Pesanan *val){
 	boolean found=false;
 	Move(val->label, Label(*T->buffer[0]));
 	val->durasi = Durasi(T->buffer[0]);
@@ -89,7 +89,7 @@ void UpdateServed_Tab(Tab *T){
 }
 /*Update seluruh anggota Tab*/
 
-boolean isMember(Tab T, int label){
+boolean isMember_cook(Tab T, int label){
 	boolean found = false;
 	int i=0;
 	while ((i < Neff(T)) && (!found)){
@@ -101,10 +101,6 @@ boolean isMember(Tab T, int label){
 		}
 	}
 	return found;
-}
-
-void buat_pesanan(Tab *T, int label){
-	Insert(T, label, GenRand(1,5,5), (GenRand(1,5,5) % 5) + 1, GenRand(10000,50000,50000));
 }
 
 /*Cek apakah pesanan dengan label yang dimasukkan pengguna ada di dalam Queue/Array atau tidak*/

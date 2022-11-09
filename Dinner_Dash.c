@@ -1,10 +1,5 @@
 #include <stdio.h>
-#include "boolean.h"
-#include "array_pesanan.h"
-#include "queue_cook.h"
-#include "random_generator.h"
-#include "mesinkata.h"
-
+#include "Dinner_Dash.h"
 
 boolean isCook(Word Kata){
 	return isWordEqual(GetKataFirst(Kata), "COOK");
@@ -18,8 +13,12 @@ boolean isSkip(Word Kata){
 	return isWordEqual(GetKataFirst(Kata), "SKIP");	
 }
 
+void buat_pesanan(Tab *T, int label){
+	Insert(T, label, GenRand(1,5,5), (GenRand(1,5,5) % 5) + 1, GenRand(10,50,50) * 1000);
+}
 
-int main(){
+
+void Dinner_Dash(){
 	boolean play = true;
 	char command[8];
 	int saldo=0, order_ctr=3, cook_ctr=0, served_ctr=0, made_ctr=2; 
@@ -85,7 +84,7 @@ int main(){
 					}
 				}
 				else if(isServe(currentWord)){
-					if (isMember(Served, CommandInt(currentWord))){
+					if (isMember_cook(Served, CommandInt(currentWord))){
 						if (served_ctr >= CommandInt(currentWord)){
 							valid=true;
 						}
@@ -109,15 +108,18 @@ int main(){
 		//UPDATE TABLE
 		UpdateCook_Tab(&Cook);
 		UpdateServed_Tab(&Served);
-
-		int ctr=0;
+		int ctr = 0;
 		while ((ctr < Neff(Cook)) && !(IsEmpty(Cook))){
+			// printf("CEK M%d = %d\n", Label_int(Cook.buffer[ctr]), (Durasi(Cook.buffer[ctr]))); //-> CHECKER
 			if (Durasi(Cook.buffer[ctr]) < 1){
 				Delete(&Cook, Label_int(Cook.buffer[ctr]), &temp);
-				enqueue(&Served, temp);
+				printf("MOVED\n");
+				enqueue_cook(&Served, temp);
 				cook_ctr--;
 			}
-			ctr++;
+			else{
+				ctr++;
+			}
 		}
 
 		//ALGORITMA UTAMA
@@ -125,13 +127,13 @@ int main(){
 			order_ctr--;
 			Delete(&Orders, CommandInt(currentWord), &temp);
 			temp = Data.buffer[CommandInt(currentWord)];
-			enqueue(&Cook, temp);
+			enqueue_cook(&Cook, temp);
 			cook_ctr++; 
 			printf(" Berhasil Memasak M%d\n", CommandInt(currentWord));
 		}
 
 		else if(isServe(currentWord)){
-			dequeue(&Served, &temp);
+			dequeue_cook(&Served, &temp);
 			saldo += Harga(temp);
 			served_ctr++;
 			printf(" Berhasil Menyajikan M%d\n", CommandInt(currentWord));
@@ -147,7 +149,7 @@ int main(){
 			if (Ketahanan(Served.buffer[i]) == 0){
 				printf(" PESANAN M%d HANGUS! PESANAN HARUS DIMASAK ULANG!\n", Label_int(Served.buffer[i]));
 				temp = Data.buffer[Label_int(Served.buffer[i])];
-				enqueue(&Orders, temp);
+				enqueue_cook(&Orders, temp);
 				Delete(&Served, Label_int(Served.buffer[i]), &temp);
 				order_ctr++;
 			}
@@ -165,6 +167,5 @@ int main(){
 	printf(" |  |  |     | | | |   __|  |  |  |  |  |   __|    -|\n");
 	printf(" |_____|__|__|_|_|_|_____|  |_____|\\___/|_____|__|__|\n\n");
 	printf(" SCORE AKHIR : %d\n", saldo);         
-	printf(" Served Meals : %d\n", served_ctr);                                                      
-	return 0; 
+	printf(" Served Meals : %d\n", served_ctr);                                                       
 }

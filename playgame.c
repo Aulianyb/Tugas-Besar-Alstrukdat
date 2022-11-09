@@ -1,27 +1,33 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include "array.h"
 #include "queue.h"
-// declare the tabgame with 00 elements
+#include "playgame.h"
+#include "Dinner_dash.h"
+#include "rng.h"
+#include "RockPaperScissor.h"
 
-
-void playgame(Queue Queue_game){
+void PlayGame(Queue game_queue){
     printf("Berikut ini adalah daftar Game-mu : \n");
-    for (int i = 0; i < length(Queue_game); i++) {
-    printf("%d. ",i);
-    printf("%s\n",Queue_game.buffer[i]);
-    }
-    char val;
-    dequeue(&Queue_game, val);
-    if (val == "Diner DASH")  {
+    PrintQueueGame(game_queue);
+    char *val;
+    dequeue(&game_queue, &val);
+    printf("Game yang akan dimainkan adalah %s\n", val);
+    if (isEqual(val, "Diner DASH"))
+    {
         printf("Loading %s .....\n",val);
         // PLay Diner DASH
+        Dinner_Dash();
     }
-    else if (val == "RNG") {
+    else if (isEqual(val, "RNG"))
+    {
         printf("Loading %s .....\n",val);
         // Play RNG
+        RNG();
     }
-    else {
+    else if (isEqual(val, "RockPaperScissor"))
+    {
+        printf("Loading %s .....\n",val);
+        // Play RockPaperScissors PLACEHOLDER
+    }
+    else{
         printf("Game %s masih dalam maintenance, belum dapat dimainkan. Silahkan pilih game lain.\n", val);
     }
 

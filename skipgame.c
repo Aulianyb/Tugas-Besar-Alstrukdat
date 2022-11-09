@@ -1,33 +1,39 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include "array.h"
 #include "queue.h"
+#include "skipgame.h"
+#include "Dinner_dash.h"
+#include "rng.h"
+#include "RockPaperScissor.h"
 
-
-
-void skipgame(Queue Queue_game, int n){
+void SkipGame(Queue game_queue, int n){
     printf("Berikut ini adalah daftar Game-mu : \n");
-    for (int i = 0; i < length(Queue_game); i++) {
-    printf("%d. ",i);
-    printf("%s\n",Queue_game.buffer[i]);
-    }
-    char val;
+    PrintQueueGame(game_queue);
+    char *val;
     for (int i = 0; i < n; i++) {
-        dequeue(&Queue_game, val);
+        dequeue(&game_queue, &val);
     }
-    // Dequeue sampai dapet game yang diinginkan
-    if ((val == "Diner DASH")) {
+
+    if (isEqual(val, "Diner DASH"))
+    {
         printf("Loading %s .....\n",val);
         // PLay Diner DASH
+        Dinner_Dash();
     }
-    else if ((val == "RNG")) {
+    else if (isEqual(val, "RNG"))
+    {
         printf("Loading %s .....\n",val);
         // Play RNG
+        RNG();
     }
-    else if ((n <= length(Queue_game)) && val != "Diner DASH" && val != "RNG") {
-        printf("Game %s masih dalam maintenance, belum dapat dimainkan. Silahkan pilih game lain.\n", val);
+    else if (isEqual(val, "RockPaperScissors"))
+    {
+        printf("Loading %s .....\n",val);
+        // Play RockPaperScissors PLACEHOLDER
+
     }
-    else if (n > length(Queue_game)) {
+    else if (n > length(game_queue)) {
         printf("Tidak ada permainan lagi dalam daftar Game-mu.\n");
+    }
+    else {
+        printf("Game %s masih dalam maintenance, belum dapat dimainkan. Silahkan pilih game lain.\n", val);
     }
 }
