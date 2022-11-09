@@ -80,6 +80,8 @@ int main(){
 		}
 		else if(isWordEqual(GetKataFirst(currentWord), "SKIPGAME")){
 			printf("SKIP GAME\n"); //PLACEHOLDER, TYPE DATA GAK MATCH
+			// int n = wordtoInt(GetKataSecond(currentWord));
+			// skipgame(Queue_game,n)
 		}
 		else if(isWordEqual(currentWord, "QUIT")){
 			on=false;
