@@ -7,7 +7,7 @@
 #include "boolean.h"
 #include "Dinner_dash.h"
 #include "rng.h"
-#include "RockPaperScissors.h"
+#include "RockPaperScissor.h"
 
 void SkipGame(Queue game_queue, int n);
 
