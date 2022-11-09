@@ -5,14 +5,14 @@
 #include "Diner DASH.h"
 #include "RockPaperScissors.h"
 
-void playgame(Queue Queue_game){
+void playgame(Queue game_queue){
     printf("Berikut ini adalah daftar Game-mu : \n");
-    for (int i = 0; i < length(Queue_game); i++) {
+    for (int i = 0; i < length(game_queue); i++) {
     printf("%d. ",i);
-    printf("%s\n",Queue_game.buffer[i]);
+    printf("%s\n",game_queue.buffer[i]);
     }
     char val;
-    dequeue(&Queue_game, val);
+    dequeue(&game_queue, val);
     if (val == "Diner DASH")  {
         printf("Loading %s .....\n",val);
         // PLay Diner DASH
