@@ -63,8 +63,8 @@ int main(){
 		printf("ENTER COMMAND : ");
 		STARTFILE();
 		if (isWordEqual(GetKataFirst(currentWord),"SAVE")){
-			char* filename = wordToString(GetKataSecond(currentWord));
-			saveGAME(filename, T);
+			//char* filename = wordToString(GetKataSecond(currentWord));
+			//saveGAME(filename, T);
 		}
 		else if(isWordEqual(currentWord,"CREATE GAME")){
 			CreateGame(&T);
