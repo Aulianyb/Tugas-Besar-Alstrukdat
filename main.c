@@ -16,6 +16,7 @@ int main(){
 	boolean on=false;
 	TabGame T;
 	Queue Q; 
+	char* val;
 	char command[10]; //ini placeholder
 	printf("========== WELCOME TO ==========\n");
 	printf(" ______ _______ _______ _______\n");
@@ -76,7 +77,7 @@ int main(){
 			DeleteGame(&T);
 		}	
 		else if(isWordEqual(currentWord, "QUEUE GAME")){
-			printf("QUEUE GAME\n"); //PLACEHOLDER, MASIH KOSONG
+			QueueGame(&Q, T); //PLACEHOLDER, MASIH KOSONG
 		}
 		else if(isWordEqual(GetKataFirst(currentWord), "SKIPGAME")){
 			printf("SKIP GAME\n"); //PLACEHOLDER, TYPE DATA GAK MATCH
@@ -84,6 +85,9 @@ int main(){
 			// skipgame(Queue_game,n)
 		}
 		else if(isWordEqual(currentWord, "QUIT")){
+			while(!isEmpty(Q)){
+				dequeue(&Q, &val);
+			}
 			on=false;
 		}
 		else if (isWordEqual(currentWord, "HELP")){

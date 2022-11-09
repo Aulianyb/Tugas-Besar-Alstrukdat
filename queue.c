@@ -84,7 +84,7 @@ void displayQueue(Queue q){
     printf("[");
     for (i = 0; i < len; i++)
     {
-        printf("%d", q.buffer[(i + IDX_HEAD(q)) % CAPACITY]);
+        printf("%s", q.buffer[(i + IDX_HEAD(q)) % CAPACITY]);
         if (i < (len - 1)) printf(",");
     }
     printf("]\n");
@@ -96,3 +96,13 @@ void displayQueue(Queue q){
 /* F.S. Jika q tidak kosong: [e1,e2,...,en] */
 /* Contoh : jika ada tiga elemen bernilai 1, 20, 30 akan dicetak: [1,20,30] */
 /* Jika Queue kosong : menulis [] */
+
+void PrintQueueGame(Queue q){
+    int i, len = length(q);
+    for (i = 0; i < len; i++)
+    {
+        printf("%d. ", i+1);
+        printf("%s\n", q.buffer[(i + IDX_HEAD(q)) % CAPACITY]);
+    }
+    printf("\n");
+}
