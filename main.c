@@ -31,10 +31,14 @@ int main(){
 		printf("ENTER COMMAND : ");
 		STARTFILE();
 		if (isWordEqual(currentWord, "START")){
-			startGAME(&T);
+			// startGAME(&T);
+			valid = true;
+			on = true;
 		} else if (isWordEqual(GetKataFirst(currentWord),"SAVE")) {
-			char* filename = wordToString(GetKataSecond(currentWord));
-			loadGAME(filename, &T);
+			//char* filename = wordToString(GetKataSecond(currentWord));
+			//loadGAME(filename, &T);
+			valid = true;
+			on = true;
 		}
 		else{
 			printf("Command tidak dikenali, silahkan masukkan command yang valid.\n");
