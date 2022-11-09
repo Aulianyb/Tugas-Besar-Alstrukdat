@@ -67,7 +67,8 @@ void displayQueue(Queue q);
 
 void PrintQueueGame(Queue q);
 
-// boolean isEqual(char* str1, char* str2);
+boolean isEqual(char* str1, char* str2);
 // Mengirimkan TRUE apabila kedua string sama persis
+
 
 #endif
