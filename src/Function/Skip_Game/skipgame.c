@@ -40,6 +40,7 @@ void SkipGame(Queue game_queue, int n){
 
     else if (n >= length(game_queue)) {
         printf("Tidak ada permainan lagi dalam daftar Game-mu.\n");
+        enqueue(&game_queue, val)
     }
     else {
         GenRand(100,100,2);
