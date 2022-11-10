@@ -9,7 +9,7 @@ void SkipGame(Queue *game_queue, int n){
     for (int i = 0; i < n; i++) {
         dequeue(game_queue, &val);
     }
-    if IsEmpty(*game_queue){
+    if (IsEmpty(*game_queue)){
         printf("Belum ada game yang di queue!");
         }
     
