@@ -48,7 +48,14 @@ void SkipGame(Queue *game_queue, int n){
         enqueue(game_queue, val);
     }
     else {
-        GenRand(100,100,2);
+        printf("Loading ");
+        PrintKata(val);
+        printf("....\n");
+        printf("  _____ _____ _____ _____    _____ _____ _____ _____ \n");
+        printf(" |   __|  _  |     |   __|  |     |  |  |   __| __  |\n");
+        printf(" |  |  |     | | | |   __|  |  |  |  |  |   __|    -|\n");
+        printf(" |_____|__|__|_|_|_|_____|  |_____|\\___/|_____|__|__|\n\n");
+        printf("SCORE AKHIR : %d\n", GenRand(100,100,2));
     }
 }
 }

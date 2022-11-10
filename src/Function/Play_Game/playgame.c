@@ -39,12 +39,15 @@ void PlayGame(Queue *game_queue){
         PrintKata(val);
         printf(" masih dalam maintenance, belum dapat dimainkan. Silahkan pilih game lain.\n");
     }
-    
     else {
         printf("Loading ");
         PrintKata(val);
         printf("....\n");
-        GenRand(100,100,2);
+        printf("  _____ _____ _____ _____    _____ _____ _____ _____ \n");
+        printf(" |   __|  _  |     |   __|  |     |  |  |   __| __  |\n");
+        printf(" |  |  |     | | | |   __|  |  |  |  |  |   __|    -|\n");
+        printf(" |_____|__|__|_|_|_|_____|  |_____|\\___/|_____|__|__|\n\n");
+        printf("SCORE AKHIR : %d\n", GenRand(100,100,2));
     }
 }
 }

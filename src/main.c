@@ -44,7 +44,7 @@ int main(){
 
 		} else if (isWordEqual(GetKataFirst(currentWord),"LOAD")) {
 			char* filename = wordToString(GetKataSecond(currentWord));
-			PrintKata(GetKataSecond(currentWord));
+			// PrintKata(GetKataSecond(currentWord));
 			MakeEmpty(&T);
 			loadGAME(filename, &T);
 			
