@@ -103,6 +103,7 @@ void PrintQueueGame(Queue q){
     {
         printf("%d. ", i+1);
         PrintKata(q.buffer[(i + IDX_HEAD(q)) % CAPACITY]);
+        printf("\n");
     }
     printf("\n");
 }
