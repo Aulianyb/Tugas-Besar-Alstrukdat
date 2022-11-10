@@ -6,8 +6,8 @@ void PlayGame(Queue *game_queue){
     PrintQueueGame(*game_queue);
     Word val;
     dequeue(game_queue, &val);
-    if (IsEmpty(*game_queue){
-        printf("Belum ada game yang di queue!")
+    if (IsEmpty(*game_queue)){
+        printf("Belum ada game yang di queue!");
         }
     else if (isWordEqual(val, "Diner DASH"))
     {
