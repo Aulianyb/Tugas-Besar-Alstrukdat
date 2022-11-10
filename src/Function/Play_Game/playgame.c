@@ -22,12 +22,13 @@ void PlayGame(Queue game_queue){
         // Play RNG
         RNG();
     }
-    else if (isWordEqual(val, "RockPaperScissors"))
+    else if (isWordEqual(val, "RockPaperScissor"))
     {
         printf("Loading ");
         PrintKata(val);
         printf("....\n");
-        // Play RockPaperScissors PLACEHOLDER
+        // Play RockPaperScissors
+        RockPaperScissor();
     }
     else if (isWordEqual(val, "DINOSAUR IN EARTH") || isWordEqual(val, "RISEWOMAN") || isWordEqual(val, "EIFFEL TOWER")){
         printf("Game ");
