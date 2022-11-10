@@ -69,36 +69,30 @@ void RockPaperScissor() {
         else {
             if (isWordEqual(pilihanBot,"Rock")) {
                 if (isWordEqual(pilihanPlayer,"Paper")) {
-                    printf("Ini 1\n");
                     printf("Player menang! Point +100.\n");
                     playerPoints += 100;
                 }
                 else {
-                    printf("Ini 2\n");
                     printf("Player kalah!\n");
                     botPoints += 100;
                 }
             }
             else if (isWordEqual(pilihanBot,"Paper")) {
                 if (isWordEqual(pilihanPlayer,"Scissor")) {
-                    printf("Ini 3\n");
                     printf("Player menang! Point +100.\n");
                     playerPoints += 100;
                 }
                 else {
-                    printf("Ini 4\n");
                     printf("Player kalah!\n");
                     botPoints += 100;
                 }
             }
             else {
                 if (isWordEqual(pilihanPlayer,"Rock")) {
-                    printf("Ini 5\n");
                     printf("Player menang! Point +100.\n");
                     playerPoints += 100;
                 }
                 else {
-                    printf("Ini 6\n");
                     printf("Player kalah!\n");
                     botPoints += 100;
                 }
