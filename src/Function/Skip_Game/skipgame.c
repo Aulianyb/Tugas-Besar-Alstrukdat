@@ -4,16 +4,17 @@
 void SkipGame(Queue *game_queue, int n){
     printf("Berikut ini adalah daftar Game-mu : \n");
     PrintQueueGame(*game_queue);
+    if (isEmpty(*game_queue)){
+        printf("Belum ada game yang di queue!\n");
+    }
+    else {
     Word val;
     dequeue(game_queue, &val);
     for (int i = 0; i < n; i++) {
         dequeue(game_queue, &val);
     }
-    if (IsEmpty(*game_queue)){
-        printf("Belum ada game yang di queue!");
-        }
     
-    else if (isWordEqual(val, "Diner DASH"))
+    if (isWordEqual(val, "Diner DASH"))
     {
         printf("Loading ");
         PrintKata(val);
@@ -44,9 +45,10 @@ void SkipGame(Queue *game_queue, int n){
 
     else if (n >= length(*game_queue)) {
         printf("Tidak ada permainan lagi dalam daftar Game-mu.\n");
-        enqueue(&game_queue, val);
+        enqueue(game_queue, val);
     }
     else {
         GenRand(100,100,2);
     }
+}
 }

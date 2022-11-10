@@ -4,12 +4,13 @@
 void PlayGame(Queue *game_queue){
     printf("Berikut ini adalah daftar Game-mu : \n");
     PrintQueueGame(*game_queue);
+    if (isEmpty(*game_queue)){
+    printf("Belum ada game yang di queue!\n");
+    }
+    else{
     Word val;
     dequeue(game_queue, &val);
-    if (IsEmpty(*game_queue)){
-        printf("Belum ada game yang di queue!");
-        }
-    else if (isWordEqual(val, "Diner DASH"))
+    if (isWordEqual(val, "Diner DASH"))
     {
         printf("Loading ");
         PrintKata(val);
@@ -45,4 +46,5 @@ void PlayGame(Queue *game_queue){
         printf("....\n");
         GenRand(100,100,2);
     }
+}
 }
