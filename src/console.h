@@ -42,4 +42,6 @@ void startGAME(TabGame *listGame);
 void saveGAME(char* filename, TabGame listGame);
 // Melakukan penyimpanan pada file
 
+void delay(int milliseconds);
+
 #endif
