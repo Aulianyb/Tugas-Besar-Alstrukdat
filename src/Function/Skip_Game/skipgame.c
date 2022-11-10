@@ -2,8 +2,10 @@
 #include "skipgame.h"
 
 void SkipGame(Queue *game_queue, int n){
+    int panjang;
     printf("Berikut ini adalah daftar Game-mu : \n");
     PrintQueueGame(*game_queue);
+    panjang = length(*game_queue);
     if (isEmpty(*game_queue)){
         printf("Belum ada game yang di queue!\n");
     }
@@ -43,7 +45,7 @@ void SkipGame(Queue *game_queue, int n){
         printf(" masih dalam maintenance, belum dapat dimainkan. Silahkan pilih game lain.\n");
     }
 
-    else if (n >= length(*game_queue)) {
+    else if (n >= panjang) {
         printf("Tidak ada permainan lagi dalam daftar Game-mu.\n");
         enqueue(game_queue, val);
     }
