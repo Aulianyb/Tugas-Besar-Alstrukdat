@@ -10,7 +10,7 @@ void SkipGame(Queue *game_queue, int n){
         dequeue(game_queue, &val);
     }
     if IsEmpty(*game_queue){
-        printf("Belum ada game yang di queue!")
+        printf("Belum ada game yang di queue!");
         }
     
     else if (isWordEqual(val, "Diner DASH"))
