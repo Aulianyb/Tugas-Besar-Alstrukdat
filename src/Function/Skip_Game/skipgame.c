@@ -1,13 +1,13 @@
 #include <stdio.h>
 #include "skipgame.h"
 
-void SkipGame(Queue game_queue, int n){
+void SkipGame(Queue *game_queue, int n){
     printf("Berikut ini adalah daftar Game-mu : \n");
-    PrintQueueGame(game_queue);
+    PrintQueueGame(*game_queue);
     Word val;
-    dequeue(&game_queue, &val);
+    dequeue(game_queue, &val);
     for (int i = 0; i < n; i++) {
-        dequeue(&game_queue, &val);
+        dequeue(game_queue, &val);
     }
     if (isWordEqual(val, "Diner DASH"))
     {
@@ -38,7 +38,7 @@ void SkipGame(Queue game_queue, int n){
         printf(" masih dalam maintenance, belum dapat dimainkan. Silahkan pilih game lain.\n");
     }
 
-    else if (n >= length(game_queue)) {
+    else if (n >= length(*game_queue)) {
         printf("Tidak ada permainan lagi dalam daftar Game-mu.\n");
     }
     else {

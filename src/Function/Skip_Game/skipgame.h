@@ -11,7 +11,7 @@
 #include "../ADT/mesinkata.h"
 #include "../../random_generator.h"
 
-void SkipGame(Queue game_queue, int n);
+void SkipGame(Queue *game_queue, int n);
 
 // I.S Sembarang
 // F.S Menampilkan seluruh game yang terdapat di queue dan memainkan game sesuai dengan input user mengenai banyaknya game yang di skip
