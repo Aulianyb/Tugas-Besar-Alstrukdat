@@ -9,7 +9,11 @@ void SkipGame(Queue *game_queue, int n){
     for (int i = 0; i < n; i++) {
         dequeue(game_queue, &val);
     }
-    if (isWordEqual(val, "Diner DASH"))
+    if IsEmpty(*game_queue){
+        printf("Belum ada game yang di queue!")
+        }
+    
+    else if (isWordEqual(val, "Diner DASH"))
     {
         printf("Loading ");
         PrintKata(val);
