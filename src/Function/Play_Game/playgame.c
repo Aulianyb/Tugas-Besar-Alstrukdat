@@ -32,7 +32,7 @@ void PlayGame(Queue game_queue){
     else if (isWordEqual(val, "DINOSAUR IN EARTH") || isWordEqual(val, "RISEWOMAN") || isWordEqual(val, "EIFFEL TOWER")){
         printf("Game ");
         PrintKata(val);
-        printf("masih dalam maintenance, belum dapat dimainkan. Silahkan pilih game lain.\n");
+        printf(" masih dalam maintenance, belum dapat dimainkan. Silahkan pilih game lain.\n");
     }
     
     else {
