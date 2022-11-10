@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "boolean.h"
+#include "src/boolean.h"
 // #include "Create_Game.h"
 #include "List_Game.h"
 #include "mesinkata.h"
@@ -44,7 +44,6 @@ int main(){
 
 		} else if (isWordEqual(GetKataFirst(currentWord),"LOAD")) {
 			char* filename = wordToString(GetKataSecond(currentWord));
-
 			loadGAME(filename, &T);
 			
 			if (T.Neff != (-1)){
@@ -96,6 +95,14 @@ int main(){
 		else if(isWordEqual(currentWord, "QUIT")){
 			while(!isEmpty(Q)){
 				dequeue(&Q, &val);
+			}
+			printf("Sebelum keluar dari program, apakah mau melakukan save terlebih dahulu? (Y/N)\n");
+			STARTFILE();
+			if (isWordEqual(currentWord, "Y")){
+				printf("Masukkan nama file yang diinginkan: ");
+				STARTFILE();
+				char* filename = wordToString(currentWord);
+				saveGAME(filename, T);
 			}
 			quit();
 			on=false;
