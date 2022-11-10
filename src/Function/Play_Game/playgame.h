@@ -9,6 +9,7 @@
 #include "../RNG/rng.h"
 #include "../RockPaperScissor/RockPaperScissor.h"
 #include "../ADT/mesinkata.h"
+#include "../../random_generator.h"
 
 void PlayGame(Queue game_queue);
 

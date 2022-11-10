@@ -39,6 +39,6 @@ void PlayGame(Queue game_queue){
         printf("Loading ");
         PrintKata(val);
         printf("....\n");
-        // RNG random number
+        GenRand(100,100,2);
     }
 }

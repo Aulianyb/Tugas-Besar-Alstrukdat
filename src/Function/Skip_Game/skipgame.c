@@ -42,6 +42,6 @@ void SkipGame(Queue game_queue, int n){
         printf("Tidak ada permainan lagi dalam daftar Game-mu.\n");
     }
     else {
-        // Generate random number
+        GenRand(100,100,2);
     }
 }
