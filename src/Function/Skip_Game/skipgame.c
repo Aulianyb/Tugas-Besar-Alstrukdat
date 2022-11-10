@@ -4,7 +4,7 @@
 void SkipGame(Queue game_queue, int n){
     printf("Berikut ini adalah daftar Game-mu : \n");
     PrintQueueGame(game_queue);
-    Word val;
+    char *val;
     dequeue(&game_queue, &val);
     for (int i = 0; i < n; i++) {
         dequeue(&game_queue, &val);
@@ -31,14 +31,17 @@ void SkipGame(Queue game_queue, int n){
         PrintKata(val);
         printf("....\n");
         // Play RockPaperScissors PLACEHOLDER
-
     }
+    else if (isWordEqual(val, "DINOSAUR IN EARTH") || isWordEqual(val, "RISEWOMAN") || isWordEqual(val, "EIFFEL TOWER")){
+        printf("Game ");
+        PrintKata(val);
+        printf("masih dalam maintenance, belum dapat dimainkan. Silahkan pilih game lain.\n");
+    }
+
     else if (n => length(game_queue)) {
         printf("Tidak ada permainan lagi dalam daftar Game-mu.\n");
     }
     else {
-        printf("Game ");
-        PrintKata(val);
-        printf("masih dalam maintenance, belum dapat dimainkan. Silahkan pilih game lain.\n");
+        printf("Game %s masih dalam maintenance, belum dapat dimainkan. Silahkan pilih game lain.\n", val);
     }
 }
