@@ -6,7 +6,6 @@ void PlayGame(Queue game_queue){
     PrintQueueGame(game_queue);
     Word val;
     dequeue(&game_queue, &val);
-
     if (isWordEqual(val, "Diner DASH"))
     {
         printf("Loading ");
@@ -30,9 +29,16 @@ void PlayGame(Queue game_queue){
         printf("....\n");
         // Play RockPaperScissors PLACEHOLDER
     }
-    else {
+    else if (isWordEqual(val, "DINOSAUR IN EARTH") || isWordEqual(val, "RISEWOMAN") || isWordEqual(val, "EIFFEL TOWER")){
         printf("Game ");
         PrintKata(val);
         printf("masih dalam maintenance, belum dapat dimainkan. Silahkan pilih game lain.\n");
+    }
+    
+    else {
+        printf("Loading ");
+        PrintKata(val);
+        printf("....\n");
+        // RNG random number
     }
 }
