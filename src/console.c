@@ -7,6 +7,7 @@ void quit(){
     printf("Terima kasih telah memainkam game BNMO ini!\n");
     printf("Good Game, Well Played\n");
     printf("Program akan ditutup dalam 5 detik!\n");
+    delay(5000);
 }
 
 void startLOAD(char* filename)
@@ -110,12 +111,9 @@ void loadGAME(char* filename, TabGame *listGame)
         }
         listGame->Neff = countGame;
         printf("Loading");
-        delay(250);
-        printf(".");
-        delay(250);
-        printf(".");
-        delay(250);
-        printf(".\n");
+        delay(250); printf(".");
+        delay(250); printf(".");
+        delay(250); printf(".\n");
         printf("File konfigurasi BNMO berhasil dibaca. GLHF!!\n");      
     }
 
