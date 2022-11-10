@@ -35,13 +35,13 @@ void SkipGame(Queue game_queue, int n){
     else if (isWordEqual(val, "DINOSAUR IN EARTH") || isWordEqual(val, "RISEWOMAN") || isWordEqual(val, "EIFFEL TOWER")){
         printf("Game ");
         PrintKata(val);
-        printf("masih dalam maintenance, belum dapat dimainkan. Silahkan pilih game lain.\n");
+        printf(" masih dalam maintenance, belum dapat dimainkan. Silahkan pilih game lain.\n");
     }
 
     else if (n => length(game_queue)) {
         printf("Tidak ada permainan lagi dalam daftar Game-mu.\n");
     }
     else {
-        printf("Game %s masih dalam maintenance, belum dapat dimainkan. Silahkan pilih game lain.\n", val);
+        // Generate random number
     }
 }
