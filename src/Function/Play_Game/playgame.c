@@ -9,27 +9,32 @@ void PlayGame(Queue game_queue){
     printf("Game yang akan dimainkan adalah %s\n", val);
     if (isWordEqual(val, "Diner DASH"))
     // isEqual(val, "Diner DASH")
+    if (isWordEqual(val, "Diner DASH"))
     {
-        printf("Loading %s .....\n",val);
+        printf("Loading ");
+        PrintKata(val);
+        printf("....\n");
         // PLay Diner DASH
         Dinner_Dash();
     }
-    else if (isWordEqual(val, "RNG")) 
-    // isEqual(val, "RNG")
+    else if (isWordEqual(val, "RNG"))
     {
-        printf("Loading %s .....\n",val);
+        printf("Loading ");
+        PrintKata(val);
+        printf("....\n");
         // Play RNG
         RNG();
     }
-    else if (isWordEqual(val, "RockPaperScissor"))
-        // isEqual(val, "RockPaperScissors")
+    else if (isWordEqual(val, "RockPaperScissors"))
     {
-        printf("Loading %s .....\n",val);
-        // Play RockPaperScissor
-        //PLACEHOLDER
+        printf("Loading ");
+        PrintKata(val);
+        printf("....\n");
+        // Play RockPaperScissors PLACEHOLDER
     }
-    else{
-        printf("Game %s masih dalam maintenance, belum dapat dimainkan. Silahkan pilih game lain.\n", val);
+    else {
+        printf("Game ");
+        PrintKata(val);
+        printf("masih dalam maintenance, belum dapat dimainkan. Silahkan pilih game lain.\n");
     }
-
 }
