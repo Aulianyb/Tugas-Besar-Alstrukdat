@@ -1,6 +1,4 @@
 #include "queuegame.h"
-#include "array.h"
-#include "List_Game.h"
 
 void QueueGame(Queue* game_queue, TabGame list_game){
     if(!isEmpty(*game_queue)){

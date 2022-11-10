@@ -14,7 +14,7 @@ boolean validScissor(Word word) {
         (currentWord.TabWord[4] == 'S' || currentWord.TabWord[4] == 's') && (currentWord.TabWord[5] == 'O' || currentWord.TabWord[5] == 'o') && (currentWord.TabWord[6] == 'R' || currentWord.TabWord[6] == 'r'));
 }
 
-int main() {
+void RockPaperScissor() {
     printf("*********   **********  **********  *       *                **********  **********  **********  **********  *********                **********  **********  *****  **********  **********  **********  ********* \n");
     printf("*        *  *        *  *           *     *                  *        *  *        *  *        *  *           *        *               *           *           *   *  *           *           *        *  *        *\n");
     printf("*   **   *  *   **   *  *           *   *                    *   **   *  *   **   *  *   **   *  *           *   **   *               *           *           *   *  *           *           *   **   *  *   **   *\n");
@@ -28,13 +28,16 @@ int main() {
     TabGame T;
     MakeEmpty(&T);
 
-    SetEl(&T,1,"Rock");
-    SetEl(&T,2,"Paper");
-    SetEl(&T,3,"Scissor");
+    SetEl(&T,1,strToWord("Rock"));
+    SetEl(&T,2,strToWord("Paper"));
+    SetEl(&T,3,strToWord("Scissor"));
 
     int botPoints = 0, playerPoints = 0;
-    ElType pilihanBot,pilihanPlayer;
-    while (botPoints != 500 && playerPoints != 500) {
+    int Round = 1;
+    Word pilihanBot;
+    Word pilihanPlayer;
+    while (Round <= 11) {
+        printf("========================= RONDE %d =========================\n",Round);
         printf("Masukkan pilihanmu! (rock/paper/scissor) : ");
         STARTFILE();
 
@@ -45,64 +48,80 @@ int main() {
         }
 
         if (validRock(currentWord)) {
-            pilihanPlayer = "Rock";
+            pilihanPlayer = strToWord("Rock");
         }
         else if (validPaper(currentWord)) {
-            pilihanPlayer = "Paper";
+            pilihanPlayer = strToWord("Paper");
         }
         else if (validScissor(currentWord)) {
-            pilihanPlayer = "Scissor";
+            pilihanPlayer = strToWord("Scissor");
         }
 
         int i = GenRand(1,3,3);
         pilihanBot = T.TI[i];
 
-        printf("Pilihan lawan : %s\n",pilihanBot);
-        if (pilihanBot == pilihanPlayer) {
+        printf("Pilihan lawan : ");
+        PrintKata(pilihanBot);
+        printf("\n");
+        if (isTwoWordEqual(pilihanBot,pilihanPlayer)) {
             printf("Seri!\n");
         }
         else {
-            if (pilihanBot == "Rock") {
-                if (pilihanPlayer == "Paper") {
+            if (isWordEqual(pilihanBot,"Rock")) {
+                if (isWordEqual(pilihanPlayer,"Paper")) {
+                    printf("Ini 1\n");
                     printf("Player menang! Point +100.\n");
                     playerPoints += 100;
                 }
                 else {
+                    printf("Ini 2\n");
                     printf("Player kalah!\n");
                     botPoints += 100;
                 }
             }
-            else if (pilihanBot == "Paper") {
-                if (pilihanPlayer == "Scissor") {
+            else if (isWordEqual(pilihanBot,"Paper")) {
+                if (isWordEqual(pilihanPlayer,"Scissor")) {
+                    printf("Ini 3\n");
                     printf("Player menang! Point +100.\n");
                     playerPoints += 100;
                 }
                 else {
+                    printf("Ini 4\n");
                     printf("Player kalah!\n");
                     botPoints += 100;
                 }
             }
             else {
-                if (pilihanPlayer == "Rock") {
+                if (isWordEqual(pilihanPlayer,"Rock")) {
+                    printf("Ini 5\n");
                     printf("Player menang! Point +100.\n");
                     playerPoints += 100;
                 }
                 else {
+                    printf("Ini 6\n");
                     printf("Player kalah!\n");
                     botPoints += 100;
                 }
             }
         }
         resetCurrWord(currentWord);
+        Round++;
     }
 
     printf("Permainan selesai!\n");
-    if (playerPoints == 500) {
+    if (playerPoints > botPoints) {
         printf("Player memenangkan permainan!\n");
+        printf("Skor Player : %d\n",playerPoints);
+        printf("Skor Lawan : %d\n",botPoints);
+    }
+    else if (playerPoints == botPoints) {
+        printf("Player dan lawan seri!\n");
+        printf("Skor Player : %d\n",playerPoints);
+        printf("Skor Lawan : %d\n",botPoints);
     }
     else {
         printf("Player kalah dalam permainan!\n");
+        printf("Skor Player : %d\n",playerPoints);
+        printf("Skor Lawan : %d\n",botPoints);
     }
-
-    return 0;
 }

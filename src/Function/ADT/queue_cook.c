@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "queue_cook.h"
+// #include "queue_cook.h"
 
 void enqueue_cook (Tab *T, Pesanan val){
 	int i=0;

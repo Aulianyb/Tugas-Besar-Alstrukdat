@@ -4,6 +4,8 @@
 #include "array_pesanan.h"
 #include "../../random_generator.h"
 
+
+
 void enqueue_cook(Tab *T, Pesanan val);
 /*Memasukkan elemen ke dalam Queue dalam urutan Prioritas*/
 

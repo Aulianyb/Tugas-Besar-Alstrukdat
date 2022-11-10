@@ -13,6 +13,7 @@
 #include "Function/Queue_Game/queuegame.h"
 #include "Function/Skip_Game/skipgame.h"
 #include "Function/Play_Game/playgame.h"
+// #include "Function/Dinner_Dash/Dinner_Dash.h"
 #include "console.h"
 
 int main(){
@@ -100,10 +101,12 @@ int main(){
 			DeleteGame(&T);
 		}	
 		else if(isWordEqual(currentWord, "QUEUE GAME")){
-			printf("QUEUE GAME\n"); //PLACEHOLDER, MASIH KOSONG
+			QueueGame(&Q, T); //PLACEHOLDER, MASIH KOSONG
 		}
 		else if(isWordEqual(GetKataFirst(currentWord), "SKIPGAME")){
-			printf("SKIP GAME\n"); //PLACEHOLDER, TYPE DATA GAK MATCH
+			int n = wordtoInt(GetKataSecond(currentWord));
+			SkipGame(Q,n);
+			// play_dn();
 		}
 		else if(isWordEqual(currentWord, "QUIT")){
 			on=false;
@@ -112,7 +115,7 @@ int main(){
 			help(1);
 		}
 		else if(isWordEqual(currentWord, "PLAY GAME")){
-			printf("PLAY GAME\n"); 
+			PlayGame(Q);
 		}
 		else{
 			printf("Command tidak dikenali, silahkan masukkan command yang valid.\n");

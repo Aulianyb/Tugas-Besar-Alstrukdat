@@ -21,3 +21,4 @@ void RNG(){
     }
     printf("\nYa, X adalah %d.\n", X);
 }
+
