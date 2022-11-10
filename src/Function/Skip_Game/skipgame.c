@@ -25,12 +25,12 @@ void SkipGame(Queue game_queue, int n){
         // Play RNG
         RNG();
     }
-    else if (isWordEqual(val, "RockPaperScissors"))
+    else if (isWordEqual(val, "RockPaperScissor"))
     {
         printf("Loading ");
         PrintKata(val);
         printf("....\n");
-        // Play RockPaperScissors PLACEHOLDER
+        RockPaperScissor();
     }
     else if (isWordEqual(val, "DINOSAUR IN EARTH") || isWordEqual(val, "RISEWOMAN") || isWordEqual(val, "EIFFEL TOWER")){
         printf("Game ");
