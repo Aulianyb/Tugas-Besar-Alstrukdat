@@ -1,33 +1,36 @@
-#include "queue.h"
+#include <stdio.h>
 #include "skipgame.h"
-#include "Dinner_dash.h"
-#include "rng.h"
-#include "RockPaperScissor.h"
 
 void SkipGame(Queue game_queue, int n){
     printf("Berikut ini adalah daftar Game-mu : \n");
     PrintQueueGame(game_queue);
-    char *val;
+    Word val;
     dequeue(&game_queue, &val);
     for (int i = 0; i < n; i++) {
         dequeue(&game_queue, &val);
     }
 
-    if (isEqual(val, "Diner DASH"))
+    if (isWordEqual(val, "Diner DASH"))
     {
-        printf("Loading %s .....\n",val);
+        printf("Loading ");
+        PrintKata(val);
+        printf("....\n");
         // PLay Diner DASH
         Dinner_Dash();
     }
-    else if (isEqual(val, "RNG"))
+    else if (isWordEqual(val, "RNG"))
     {
-        printf("Loading %s .....\n",val);
+        printf("Loading ");
+        PrintKata(val);
+        printf("....\n");
         // Play RNG
         RNG();
     }
-    else if (isEqual(val, "RockPaperScissors"))
+    else if (isWordEqual(val, "RockPaperScissors"))
     {
-        printf("Loading %s .....\n",val);
+        printf("Loading ");
+        PrintKata(val);
+        printf("....\n");
         // Play RockPaperScissors PLACEHOLDER
 
     }
@@ -35,6 +38,8 @@ void SkipGame(Queue game_queue, int n){
         printf("Tidak ada permainan lagi dalam daftar Game-mu.\n");
     }
     else {
-        printf("Game %s masih dalam maintenance, belum dapat dimainkan. Silahkan pilih game lain.\n", val);
+        printf("Game ");
+        PrintKata(val);
+        printf("masih dalam maintenance, belum dapat dimainkan. Silahkan pilih game lain.\n");
     }
 }
