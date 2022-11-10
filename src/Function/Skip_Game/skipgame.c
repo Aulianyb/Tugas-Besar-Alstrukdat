@@ -38,7 +38,7 @@ void SkipGame(Queue game_queue, int n){
         printf(" masih dalam maintenance, belum dapat dimainkan. Silahkan pilih game lain.\n");
     }
 
-    else if (n => length(game_queue)) {
+    else if (n >= length(game_queue)) {
         printf("Tidak ada permainan lagi dalam daftar Game-mu.\n");
     }
     else {
