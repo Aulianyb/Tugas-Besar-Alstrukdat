@@ -21,7 +21,7 @@ F.S. Menampilkan seluruh command yang dapat dipanggil di dalam sistem
         printf("======================================= HELP =======================================\n");
         printf("No  | Daftar Command | Keterangan\n");
         printf("------------------------------------------------------------------------------------\n");
-        printf("1.  | SAVE           | Menyimpan state game pemain saat ini ke dalam save file\n");
+        printf("1.  | SAVE <namafile>| Menyimpan state game pemain saat ini ke dalam save file. Tidak perlu menyertakan .txt\n");
         printf("2.  | CREATE GAME    | Menambahkan game baru pada daftar game\n");
         printf("3.  | LIST GAME      | Menampilkan daftar game yang disediakan oleh sistem\n");
         printf("4.  | START          | Membaca file konfigurasi default\n");
