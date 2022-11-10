@@ -9,6 +9,9 @@ void SkipGame(Queue *game_queue, int n){
     if (isEmpty(*game_queue)){
         printf("Belum ada game yang di queue!\n");
     }
+    else if (n >= panjang) {
+    printf("Tidak ada permainan lagi dalam daftar Game-mu.\n");
+    }
     else {
     Word val;
     dequeue(game_queue, &val);
@@ -43,11 +46,6 @@ void SkipGame(Queue *game_queue, int n){
         printf("Game ");
         PrintKata(val);
         printf(" masih dalam maintenance, belum dapat dimainkan. Silahkan pilih game lain.\n");
-    }
-
-    else if (n >= panjang) {
-        printf("Tidak ada permainan lagi dalam daftar Game-mu.\n");
-        enqueue(game_queue, val);
     }
     else {
         printf("Loading ");
