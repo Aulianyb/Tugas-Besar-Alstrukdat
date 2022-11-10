@@ -14,7 +14,7 @@ void SkipGame(Queue game_queue, int n){
     {
         printf("Loading ");
         PrintKata(val);
-        printf("....");
+        printf("....\n");
         // PLay Diner DASH
         Dinner_Dash();
     }
@@ -22,7 +22,7 @@ void SkipGame(Queue game_queue, int n){
     {
         printf("Loading ");
         PrintKata(val);
-        printf("....");
+        printf("....\n");
         // Play RNG
         RNG();
     }
@@ -30,7 +30,7 @@ void SkipGame(Queue game_queue, int n){
     {
         printf("Loading ");
         PrintKata(val);
-        printf("....");
+        printf("....\n");
         // Play RockPaperScissors PLACEHOLDER
 
     }
