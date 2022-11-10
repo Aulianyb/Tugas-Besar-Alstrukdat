@@ -31,7 +31,8 @@ int main(){
 	boolean valid=false;
 	while (!valid){
 		printf("=== COMMAND LIST === \n");
-		printf(" - START\n - LOAD \n");
+		printf(" - START\n - LOAD <namafile>\n");
+		printf("(catatan: nama file tidak perlu menyertakan .txt)\n");
 		printf("ENTER COMMAND : ");
 		STARTFILE();
 		if (isWordEqual(currentWord, "START")){
@@ -44,7 +45,6 @@ int main(){
 
 		} else if (isWordEqual(GetKataFirst(currentWord),"LOAD")) {
 			char* filename = wordToString(GetKataSecond(currentWord));
-			// PrintKata(GetKataSecond(currentWord));
 			MakeEmpty(&T);
 			loadGAME(filename, &T);
 			
@@ -82,9 +82,9 @@ int main(){
 			SkipGame(&Q,n);
 		}
 		else if(isWordEqual(currentWord, "QUIT")){
-			printf("Sebelum keluar dari program, apakah mau melakukan save terlebih dahulu? (Y/N)\n");
+			printf("Sebelum keluar dari program, apakah mau melakukan save terlebih dahulu? (y/n) ");
 			STARTFILE();
-			if (isWordEqual(currentWord, "Y")){
+			if (isWordEqual(currentWord, "y") || isWordEqual(currentWord, "y")){
 				printf("Masukkan nama file yang diinginkan: ");
 				STARTFILE();
 				char* filename = wordToString(currentWord);
