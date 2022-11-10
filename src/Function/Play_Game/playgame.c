@@ -6,7 +6,6 @@ void PlayGame(Queue game_queue){
     PrintQueueGame(game_queue);
     Word val;
     dequeue(&game_queue, &val);
-    printf("Game yang akan dimainkan adalah %s\n", val);
     if (isWordEqual(val, "Diner DASH"))
     // isEqual(val, "Diner DASH")
     if (isWordEqual(val, "Diner DASH"))
