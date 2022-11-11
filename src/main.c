@@ -84,14 +84,29 @@ int main(){
 		else if(isWordEqual(currentWord, "QUIT")){
 			printf("Sebelum keluar dari program, apakah mau melakukan save terlebih dahulu? (y/n) ");
 			STARTFILE();
-			if (isWordEqual(currentWord, "y") || isWordEqual(currentWord, "y")){
-				printf("Masukkan nama file yang diinginkan: ");
-				STARTFILE();
-				char* filename = wordToString(currentWord);
-				saveGAME(filename, T);
+			boolean close = false;
+			while (!close)
+			{
+				if (isWordEqual(currentWord, "y") || isWordEqual(currentWord, "Y"))
+				{
+					printf("Masukkan nama file yang diinginkan: ");
+					STARTFILE();
+					char* filename = wordToString(currentWord);
+					saveGAME(filename, T);
+					close = true;
+				} 
+				else if (isWordEqual(currentWord, "n") || isWordEqual(currentWord, "N"))
+				{
+					close = true;
+				} 
+				else 
+				{
+					printf("Input tidak valid!\n");
+					printf("Sebelum keluar dari program, apakah mau melakukan save terlebih dahulu? (y/n) ");
+					STARTFILE();
+				}
 			}
-			quit();
-			on=false;
+			on = false;
 		}
 		else if (isWordEqual(currentWord, "HELP")){
 			help();
