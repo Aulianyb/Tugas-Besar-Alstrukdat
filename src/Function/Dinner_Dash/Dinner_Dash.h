@@ -8,7 +8,7 @@
 #include "../../random_generator.h"
 #include "../ADT/mesinkata.h"
 
-#define MaxEl 50 /*Sebenarnya bisa lebih dari 15, misalnya loop terus mengakibatkan terus generate data*/
+#define MaxEl 20 /*Sebenarnya bisa lebih dari 15, misalnya loop terus mengakibatkan terus generate data*/
 #define IdxUndef -999 /* indeks tak terdefinisi*/
 
 /* Definisi elemen dan koleksi objek */
@@ -86,6 +86,8 @@ boolean isCook(Word Kata);
 
 boolean isServe(Word Kata);
 /* Mengembalikan apakah kata input merupakan "SERVE" atau bukan*/
+
+boolean isSkip(Word Kata);
 
 void buat_pesanan(Tab *T, int label);
 /* Membuat Pesanan berdasarkan input */

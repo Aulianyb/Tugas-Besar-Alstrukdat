@@ -9,7 +9,7 @@ void QueueGame(Queue* game_queue, TabGame list_game){
         STARTFILE();
         IdxType idx;
         idx = WordToInt(currentWord);
-        boolean valid = IsIdxValid(list_game, idx);
+        boolean valid = IsIdxEff(list_game, idx);
         if(valid){
             enqueue(game_queue, list_game.TI[idx]);
             printf("Game berhasil ditambahkan ke dalam daftar antrian.\n");
@@ -26,7 +26,7 @@ void QueueGame(Queue* game_queue, TabGame list_game){
         STARTFILE();
         IdxType idx;
         idx = WordToInt(currentWord);
-        boolean valid = IsIdxValid(list_game, idx);
+        boolean valid = IsIdxEff(list_game, idx);
         if(valid){
             enqueue(game_queue, list_game.TI[idx]);
             printf("Game berhasil ditambahkan ke dalam daftar antrian.\n");

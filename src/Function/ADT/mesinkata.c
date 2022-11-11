@@ -119,7 +119,32 @@ Word GetKataFirst(Word W){
 
 Word GetKataSecond(Word W){
     Word Kata;
+    int i = 0;
+    resetCurrWord(Kata);
+    while ((i<W.Length) && (W.TabWord[i] != ' ')){
+        i++;
+    }
+    i++;
+    int j = 0;
+    while ((i<W.Length) && (W.TabWord[i] != ' ')){
+        if (j < NMax){
+            Kata.TabWord[j] = W.TabWord[i];
+            j++;
+        }
+        i++;
+    }
+    Kata.Length = j;
+    return Kata;
+}
+//Ambil Kata Terakhir
+
+Word GetKataThird(Word W){
+    Word Kata;
     int i=0;
+    while ((i<W.Length) && (W.TabWord[i] != ' ')){
+        i++;
+    }
+    i++;
     while ((i<W.Length) && (W.TabWord[i] != ' ')){
         i++;
     }
@@ -135,7 +160,7 @@ Word GetKataSecond(Word W){
     }
     return Kata;
 }
-//Ambil Kata Terakhir
+// Ambil Kata Ketiga
 
 int StringLen(char *Input){
     int i=0, len=0;

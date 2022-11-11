@@ -65,6 +65,9 @@ void Delete_pesanan(Tab *T, int label, Pesanan *val){
 
 /* ********** BACA dan TULIS dengan INPUT/OUTPUT device ********** */
 void TulisIsi_pesanan(Tab T){
+	printf(" Daftar Pesanan\n");
+	printf(" Makanan | Durasi memasak | Ketahanan | Harga\n");
+	printf("-------------------------------------------------\n");
 	if (!(IsEmpty_pesanan(T))){
 		for(int i=0;i<T.Neff;i++){
 			printf(" ");
@@ -129,6 +132,9 @@ void dequeue_cook (Tab *T, Pesanan *val){
 /*Menghapus elemen pertama ke dalam Tab*/
 
 void TulisIsi_Cook(Tab T){
+	printf(" Daftar Makanan yang sedang dimasak\n");
+	printf(" Makanan | Sisa durasi memasak\n");
+	printf("--------------------------------\n");
 	if (!(IsEmpty_pesanan(T))){
 		for(int i=0;i<T.Neff;i++){
 			printf(" ");
@@ -143,6 +149,9 @@ void TulisIsi_Cook(Tab T){
 /*Menulis CookTab*/
 
 void TulisIsi_Served(Tab T){
+	printf(" Daftar Makanan yang dapat disajikan\n");
+	printf(" Makanan | Sisa ketahanan makanan\n");
+	printf("--------------------------------\n");
 	if (!(IsEmpty_pesanan(T))){
 		for(int i=0;i<T.Neff;i++){
 			printf(" ");
@@ -193,7 +202,7 @@ boolean isServe(Word Kata){
 }
 
 boolean isSkip(Word Kata){
-	return isWordEqual(GetKataFirst(Kata), "SKIP");	
+	return isWordEqual(Kata, "SKIP");	
 }
 
 void buat_pesanan(Tab *T, int label){
@@ -229,21 +238,13 @@ void Dinner_Dash(){
 
 		printf(" SALDO : %d\n\n", saldo);
 
-		printf(" Daftar Pesanan\n");
-		printf(" Makanan | Durasi memasak | Ketahanan | Harga\n");
-		printf("-------------------------------------------------\n");
 		TulisIsi_pesanan(Orders);
 
 		printf("\n\n");
-		printf(" Daftar Makanan yang sedang dimasak\n");
-		printf(" Makanan | Sisa durasi memasak\n");
-		printf("--------------------------------\n");
+		
 		TulisIsi_Cook(Cook);
 		printf("\n\n");
 
-		printf(" Daftar Makanan yang dapat disajikan\n");
-		printf(" Makanan | Sisa ketahanan makanan\n");
-		printf("--------------------------------\n");
 		TulisIsi_Served(Served);
 		printf("\n\n");
 
@@ -296,7 +297,6 @@ void Dinner_Dash(){
 			// printf("CEK M%d = %d\n", Label_int(Cook.buffer[ctr]), (Durasi(Cook.buffer[ctr]))); //-> CHECKER
 			if (Durasi(Cook.buffer[ctr]) < 1){
 				Delete_pesanan(&Cook, Label_int(Cook.buffer[ctr]), &temp);
-				printf("MOVED\n");
 				enqueue_cook(&Served, temp);
 				cook_ctr--;
 			}
