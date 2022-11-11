@@ -7,6 +7,7 @@ int main () {
     // Cek fungsi CreateQueue
     Queue contoh; 
     CreateQueue(&contoh);
+    // Expected Output = Tercipta Queue kosong bernama contoh, pengecekan dilakukan berbarengan dengan Cek Fungsi Isempty
 
     // Cek Fungsi IsEmpty
     printf("Apakah queue kosong?\n");
@@ -16,6 +17,7 @@ int main () {
         printf("Tidak\n");
     }
     printf("\n");
+    // Expected Output = Queue kosong karena baru dibuat, jadi output = "Tidak" ( Menandakan bahwa Queue telah tercipta (pembuktian fungsi CreateQueue) dengan sukses dan Queue juga kosong)
 
     // Pengecekan fungsi enqueue
     printf("Isi elemen array = \n");
@@ -25,10 +27,12 @@ int main () {
         enqueue(&contoh, currentWord);
     }
     printf("\n");
+    // Expected output : Queue terisi, pengecekan melalui fungsi uji dequeue (isi queue sebelum di dequeue akan berisi game game yang di input user)
 
     // Pengecekan fungsi length
     printf("Panjang queue = %d\n", length(contoh));
     printf("\n");
+    // Expected output : 3
 
     // Pengecekan fungsi IsFull
     printf("Apakah queue full?\n");
@@ -38,12 +42,14 @@ int main () {
         printf("Tidak\n");
     }
     printf("\n");
+    // Expected Output = Tidak
 
     
-    // Uji dequeue
+    // Uji dequeue dan printgame
     printf("Isi queue sebelum di dequeue = \n");
     PrintQueueGame(contoh);
     printf("\n");
+    // Expected output : Game-game sebelum di dequeue (pembuktian fungsi Enqueue)
 
     Word val;
     dequeue(&contoh, &val);
@@ -51,5 +57,6 @@ int main () {
     printf("Isi queue  setelah di dequeue = \n");
     PrintQueueGame(contoh);
     printf("\n");
+    // Expected output = Game no 1 sebelum di dequeue hilang, maka game 2 jadi game pertama ( Pembuktian fungsi Dequeue serta printQueueGame)
 
 }
