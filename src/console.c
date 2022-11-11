@@ -6,6 +6,7 @@
 void quit(){
     printf("Terima kasih telah memainkam game BNMO ini!\n");
     printf("Good Game, Well Played\n");
+    delay(2000);
 }
 
 void startLOAD(char* filename)

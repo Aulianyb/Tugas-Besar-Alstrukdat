@@ -63,8 +63,8 @@ Word GetKataFirst(Word W);
 Word GetKataSecond(Word W);
 //Ambil Kata Terakhir
 
-Word GetKataThird (Word W);
-// Ambil Kata ketiga
+Word GetKataThird(Word W);
+//Ambil Kata ketiga
 
 int StringLen(char *Input);
 //Return Panjang String
