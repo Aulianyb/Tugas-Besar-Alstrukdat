@@ -296,7 +296,6 @@ void Dinner_Dash(){
 			// printf("CEK M%d = %d\n", Label_int(Cook.buffer[ctr]), (Durasi(Cook.buffer[ctr]))); //-> CHECKER
 			if (Durasi(Cook.buffer[ctr]) < 1){
 				Delete_pesanan(&Cook, Label_int(Cook.buffer[ctr]), &temp);
-				printf("MOVED\n");
 				enqueue_cook(&Served, temp);
 				cook_ctr--;
 			}
