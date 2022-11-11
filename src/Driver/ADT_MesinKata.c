@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "../ADT/mesinkata.h"
+#include "..Function/ADT/mesinkata.h"
 
 int main(){
 	printf("Tes STARTFILE dari inputan pengguna\n");

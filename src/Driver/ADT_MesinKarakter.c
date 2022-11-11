@@ -1,4 +1,4 @@
-#include "../ADT/mesinkarakter.h"
+#include "..Function/ADT/mesinkarakter.h"
 
 int main(){
     printf("Tes STARTINPUT dari inputan pengguna\n");
