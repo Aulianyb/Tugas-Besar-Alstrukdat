@@ -16,11 +16,11 @@ Game kedua adalah Diner Dash. Diner Dash merupakan permainan memasak dan mengant
 Game ketiga adalah ROCK PAPER SCISSOR yang merupakan permainan suit dimana pengguna memasukkan salah satu dari tiga opsi yang tersedia yakni rock, paper, atau scissor dan kemudian opsi yang dipilih oleh pengguna akan dibandingkan dengan opsi yang dipilih oleh lawan. Siapapun yang menang pada ronde tersebut akan mendapatkan poin 100, kecuali ketika terjadi seri maka kedua pihak tidak akan mendapatkan poin. Permainan akan berhenti ketika permainan sudah mencapai 11 ronde.
 
 **ANGGOTA KELOMPOK :**  
-Aulia Nadhirah Yasmin. B	/ 18221066
-Rifqi Syafiq				/ 18221070
-Hilmi Baskara Radanto		/ 18221072
-Akmal Natha Abirama		/ 18221082
-Farhan Algani Putra		/ 18221108
+Aulia Nadhirah Yasmin. B	(18221066)
+Rifqi Syafiq				(18221070)
+Hilmi Baskara Radanto		(18221072)
+Akmal Natha Abirama		(18221082)
+Farhan Algani Putra		(18221108)
 
 **CARA KOMPILASI PROGRAM :**  
 Directory ke file tempat menyimpan program, kemudian masukkan command di bawah ini, lalu run main.
