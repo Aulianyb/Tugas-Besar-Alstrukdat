@@ -4,6 +4,7 @@
 #include "Function/ADT/mesinkata.h"
 #include "Function/ADT/mesinkarakter.h"
 #include "Function/ADT/array.h"
+#include "random_generator.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -41,7 +42,5 @@ void startGAME(TabGame *listGame);
 
 void saveGAME(char* filename, TabGame listGame);
 // Melakukan penyimpanan pada file
-
-void delay(int milliseconds);
 
 #endif

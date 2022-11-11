@@ -1,13 +1,9 @@
 #include <stdio.h>
-#include "Function/Skip_Game/dummy.h"
+#include "Function/Dinner_dash/Dinner_Dash.h"
 
 //INI FILE BUAT NYOBA NYOBA AJA
 
-void Printtest(char *INPUT){
-	printf("HASIL : %s\n", INPUT);
-}
-
 int main(){
-	play_dn();
+	Dinner_Dash();
 	return 0; 
 }

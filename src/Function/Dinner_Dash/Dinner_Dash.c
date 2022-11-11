@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include "Dinner_Dash.h"
 
 /* ********** KONSTRUKTOR ********** */
@@ -214,16 +213,17 @@ void Dinner_Dash(){
 	MakeEmpty_pesanan(&Data);
 
 	for (int i = 0;i<3;i++){
+		delay(700);
 		buat_pesanan(&Orders, i);
 		Insert_pesanan(&Data, i, Durasi(Orders.buffer[i]), Ketahanan(Orders.buffer[i]), Harga(Orders.buffer[i]));
 	}
 
 	printf("\n");
 	printf(" ===================== Selamat Datang di ... =====================\n");
-	printf("  ____  _____ _____ _____ _____ _____    ____  _____ _____ _____\n");
-	printf(" |    \\|     |   | |   | |   __| __  |  |    \\|  _  |   __|  |  |\n");
-	printf(" |  |  |-   -| | | | | | |   __|    -|  |  |  |     |__   |     |\n");
-	printf(" |____/|_____|_|___|_|___|_____|__|__|  |____/|__|__|_____|__|__|\n\n");
+	printf("  ____  _____ _____ _____ _____    ____  _____ _____ _____ \n");
+	printf(" |    \\|     |   | |   __| __  |  |    \\|  _  |   __|  |  |\n");
+	printf(" |  |  |-   -| | | |   __|    -|  |  |  |     |__   |     |\n");
+	printf(" |____/|_____|_|___|_____|__|__|  |____/|__|__|_____|__|__|\n\n");
 	printf(" ==================================================================\n\n");
 	while (play){
 
