@@ -106,6 +106,7 @@ int main(){
 					STARTFILE();
 				}
 			}
+			quit();
 			on = false;
 		}
 		else if (isWordEqual(currentWord, "HELP")){
