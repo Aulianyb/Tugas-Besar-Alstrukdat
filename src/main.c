@@ -77,7 +77,7 @@ int main(){
 		else if(isWordEqual(currentWord, "QUEUE GAME")){
 			QueueGame(&Q, T); //PLACEHOLDER, MASIH KOSONG
 		}
-		else if((isWordEqual(GetKataFirst(currentWord), "SKIP") && (isWordEqual(GetKataSecond(currentWord), "GAME")))){
+		else if(((isWordEqual(GetKataFirst(currentWord), "SKIP")) && (isWordEqual(GetKataSecond(currentWord), "GAME")))){
 			int n = wordtoInt(GetKataThird(currentWord));
 			SkipGame(&Q,n);
 		}
