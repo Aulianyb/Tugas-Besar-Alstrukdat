@@ -94,7 +94,7 @@ int main(){
 			on=false;
 		}
 		else if (isWordEqual(currentWord, "HELP")){
-			help(1);
+			help();
 		}
 		else if(isWordEqual(currentWord, "PLAY GAME")){
 			PlayGame(&Q);

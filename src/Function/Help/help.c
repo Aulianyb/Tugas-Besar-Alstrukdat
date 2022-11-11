@@ -15,7 +15,7 @@ F.S. Menampilkan seluruh command yang dapat dipanggil di dalam sistem
         printf("No  | Daftar Command | Keterangan\n");
         printf("------------------------------------------------------------------------------\n");
         printf("1.  | START          | Membaca file konfigurasi default\n");
-        printf("2.  | LOAD           | Membaca save file yang berisi list game dan histori\n");
+        printf("2.  | LOAD           | Membaca save file yang berisi list game hasil simpanan\n");
     }
     else {
         printf("======================================= HELP =======================================\n");
