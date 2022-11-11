@@ -87,6 +87,8 @@ boolean isCook(Word Kata);
 boolean isServe(Word Kata);
 /* Mengembalikan apakah kata input merupakan "SERVE" atau bukan*/
 
+boolean isSkip(Word Kata);
+
 void buat_pesanan(Tab *T, int label);
 /* Membuat Pesanan berdasarkan input */
 
