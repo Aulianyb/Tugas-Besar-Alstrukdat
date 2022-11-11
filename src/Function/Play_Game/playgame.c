@@ -10,7 +10,7 @@ void PlayGame(Queue *game_queue){
     else{
     Word val;
     dequeue(game_queue, &val);
-    if (isWordEqual(val, "Diner DASH"))
+    if (isWordEqual(val, "Diner Dash"))
     {
         printf("Loading ");
         PrintKata(val);

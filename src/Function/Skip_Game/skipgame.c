@@ -19,7 +19,7 @@ void SkipGame(Queue *game_queue, int n){
         dequeue(game_queue, &val);
     }
     
-    if (isWordEqual(val, "Diner DASH"))
+    if (isWordEqual(val, "Diner Dash"))
     {
         printf("Loading ");
         PrintKata(val);
