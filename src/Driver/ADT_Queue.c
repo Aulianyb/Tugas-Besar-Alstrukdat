@@ -49,6 +49,7 @@ int main () {
     printf("Isi queue sebelum di dequeue = \n");
     PrintQueueGame(contoh);
     printf("\n");
+    // Expected output : Game-game sebelum di dequeue
 
     Word val;
     dequeue(&contoh, &val);
@@ -56,5 +57,6 @@ int main () {
     printf("Isi queue  setelah di dequeue = \n");
     PrintQueueGame(contoh);
     printf("\n");
+    // Expected output = Game no 1 sebelum di dequeue hilang, maka game 2 jadi game pertama
 
 }
