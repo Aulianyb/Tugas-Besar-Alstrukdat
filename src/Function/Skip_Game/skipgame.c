@@ -11,6 +11,10 @@ void SkipGame(Queue *game_queue, int n){
     }
     else if (n >= panjang) {
     printf("Tidak ada permainan lagi dalam daftar Game-mu.\n");
+    Word val;
+    dequeue(game_queue, &val);
+    for (int i = 0; i < n; i++) {
+        dequeue(game_queue, &val);
     }
     else {
     Word val;
