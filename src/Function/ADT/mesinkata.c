@@ -119,20 +119,21 @@ Word GetKataFirst(Word W){
 
 Word GetKataSecond(Word W){
     Word Kata;
-    int i=0;
+    int i = 0;
+    resetCurrWord(Kata);
     while ((i<W.Length) && (W.TabWord[i] != ' ')){
         i++;
     }
     i++;
-    int start = i;
-    Kata.Length=0; 
-    while (i<W.Length){
-        if (i < NMax){
-            Kata.TabWord[i-start] = W.TabWord[i];
-            Kata.Length++;
-            i++;
+    int j = 0;
+    while ((i<W.Length) && (W.TabWord[i] != ' ')){
+        if (j < NMax){
+            Kata.TabWord[j] = W.TabWord[i];
+            j++;
         }
+        i++;
     }
+    Kata.Length = j;
     return Kata;
 }
 //Ambil Kata Terakhir
