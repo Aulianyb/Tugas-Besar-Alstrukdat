@@ -2,6 +2,7 @@
 Tugas Besar Alstrukdat 2022
 
 **DESKRIPSI SINGKAT PROGRAM :**
+
 BNMO merupakan program permainan berbasis CLI (command-line interface) yang menggunakan bahasa C. Library yang digunakan adalah stdlib.h, stdio.h, time.h, dan math.h. BNMO diprogram dengan mengimplementasikan beberapa struktur data (ADT), yaitu ADT Array, ADT Mesin karakter serta Mesin Kata, dan ADT Queue. Terdapat beberapa fitur yang dimiliki BNMO, yaitu memainkan game, menambahkan game, menghapus game, dan mengurutkan game yang akan dimainkan. Adapun beberapa game yang terdapat pada program BNMO adalah RNG, Dinner Dash, dan ROCK PAPER SCISSOR.
 
 Pada saat pertama kali menjalankan program BNMO, ditampilkan main menu awal yang berisi welcome page dan dua command pilihan, yaitu START yang membaca file konfigurasi dan LOAD <filename> yang membaca <filename>.txt yang diinginkan. Setelah berhasil membaca file .txt, pengguna akan masuk ke menu utama program. Pada menu utama program, pengguna dapat memasukkan beberapa command. Beberapa command yang tersedia adalah CREATE GAME, LIST GAME, DELETE GAME, QUEUE GAME, PLAY GAME, HELP, dan QUIT. Jika pengguna melakukan input di luar command yang tersedia akan diberi pesan bahwa command tidak valid dan pengguna diminta untuk melakukan input ulang.
