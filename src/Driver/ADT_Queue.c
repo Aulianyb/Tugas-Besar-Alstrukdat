@@ -27,11 +27,12 @@ int main () {
         enqueue(&contoh, currentWord);
     }
     printf("\n");
-    // Expected output : Queue terisi, pengecekan melalui 
+    // Expected output : Queue terisi, pengecekan melalui fungsi uji dequeue (isi queue sebelum di dequeue akan berisi game game yang di input user)
 
     // Pengecekan fungsi length
     printf("Panjang queue = %d\n", length(contoh));
     printf("\n");
+    // Expected output : 3
 
     // Pengecekan fungsi IsFull
     printf("Apakah queue full?\n");
@@ -41,9 +42,10 @@ int main () {
         printf("Tidak\n");
     }
     printf("\n");
+    // Expected Output = Tidak
 
     
-    // Uji dequeue
+    // Uji dequeue dan printgame
     printf("Isi queue sebelum di dequeue = \n");
     PrintQueueGame(contoh);
     printf("\n");
