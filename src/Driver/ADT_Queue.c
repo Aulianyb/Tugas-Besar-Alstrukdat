@@ -7,6 +7,7 @@ int main () {
     // Cek fungsi CreateQueue
     Queue contoh; 
     CreateQueue(&contoh);
+    // Expected Output = Tercipta Queue kosong bernama contoh, pengecekan dilakukan berbarengan dengan Cek Fungsi Isempty
 
     // Cek Fungsi IsEmpty
     printf("Apakah queue kosong?\n");
@@ -16,6 +17,7 @@ int main () {
         printf("Tidak\n");
     }
     printf("\n");
+    // Expected Output = Queue kosong karena baru dibuat, jadi output = "Tidak"
 
     // Pengecekan fungsi enqueue
     printf("Isi elemen array = \n");
@@ -25,6 +27,7 @@ int main () {
         enqueue(&contoh, currentWord);
     }
     printf("\n");
+    // Expected output : Queue terisi, pengecekan melalui 
 
     // Pengecekan fungsi length
     printf("Panjang queue = %d\n", length(contoh));
