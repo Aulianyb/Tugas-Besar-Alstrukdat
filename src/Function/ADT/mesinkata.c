@@ -137,6 +137,30 @@ Word GetKataSecond(Word W){
 }
 //Ambil Kata Terakhir
 
+Word GetKataThird(Word W){
+    Word Kata;
+    int i=0;
+    while ((i<W.Length) && (W.TabWord[i] != ' ')){
+        i++;
+    }
+    i++;
+    while ((i<W.Length) && (W.TabWord[i] != ' ')){
+        i++;
+    }
+    i++;
+    int start = i;
+    Kata.Length=0; 
+    while (i<W.Length){
+        if (i < NMax){
+            Kata.TabWord[i-start] = W.TabWord[i];
+            Kata.Length++;
+            i++;
+        }
+    }
+    return Kata;
+}
+// Ambil Kata Ketiga
+
 int StringLen(char *Input){
     int i=0, len=0;
     while (Input[i] != '\0'){
