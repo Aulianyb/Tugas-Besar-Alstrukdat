@@ -17,7 +17,7 @@ int main () {
         printf("Tidak\n");
     }
     printf("\n");
-    // Expected Output = Queue kosong karena baru dibuat, jadi output = "Tidak"
+    // Expected Output = Queue kosong karena baru dibuat, jadi output = "Tidak" ( Menandakan bahwa Queue telah tercipta (pembuktian fungsi CreateQueue) dengan sukses dan Queue juga kosong)
 
     // Pengecekan fungsi enqueue
     printf("Isi elemen array = \n");
@@ -49,7 +49,7 @@ int main () {
     printf("Isi queue sebelum di dequeue = \n");
     PrintQueueGame(contoh);
     printf("\n");
-    // Expected output : Game-game sebelum di dequeue
+    // Expected output : Game-game sebelum di dequeue (pembuktian fungsi Enqueue)
 
     Word val;
     dequeue(&contoh, &val);
@@ -57,6 +57,6 @@ int main () {
     printf("Isi queue  setelah di dequeue = \n");
     PrintQueueGame(contoh);
     printf("\n");
-    // Expected output = Game no 1 sebelum di dequeue hilang, maka game 2 jadi game pertama
+    // Expected output = Game no 1 sebelum di dequeue hilang, maka game 2 jadi game pertama ( Pembuktian fungsi Dequeue serta printQueueGame)
 
 }
