@@ -3,6 +3,7 @@
 
 int main() {
     /* ***Membuat Array baru yang kosong*** */
+    printf("=========== TEST MakeEmpty ===========\n");
     printf("Membuat array baru yang kosong...\n"); 
     TabGame T;
     MakeEmpty(&T);
@@ -11,17 +12,20 @@ int main() {
     //Expected Output : Terbentuk Array baru yang kosong, menuliskan "Isi kosong" ke layar
 
     /* ***Mengecek apakah array yang dibuat kosong*** */
+    printf("=========== TEST IsEmpty ===========\n");
     printf("Mengecek apakah array yang dibuat kosong (Menuliskan 0 bila tidak kosong, 1 jika kosong) :\n");
     printf("%d\n",IsEmpty(T));
     printf("\n");
     //Expected output : 1
 
     /* ***Menuliskan banyaknya elemen yang dapat ditampung dalam array*** */
+    printf("=========== TEST MaxNbEl ===========\n");
     printf("Banyaknya elemen yang dapat ditampung : %d\n",MaxNbEl(T));
     printf("\n");
     //Expected output : 100
 
     /* ***Memasukkan elemen ke dalam array*** */
+    printf("=========== TEST SetEl ===========\n");
     printf("Memasukkan elemen ke dalam array...\n");
     SetEl(&T,1,strToWord("SONIC"));
     SetEl(&T,2,strToWord("MARIO KART"));
@@ -36,17 +40,20 @@ int main() {
                         elemen ke-5 menjadi "PATAPON". */
 
     /* ***Mengecek apakah array yang sudah diisi kosong*** */
+    printf("=========== TEST IsEmpty ===========\n");
     printf("Mengecek apakah array kosong (Menuliskan 0 bila tidak kosong, 1 jika kosong) :\n");
     printf("%d\n",IsEmpty(T));
     printf("\n");
     //Expected output : 0
 
     /* ***Menuliskan berapa banyak elemen efektif yang ada pada array*** */
+    printf("=========== TEST NbElmt ===========\n");
     printf("Banyak elemen efektif pada array : %d\n",NbElmt(T));
     printf("\n");
     //Expected output : 5
 
     /* ***Menuliskan indeks pertama dan indeks terakhir dari array ke layar*** */
+    printf("=========== TEST GetFirstIdx & GetLastIdx ===========\n");
     printf("Indeks pertama dari array : %d\n",GetFirstIdx(T));
     //Expected output : 1
     printf("Indeks terakhir dari array : %d\n",GetLastIdx(T));
@@ -55,6 +62,7 @@ int main() {
     
 
     /* ***Mengecek apakah indeks valid atau tidak dan apakah indeks efektif atau tidak*** */
+    printf("=========== TEST IsIdxValid & IsIdxEff ===========\n");
     printf("Apakah indeks ke-10 valid? (0 jika tidak valid, 1 jika valid)\n");
     printf("%d\n",IsIdxValid(T,10));
     //Expected output : 1
@@ -70,6 +78,7 @@ int main() {
     //Expected output : 1
 
     /* ***Menulis isi array setelah diisi elemen*** */
+    printf("=========== TEST TulisIsi ===========\n");
     printf("Menuliskan isi array ke layar...\n");
     TulisIsi(T);
     printf("\n");
@@ -82,6 +91,7 @@ int main() {
     */
 
     /* ***Membuat salinan array dari T ke array baru yaitu Tcopy*** */
+    printf("=========== TEST SetTab ===========\n");
     printf("Membuat array baru hasil salinan array lama...\n");
     TabGame Tcopy;
     MakeEmpty(&Tcopy);
@@ -90,18 +100,21 @@ int main() {
     //Expected output : Terbentuk array baru hasil salinan dari array lama
 
     /* ***Mengecek apakah array hasil salinan kosong*** */
+    printf("=========== TEST IsEmpty ===========\n");
     printf("Mengecek apakah array hasil salinan kosong (Menuliskan 0 bila tidak kosong, 1 jika kosong) :\n");
     printf("%d\n",IsEmpty(Tcopy));
     printf("\n");
     //Expected output : 0
 
     /* ***Mengecek apakah array hasil salinan penuh*** */
+    printf("=========== TEST IsFull ===========\n");
     printf("Mengecek apakah array hasil salinan penuh (Menuliskan 0 bila tidak kosong, 1 jika kosong) :\n");
     printf("%d\n",IsFull(Tcopy));
     printf("\n");
     //Expected output : 0
 
     /* ***Menuliskan isi array hasil salinan ke layar*** */
+    printf("=========== TEST TulisIsi ===========\n");
     printf("Menuliskan isi array hasil salinan ke layar...\n");
     TulisIsi(Tcopy);
     printf("\n");
@@ -114,6 +127,7 @@ int main() {
     */
 
     /* ***Menampilkan elemen pada indeks tertentu ke layar*** */
+    printf("=========== TEST GetElmt ===========\n");
     printf("Mendapatkan dan menampilkan elemen pada indeks ke-3 di array : \n");
     PrintKata(GetElmt(T,3));
     printf("\n");
@@ -127,6 +141,7 @@ int main() {
     //Expected output : SUPER SMASH BROS
 
     /* ***Menghapus elemen pada indeks tertentu*** */
+    printf("=========== TEST DeleteAt ===========\n");
     printf("Menghapus elemen pada indeks ke-5 : \n");
     DeleteAt(&T,5);
     TulisIsi(T);
@@ -149,6 +164,7 @@ int main() {
     */
 
     /* ***Mengeset banyaknya elemen efektif pada array*** */
+    printf("=========== TEST SetNeff ===========\n");
     printf("Mengubah banyaknya elemen efektif pada array menjadi 2 dan menuliskan isi array ke layar : \n");
     SetNeff(&T,2);
     TulisIsi(T);

@@ -7,7 +7,7 @@ void DeleteGame (TabGame *T){
     STARTFILE();
     IdxType idx;
     idx = WordToInt(currentWord);
-    if (idx <= 5){
+    if (idx <= 6){
         printf("Game gagal dihapus\n");
     }
     else{

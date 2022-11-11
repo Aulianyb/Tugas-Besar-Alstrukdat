@@ -42,7 +42,6 @@ void RockPaperScissor() {
         STARTFILE();
 
         while (!validRock(currentWord) && !validPaper(currentWord) && !validScissor(currentWord)) {
-            resetCurrWord(currentWord);
             printf("Pilihan tidak valid! masukkan ulang pilihanmu : ");
             STARTFILE();
         }
@@ -98,7 +97,6 @@ void RockPaperScissor() {
                 }
             }
         }
-        resetCurrWord(currentWord);
         Round++;
     }
 
