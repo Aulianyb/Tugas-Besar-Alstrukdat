@@ -4,7 +4,12 @@
 int GenRand(int low, int up, int mod){
 	srand(time(NULL));
 	int X = rand() % mod;
-	return (X % (up - low + 1)) + low;
+
+    int randomVal = (X % (up - low + 1)) + low;
+	if (randomVal < 0) {
+        randomVal *= (-1);
+    }
+    return randomVal;
 }
 /*membuat suatu random generator dalam range tertentu*/
 
