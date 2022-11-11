@@ -8,7 +8,7 @@
 #include "../../random_generator.h"
 #include "../ADT/mesinkata.h"
 
-#define MaxEl 50 /*Sebenarnya bisa lebih dari 15, misalnya loop terus mengakibatkan terus generate data*/
+#define MaxEl 20 /*Sebenarnya bisa lebih dari 15, misalnya loop terus mengakibatkan terus generate data*/
 #define IdxUndef -999 /* indeks tak terdefinisi*/
 
 /* Definisi elemen dan koleksi objek */
