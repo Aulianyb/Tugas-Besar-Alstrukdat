@@ -102,6 +102,7 @@ void RockPaperScissor() {
         Round++;
     }
 
+    printf("========================= END OF MATCH =========================\n");
     printf("Permainan selesai!\n");
     if (playerPoints > botPoints) {
         printf("Player memenangkan permainan!\n");
