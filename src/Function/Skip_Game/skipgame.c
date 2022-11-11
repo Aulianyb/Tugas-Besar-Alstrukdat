@@ -16,6 +16,7 @@ void SkipGame(Queue *game_queue, int n){
     for (int i = 0; i < n; i++) {
         dequeue(game_queue, &val);
     }
+    }
     else {
     Word val;
     dequeue(game_queue, &val);
