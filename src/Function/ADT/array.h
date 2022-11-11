@@ -42,9 +42,11 @@ void MakeEmpty (TabGame *T);
 int NbElmt (TabGame T);
 /* Mengirimkan banyaknya elemen efektif tabel */
 /* Mengirimkan nol jika tabel kosong */
+
 /* *** Daya tampung container *** */
 int MaxNbEl (TabGame T);
 /* Mengirimkan maksimum elemen yang dapat ditampung oleh tabel */
+
 /* *** Selektor INDEKS *** */
 IdxType GetFirstIdx (TabGame T);
 /* Prekondisi : Tabel T tidak kosong */
@@ -95,16 +97,17 @@ void TulisIsi (TabGame T);
 /* Proses : Menuliskan isi tabel dengan traversal */
 /* I.S. T boleh kosong */
 /* F.S. Jika T tidak kosong : indeks dan elemen tabel ditulis berderet ke bawah */
-/* Jika isi tabel [1,2,3] maka akan diprint
-0:1
-1:2
-2:3
+/* Jika isi tabel [Sonic,Mario,Zelda] maka akan diprint
+1. Sonic
+2. Mario
+3. Zelda
 */
-/* Jika T kosong : Hanya menulis "Tabel kosong" */
+/* Jika T kosong : Hanya menulis "Isi kosong" */
 
 void DeleteAt (TabGame *T, IdxType i);
-/* Proses : Menghapus elemen index ke-i pada T */
+/* Proses : Menghapus elemen yang berada di indeks ke-x */
 /* I.S. T tidak kosong */
-/* F.S. Elemen T pada index ke-i dihapus, elemen efektif berkurang 1*/
+/* F.S. Elemen pada indeks ke-x dihapus dari elemen, elemen setelah elemen yang dihapus bergeser ke kiri,
+        elemen efektif berkurang 1 */
 
 #endif
