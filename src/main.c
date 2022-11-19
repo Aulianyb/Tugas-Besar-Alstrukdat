@@ -5,6 +5,7 @@
 #include "Function/ADT/mesinkata.h"
 #include "Function/ADT/array.h"
 #include "Function/ADT/queue.h"
+#include "Function/ADT/stackhistory/stackhistory.h"
 
 #include "Function/Create_Game/Create_Game.h"
 #include "Function/List_Game/List_Game.h"
@@ -15,11 +16,12 @@
 #include "Function/Play_Game/playgame.h"
 // #include "Function/Dinner_Dash/Dinner_Dash.h"
 #include "console.h"
+#include "Function/history/history.h"
 
 int main(){
 	boolean on=false;
-	TabGame T;
-	Queue Q; 
+	TabGame T; Queue Q; StackHistory SH;
+	
 	char command[10]; //ini placeholder
 	printf("========== WELCOME TO ==========\n");
 	printf(" ______ _______ _______ _______\n");
@@ -28,6 +30,7 @@ int main(){
 	printf("|______/__|____|__|_|__|_______|\n\n");
 	printf("================================\n");
 	printf("\n");
+
 	boolean valid=false;
 	while (!valid){
 		printf("=== COMMAND LIST === \n");
@@ -36,17 +39,16 @@ int main(){
 		printf("ENTER COMMAND : ");
 		STARTFILE();
 		if (isWordEqual(currentWord, "START")){
-	    	MakeEmpty(&T);
-    		startGAME(&T);
+	    	MakeEmpty(&T); CreateEmptyHistory(&SH);
+			startGAME(&T, &SH);
 	    	CreateQueue(&Q);
-
 			valid = true;
 			on = true;
 
 		} else if (isWordEqual(GetKataFirst(currentWord),"LOAD")) {
 			char* filename = wordToString(GetKataSecond(currentWord));
-			MakeEmpty(&T);
-			loadGAME(filename, &T);
+			MakeEmpty(&T); CreateEmptyHistory(&SH);
+			loadGAME(filename, &T, &SH);
 			
 			if (T.Neff != (-1)){
 				CreateQueue(&Q);
@@ -63,7 +65,7 @@ int main(){
 		STARTFILE();
 		if (isWordEqual(GetKataFirst(currentWord),"SAVE")){
 			char* filename = wordToString(GetKataSecond(currentWord));
-			saveGAME(filename, T);
+			saveGAME(filename, T, SH);
 		}
 		else if(isWordEqual(currentWord,"CREATE GAME")){
 			CreateGame(&T);
@@ -92,7 +94,7 @@ int main(){
 					printf("Masukkan nama file yang diinginkan: ");
 					STARTFILE();
 					char* filename = wordToString(currentWord);
-					saveGAME(filename, T);
+					saveGAME(filename, T, SH);
 					close = true;
 				} 
 				else if (isWordEqual(currentWord, "n") || isWordEqual(currentWord, "N"))
@@ -113,7 +115,10 @@ int main(){
 			help();
 		}
 		else if(isWordEqual(currentWord, "PLAY GAME")){
-			PlayGame(&Q);
+			PlayGame(&Q, &SH);
+		}
+		else if(isWordEqual(currentWord, "HISTORY")){
+			history(SH);
 		}
 		else{
 			printf("Command tidak dikenali, silahkan masukkan command yang valid.\n");

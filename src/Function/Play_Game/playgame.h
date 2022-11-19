@@ -10,8 +10,9 @@
 #include "../RockPaperScissor/RockPaperScissor.h"
 #include "../ADT/mesinkata.h"
 #include "../../random_generator.h"
+#include "../ADT/stackhistory/stackhistory.h"
 
-void PlayGame(Queue *game_queue);
+void PlayGame(Queue *game_queue, StackHistory *SH);
 
 // I.S. Sembarang
 // F.S. Menampilkan seluruh game yang terdapat di queue dan memainkan game yang pertama muncul di queue

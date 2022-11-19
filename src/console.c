@@ -71,11 +71,11 @@ int wordtoInt(Word word)
   return result;
 }
 
-void startGAME(TabGame *listGame){
-    loadGAME("config", listGame);
+void startGAME(TabGame *listGame, StackHistory *SH){
+    loadGAME("config", listGame, SH);
 }
 
-void loadGAME(char* filename, TabGame *listGame)
+void loadGAME(char* filename, TabGame *listGame, StackHistory *SH)
 {
     char path[100] = "data/";
 	int i = 5;
@@ -109,6 +109,15 @@ void loadGAME(char* filename, TabGame *listGame)
             SetEl(listGame, i, currentWord);
         }
         listGame->Neff = countGame;
+
+        // Membaca history
+        ADVWORDLOAD();
+        int countHistory = wordtoInt(currentWord);
+        for (i = 0; i < countHistory; i++){
+            ADVWORDLOAD();
+            PushHistory(SH, currentWord);
+        }
+
         printf("Loading");
         delay(250); printf(".");
         delay(250); printf(".");
@@ -118,7 +127,7 @@ void loadGAME(char* filename, TabGame *listGame)
 
 }
 
-void saveGAME(char* filename, TabGame listGame){
+void saveGAME(char* filename, TabGame listGame, StackHistory SH){
     char path[100] = "data/";
     int i = 5;
     while (*filename != '\0')
@@ -147,7 +156,16 @@ void saveGAME(char* filename, TabGame listGame){
             fprintf(fptr, "%s\n", title);
         }
         char *title = wordToString(listGame.TI[i]);
-        fprintf(fptr, "%s", title);
+        fprintf(fptr, "%s\n", title);
+
+        fprintf(fptr, "%d\n", Top(SH)+1);
+        for (i = 0; i < Top(SH); i++){
+            char *titlehistory = wordToString(SH.T[i]);
+            fprintf(fptr, "%s\n", titlehistory);
+        }
+        char *titlehistory = wordToString(SH.T[Top(SH)]);
+        fprintf(fptr, "%s", titlehistory);
+
         fclose(fptr);
         printf("Berhasil melakukan save\n");
     }

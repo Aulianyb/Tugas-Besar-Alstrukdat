@@ -4,6 +4,7 @@
 #include "Function/ADT/mesinkata.h"
 #include "Function/ADT/mesinkarakter.h"
 #include "Function/ADT/array.h"
+#include "Function/ADT/stackhistory/stackhistory.h"
 #include "random_generator.h"
 #include <stdio.h>
 #include <stdlib.h>
@@ -34,13 +35,13 @@ char* wordToString(Word word);
 int wordtoInt(Word word);
 // Melakukan convert dari ADT Word ke integer
 
-void loadGAME(char* filename, TabGame *listGame);
+void loadGAME(char* filename, TabGame *listGame, StackHistory *SH);
 // Melakukan pembacaan file
 
-void startGAME(TabGame *listGame);
+void startGAME(TabGame *listGame, StackHistory *SH);
 // Melakukan pembacaan file config
 
-void saveGAME(char* filename, TabGame listGame);
+void saveGAME(char* filename, TabGame listGame, StackHistory SH);
 // Melakukan penyimpanan pada file
 
 #endif
