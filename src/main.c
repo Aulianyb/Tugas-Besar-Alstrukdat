@@ -18,7 +18,8 @@
 #include "console.h"
 #include "Function/history/history.h"
 
-int main(){
+int main()
+{
 	boolean on=false;
 	TabGame T; Queue Q; StackHistory SH;
 	
