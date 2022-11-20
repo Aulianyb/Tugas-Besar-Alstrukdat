@@ -3,6 +3,6 @@
 
 #include "../ADT/stackhistory/stackhistory.h"
 
-void history(StackHistory SH);
+void history(StackHistory SH, int n);
 
 #endif

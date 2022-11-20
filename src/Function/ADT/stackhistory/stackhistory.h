@@ -56,7 +56,7 @@ void PopHistory(StackHistory* S, Word* X);
 /* I.S. S  tidak mungkin kosong */
 /* F.S. X adalah nilai elemen TOP yang lama, TOP berkurang 1 */
 
-void PrintStackHistory(StackHistory S);
+void PrintStackHistory(StackHistory S, int n);
 
 void SwapStackHistory(StackHistory S, StackHistory *Sout);
 

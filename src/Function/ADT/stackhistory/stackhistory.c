@@ -27,9 +27,10 @@ void PopHistory(StackHistory *S, Word* X){
 }
 
 /* ************ Menulis seluruh elemen StackHistory ************ */
-void PrintStackHistory(StackHistory S){
+void PrintStackHistory(StackHistory S, int n){
     int j = 0;
-    for (int i = Top(S); i > -1; i--){
+    int count = Top(S) - n;
+    for (int i = Top(S); i > count; i--){
         printf("%d. ", j+1);
         PrintKata(S.T[i]);
         printf("\n");

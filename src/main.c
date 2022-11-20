@@ -17,6 +17,7 @@
 // #include "Function/Dinner_Dash/Dinner_Dash.h"
 #include "console.h"
 #include "Function/history/history.h"
+#include "Function/resethistory/resethistory.h"
 
 int main()
 {
@@ -81,7 +82,7 @@ int main()
 			QueueGame(&Q, T); //PLACEHOLDER, MASIH KOSONG
 		}
 		else if(((isWordEqual(GetKataFirst(currentWord), "SKIP")) && (isWordEqual(GetKataSecond(currentWord), "GAME")))){
-			int n = wordtoInt(GetKataThird(currentWord));
+			int n = WordToInt(GetKataThird(currentWord));
 			SkipGame(&Q,n);
 		}
 		else if(isWordEqual(currentWord, "QUIT")){
@@ -118,8 +119,12 @@ int main()
 		else if(isWordEqual(currentWord, "PLAY GAME")){
 			PlayGame(&Q, &SH);
 		}
-		else if(isWordEqual(currentWord, "HISTORY")){
-			history(SH);
+		else if(isWordEqual(GetKataFirst(currentWord), "HISTORY")){
+			int n = WordToInt(GetKataSecond(currentWord));
+			history(SH, n);
+		}
+		else if(isWordEqual(GetKataFirst(currentWord), "RESET") && isWordEqual(GetKataSecond(currentWord), "HISTORY")){
+			RESETHISTORY(&SH);
 		}
 		else{
 			printf("Command tidak dikenali, silahkan masukkan command yang valid.\n");
