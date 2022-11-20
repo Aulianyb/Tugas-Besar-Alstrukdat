@@ -4,16 +4,30 @@
 
 void printTiang(Stack S1, Stack S2, Stack S3){
     for (int i=4;i>=0;i--){
-        if (Top(S1) == Nil){
+        printf("%d",Top(S1));
+        if (i > Top(S1)){
             printf("    |    ");
         }
         else{
-            printf("%d",n(S1.T[i]));
             PrintKata(graph(S1.T[i]));
         }
         
-        // PrintKata(graph(S2.T[i]));
-        // PrintKata(graph(S3.T[i]));
+        printf("%d",Top(S2));
+        if (i > Top(S2)){
+            printf("    |    ");
+        }
+        else{
+            PrintKata(graph(S2.T[i]));
+        }
+
+        printf("%d",Top(S3));
+        if (i > Top(S3)){
+            printf("    |    ");
+        }
+        else{
+            PrintKata(graph(S3.T[i]));
+        }
+        
         printf("\n");
     }
 }
@@ -67,6 +81,8 @@ int main(){
     printf("BEFORE : \n");
     printTiang(Tiang1, Tiang2, Tiang3);
     MoveTower(&Tiang1, &Tiang2);
+    MoveTower(&Tiang1, &Tiang3);
+    MoveTower(&Tiang1, &Tiang3);
     printf("AFTER\n");
     printTiang(Tiang1, Tiang2, Tiang3);
 
