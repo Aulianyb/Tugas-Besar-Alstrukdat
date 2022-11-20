@@ -45,17 +45,19 @@ boolean IsFullHistory(StackHistory S);
 /* Mengirim true jika tabel penampung nilai elemen StackHistory penuh */
 
 /* ************ Menambahkan sebuah elemen ke StackHistory ************ */
-void PushHistory(StackHistory * S, Word X);
+void PushHistory(StackHistory* S, Word X);
 /* Menambahkan X sebagai elemen StackHistory S. */
 /* I.S. S mungkin kosong, tabel penampung elemen StackHistory TIDAK penuh */
 /* F.S. X menjadi TOP yang baru,TOP bertambah 1 */
 
 /* ************ Menghapus sebuah elemen StackHistory ************ */
-void PopHistory(StackHistory * S, Word* X);
+void PopHistory(StackHistory* S, Word* X);
 /* Menghapus X dari StackHistory S. */
 /* I.S. S  tidak mungkin kosong */
 /* F.S. X adalah nilai elemen TOP yang lama, TOP berkurang 1 */
 
 void PrintStackHistory(StackHistory S);
+
+void SwapStackHistory(StackHistory S, StackHistory *Sout);
 
 #endif

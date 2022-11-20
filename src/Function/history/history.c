@@ -6,7 +6,7 @@
 void history(StackHistory SH)
 {
     printf("Berikut adalah daftar Game yang telah dimainkan: ");
-    printf("\n");
-    printf("\n");
+    printf("\n\n");
     PrintStackHistory(SH);
+    printf("\n");
 }

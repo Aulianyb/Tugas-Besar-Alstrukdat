@@ -28,9 +28,21 @@ void PopHistory(StackHistory *S, Word* X){
 
 /* ************ Menulis seluruh elemen StackHistory ************ */
 void PrintStackHistory(StackHistory S){
-    for (int i = 0; i < Top(S)+1; i++){
-        printf("%d. ", i+1);
+    int j = 0;
+    for (int i = Top(S); i > -1; i--){
+        printf("%d. ", j+1);
         PrintKata(S.T[i]);
         printf("\n");
+        j++;
+    }
+}
+
+/* ************ Melakukan swap elemen pada stack ************ */
+void SwapStackHistory(StackHistory S, StackHistory *Sout){
+    Word val;
+    int count = Top(S);
+    for (int i = 0; i < count+1; i++){
+        PopHistory(&S, &val); 
+        PushHistory(Sout, val);
     }
 }

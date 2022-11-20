@@ -111,18 +111,21 @@ void loadGAME(char* filename, TabGame *listGame, StackHistory *SH)
         listGame->Neff = countGame;
 
         // Membaca history
+        StackHistory temp; CreateEmptyHistory(&temp);
         ADVWORDLOAD();
         int countHistory = wordtoInt(currentWord);
         for (i = 0; i < countHistory; i++){
             ADVWORDLOAD();
-            PushHistory(SH, currentWord);
+            PushHistory(&temp, currentWord);
         }
+
+        SwapStackHistory(temp, SH);
 
         printf("Loading");
         delay(250); printf(".");
         delay(250); printf(".");
         delay(250); printf(".\n");
-        printf("File konfigurasi BNMO berhasil dibaca. GLHF!!\n");      
+        printf("File konfigurasi BNMO berhasil dibaca. GLHF!!\n\n");      
     }
 
 }
@@ -158,12 +161,14 @@ void saveGAME(char* filename, TabGame listGame, StackHistory SH){
         char *title = wordToString(listGame.TI[i]);
         fprintf(fptr, "%s\n", title);
 
-        fprintf(fptr, "%d\n", Top(SH)+1);
-        for (i = 0; i < Top(SH); i++){
-            char *titlehistory = wordToString(SH.T[i]);
+        StackHistory temp; CreateEmptyHistory(&temp);
+        SwapStackHistory(SH, &temp);
+        fprintf(fptr, "%d\n", Top(temp)+1);
+        for (i = 0; i < Top(temp); i++){
+            char *titlehistory = wordToString(temp.T[i]);
             fprintf(fptr, "%s\n", titlehistory);
         }
-        char *titlehistory = wordToString(SH.T[Top(SH)]);
+        char *titlehistory = wordToString(temp.T[Top(temp)]);
         fprintf(fptr, "%s", titlehistory);
 
         fclose(fptr);
