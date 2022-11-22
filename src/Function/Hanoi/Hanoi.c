@@ -77,6 +77,7 @@ int main(){
     //input
     Word Source, Dest; 
     infotype temp;
+    int turn=0, score=10;
     Stack *SourceTiang, *DestTiang;
     Stack Tiang1, Tiang2, Tiang3; 
     boolean play=true;
@@ -97,18 +98,15 @@ int main(){
     }
 
     //ISI TIANG 1
-    // for (int i=5;i>=1;i--){
-    //     Push(&Tiang1, makeInfo(i));
-    //     Push(&Tiang2, makeInfo(i));
-    //     Push(&Tiang3, makeInfo(i));
-
-    // }
+    for (int i=5;i>=1;i--){
+        Push(&Tiang1, makeInfo(i));
+    }
 
     //DEBUGGING MODE
-    for (int i=5;i>=2;i--){
-        Push(&Tiang2, makeInfo(i));
-    }
-    Push(&Tiang1, makeInfo(1));
+    // for (int i=5;i>=2;i--){
+    //     Push(&Tiang2, makeInfo(i));
+    // }
+    // Push(&Tiang1, makeInfo(1));
 
 
     while (play){
@@ -117,6 +115,7 @@ int main(){
         printf("+-----------------------------------------------+\n");
         printf("|       1       |       2       |       3       |\n");
         printf("+-----------------------------------------------+\n");
+        printf("TURN : %d\n", turn);
         while (!valid){
             printf("TIANG ASAL : ");
             STARTFILE();
@@ -126,6 +125,9 @@ int main(){
             Dest = currentWord;
             if ((1 > WordToInt(Source)) || (WordToInt(Source) > 3) || (1 > WordToInt(Dest)) || (WordToInt(Dest) > 3)){
                 printf("-- INPUT TIDAK VALID! MASUKKAN 1, 2 ATAU 3! --\n");
+            }
+            else if(WordToInt(Source) == WordToInt(Dest)){
+                printf("-- TIANG ASAL DAN TIANG TUJUAN TIDAK BOLEH SAMA! --");
             }
             else{
                 if (IsEmpty(*AssignTiang(Source, &Tiang1, &Tiang2, &Tiang3))){
@@ -141,14 +143,19 @@ int main(){
                 }
             }
         }
+
+        if ((turn > 31) && (turn % 3 == 0) && (score != 0)){
+            score--;
+        }
         
         MoveTower(AssignTiang(Source, &Tiang1, &Tiang2, &Tiang3), AssignTiang(Dest, &Tiang1, &Tiang2, &Tiang3));
+        turn++;
         if (isTowerOrdered(Tiang2) || isTowerOrdered(Tiang3)){
             play=false;
         }
         printf("+-----------------------------------------------+\n");
     }
     printf("GAME OVER!\n");
-    printTiang(Tiang1, Tiang2, Tiang3);
+    printf("SCORE : %d\n", score);
     return 0;
 }
