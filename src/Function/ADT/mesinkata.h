@@ -95,4 +95,8 @@ int CommandInt(Word W);
 
 Word strToWord(char* string);
 //Mengubah string menjadi Word
+
+boolean isNumber(Word W);
+//Cek apakah input berupa angka atau bukan
+
 #endif

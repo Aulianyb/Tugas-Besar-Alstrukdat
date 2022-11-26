@@ -274,3 +274,14 @@ Word strToWord(char* string) {
 }
 //Mengubah string menjadi Word
 //PRINT KATA
+
+boolean isNumber(Word W){
+    boolean val=true;
+    for (int i=0; i<W.Length; i++){
+        if ((W.TabWord[i] < 48) || (W.TabWord[i] > 57)){
+            val=false;
+        }
+    }
+    return val;
+}
+

@@ -9,7 +9,7 @@
 #include "mesinkata.h"
 
 #define Nil -1
-#define MaxEl 6
+#define MaxEl 100
 /* Nil adalah stack dengan elemen kosong . */
 
 typedef struct{
@@ -62,7 +62,7 @@ void Pop(Stack * S, infotype* X);
 /* I.S. S  tidak mungkin kosong */
 /* F.S. X adalah nilai elemen TOP yang lama, TOP berkurang 1 */
 
-infotype makeInfo(int n);
+void isiTiang(Stack *S, int n);
 //MEMBUAT ELEMEN PENGISI STACK
 
 

@@ -2,12 +2,21 @@
 #include "../ADT/mesinkata.h"
 #include "../ADT/stack.h"
 
-void printTiang(Stack S1, Stack S2, Stack S3){
-    for (int i=4;i>=0;i--){
-        printf("   ");
-
+void printTiang(Stack S1, Stack S2, Stack S3, int n){
+    for (int i=n-1;i>=0;i--){
+        printf("  ");
         if (i > Top(S1)){
-            printf("    |    ");
+            int j=0;
+            while (j<(2*n-1)/2){
+                printf(" ");
+                j++;    
+            }
+            printf("|");
+            j++;
+            while (j<2*n-1){
+                printf(" ");
+                j++;    
+            }
         }
         else{
             PrintKata(graph(S1.T[i]));
@@ -16,7 +25,17 @@ void printTiang(Stack S1, Stack S2, Stack S3){
         printf("       ");
         
         if (i > Top(S2)){
-            printf("    |    ");
+            int j=0;
+            while (j<(2*n-1)/2){
+                printf(" ");
+                j++;    
+            }
+            printf("|");
+            j++;
+            while (j<2*n-1){
+                printf(" ");
+                j++;    
+            }
         }
         else{
             PrintKata(graph(S2.T[i]));
@@ -25,7 +44,17 @@ void printTiang(Stack S1, Stack S2, Stack S3){
         printf("       ");
 
         if (i > Top(S3)){
-            printf("    |    ");
+            int j=0;
+            while (j<(2*n-1)/2){
+                printf(" ");
+                j++;    
+            }
+            printf("|");
+            j++;
+            while (j<2*n-1){
+                printf(" ");
+                j++;    
+            }
         }
         else{
             PrintKata(graph(S3.T[i]));
@@ -50,6 +79,32 @@ boolean isTowerOrdered(Stack S){
     return ordered;
 }
 
+void printDivider(int n){
+    printf("+");
+    for (int i=0;i<((2*n-1)*3)+20;i++){
+        printf("-");
+    }
+    printf("+");
+    printf("\n");
+}
+
+void printLabel(int n){
+    printf("|");
+    int j=0;
+    while (j<(2*n-1)/2){
+        printf(" ");
+        j++;    
+    }
+    printf("A");
+    j++;
+    while (j<2*n-1){
+        printf(" ");
+        j++;    
+    }
+    printf("|");
+    printf("\n");
+}
+
 /* MOVE ELEMEN DARI S1 KE S2 */
 void MoveTower(Stack *S1, Stack *S2){
     infotype temp;
@@ -58,8 +113,20 @@ void MoveTower(Stack *S1, Stack *S2){
 }
 
 int main(){
+    int n;
+    printf("Sebelum mulai, tentukan jumlah disk ^_^\n");
+    printf("Tentukan jumlah disk : ");
+    STARTFILE();
+    
+    while (!isNumber(currentWord)){
+        printf("\n-- INPUT INVALID, HARUS BERUPA ANGKA --\n");
+        printf("Tentukan jumlah disk : ");
+        STARTFILE();
+    }
+    n = WordToInt(currentWord);
+
     printf("\n\n");
-    printf("+-----------------------------------------------+\n");
+    printDivider(n);
     printf("         _____ _____      _____ ___ \n");
     printf("        |_   _/ _ \\ \\    / / __| _ \\ \n");
     printf("          | || (_) \\ \\/\\/ /| _||   / \n");
@@ -71,9 +138,9 @@ int main(){
     printf("         | __ |/ _ \\| .` | (_) | | \n");
     printf("         |_||_/_/ \\_\\_|\\_|\\___/___| \n\n");
 
-    printf("+-----------------------------------------------+\n");
+    printDivider(n);
     printf("\n");
-    
+
     //input
     Word Source, Dest; 
     infotype temp;
@@ -85,36 +152,31 @@ int main(){
     CreateEmpty(&Tiang2);
     CreateEmpty(&Tiang3);
 
-    Stack *AssignTiang(Word input, Stack *S1, Stack *S2, Stack *S3){
+    Stack *AssignTiang(Word input){
     if ((WordToInt(input)) == 1){
-            return S1;
+            return &Tiang1;
         }
         else if((WordToInt(input)) == 2){
-            return S2;
+            return &Tiang2;
         }
         else if((WordToInt(input)) == 3){
-            return S3;
+            return &Tiang3;
         }
     }
 
-    //ISI TIANG 1
-    for (int i=5;i>=1;i--){
-        Push(&Tiang1, makeInfo(i));
-    }
-
-    //DEBUGGING MODE
-    // for (int i=5;i>=2;i--){
-    //     Push(&Tiang2, makeInfo(i));
-    // }
-    // Push(&Tiang1, makeInfo(1));
+    //ISI TIANG
+    isiTiang(&Tiang1, n);
+    isiTiang(&Tiang2, n);
+    isiTiang(&Tiang3, n);
 
 
+    printf("\n");
     while (play){
         boolean valid=false;
-        printTiang(Tiang1, Tiang2, Tiang3);
-        printf("+-----------------------------------------------+\n");
-        printf("|       1       |       2       |       3       |\n");
-        printf("+-----------------------------------------------+\n");
+        printTiang(Tiang1, Tiang2, Tiang3, n);
+        printDivider(n);
+        printLabel(n);
+        printDivider(n);
         printf("TURN : %d\n", turn);
         while (!valid){
             printf("TIANG ASAL : ");
@@ -130,11 +192,11 @@ int main(){
                 printf("-- TIANG ASAL DAN TIANG TUJUAN TIDAK BOLEH SAMA! --");
             }
             else{
-                if (IsEmpty(*AssignTiang(Source, &Tiang1, &Tiang2, &Tiang3))){
+                if (IsEmpty(*AssignTiang(Source))){
                     printf("-- INPUT TIDAK VALID! TIANG ASAL YANG DIPILIH KOSONG! --\n");
                 }
                 else{
-                    if (!(IsEmpty(*AssignTiang(Dest, &Tiang1, &Tiang2, &Tiang3)))&&(n(InfoTop(*AssignTiang(Source, &Tiang1, &Tiang2, &Tiang3))) > n(InfoTop(*AssignTiang(Dest, &Tiang1, &Tiang2, &Tiang3))))){
+                    if (!(IsEmpty(*AssignTiang(Dest)))&&(n(InfoTop(*AssignTiang(Source))) > n(InfoTop(*AssignTiang(Dest))))){
                         printf("-- DISK YANG DIPINDAHKAN HARUS LEBIH KECIL --\n");
                     }
                     else{
@@ -148,12 +210,12 @@ int main(){
             score--;
         }
         
-        MoveTower(AssignTiang(Source, &Tiang1, &Tiang2, &Tiang3), AssignTiang(Dest, &Tiang1, &Tiang2, &Tiang3));
+        MoveTower(AssignTiang(Source), AssignTiang(Dest));
         turn++;
-        if (isTowerOrdered(Tiang2) || isTowerOrdered(Tiang3)){
+        if (isTowerOrdered(Tiang3)){
             play=false;
         }
-        printf("+-----------------------------------------------+\n");
+        printDivider(n);
     }
     printf("GAME OVER!\n");
     printf("SCORE : %d\n", score);

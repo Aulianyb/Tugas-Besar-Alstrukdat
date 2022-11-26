@@ -45,27 +45,47 @@ void Pop(Stack * S, infotype* X){
 /* I.S. S  tidak mungkin kosong */
 /* F.S. X adalah nilai elemen TOP yang lama, TOP berkurang 1 */
 
-infotype makeInfo(int n){	
-	infotype I;
-	if (n == 1){
-		n(I) = 1;
-		graph(I) = strToWord("    *    ");
+void isiTiang(Stack *S, int n){
+	Word val;
+	infotype Info;
+	for (int i=n;i>=1;i--){
+		val.Length = n*2-1;
+		Info.n = i;
+		int half = ((2*n-1)-(2*i-1))/2;
+		int j=0;
+		while(j<half){
+			val.TabWord[j] = ' ';
+			j++;
+		}
+		while (j<2*n-1-half){
+			val.TabWord[j] = '*';
+			j++;
+		}
+		while (j<n*2-1){
+			val.TabWord[j] = ' ';
+			j++;
+		}
+		Info.graph = val;
+		Push(S, Info);
 	}
-	else if (n == 2){
-		n(I) = 2;
-		graph(I) = strToWord("   ***   ");
-	}
-	else if (n == 3){
-		n(I) = 3;
-		graph(I) = strToWord("  *****  ");
-	}
-	else if (n == 4){
-		n(I) = 4;
-		graph(I) = strToWord(" ******* ");
-	}
-	else if (n == 5){
-		n(I) = 5;
-		graph(I) = strToWord("*********");
-	}
-	return I; 
+	// if (n == 1){
+	// 	n(I) = 1;
+	// 	graph(I) = strToWord("    *    ");
+	// }
+	// else if (n == 2){
+	// 	n(I) = 2;
+	// 	graph(I) = strToWord("   ***   ");
+	// }
+	// else if (n == 3){
+	// 	n(I) = 3;
+	// 	graph(I) = strToWord("  *****  ");
+	// }
+	// else if (n == 4){
+	// 	n(I) = 4;
+	// 	graph(I) = strToWord(" ******* ");
+	// }
+	// else if (n == 5){
+	// 	n(I) = 5;
+	// 	graph(I) = strToWord("*********");
+	// } 
 }
