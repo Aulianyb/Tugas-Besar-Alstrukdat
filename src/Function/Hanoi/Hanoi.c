@@ -4,16 +4,17 @@
 
 void printTiang(Stack S1, Stack S2, Stack S3, int n){
     for (int i=n-1;i>=0;i--){
-        printf("  ");
+        printf(" ");
         if (i > Top(S1)){
             int j=0;
             while (j<(2*n-1)/2){
                 printf(" ");
+                // printf("%d", n);
                 j++;    
             }
             printf("|");
             j++;
-            while (j<2*n-1){
+            while (j<(2*n-1)){
                 printf(" ");
                 j++;    
             }
@@ -64,9 +65,9 @@ void printTiang(Stack S1, Stack S2, Stack S3, int n){
     }
 }
 
-boolean isTowerOrdered(Stack S){
+boolean isTowerOrdered(Stack S, int n){
     boolean ordered=true;
-    if (Top(S) == 4){
+    if (Top(S) == n-1){
         for (int i=0;i<Top(S);i++){
             if(n(S.T[i]) < n(S.T[i+1])){
                 ordered = false;
@@ -91,15 +92,55 @@ void printDivider(int n){
 void printLabel(int n){
     printf("|");
     int j=0;
-    while (j<(2*n-1)/2){
+    int len=0;
+    while (j<((2*n-1)/2)){
         printf(" ");
-        j++;    
+        j++;  
+        len++;  
     }
     printf("A");
     j++;
-    while (j<2*n-1){
+    len++;  
+    while (j<(2*n-1)){
+        printf(" ");
+        j++;
+        len++;  
+    }
+    j=0;  
+    printf("   |   ");
+    len+=8;  
+    while (j<((2*n-1)/2)){
         printf(" ");
         j++;    
+        len++;  
+    }
+    printf("B");
+    j++;
+    len++;  
+    while (j<(2*n-1)){
+        printf(" ");
+        j++;
+        len++;  
+    }
+    j=0;
+    printf("   |   ");
+    len+=8;  
+    while (j<((2*n-1)/2)){
+        printf(" ");
+        j++;    
+        len++;  
+    }
+    printf("C");
+    j++;
+    len++;  
+    while (j<(2*n-1)){
+        printf(" ");
+        j++;
+        len++;  
+    }
+    while (len<((2*n-1)*3)+22){
+        printf(" ");
+        len++; 
     }
     printf("|");
     printf("\n");
@@ -126,19 +167,15 @@ int main(){
     n = WordToInt(currentWord);
 
     printf("\n\n");
-    printDivider(n);
-    printf("         _____ _____      _____ ___ \n");
-    printf("        |_   _/ _ \\ \\    / / __| _ \\ \n");
-    printf("          | || (_) \\ \\/\\/ /| _||   / \n");
-    printf("          |_| \\___/ \\_/\\_/ |___|_|_\\ \n");
-    printf("                / _ \\| __|           \n");
-    printf("               | (_) | _|            \n");
-    printf("          _  _  \\___/|_|_  ___ ___   \n");
-    printf("         | || | /_\\ | \\| |/ _ \\_ _| \n");
-    printf("         | __ |/ _ \\| .` | (_) | | \n");
-    printf("         |_||_/_/ \\_\\_|\\_|\\___/___| \n\n");
-
-    printDivider(n);
+    printDivider(15);
+    printf(" _______  _______  _     _  _______  ______     _______  _______   __   __  _______  __    _  _______  ___  \n");
+    printf("|       ||       || | _ | ||       ||    _ |   |       ||       | |  | |  ||   _   ||  |  | ||       ||   | \n");
+    printf("|_     _||   _   || || || ||    ___||   | ||   |   _   ||    ___| |  |_|  ||  |_|  ||   |_| ||   _   ||   | \n");
+    printf("  |   |  |  | |  ||       ||   |___ |   |_||_  |  | |  ||   |___  |       ||       ||       ||  | |  ||   | \n");
+    printf("  |   |  |  |_|  ||       ||    ___||    __  | |  |_|  ||    ___| |       ||       ||  _    ||  |_|  ||   | \n");
+    printf("  |   |  |       ||   _   ||   |___ |   |  | | |       ||   |     |   _   ||   _   || | |   ||       ||   | \n");
+    printf("  |___|  |_______||__| |__||_______||___|  |_| |_______||___|     |__| |__||__| |__||_|  |__||_______||___| \n\n");
+    printDivider(15);
     printf("\n");
 
     //input
@@ -153,22 +190,21 @@ int main(){
     CreateEmpty(&Tiang3);
 
     Stack *AssignTiang(Word input){
-    if ((WordToInt(input)) == 1){
+    if (isWordEqual(input, "A")){
             return &Tiang1;
         }
-        else if((WordToInt(input)) == 2){
+        else if(isWordEqual(input, "B")){
             return &Tiang2;
         }
-        else if((WordToInt(input)) == 3){
+        else if(isWordEqual(input, "C")){
             return &Tiang3;
         }
     }
 
+    infotype val;
+
     //ISI TIANG
     isiTiang(&Tiang1, n);
-    isiTiang(&Tiang2, n);
-    isiTiang(&Tiang3, n);
-
 
     printf("\n");
     while (play){
@@ -185,10 +221,12 @@ int main(){
             printf("TIANG TUJUAN : ");
             STARTFILE();
             Dest = currentWord;
-            if ((1 > WordToInt(Source)) || (WordToInt(Source) > 3) || (1 > WordToInt(Dest)) || (WordToInt(Dest) > 3)){
-                printf("-- INPUT TIDAK VALID! MASUKKAN 1, 2 ATAU 3! --\n");
+            boolean Source_valid = isWordEqual(Source, "A") || isWordEqual(Source, "B") || isWordEqual(Source, "C");
+            boolean Dest_valid = isWordEqual(Dest, "A") || isWordEqual(Dest, "B") || isWordEqual(Dest, "C");
+            if (!(Source_valid && Dest_valid)){
+                printf("-- INPUT TIDAK VALID! MASUKKAN A, B ATAU C! --\n");
             }
-            else if(WordToInt(Source) == WordToInt(Dest)){
+            else if(isTwoWordEqual(Dest, Source)){
                 printf("-- TIANG ASAL DAN TIANG TUJUAN TIDAK BOLEH SAMA! --");
             }
             else{
@@ -212,10 +250,11 @@ int main(){
         
         MoveTower(AssignTiang(Source), AssignTiang(Dest));
         turn++;
-        if (isTowerOrdered(Tiang3)){
+        if (isTowerOrdered(Tiang3, n)){
             play=false;
         }
         printDivider(n);
+        printf("\n");
     }
     printf("GAME OVER!\n");
     printf("SCORE : %d\n", score);
