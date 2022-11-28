@@ -2,6 +2,13 @@
 #include "../ADT/mesinkata.h"
 #include "../ADT/stack.h"
 
+int power(int n1, int n2){
+    for (int i=0;i<n2;i++){
+        n1 *= n1;
+    }
+    return n1;
+}
+
 void printTiang(Stack S1, Stack S2, Stack S3, int n){
     for (int i=n-1;i>=0;i--){
         printf(" ");
@@ -181,7 +188,7 @@ int main(){
     //input
     Word Source, Dest; 
     infotype temp;
-    int turn=0, score=10;
+    int turn=0, score=10, min_steps = power(2, n) - 1;
     Stack *SourceTiang, *DestTiang;
     Stack Tiang1, Tiang2, Tiang3; 
     boolean play=true;
@@ -244,7 +251,7 @@ int main(){
             }
         }
 
-        if ((turn > 31) && (turn % 3 == 0) && (score != 0)){
+        if ((turn > min_steps) && (turn % (n/2) == 0) && (score != 0)){
             score--;
         }
         
