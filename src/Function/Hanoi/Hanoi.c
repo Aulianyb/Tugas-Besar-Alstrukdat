@@ -1,14 +1,5 @@
-#include <stdio.h>
-#include "../ADT/mesinkata.h"
-#include "../ADT/stack.h"
-
-int power(int n1, int n2){
-    for (int i=0;i<n2;i++){
-        n1 *= n1;
-    }
-    return n1;
-}
-
+#include "Hanoi.h"
+//FUNGSI PRINT TIANG
 void printTiang(Stack S1, Stack S2, Stack S3, int n){
     for (int i=n-1;i>=0;i--){
         printf(" ");
@@ -71,7 +62,7 @@ void printTiang(Stack S1, Stack S2, Stack S3, int n){
         printf("\n");
     }
 }
-
+//FUNGSI UNTUK CEK APAKAH TOWERNYA SUDAH BERURUTAN ATAU BELUM
 boolean isTowerOrdered(Stack S, int n){
     boolean ordered=true;
     if (Top(S) == n-1){
@@ -86,7 +77,7 @@ boolean isTowerOrdered(Stack S, int n){
     }
     return ordered;
 }
-
+//FUNGSI UNTUK PRINT DIVIDER
 void printDivider(int n){
     printf("+");
     for (int i=0;i<((2*n-1)*3)+20;i++){
@@ -95,7 +86,7 @@ void printDivider(int n){
     printf("+");
     printf("\n");
 }
-
+//FUNGSI UNTUK PRINT LABEL
 void printLabel(int n){
     printf("|");
     int j=0;
@@ -159,8 +150,8 @@ void MoveTower(Stack *S1, Stack *S2){
     Pop(S1, &temp);
     Push(S2, temp);
 }
-
-int main(){
+//MAIN GAME
+int Hanoi(){
     int n;
     printf("Sebelum mulai, tentukan jumlah disk ^_^\n");
     printf("Tentukan jumlah disk : ");
@@ -174,21 +165,18 @@ int main(){
     n = WordToInt(currentWord);
 
     printf("\n\n");
-    printDivider(15);
-    printf(" _______  _______  _     _  _______  ______     _______  _______   __   __  _______  __    _  _______  ___  \n");
-    printf("|       ||       || | _ | ||       ||    _ |   |       ||       | |  | |  ||   _   ||  |  | ||       ||   | \n");
-    printf("|_     _||   _   || || || ||    ___||   | ||   |   _   ||    ___| |  |_|  ||  |_|  ||   |_| ||   _   ||   | \n");
-    printf("  |   |  |  | |  ||       ||   |___ |   |_||_  |  | |  ||   |___  |       ||       ||       ||  | |  ||   | \n");
-    printf("  |   |  |  |_|  ||       ||    ___||    __  | |  |_|  ||    ___| |       ||       ||  _    ||  |_|  ||   | \n");
-    printf("  |   |  |       ||   _   ||   |___ |   |  | | |       ||   |     |   _   ||   _   || | |   ||       ||   | \n");
-    printf("  |___|  |_______||__| |__||_______||___|  |_| |_______||___|     |__| |__||__| |__||_|  |__||_______||___| \n\n");
-    printDivider(15);
+    printDivider(12);
+    printf("|  _____  _____  _ _ _  _____  _____   _____  _____   _____  _____  _____  _____  _____   |\n");
+    printf("| |_   _||     || | | ||   __|| __  | |     ||   __| |  |  ||  _  ||   | ||     ||     |  |\n");
+    printf("|   | |  |  |  || | | ||   __||    -| |  |  ||   __| |     ||     || | | ||  |  ||-   -|  |\n");
+    printf("|   |_|  |_____||_____||_____||__|__| |_____||__|    |__|__||__|__||_|___||_____||_____|  |\n|                                                                                         |\n");
+    printDivider(12);
     printf("\n");
 
     //input
     Word Source, Dest; 
     infotype temp;
-    int turn=0, score=10, min_steps = power(2, n) - 1;
+    int turn=0, score=10, min_steps = pow(2, n) - 1;
     Stack *SourceTiang, *DestTiang;
     Stack Tiang1, Tiang2, Tiang3; 
     boolean play=true;
@@ -263,7 +251,10 @@ int main(){
         printDivider(n);
         printf("\n");
     }
-    printf("GAME OVER!\n");
+    printf("  _____ _____ _____ _____    _____ _____ _____ _____ \n");
+	printf(" |   __|  _  |     |   __|  |     |  |  |   __| __  |\n");
+	printf(" |  |  |     | | | |   __|  |  |  |  |  |   __|    -|\n");
+	printf(" |_____|__|__|_|_|_|_____|  |_____|\\___/|_____|__|__|\n\n");
     printf("SCORE : %d\n", score);
     return 0;
 }
