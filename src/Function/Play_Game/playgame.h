@@ -12,7 +12,7 @@
 #include "../../random_generator.h"
 #include "../ADT/stackhistory/stackhistory.h"
 
-void PlayGame(Queue *game_queue, StackHistory *SH);
+void PlayGame(Queue *game_queue, StackHistory *SH, TabScore *TS);
 
 // I.S. Sembarang
 // F.S. Menampilkan seluruh game yang terdapat di queue dan memainkan game yang pertama muncul di queue

@@ -1,15 +1,16 @@
 #include <stdio.h>
 #include "playgame.h"
 #include "../ADT/stackhistory/stackhistory.h"
+#include "../ADT/arrayofmap/arrayofmap.h"
 
-void PlayGame(Queue *game_queue, StackHistory *SH){
+void PlayGame(Queue *game_queue, StackHistory *SH, TabScore *TS){
     printf("Berikut ini adalah daftar Game-mu : \n");
     PrintQueueGame(*game_queue);
     if (isEmpty(*game_queue)){
         printf("Belum ada game yang di queue!\n");
     }
     else{
-        Word val;
+        Word val; int score;
         dequeue(game_queue, &val);
         if (isWordEqual(val, "Diner Dash"))
         {
@@ -18,6 +19,10 @@ void PlayGame(Queue *game_queue, StackHistory *SH){
             printf("....\n");
             // PLay Diner DASH
             Dinner_Dash();
+            // printf("\nSkor akhir: %d", score);
+            // printf("\nMasukkan nama: ");
+            // STARTFILE();
+            // InsertMap(&TS->TI[1], currentWord, score);
         }
         else if (isWordEqual(val, "RNG"))
         {
@@ -26,6 +31,10 @@ void PlayGame(Queue *game_queue, StackHistory *SH){
             printf("....\n");
             // Play RNG
             RNG();
+            // printf("\nSkor akhir: %d", score);
+            // printf("\nMasukkan nama: ");
+            // STARTFILE();
+            // InsertMap(&TS->TI[0], currentWord, score);
         }
         else if (isWordEqual(val, "ROCK PAPER SCISSOR"))
         {
@@ -33,7 +42,11 @@ void PlayGame(Queue *game_queue, StackHistory *SH){
             PrintKata(val);
             printf("....\n");
             // Play ROCK PAPER SCISSOR
-            RockPaperScissor();
+            RockPaperScissor(score);
+            // printf("\nSkor akhir: %d", score);
+            // printf("\nMasukkan nama: ");
+            // STARTFILE();
+            // InsertMap(&TS->TI[5], currentWord, score);
         }
         else if (isWordEqual(val, "DINOSAUR IN EARTH") || isWordEqual(val, "RISEWOMAN") || isWordEqual(val, "EIFFEL TOWER")){
             printf("Game ");
