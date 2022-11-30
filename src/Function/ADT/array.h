@@ -110,4 +110,6 @@ void DeleteAt (TabGame *T, IdxType i);
 /* F.S. Elemen pada indeks ke-x dihapus dari elemen, elemen setelah elemen yang dihapus bergeser ke kiri,
         elemen efektif berkurang 1 */
 
+IdxType findIdxGame(TabGame *T);
+
 #endif

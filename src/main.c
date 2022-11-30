@@ -73,7 +73,7 @@ int main()
 			saveGAME(filename, T, SH, TS);
 		}
 		else if(isWordEqual(currentWord,"CREATE GAME")){
-			CreateGame(&T);
+			CreateGame(&T, &TS);
 		}
 		else if(isWordEqual(currentWord, "LIST GAME")){
 			ListGame(T);

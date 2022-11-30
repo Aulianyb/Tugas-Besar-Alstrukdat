@@ -40,7 +40,7 @@ void PlayGame(Queue *game_queue, StackHistory *SH, TabScore *TS){
             PrintKata(val);
             printf("....\n");
             // Play Tower of Hanoi
-            score = Hanoi();
+            // score = Hanoi();
             printf("\nSkor akhir: %d", score);
             printf("\nMasukkan nama: ");
             STARTFILE();
@@ -77,10 +77,10 @@ void PlayGame(Queue *game_queue, StackHistory *SH, TabScore *TS){
             printf("....\n");
             // Play ROCK PAPER SCISSOR
             RockPaperScissor(&score);
-            // printf("\nSkor akhir: %d", score);
-            // printf("\nMasukkan nama: ");
-            // STARTFILE();
-            // InsertMap(&TS->TI[5], currentWord, score);
+            printf("\nSkor akhir: %d", score);
+            printf("\nMasukkan nama: ");
+            STARTFILE();
+            InsertMap(&TS->TI[5], currentWord, score);
         }
         else if (isWordEqual(val, "DINOSAUR IN EARTH") || isWordEqual(val, "RISEWOMAN") || isWordEqual(val, "EIFFEL TOWER")){
             printf("Game ");
@@ -95,7 +95,9 @@ void PlayGame(Queue *game_queue, StackHistory *SH, TabScore *TS){
             printf(" |   __|  _  |     |   __|  |     |  |  |   __| __  |\n");
             printf(" |  |  |     | | | |   __|  |  |  |  |  |   __|    -|\n");
             printf(" |_____|__|__|_|_|_|_____|  |_____|\\___/|_____|__|__|\n\n");
-            printf("SCORE AKHIR : %d\n", GenRand(100,100,2));
+            score = GenRand(100,100,2);
+            printf("SCORE AKHIR : %d\n", score);
+            
         }
 
         PushHistory(SH, val);

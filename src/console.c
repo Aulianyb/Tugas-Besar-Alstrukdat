@@ -7,7 +7,18 @@ void quit()
 {
     printf("Terima kasih telah memainkam game BNMO ini!\n");
     printf("Good Game, Well Played\n");
-    delay(2000);
+    printf("b"); delay(100);
+    printf("y"); delay(100);
+    printf("e"); delay(100);
+    printf(" "); delay(100);
+    printf("b"); delay(100);
+    printf("y"); delay(100);
+    printf("e"); delay(100);
+    printf(" "); delay(100);
+    printf("b"); delay(100);
+    printf("y"); delay(100);
+    printf("e"); delay(100);
+    printf("~"); delay(100);
 }
 
 void startLOAD(char* filename)

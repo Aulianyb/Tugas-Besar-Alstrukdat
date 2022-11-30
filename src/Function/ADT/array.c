@@ -147,3 +147,7 @@ void DeleteAt (TabGame *T, IdxType x){
 	}
 	(*T).Neff = (*T).Neff-1;
 }
+
+IdxType findIdxGame(TabGame *T){
+	
+}
