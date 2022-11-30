@@ -15,7 +15,7 @@ boolean validPaper(Word word);
 boolean validScissor(Word word);
 /*Menghasilkan true apabila currentWord berisi kata "scissor" yang valid*/
 
-void RockPaperScissor();
+void RockPaperScissor(int *score);
 /*Memainkan permainan rock-paper-scissor dan menampilkan hasil akhir dari permainan.
   Permainan terdiri dari 11 ronde.
   Bila poin player > poin lawan, menampilkan player menang ke layar.
