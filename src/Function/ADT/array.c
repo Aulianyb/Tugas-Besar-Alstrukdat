@@ -148,6 +148,14 @@ void DeleteAt (TabGame *T, IdxType x){
 	(*T).Neff = (*T).Neff-1;
 }
 
-IdxType findIdxGame(TabGame *T){
-	
+IdxType findIdxGame(TabGame T, Word game){
+	boolean found = false;
+	int idx, i, j;
+	for (i = IdxMin; i <= T.Neff; i++)
+	{
+		if (isWordandWordEqual(T.TI[i], game)){
+			idx = i;
+		}
+	}
+	return idx;
 }

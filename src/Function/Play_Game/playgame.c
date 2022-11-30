@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "playgame.h"
 
-void PlayGame(Queue *game_queue, StackHistory *SH, TabScore *TS){
+void PlayGame(Queue *game_queue, StackHistory *SH, TabScore *TS, TabGame TG){
     printf("Berikut ini adalah daftar Game-mu : \n");
     PrintQueueGame(*game_queue);
     if (isEmpty(*game_queue)){
@@ -17,10 +17,7 @@ void PlayGame(Queue *game_queue, StackHistory *SH, TabScore *TS){
             printf("....\n");
             // PLay Diner DASH
             Dinner_Dash();
-            // printf("\nSkor akhir: %d", score);
-            // printf("\nMasukkan nama: ");
-            // STARTFILE();
-            // InsertMap(&TS->TI[1], currentWord, score);
+            score = 100;
         }
         else if (isWordEqual(val, "RNG"))
         {
@@ -29,10 +26,7 @@ void PlayGame(Queue *game_queue, StackHistory *SH, TabScore *TS){
             printf("....\n");
             // Play RNG
             RNG();
-            // printf("\nSkor akhir: %d", score);
-            // printf("\nMasukkan nama: ");
-            // STARTFILE();
-            // InsertMap(&TS->TI[0], currentWord, score);
+            score = 100;
         }
         else if (isWordEqual(val, "TOWER OF HANOI"))
         {
@@ -41,34 +35,20 @@ void PlayGame(Queue *game_queue, StackHistory *SH, TabScore *TS){
             printf("....\n");
             // Play Tower of Hanoi
             Hanoi(&score);
-            printf("\nSkor akhir: %d", score);
-            printf("\nMasukkan nama: ");
-            STARTFILE();
-            InsertMap(&TS->TI[3], currentWord, score);
         }
         else if (isWordEqual(val, "HANGMAN"))
         {
             printf("Loading ");
             PrintKata(val);
             printf("....\n");
-            // Play Tower of Hanoi
-
-            // printf("\nSkor akhir: %d", score);
-            // printf("\nMasukkan nama: ");
-            // STARTFILE();
-            // InsertMap(&TS->TI[2], currentWord, score);
+            score = 100;
         }
         else if (isWordEqual(val, "SNAKE ON METEOR"))
         {
             printf("Loading ");
             PrintKata(val);
             printf("....\n");
-            // Play Tower of Hanoi
-
-            // printf("\nSkor akhir: %d", score);
-            // printf("\nMasukkan nama: ");
-            // STARTFILE();
-            // InsertMap(&TS->TI[2], currentWord, score);
+            score = 100;
         }
         else if (isWordEqual(val, "ROCK PAPER SCISSOR"))
         {
@@ -77,16 +57,12 @@ void PlayGame(Queue *game_queue, StackHistory *SH, TabScore *TS){
             printf("....\n");
             // Play ROCK PAPER SCISSOR
             RockPaperScissor(&score);
-            printf("\nSkor akhir: %d", score);
-            printf("\nMasukkan nama: ");
-            STARTFILE();
-            InsertMap(&TS->TI[6], currentWord, score);
         }
-        else if (isWordEqual(val, "DINOSAUR IN EARTH") || isWordEqual(val, "RISEWOMAN") || isWordEqual(val, "EIFFEL TOWER")){
-            printf("Game ");
-            PrintKata(val);
-            printf(" masih dalam maintenance, belum dapat dimainkan. Silahkan pilih game lain.\n");
-        }
+        // else if (isWordEqual(val, "DINOSAUR IN EARTH") || isWordEqual(val, "RISEWOMAN") || isWordEqual(val, "EIFFEL TOWER")){
+        //     printf("Game ");
+        //     PrintKata(val);
+        //     printf(" masih dalam maintenance, belum dapat dimainkan. Silahkan pilih game lain.\n");
+        // }
         else {
             printf("Loading ");
             PrintKata(val);
@@ -96,10 +72,14 @@ void PlayGame(Queue *game_queue, StackHistory *SH, TabScore *TS){
             printf(" |  |  |     | | | |   __|  |  |  |  |  |   __|    -|\n");
             printf(" |_____|__|__|_|_|_|_____|  |_____|\\___/|_____|__|__|\n\n");
             score = GenRand(100,100,2);
-            printf("SCORE AKHIR : %d\n", score);
-            
         }
+        printf("Skor akhir : %d\n", score);
+        printf("\nMasukkan nama: ");
+        STARTFILE();
+        int idx = findIdxGame(TG, val);
+        InsertMap(&TS->TI[idx], currentWord, score);
 
+        printf("\nBerhasil menambahkan score ke SCOREBOARD!\n");
         PushHistory(SH, val);
     }
 }

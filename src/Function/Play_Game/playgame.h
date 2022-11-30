@@ -14,7 +14,7 @@
 #include "../ADT/arrayofmap/arrayofmap.h"
 #include "../Hanoi/Hanoi.h"
 
-void PlayGame(Queue *game_queue, StackHistory *SH, TabScore *TS);
+void PlayGame(Queue *game_queue, StackHistory *SH, TabScore *TS, TabGame TG);
 
 // I.S. Sembarang
 // F.S. Menampilkan seluruh game yang terdapat di queue dan memainkan game yang pertama muncul di queue

@@ -66,6 +66,7 @@ int main()
 	}
 	while (on){
 		resetCurrWord(currentWord);
+		printf("\n");
 		printf("ENTER COMMAND : ");
 		STARTFILE();
 		if (isWordEqual(GetKataFirst(currentWord),"SAVE")){
@@ -120,7 +121,7 @@ int main()
 			help();
 		}
 		else if(isWordEqual(currentWord, "PLAY GAME")){
-			PlayGame(&Q, &SH, &TS);
+			PlayGame(&Q, &SH, &TS, T);
 		}
 		else if(isWordEqual(GetKataFirst(currentWord), "HISTORY")){
 			int n = WordToInt(GetKataSecond(currentWord));
