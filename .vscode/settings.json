@@ -4,6 +4,7 @@
         "mesinkata.h": "c",
         "array.h": "c",
         "help.h": "c",
-        "queue.h": "c"
+        "queue.h": "c",
+        "stackhistory.h": "c"
     }
 }
