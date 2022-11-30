@@ -3,7 +3,8 @@
 #include <stdlib.h>
 #include <time.h>
 
-void quit(){
+void quit()
+{
     printf("Terima kasih telah memainkam game BNMO ini!\n");
     printf("Good Game, Well Played\n");
     delay(2000);
@@ -71,11 +72,11 @@ int wordtoInt(Word word)
   return result;
 }
 
-void startGAME(TabGame *listGame, StackHistory *SH){
-    loadGAME("config", listGame, SH);
+void startGAME(TabGame *listGame, StackHistory *SH, TabScore *TS){
+    loadGAME("config", listGame, SH, TS);
 }
 
-void loadGAME(char* filename, TabGame *listGame, StackHistory *SH)
+void loadGAME(char* filename, TabGame *listGame, StackHistory *SH, TabScore *TS)
 {
     char path[100] = "data/";
 	int i = 5;
@@ -121,6 +122,64 @@ void loadGAME(char* filename, TabGame *listGame, StackHistory *SH)
 
         SwapStackHistory(temp, SH);
 
+        ADVWORDLOAD();
+        
+        Map map_temp;
+        for (i = IdxMin; i <= countGame; i++)     
+        {
+            int countScore = wordtoInt(currentWord);
+            printf("%d\n", countScore);
+            // Word title = listGame->TI[i]; printf("print game nani: ");
+            // PrintKata(title); printf("\n");
+            if (countScore == 0)
+            {
+                ADVLOAD();
+                ADVWORDLOAD();
+                CreateEmptyMap(&map_temp);
+                // printf("Game sekarang: ");
+                // Word title = listGame->TI[i];
+                // PrintKata(title); printf("\n");
+                // printf("skip\n");
+            } else {
+                CreateEmptyMap(&map_temp);
+                //Word title = listGame->TI[i];
+                //printf("Game sekarang: ");
+                // PrintKata(title);
+                // printf("\n");
+                
+                ADVLOAD();
+                for (int j = 0; j < countScore; j++)
+                {
+                    ADVWORDLOAD();
+                    InsertMap(&map_temp, GetKataFirst(currentWord), WordToInt(GetKataSecond(currentWord)));
+
+                    // printf("Isi seharusnya: \n");
+                    // PrintKata(GetKataFirst(currentWord)); printf(" ");
+                    // PrintKata(GetKataSecond(currentWord)); printf("\n");
+
+                    // printf("Isi map: \n");
+                    // PrintKata(map_temp.Elements[j].user);
+                    // printf(" %d", map_temp.Elements[j].score);
+                    // printf("\n");
+                }
+                
+                ADVWORDLOAD();
+            }
+
+            SetElTabScore(TS, i, map_temp);
+
+            // printf("Game sekarang: ");
+            // PrintKata(TS->TI[i].GameTitle);
+            // printf("\n");
+
+            // for (int j = 0; j < TS->TI[i].Count; j++)
+            // {
+            //     PrintKata(TS->TI[i].Elements[j].user);
+            //     printf(" %d\n", TS->TI[i].Elements[j].score);
+            // // }
+            // printf("\nCheck game end\n");
+        }
+
         printf("Loading");
         delay(250); printf(".");
         delay(250); printf(".");
@@ -130,7 +189,8 @@ void loadGAME(char* filename, TabGame *listGame, StackHistory *SH)
 
 }
 
-void saveGAME(char* filename, TabGame listGame, StackHistory SH){
+void saveGAME(char* filename, TabGame listGame, StackHistory SH, TabScore TS)
+{
     char path[100] = "data/";
     int i = 5;
     while (*filename != '\0')
@@ -152,7 +212,7 @@ void saveGAME(char* filename, TabGame listGame, StackHistory SH){
     else
     {
         fprintf(fptr, "%d\n", listGame.Neff);
-        int i;
+        int i, j;
         for (i = IdxMin; i <= listGame.Neff-1; i++)
         {
             char *title = wordToString(listGame.TI[i]);
@@ -170,6 +230,23 @@ void saveGAME(char* filename, TabGame listGame, StackHistory SH){
         }
         char *titlehistory = wordToString(temp.T[Top(temp)]);
         fprintf(fptr, "%s", titlehistory);
+
+        // penulisan scoreboard
+        for (i = IdxMin; i <= listGame.Neff-1;i++){
+            fprintf(fptr, "%d\n", TS.TI[i].Count);
+            for (j = 0; j < TS.TI[i].Count; j++){
+                char* name = wordToString(TS.TI[i].Elements[j].user);
+                fprintf(fptr, "%s %d\n", name, TS.TI[i].Elements[j].score);
+            }
+        }
+        j = 0;
+        fprintf(fptr, "%d", TS.TI[i].Count);
+        if (TS.TI[i].Count != 0) fprintf(fptr, "\n");
+        while(j < TS.TI[i].Count-1){
+            char* name = wordToString(TS.TI[i].Elements[j].user);
+            fprintf(fptr, "%s %d", name, TS.TI[i].Elements[j].score);
+            j++;
+        }
 
         fclose(fptr);
         printf("Berhasil melakukan save\n");
