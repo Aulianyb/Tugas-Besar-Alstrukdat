@@ -128,7 +128,7 @@ void loadGAME(char* filename, TabGame *listGame, StackHistory *SH, TabScore *TS)
         for (i = IdxMin; i <= countGame; i++)     
         {
             int countScore = wordtoInt(currentWord);
-            printf("%d\n", countScore);
+            // printf("%d\n", countScore);
             // Word title = listGame->TI[i]; printf("print game nani: ");
             // PrintKata(title); printf("\n");
             if (countScore == 0)
