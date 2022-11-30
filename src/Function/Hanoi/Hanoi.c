@@ -256,5 +256,5 @@ int Hanoi(){
 	printf(" |  |  |     | | | |   __|  |  |  |  |  |   __|    -|\n");
 	printf(" |_____|__|__|_|_|_|_____|  |_____|\\___/|_____|__|__|\n\n");
     printf("SCORE : %d\n", score);
-    return 0;
+    return score;
 }
