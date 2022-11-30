@@ -80,7 +80,7 @@ void PlayGame(Queue *game_queue, StackHistory *SH, TabScore *TS){
             printf("\nSkor akhir: %d", score);
             printf("\nMasukkan nama: ");
             STARTFILE();
-            InsertMap(&TS->TI[5], currentWord, score);
+            InsertMap(&TS->TI[6], currentWord, score);
         }
         else if (isWordEqual(val, "DINOSAUR IN EARTH") || isWordEqual(val, "RISEWOMAN") || isWordEqual(val, "EIFFEL TOWER")){
             printf("Game ");
