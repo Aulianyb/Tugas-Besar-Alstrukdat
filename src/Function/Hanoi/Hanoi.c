@@ -151,7 +151,7 @@ void MoveTower(Stack *S1, Stack *S2){
     Push(S2, temp);
 }
 //MAIN GAME
-int Hanoi(){
+void Hanoi(int *score){
     int n;
     printf("Sebelum mulai, tentukan jumlah disk ^_^\n");
     printf("Tentukan jumlah disk : ");
@@ -176,7 +176,7 @@ int Hanoi(){
     //input
     Word Source, Dest; 
     infotype temp;
-    int turn=0, score=10, min_steps = pow(2, n) - 1;
+    int turn=0, min_steps = pow(2, n) - 1;
     Stack *SourceTiang, *DestTiang;
     Stack Tiang1, Tiang2, Tiang3; 
     boolean play=true;
@@ -239,8 +239,8 @@ int Hanoi(){
             }
         }
 
-        if ((turn > min_steps) && (turn % (n/2) == 0) && (score != 0)){
-            score--;
+        if ((turn > min_steps) && (turn % (n/2) == 0) && (*score != 0)){
+            *score--;
         }
         
         MoveTower(AssignTiang(Source), AssignTiang(Dest));
@@ -255,6 +255,5 @@ int Hanoi(){
 	printf(" |   __|  _  |     |   __|  |     |  |  |   __| __  |\n");
 	printf(" |  |  |     | | | |   __|  |  |  |  |  |   __|    -|\n");
 	printf(" |_____|__|__|_|_|_|_____|  |_____|\\___/|_____|__|__|\n\n");
-    printf("SCORE : %d\n", score);
-    return score;
+    printf("SCORE : %d\n", *score);
 }
