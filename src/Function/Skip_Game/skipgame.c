@@ -18,7 +18,7 @@ void SkipGame(Queue *game_queue, int n){
         }
     }
     else {
-        Word val;
+        Word val; int score;
         dequeue(game_queue, &val);
         for (int i = 0; i < n; i++) {
             dequeue(game_queue, &val);
@@ -45,7 +45,7 @@ void SkipGame(Queue *game_queue, int n){
             printf("Loading ");
             PrintKata(val);
             printf("....\n");
-            RockPaperScissor();
+            RockPaperScissor(&score);
         }
         else if (isWordEqual(val, "DINOSAUR IN EARTH") || isWordEqual(val, "RISEWOMAN") || isWordEqual(val, "EIFFEL TOWER")){
             printf("Game ");

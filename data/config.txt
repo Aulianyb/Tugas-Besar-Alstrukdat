@@ -23,3 +23,5 @@ Marceline 30
 Marshall 77
 1
 Naruto 90
+1
+Sasuke 89

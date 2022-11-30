@@ -1,7 +1,5 @@
 #include <stdio.h>
 #include "playgame.h"
-#include "../ADT/stackhistory/stackhistory.h"
-#include "../ADT/arrayofmap/arrayofmap.h"
 
 void PlayGame(Queue *game_queue, StackHistory *SH, TabScore *TS){
     printf("Berikut ini adalah daftar Game-mu : \n");
@@ -36,13 +34,49 @@ void PlayGame(Queue *game_queue, StackHistory *SH, TabScore *TS){
             // STARTFILE();
             // InsertMap(&TS->TI[0], currentWord, score);
         }
+        else if (isWordEqual(val, "TOWER OF HANOI"))
+        {
+            printf("Loading ");
+            PrintKata(val);
+            printf("....\n");
+            // Play Tower of Hanoi
+            score = Hanoi();
+            printf("\nSkor akhir: %d", score);
+            printf("\nMasukkan nama: ");
+            STARTFILE();
+            InsertMap(&TS->TI[3], currentWord, score);
+        }
+        else if (isWordEqual(val, "HANGMAN"))
+        {
+            printf("Loading ");
+            PrintKata(val);
+            printf("....\n");
+            // Play Tower of Hanoi
+
+            // printf("\nSkor akhir: %d", score);
+            // printf("\nMasukkan nama: ");
+            // STARTFILE();
+            // InsertMap(&TS->TI[2], currentWord, score);
+        }
+        else if (isWordEqual(val, "SNAKE ON METEOR"))
+        {
+            printf("Loading ");
+            PrintKata(val);
+            printf("....\n");
+            // Play Tower of Hanoi
+
+            // printf("\nSkor akhir: %d", score);
+            // printf("\nMasukkan nama: ");
+            // STARTFILE();
+            // InsertMap(&TS->TI[2], currentWord, score);
+        }
         else if (isWordEqual(val, "ROCK PAPER SCISSOR"))
         {
             printf("Loading ");
             PrintKata(val);
             printf("....\n");
             // Play ROCK PAPER SCISSOR
-            RockPaperScissor(score);
+            RockPaperScissor(&score);
             // printf("\nSkor akhir: %d", score);
             // printf("\nMasukkan nama: ");
             // STARTFILE();

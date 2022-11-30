@@ -120,7 +120,7 @@ int main()
 			help();
 		}
 		else if(isWordEqual(currentWord, "PLAY GAME")){
-			PlayGame(&Q, &SH);
+			PlayGame(&Q, &SH, &TS);
 		}
 		else if(isWordEqual(GetKataFirst(currentWord), "HISTORY")){
 			int n = WordToInt(GetKataSecond(currentWord));
