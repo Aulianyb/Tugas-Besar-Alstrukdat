@@ -5,6 +5,8 @@
 #include "Function/ADT/mesinkarakter.h"
 #include "Function/ADT/array.h"
 #include "Function/ADT/stackhistory/stackhistory.h"
+#include "Function/ADT/map/map.h"
+#include "Function/ADT/arrayofmap/arrayofmap.h"
 #include "random_generator.h"
 #include <stdio.h>
 #include <stdlib.h>
@@ -35,13 +37,13 @@ char* wordToString(Word word);
 int wordtoInt(Word word);
 // Melakukan convert dari ADT Word ke integer
 
-void loadGAME(char* filename, TabGame *listGame, StackHistory *SH);
+void loadGAME(char* filename, TabGame *listGame, StackHistory *SH, TabScore *TS);
 // Melakukan pembacaan file
 
-void startGAME(TabGame *listGame, StackHistory *SH);
+void startGAME(TabGame *listGame, StackHistory *SH, TabScore *TS);
 // Melakukan pembacaan file config
 
-void saveGAME(char* filename, TabGame listGame, StackHistory SH);
+void saveGAME(char* filename, TabGame listGame, StackHistory SH, TabScore TS);
 // Melakukan penyimpanan pada file
 
 #endif
