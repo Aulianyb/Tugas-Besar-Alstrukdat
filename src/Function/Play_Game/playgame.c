@@ -40,7 +40,7 @@ void PlayGame(Queue *game_queue, StackHistory *SH, TabScore *TS){
             PrintKata(val);
             printf("....\n");
             // Play Tower of Hanoi
-            // score = Hanoi();
+            Hanoi(&score);
             printf("\nSkor akhir: %d", score);
             printf("\nMasukkan nama: ");
             STARTFILE();

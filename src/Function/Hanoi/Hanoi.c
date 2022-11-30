@@ -152,6 +152,7 @@ void MoveTower(Stack *S1, Stack *S2){
 }
 //MAIN GAME
 void Hanoi(int *score){
+    *score = 10; 
     int n;
     printf("Sebelum mulai, tentukan jumlah disk ^_^\n");
     printf("Tentukan jumlah disk : ");
@@ -225,11 +226,11 @@ void Hanoi(int *score){
                 printf("-- TIANG ASAL DAN TIANG TUJUAN TIDAK BOLEH SAMA! --");
             }
             else{
-                if (IsEmpty(*AssignTiang(Source))){
+                if (IsEmpty_S(*AssignTiang(Source))){
                     printf("-- INPUT TIDAK VALID! TIANG ASAL YANG DIPILIH KOSONG! --\n");
                 }
                 else{
-                    if (!(IsEmpty(*AssignTiang(Dest)))&&(n(InfoTop(*AssignTiang(Source))) > n(InfoTop(*AssignTiang(Dest))))){
+                    if (!(IsEmpty_S(*AssignTiang(Dest)))&&(n(InfoTop(*AssignTiang(Source))) > n(InfoTop(*AssignTiang(Dest))))){
                         printf("-- DISK YANG DIPINDAHKAN HARUS LEBIH KECIL --\n");
                     }
                     else{

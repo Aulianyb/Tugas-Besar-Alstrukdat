@@ -12,18 +12,18 @@ void CreateEmpty(Stack *S){
 /* Ciri stack kosong : TOP bernilai Nil */
 
 /* ************ Predikat Untuk test keadaan KOLEKSI ************ */
-boolean IsEmpty(Stack S){
+boolean IsEmpty_S(Stack S){
 	return (Top(S) == Nil);
 }
 /* Mengirim true jika Stack kosong: lihat definisi di atas */
-boolean IsFull(Stack S){
-	return (Top(S) == MaxEl-1);
+boolean IsFull_S(Stack S){
+	return (Top(S) == MaxEl_S-1);
 }
 /* Mengirim true jika tabel penampung nilai elemen stack penuh */
 
 /* ************ Menambahkan sebuah elemen ke Stack ************ */
 void Push(Stack * S, infotype X){
-	if (IsEmpty(*S)){
+	if (IsEmpty_S(*S)){
 		Top(*S) = 0;
 		InfoTop(*S) = X;
 	}
