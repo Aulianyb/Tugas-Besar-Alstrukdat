@@ -20,10 +20,10 @@ Finn 31
 Marceline 30
 0
 0
-2
-Marshall 77
-UDIN 0
 1
+Marshall 77
+2
+Minato 400
 Naruto 90
 1
 Sasuke 89

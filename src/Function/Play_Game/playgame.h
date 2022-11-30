@@ -12,7 +12,7 @@
 #include "../../random_generator.h"
 #include "../ADT/stackhistory/stackhistory.h"
 #include "../ADT/arrayofmap/arrayofmap.h"
-// #include "../Hanoi/Hanoi.h"
+#include "../Hanoi/Hanoi.h"
 
 void PlayGame(Queue *game_queue, StackHistory *SH, TabScore *TS);
 
