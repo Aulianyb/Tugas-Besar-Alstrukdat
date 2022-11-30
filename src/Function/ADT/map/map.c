@@ -42,7 +42,37 @@ void InsertMap(Map *M, Word k, int v)
         }
         (*M).Elements[(*M).Count].score = v;
         (*M).Count += 1;
+    } else {
+        boolean found = false;
+        int idx;
+        int i = 0;
+
+        while (i < (*M).Count && !found){
+            if (isWordandWordEqual(M->Elements[i].user, k)){
+                found = true;
+                idx = i;
+            }
+            i++;
+        }
+        if (found)
+        {
+            M->Elements[idx].score = v;
+        }
     }
+
+    // sort mapnya
+	int temp_val, n = M->Count;
+    Word temp_key;
+	for (int i = 0; i < n - 1; i++){
+		for (int j = 0; j < n - i - 1; j++){
+			if (M->Elements[j].score < M->Elements[j+1].score){
+				temp_val = M->Elements[j].score; temp_key = M->Elements[j].user;					
+				M->Elements[j].score = M->Elements[j+1].score; M->Elements[j].user = M->Elements[j+1].user;
+				M->Elements[j+1].score = temp_val; M->Elements[j+1].user = temp_key;
+					
+			}
+		}
+	}
 }
 
 void DeleteMap(Map *M, Word k){
