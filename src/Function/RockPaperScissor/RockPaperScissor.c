@@ -14,7 +14,7 @@ boolean validScissor(Word word) {
         (currentWord.TabWord[4] == 'S' || currentWord.TabWord[4] == 's') && (currentWord.TabWord[5] == 'O' || currentWord.TabWord[5] == 'o') && (currentWord.TabWord[6] == 'R' || currentWord.TabWord[6] == 'r'));
 }
 
-void RockPaperScissor() {
+void RockPaperScissor(int *score) {
     printf("*********   **********  **********  *       *                **********  **********  **********  **********  *********                **********  **********  *****  **********  **********  **********  ********* \n");
     printf("*        *  *        *  *           *     *                  *        *  *        *  *        *  *           *        *               *           *           *   *  *           *           *        *  *        *\n");
     printf("*   **   *  *   **   *  *           *   *                    *   **   *  *   **   *  *   **   *  *           *   **   *               *           *           *   *  *           *           *   **   *  *   **   *\n");
@@ -117,4 +117,5 @@ void RockPaperScissor() {
         printf("Skor Player : %d\n",playerPoints);
         printf("Skor Lawan : %d\n",botPoints);
     }
+    *score = playerPoints;
 }
