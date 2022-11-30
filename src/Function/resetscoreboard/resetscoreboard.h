@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include "../ADT/map/map.h"
 #include "../ADT/arrayofmap/arrayofmap.h"
-#include "mesinkata.h"
+#include "../ADT/mesinkata.h"
 #include "../ADT/array.h"
 
 void resetScoreboard(TabScore *TS, TabGame TG);

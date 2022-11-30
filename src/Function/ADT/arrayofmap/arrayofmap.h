@@ -2,7 +2,7 @@
 #define ARRAY_MAP_H
 
 /* Kamus Umum */
-#include "../../boolean.h"
+#include "../../../boolean.h"
 #include "../mesinkata.h"
 #include "../map/map.h"
 

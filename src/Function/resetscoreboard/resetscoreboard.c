@@ -15,14 +15,24 @@ void resetScoreboard(TabScore *TS, TabGame TG)
     printf("\n");
     int ans = WordToInt(currentWord);
     if (ans == 0){
-        printf("\nAPAKAH KAMU YAKIN INGIN MELAKUKAN RESET SCOREBOARD ALL?\n");
-        STARTFILE();
-        if (isWordEqual(currentWord, 'Y') || isWordEqual(currentWord, 'N')){
-            for (int i = IdxMin; i <= TG.Neff; i++){
-                CreateEmptyMap(&TS->TI[i]);
+        boolean valid = false;
+        while (!valid){
+            printf("\nAPAKAH KAMU YAKIN INGIN MELAKUKAN RESET SCOREBOARD ALL?(Y/N)\n");
+            STARTFILE();
+            if (isWordEqual(currentWord, "Y")){
+                for (int i = IdxMin; i <= TG.Neff; i++){
+                    CreateEmptyMap(&TS->TI[i]);
+                }
+                valid = true;
+            } else if (isWordEqual(currentWord, "N")) {
+                printf("\nOke, all scoreboard tidak jadi dihapus!\n");
+                valid = true;
+            } else {
+                printf("\nInput salah, Ulangi!\n");
             }
         }
-
+        printf("\nScoreboard berhasil direset!\n");
+        
     } else {
         boolean valid = false;
         while (!valid)
@@ -31,8 +41,9 @@ void resetScoreboard(TabScore *TS, TabGame TG)
                 printf("Game tidak ada di daftar! ulangi input!\n");
             } else {
                 CreateEmptyMap(&TS->TI[ans]);
+                valid = true;
             }
         }
+        printf("\nScoreboard berhasil direset!\n");
     }
-    printf("\nScoreboard berhasil direset!\n");
 }

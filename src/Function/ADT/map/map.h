@@ -2,7 +2,7 @@
 #define map_H
 
 #include <stdio.h>
-#include "../../boolean.h"
+#include "../../../boolean.h"
 #include "../mesinkata.h"
 
 /* MODUL Map
@@ -10,7 +10,7 @@ Deklarasi stack yang dengan implementasi array eksplisit-statik rata kiri
 */
 
 #define NilMap 0
-#define MaxEl 10
+#define MaxElMap 10
 #define Undefined -999
 
 // typedef int bool;
@@ -23,7 +23,7 @@ typedef struct {
 } infotype;
 
 typedef struct {
-	infotype Elements[MaxEl];
+	infotype Elements[MaxElMap];
 	address Count;
 } Map;
 
@@ -36,7 +36,7 @@ typedef struct {
 /* *** Konstruktor/Kreator *** */
 void CreateEmptyMap(Map *M);
 /* I.S. Sembarang */
-/* F.S. Membuat sebuah Map M kosong berkapasitas MaxEl */
+/* F.S. Membuat sebuah Map M kosong berkapasitas MaxElMap */
 /* Ciri Map kosong : count berNilMapai NilMap */
 
 /* ********* Predikat Untuk test keadaan KOLEKSI ********* */
@@ -46,7 +46,7 @@ boolean IsEmptyMap(Map M);
 
 boolean IsFullMap(Map M);
 /* Mengirim true jika Map M penuh */
-/* Ciri Map penuh : count berNilMapai MaxEl */
+/* Ciri Map penuh : count berNilMapai MaxElMap */
 
 /* ********** Operator Dasar Map ********* */
 valuetype ValueMap(Map M, Word k);

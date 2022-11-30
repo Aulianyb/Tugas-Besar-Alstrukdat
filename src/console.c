@@ -229,7 +229,7 @@ void saveGAME(char* filename, TabGame listGame, StackHistory SH, TabScore TS)
             fprintf(fptr, "%s\n", titlehistory);
         }
         char *titlehistory = wordToString(temp.T[Top(temp)]);
-        fprintf(fptr, "%s", titlehistory);
+        fprintf(fptr, "%s\n", titlehistory);
 
         // penulisan scoreboard
         for (i = IdxMin; i <= listGame.Neff-1;i++){
@@ -242,7 +242,7 @@ void saveGAME(char* filename, TabGame listGame, StackHistory SH, TabScore TS)
         j = 0;
         fprintf(fptr, "%d", TS.TI[i].Count);
         if (TS.TI[i].Count != 0) fprintf(fptr, "\n");
-        while(j < TS.TI[i].Count-1){
+        while(j < TS.TI[i].Count){
             char* name = wordToString(TS.TI[i].Elements[j].user);
             fprintf(fptr, "%s %d", name, TS.TI[i].Elements[j].score);
             j++;

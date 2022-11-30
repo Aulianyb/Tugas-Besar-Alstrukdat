@@ -11,7 +11,7 @@ boolean IsEmptyMap(Map M){
 }
 
 boolean IsFullMap(Map M){
-    return (M.Count == MaxEl);
+    return (M.Count == MaxElMap);
 }
 
 int GetScoreMap(Map M, Word k){

@@ -8,10 +8,7 @@ GAME ASAL
 3
 HANGMAN
 TOWER OF HANOI
-SNAKE ON METEOR
-2
-BNMO 19
-Finn 12
+SNAKE ON METEOR0
 3
 Jake 58
 Finn 31
@@ -20,5 +17,4 @@ Marceline 30
 0
 1
 Marshall 77
-1
-Naruto 90
+0
