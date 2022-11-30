@@ -15,6 +15,9 @@
 #include "Function/Skip_Game/skipgame.h"
 #include "Function/Play_Game/playgame.h"
 // #include "Function/Dinner_Dash/Dinner_Dash.h"
+#include "Function/ADT/arrayofmap/arrayofmap.h"
+#include "Function/resetscoreboard/resetscoreboard.h"
+#include "Function/scoreboard/scoreboard.h"
 #include "console.h"
 #include "Function/history/history.h"
 #include "Function/resethistory/resethistory.h"
@@ -22,7 +25,7 @@
 int main()
 {
 	boolean on=false;
-	TabGame T; Queue Q; StackHistory SH;
+	TabGame T; Queue Q; StackHistory SH; TabScore TS;
 	
 	char command[10]; //ini placeholder
 	printf("========== WELCOME TO ==========\n");
@@ -41,16 +44,16 @@ int main()
 		printf("ENTER COMMAND : ");
 		STARTFILE();
 		if (isWordEqual(currentWord, "START")){
-	    	MakeEmpty(&T); CreateEmptyHistory(&SH);
-			startGAME(&T, &SH);
+	    	MakeEmpty(&T); CreateEmptyHistory(&SH); MakeEmptyTabScore(&TS);
+			startGAME(&T, &SH, &TS);
 	    	CreateQueue(&Q);
 			valid = true;
 			on = true;
 
 		} else if (isWordEqual(GetKataFirst(currentWord),"LOAD")) {
 			char* filename = wordToString(GetKataSecond(currentWord));
-			MakeEmpty(&T); CreateEmptyHistory(&SH);
-			loadGAME(filename, &T, &SH);
+			MakeEmpty(&T); CreateEmptyHistory(&SH); MakeEmptyTabScore(&TS);
+			loadGAME(filename, &T, &SH, &TS);
 			
 			if (T.Neff != (-1)){
 				CreateQueue(&Q);
@@ -67,7 +70,7 @@ int main()
 		STARTFILE();
 		if (isWordEqual(GetKataFirst(currentWord),"SAVE")){
 			char* filename = wordToString(GetKataSecond(currentWord));
-			saveGAME(filename, T, SH);
+			saveGAME(filename, T, SH, TS);
 		}
 		else if(isWordEqual(currentWord,"CREATE GAME")){
 			CreateGame(&T);
@@ -96,7 +99,7 @@ int main()
 					printf("Masukkan nama file yang diinginkan: ");
 					STARTFILE();
 					char* filename = wordToString(currentWord);
-					saveGAME(filename, T, SH);
+					saveGAME(filename, T, SH, TS);
 					close = true;
 				} 
 				else if (isWordEqual(currentWord, "n") || isWordEqual(currentWord, "N"))
@@ -125,6 +128,12 @@ int main()
 		}
 		else if(isWordEqual(GetKataFirst(currentWord), "RESET") && isWordEqual(GetKataSecond(currentWord), "HISTORY")){
 			RESETHISTORY(&SH);
+		}
+		else if(isWordEqual(currentWord, "SCOREBOARD")){
+			SCOREBOARD(TS, T);
+		}
+		else if(isWordEqual(GetKataFirst(currentWord), "RESET") && isWordEqual(GetKataSecond(currentWord), "SCOREBOARD")){
+			resetScoreboard(&TS, T);
 		}
 		else{
 			printf("Command tidak dikenali, silahkan masukkan command yang valid.\n");
