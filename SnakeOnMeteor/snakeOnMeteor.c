@@ -66,13 +66,33 @@ void AddBody(List *L, int abs, int ord) {
     }
 }
 
-void spawnFood(List L, POINT *food) {
+void spawnObstacle(List L, POINT *obstacle) {
+    Absis(*obstacle) = GenRand(0,4,5);
+    Ordinat(*obstacle) = GenRand(0,4,5);
+
+    while (SearchPoint(L,Absis(*obstacle),Ordinat(*obstacle))) {
+        Absis(*obstacle) = GenRand(0,4,5);
+        Ordinat(*obstacle) = GenRand(0,4,5);
+    }
+}
+
+void spawnFood(List L, POINT *food, POINT obstacle) {
     Absis(*food) = GenRand(0,4,5);
     Ordinat(*food) = GenRand(0,4,5);
 
-    while (SearchPoint(L,Absis(*food),Ordinat(*food))) {
+    while (SearchPoint(L,Absis(*food),Ordinat(*food)) || (Absis(*food)==Absis(obstacle) && Ordinat(*food)==Ordinat(obstacle))) {
         Absis(*food) = GenRand(0,4,5);
         Ordinat(*food) = GenRand(0,4,5);
+    }
+}
+
+void spawnMeteor(POINT food, POINT obstacle, POINT *meteor) {
+    Absis(*meteor) = GenRand(0,4,5);
+    Ordinat(*meteor) = GenRand(0,4,5);
+
+    while ((Absis(*meteor)==Absis(obstacle) && Ordinat(*meteor)==Ordinat(obstacle)) || (Absis(*meteor)== Absis(food) && Ordinat(*meteor)==Ordinat(food))) {
+        Absis(*meteor) = GenRand(0,4,5);
+        Ordinat(*meteor) = GenRand(0,4,5);
     }
 }
 
