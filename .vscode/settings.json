@@ -6,5 +6,6 @@
         "help.h": "c",
         "queue.h": "c",
         "stackhistory.h": "c"
-    }
+    },
+    "C_Cpp.errorSquiggles": "Disabled"
 }

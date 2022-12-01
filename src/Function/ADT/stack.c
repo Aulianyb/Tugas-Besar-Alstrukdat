@@ -68,24 +68,4 @@ void isiTiang(Stack *S, int n){
 		Info.graph = val;
 		Push(S, Info);
 	}
-	// if (n == 1){
-	// 	n(I) = 1;
-	// 	graph(I) = strToWord("    *    ");
-	// }
-	// else if (n == 2){
-	// 	n(I) = 2;
-	// 	graph(I) = strToWord("   ***   ");
-	// }
-	// else if (n == 3){
-	// 	n(I) = 3;
-	// 	graph(I) = strToWord("  *****  ");
-	// }
-	// else if (n == 4){
-	// 	n(I) = 4;
-	// 	graph(I) = strToWord(" ******* ");
-	// }
-	// else if (n == 5){
-	// 	n(I) = 5;
-	// 	graph(I) = strToWord("*********");
-	// } 
 }
