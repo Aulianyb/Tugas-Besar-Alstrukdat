@@ -267,3 +267,81 @@ void saveGAME(char* filename, TabGame listGame, StackHistory SH, TabScore TS)
         printf("Berhasil melakukan save\n");
     }
 }
+
+void loadHANGMAN(char* filename, TabGame *listGame)
+{
+    char path[100] = "data/";
+	int i = 5;
+	while (*filename != '\0')
+	{
+		path[i] = *filename;
+		i++;
+		*filename++;
+	}
+
+	path[i] = '.'; i++;
+	path[i] = 't'; i++;
+	path[i] = 'x'; i++;
+	path[i] = 't'; i++;
+
+    startLOAD(path);
+    if (fptr == NULL){
+        listGame->Neff = -1;
+        printf("file tidak ditemukan!\n");
+    }
+    else {
+        ADVWORDLOAD();
+        int countGame = wordtoInt(currentWord);
+
+        ADVLOAD();
+        char* title;
+        int i;
+        for ( i = IdxMin; i <= countGame; i++)
+        {
+            ADVWORDLOAD();
+            SetEl(listGame, i, currentWord);
+        }
+        listGame->Neff = countGame;
+        printf("Loading");
+        delay(250); printf(".");
+        delay(250); printf(".");
+        delay(250); printf(".\n");
+        printf("File konfigurasi untuk HANGMAN berhasil dibaca. GLHF!!\n");      
+    }
+
+}
+
+void saveHANGMAN(char* filename, TabGame listGame){
+    char path[100] = "data/";
+    int i = 5;
+    while (*filename != '\0')
+    {
+        path[i] = *filename;
+        i++;
+        *filename++;
+    }
+    path[i] = '.'; i++;
+    path[i] = 't'; i++;
+    path[i] = 'x'; i++;
+    path[i] = 't'; i++;
+
+    fptr = fopen(path, "w");
+
+    if (fptr == NULL){
+        printf("Tidak berhasil menyimpan file!");
+    }
+    else
+    {
+        fprintf(fptr, "%d\n", listGame.Neff-1);
+        int i;
+        for (i = IdxMin; i <= listGame.Neff-1; i++)
+        {
+            char *title = wordToString(listGame.TI[i]);
+            fprintf(fptr, "%s\n", title);
+        }
+        char *title = wordToString(listGame.TI[i]);
+        fprintf(fptr, "%s", title);
+        fclose(fptr);
+        printf("Berhasil melakukan save\n");
+    }
+}
