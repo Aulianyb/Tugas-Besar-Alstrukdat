@@ -41,7 +41,7 @@ void PlayGame(Queue *game_queue, StackHistory *SH, TabScore *TS, TabGame TG){
             printf("Loading ");
             PrintKata(val);
             printf("....\n");
-            score = 100;
+            hangman(&score);
         }
         else if (isWordEqual(val, "SNAKE ON METEOR"))
         {
