@@ -162,7 +162,7 @@ void loadGAME(char* filename, TabGame *listGame, StackHistory *SH, TabScore *TS)
                 for (int j = 0; j < countScore; j++)
                 {
                     ADVWORDLOAD();
-                    InsertMap(&map_temp, GetKataFirst(currentWord), WordToInt(GetKataSecond(currentWord)));
+                    InsertMapLOAD(&map_temp, GetKataFirst(currentWord), WordToInt(GetKataSecond(currentWord)));
 
                     // printf("Isi seharusnya: \n");
                     // PrintKata(GetKataFirst(currentWord)); printf(" ");
