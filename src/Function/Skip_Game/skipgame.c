@@ -30,7 +30,7 @@ void SkipGame(Queue *game_queue, int n){
             PrintKata(val);
             printf("....\n");
             // PLay Diner DASH
-            Dinner_Dash();
+            Dinner_Dash(&score);
         }
         else if (isWordEqual(val, "RNG"))
         {
