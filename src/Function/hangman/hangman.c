@@ -2,6 +2,7 @@
 
 void hangman(int *score) {
     
+    // Inisiasi beberapa variable
     TabGame listkata;
 	srand(time(NULL));
     loadHANGMAN("listkata", &listkata);
@@ -10,6 +11,7 @@ void hangman(int *score) {
     int livescount = 10;
     int mainmenu = 0;
 
+    // Looping Main menu (untuk menambahkan kata)
     while (mainmenu == 0){
         printf("Apakah anda ingin menambahkan kata baru? (y/n)\n");
         STARTFILE();
@@ -17,6 +19,7 @@ void hangman(int *score) {
             printf("Masukkan kata yang ingin ditambahkan: ");
             STARTFILE();
             int i;
+            // memasukkan kata ke listkata
             for (i = 0; i < currentWord.Length; i++)
             {
                 listkata.TI[listkata.Neff].TabWord[i] = currentWord.TabWord[i];
@@ -30,10 +33,12 @@ void hangman(int *score) {
             printf("Apakah anda ingin memulai game? (y/n)\n");
             STARTFILE();
             if (currentWord.TabWord[0] == 'y'){
+                // exit main menu, masuk ke gam
                 mainmenu = 1;
             }
             else if (currentWord.TabWord[0] == 'n'){
                 printf("Terima kasih sudah bermain!\n");
+                // exit main menu, exit game
                 mainmenu = 1;
                 replay = 1;
                 }
@@ -41,6 +46,8 @@ void hangman(int *score) {
         }
 
     char guessWords[listkata.Neff][16];
+
+    // memindahkan dari list ke array guesswords
     int i;
     for (i = 0; i < listkata.Neff; i++)
     {
@@ -52,7 +59,10 @@ void hangman(int *score) {
         guessWords[i][j] = '\0';
     }
 
+    // memasuki looping game
     while (replay == 0){	
+
+    // inisialisasi variable
 	int randomIndex = rand() % 6;
 	
 	int numCorrect = 0;
@@ -69,7 +79,7 @@ void hangman(int *score) {
 	
 	char InputLetter;
     char AllEnteredLetters[27] = {0};
-
+        // looping untuk proses penjawaban soal
         while ( numCorrect < lengthOfWord ) {
 
             printf("\n\nSeluruh huruf yang telah dicoba: ");
@@ -81,7 +91,7 @@ void hangman(int *score) {
             printf("Kata yang harus diisi: \n");
         
             for( IndexLooping = 0; IndexLooping < lengthOfWord; IndexLooping++) {
-            
+                // Looping print soal
                 if(letterGuessed[IndexLooping] == 1) {
                     printf("%c",guessWords[randomIndex][IndexLooping]);				
                 } else {
@@ -95,6 +105,7 @@ void hangman(int *score) {
             printf("Masukkan huruf tebakanmu! :\n");
             STARTFILE();
 
+            // Penambahan opsi quit ditengah game
             if(isWordEqual(GetKataFirst(currentWord), "quit")) {
                 quit = 1;
                 break;
@@ -104,6 +115,7 @@ void hangman(int *score) {
             reguessed = 0; 
             oldCorrect = numCorrect;
 
+            // Konversi huruf kecil ke huruf besar
             if(InputLetter >= 'a' && InputLetter <= 'z') {
                 InputLetter = InputLetter - 32;
             } else if (InputLetter < 'A' || InputLetter > 'Z') {
@@ -113,6 +125,7 @@ void hangman(int *score) {
             
             for ( IndexLooping = 0; IndexLooping < lengthOfWord; IndexLooping++) {
                 for (int i = 0; i < 26; i++) {
+                    // Loop untuk pengecekan apabila huruf pernah dimasukkan sebelumnya
                     if (AllEnteredLetters[i] == InputLetter) {
                         reguessed = 1;
                         }
@@ -125,6 +138,7 @@ void hangman(int *score) {
             
             }
             if (reguessed == 0){
+                // Penambahan huruf yang belum pernah di masukkan ke list huruf yang pernah dimasukkan
                 AllEnteredLetters[IndexLetter] = InputLetter;
                 IndexLetter++;
             }
@@ -239,9 +253,11 @@ void hangman(int *score) {
         }
         
         if( quit == 1 ) {	
+            // Jika input berupa quit, maka game akan langsung berhenti
             printf("\nTelah keluar dari permainan\n");
             replay = 1;
         } else if (livescount == 0) {
+            // Jika nyawa habis, maka game akan langsung berhenti dan jawaban di spill
             printf("\n Kamu kalah :( Kata yang benar adalah: %s\n",
             guessWords[randomIndex]);
             replay = 1;	
