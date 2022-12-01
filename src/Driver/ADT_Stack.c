@@ -23,8 +23,8 @@ int main(){
     printf("==== isiTiang ====\n");
     printf("Isi Tiang akan mengisi Tiang sesuai input n\n");
     printf("Misal : N = 10\n");
-    isiTiang(&S, 29);
-    printStack(S, 30);
+    isiTiang(&S, 27);
+    printStack(S, 27);
     printf("\n");
     printf("Misal : N = 5\n");
     CreateEmpty(&S);
