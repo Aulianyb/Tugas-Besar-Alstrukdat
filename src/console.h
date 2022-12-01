@@ -46,4 +46,10 @@ void startGAME(TabGame *listGame, StackHistory *SH, TabScore *TS);
 void saveGAME(char* filename, TabGame listGame, StackHistory SH, TabScore TS);
 // Melakukan penyimpanan pada file
 
+void saveHANGMAN(char* filename, TabGame listGame);
+// Melakukan penyimpanan pada file untuk game hangman
+
+void loadHANGMAN(char* filename, TabGame *listGame);
+// Melakukan pembacaan file untuk game hangman
+
 #endif

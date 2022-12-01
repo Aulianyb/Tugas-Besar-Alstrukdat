@@ -1,27 +1,57 @@
 #include "hangman.h"
 
 void hangman(int *score) {
-
+    
+    TabGame listkata;
 	srand(time(NULL));
-
-	// List Guess Words
-	char guessWords[][16] = {
-        "COMPUTER",
-        "SCIENCE",
-        "PROGRAMMING",
-        "MATHEMATICS",
-        "ENGINEERING",
-        "TECHNOLOGY",
-        "SOFTWARE",
-        "HARDWARE",
-	};
-
-    // Insialisasi Variable
+    loadHANGMAN("listkata", &listkata);
     int currentscore = 0;
     int replay = 0;
     int livescount = 10;
-    
-    // Masuk ke loop game
+    int mainmenu = 0;
+
+    while (mainmenu == 0){
+        printf("Apakah anda ingin menambahkan kata baru? (y/n)\n");
+        STARTFILE();
+        if (currentWord.TabWord[0] == 'y'){
+            printf("Masukkan kata yang ingin ditambahkan: ");
+            STARTFILE();
+            int i;
+            for (i = 0; i < currentWord.Length; i++)
+            {
+                listkata.TI[listkata.Neff].TabWord[i] = currentWord.TabWord[i];
+            }
+            listkata.TI[listkata.Neff].Length = currentWord.Length;
+            listkata.Neff++;
+            saveHANGMAN("listkata", listkata);
+            printf("Kata berhasil ditambahkan!\n");
+        }
+        else if (currentWord.TabWord[0] == 'n'){
+            printf("Apakah anda ingin memulai game? (y/n)\n");
+            STARTFILE();
+            if (currentWord.TabWord[0] == 'y'){
+                mainmenu = 1;
+            }
+            else if (currentWord.TabWord[0] == 'n'){
+                printf("Terima kasih sudah bermain!\n");
+                mainmenu = 1;
+                replay = 1;
+                }
+            }
+        }
+
+    char guessWords[listkata.Neff][16];
+    int i;
+    for (i = 0; i < listkata.Neff; i++)
+    {
+        int j;
+        for (j = 0; j < listkata.TI[i].Length; j++)
+        {
+            guessWords[i][j] = listkata.TI[i].TabWord[j];
+        }
+        guessWords[i][j] = '\0';
+    }
+
     while (replay == 0){	
 	int randomIndex = rand() % 6;
 	
@@ -39,8 +69,7 @@ void hangman(int *score) {
 	
 	char InputLetter;
     char AllEnteredLetters[27] = {0};
-	
-    // Masuk Ke loop tebak-tebakan
+
         while ( numCorrect < lengthOfWord ) {
 
             printf("\n\nSeluruh huruf yang telah dicoba: ");
@@ -50,10 +79,9 @@ void hangman(int *score) {
         
             printf("\n\nLengkapi bagian yang kosong dibawah!:\n");
             printf("Kata yang harus diisi: \n");
-            
-            // Proses Print Soal
+        
             for( IndexLooping = 0; IndexLooping < lengthOfWord; IndexLooping++) {
-                
+            
                 if(letterGuessed[IndexLooping] == 1) {
                     printf("%c",guessWords[randomIndex][IndexLooping]);				
                 } else {
@@ -67,7 +95,6 @@ void hangman(int *score) {
             printf("Masukkan huruf tebakanmu! :\n");
             STARTFILE();
 
-            // Proses pengecekan input user saat menjawab
             if(isWordEqual(GetKataFirst(currentWord), "quit")) {
                 quit = 1;
                 break;
@@ -77,9 +104,8 @@ void hangman(int *score) {
             reguessed = 0; 
             oldCorrect = numCorrect;
 
-            // Konversi jika input pengguna berupa lowercase
             if(InputLetter >= 'a' && InputLetter <= 'z') {
-                InputLetter -= 32;
+                InputLetter = InputLetter - 32;
             } else if(InputLetter < 'a' || InputLetter > 'z') {
                 printf("Input yang dimasukkan salah! input yang diperbolehkan hanya huruf\n");
                 continue;
@@ -222,10 +248,9 @@ void hangman(int *score) {
         } else  {	
             currentscore = currentscore + StringLen(guessWords[randomIndex]);
             printf("\nYeayy! Kamu Menang :D, Kamu mendapatkan %d poin!\n", StringLen(guessWords[randomIndex]));
-            printf("Skor kamu sekarang adalah %d\n", currentscore);
             replay = 0;
         } 
     }
-    printf("Skor kamu sekarang adalah %d\n", currentscore);
     *score = currentscore;
+    printf("Skor finalmu adalah %d\n", currentscore);
 }
