@@ -1,13 +1,13 @@
 #include "Tree_Game.h"
 void MoveTree(BinTree *PlayerMove){
     BinTree PlayerMove;
-    Move = Tree ("move", -1, NilTree, NilTree);
-    AddDaun (&Move, "move", "action", -2, true);
-    AddDaun (&Move, "move", "attack", -3, false);
-    AddDaun (&Left(*Move), "action", "heal", 2, true);
-    AddDaun (&Left(*Move), "action", "skip", 5, false);
-    AddDaun (&Right(*Move), "attack", "spell", 2, true);
-    AddDaun (&Right(*Move), "attack", "sword", 6, false);
+    PlayerMove = Tree ("move", -1, NilTree, NilTree);
+    AddDaun (&PlayerMove, "move", "action", -2, true);
+    AddDaun (&PlayerMove, "move", "attack", -3, false);
+    AddDaun (&Left(*PlayerMove), "action", "heal", 2, true);
+    AddDaun (&Left(*PlayerMove), "action", "skip", 5, false);
+    AddDaun (&Right(*PlayerMove), "attack", "spell", 2, true);
+    AddDaun (&Right(*PlayerMove), "attack", "sword", 6, false);
 }
 int main(){
     boolean alive=true, win=false;
