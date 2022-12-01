@@ -13,6 +13,7 @@
 #include "../ADT/stackhistory/stackhistory.h"
 #include "../ADT/arrayofmap/arrayofmap.h"
 #include "../Hanoi/Hanoi.h"
+#include "../hangman/hangman.h"
 
 void PlayGame(Queue *game_queue, StackHistory *SH, TabScore *TS, TabGame TG);
 
