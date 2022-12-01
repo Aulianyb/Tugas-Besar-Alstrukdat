@@ -36,15 +36,15 @@ int main(){
     while (alive && (!win)){
         printf("HP MONSTER : %d\n", hp_monster);
         printf("YOUR HP : %d\n", hp_player);
-        printf(" > WHAT DO YOU DO?\n > "); 
+        printf(" > WHAT DO YOU DO? (ATTACK / ACTION)\n > "); 
         STARTFILE();
-
-        //INSERT BIT TREE APPLICATION HERE
         
         if (isWordEqual(currentWord, "ATTACK")){
-            hp_monster-= 25; 
+            printf("WHICH ATTACK DO YOU WANT?");
+            STARTFILE();
+            if 
         }
-        else{
+        else if (isWordEqual(currentWord, "ACTION")){
             printf("So.. You're gonna Stand There and Do Nothing?\n");
         }
 
