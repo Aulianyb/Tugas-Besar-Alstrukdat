@@ -25,6 +25,6 @@ void printLabel(int n);
 void MoveTower(Stack *S1, Stack *S2);
 
 //MAIN GAME
-int Hanoi();
+void Hanoi(int *score);
 
 #endif

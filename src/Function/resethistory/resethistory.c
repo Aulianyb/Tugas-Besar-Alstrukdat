@@ -1,11 +1,11 @@
 #include "resethistory.h"
 
 void RESETHISTORY(StackHistory *SH){
-    printf("APAKAH KAMU YAKIN INGIN MELAKUKAN RESET HISTORY? (YA/TIDAK): ");
-    STARTFILE();
-    
     boolean valid = false;
     while (!valid){
+        printf("APAKAH KAMU YAKIN INGIN MELAKUKAN RESET HISTORY? (YA/TIDAK): ");
+        STARTFILE();
+
         if (isWordEqual(currentWord, "YA")) {
             CreateEmptyHistory(SH);
             valid = true;
@@ -19,5 +19,4 @@ void RESETHISTORY(StackHistory *SH){
             printf("Input salah. Ulangi!\n");
         }
     }
-    
 }

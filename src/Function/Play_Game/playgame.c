@@ -1,15 +1,14 @@
 #include <stdio.h>
 #include "playgame.h"
-#include "../ADT/stackhistory/stackhistory.h"
 
-void PlayGame(Queue *game_queue, StackHistory *SH){
+void PlayGame(Queue *game_queue, StackHistory *SH, TabScore *TS, TabGame TG){
     printf("Berikut ini adalah daftar Game-mu : \n");
     PrintQueueGame(*game_queue);
     if (isEmpty(*game_queue)){
         printf("Belum ada game yang di queue!\n");
     }
     else{
-        Word val;
+        Word val; int score;
         dequeue(game_queue, &val);
         if (isWordEqual(val, "Diner Dash"))
         {
@@ -18,6 +17,7 @@ void PlayGame(Queue *game_queue, StackHistory *SH){
             printf("....\n");
             // PLay Diner DASH
             Dinner_Dash();
+            score = 100;
         }
         else if (isWordEqual(val, "RNG"))
         {
@@ -26,6 +26,29 @@ void PlayGame(Queue *game_queue, StackHistory *SH){
             printf("....\n");
             // Play RNG
             RNG();
+            score = 100;
+        }
+        else if (isWordEqual(val, "TOWER OF HANOI"))
+        {
+            printf("Loading ");
+            PrintKata(val);
+            printf("....\n");
+            // Play Tower of Hanoi
+            Hanoi(&score);
+        }
+        else if (isWordEqual(val, "HANGMAN"))
+        {
+            printf("Loading ");
+            PrintKata(val);
+            printf("....\n");
+            hangman(&score);
+        }
+        else if (isWordEqual(val, "SNAKE ON METEOR"))
+        {
+            printf("Loading ");
+            PrintKata(val);
+            printf("....\n");
+            score = 100;
         }
         else if (isWordEqual(val, "ROCK PAPER SCISSOR"))
         {
@@ -33,13 +56,13 @@ void PlayGame(Queue *game_queue, StackHistory *SH){
             PrintKata(val);
             printf("....\n");
             // Play ROCK PAPER SCISSOR
-            RockPaperScissor();
+            RockPaperScissor(&score);
         }
-        else if (isWordEqual(val, "DINOSAUR IN EARTH") || isWordEqual(val, "RISEWOMAN") || isWordEqual(val, "EIFFEL TOWER")){
-            printf("Game ");
-            PrintKata(val);
-            printf(" masih dalam maintenance, belum dapat dimainkan. Silahkan pilih game lain.\n");
-        }
+        // else if (isWordEqual(val, "DINOSAUR IN EARTH") || isWordEqual(val, "RISEWOMAN") || isWordEqual(val, "EIFFEL TOWER")){
+        //     printf("Game ");
+        //     PrintKata(val);
+        //     printf(" masih dalam maintenance, belum dapat dimainkan. Silahkan pilih game lain.\n");
+        // }
         else {
             printf("Loading ");
             PrintKata(val);
@@ -48,9 +71,15 @@ void PlayGame(Queue *game_queue, StackHistory *SH){
             printf(" |   __|  _  |     |   __|  |     |  |  |   __| __  |\n");
             printf(" |  |  |     | | | |   __|  |  |  |  |  |   __|    -|\n");
             printf(" |_____|__|__|_|_|_|_____|  |_____|\\___/|_____|__|__|\n\n");
-            printf("SCORE AKHIR : %d\n", GenRand(100,100,2));
+            score = GenRand(100,100,2);
         }
+        printf("Skor akhir : %d\n", score);
+        printf("\nMasukkan nama: ");
+        STARTFILE();
+        int idx = findIdxGame(TG, val);
+        InsertMap(&TS->TI[idx], currentWord, score);
 
+        printf("\nBerhasil menambahkan score ke SCOREBOARD!\n");
         PushHistory(SH, val);
     }
 }

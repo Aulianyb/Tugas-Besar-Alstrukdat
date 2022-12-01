@@ -20,10 +20,10 @@ typedef int address;
 typedef struct {
 	Word user;
 	int score;
-} infotype;
+} infotypeMap;
 
 typedef struct {
-	infotype Elements[MaxElMap];
+	infotypeMap Elements[MaxElMap];
 	address Count;
 } Map;
 

@@ -1,5 +1,6 @@
 #include "../../boolean.h"
 #include "../ADT/mesinkata.h"
+#include "../ADT/map/map.h"
 
 #ifndef ARRAY_H
 #define ARRAY_H
@@ -109,5 +110,7 @@ void DeleteAt (TabGame *T, IdxType i);
 /* I.S. T tidak kosong */
 /* F.S. Elemen pada indeks ke-x dihapus dari elemen, elemen setelah elemen yang dihapus bergeser ke kiri,
         elemen efektif berkurang 1 */
+
+IdxType findIdxGame(TabGame T, Word game);
 
 #endif

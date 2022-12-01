@@ -15,6 +15,7 @@ int main(){
 	// 	PrintKata(graph(S.T[i]));
 	// 	printf("\n");
 	// }
-	Hanoi();
+	int temp;
+	Hanoi(&temp);
 	return 0; 
 }

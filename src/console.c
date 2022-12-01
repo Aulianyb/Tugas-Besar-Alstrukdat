@@ -7,7 +7,18 @@ void quit()
 {
     printf("Terima kasih telah memainkam game BNMO ini!\n");
     printf("Good Game, Well Played\n");
-    delay(2000);
+    printf("b"); delay(100);
+    printf("y"); delay(100);
+    printf("e"); delay(100);
+    printf(" "); delay(100);
+    printf("b"); delay(100);
+    printf("y"); delay(100);
+    printf("e"); delay(100);
+    printf(" "); delay(100);
+    printf("b"); delay(100);
+    printf("y"); delay(100);
+    printf("e"); delay(100);
+    printf("~"); delay(100);
 }
 
 void startLOAD(char* filename)
@@ -222,15 +233,17 @@ void saveGAME(char* filename, TabGame listGame, StackHistory SH, TabScore TS)
         fprintf(fptr, "%s\n", title);
 
         StackHistory temp; CreateEmptyHistory(&temp);
-        SwapStackHistory(SH, &temp);
-        fprintf(fptr, "%d\n", Top(temp)+1);
-        for (i = 0; i < Top(temp); i++){
-            char *titlehistory = wordToString(temp.T[i]);
+        if (IsEmptyHistory(SH)) fprintf(fptr, "0\n");
+        else {
+            SwapStackHistory(SH, &temp);
+            fprintf(fptr, "%d\n", Top(temp)+1);
+            for (i = 0; i < Top(temp); i++){
+                char *titlehistory = wordToString(temp.T[i]);
+                fprintf(fptr, "%s\n", titlehistory);
+            }
+            char *titlehistory = wordToString(temp.T[Top(temp)]);
             fprintf(fptr, "%s\n", titlehistory);
         }
-        char *titlehistory = wordToString(temp.T[Top(temp)]);
-        fprintf(fptr, "%s\n", titlehistory);
-
         // penulisan scoreboard
         for (i = IdxMin; i <= listGame.Neff-1;i++){
             fprintf(fptr, "%d\n", TS.TI[i].Count);
@@ -242,11 +255,13 @@ void saveGAME(char* filename, TabGame listGame, StackHistory SH, TabScore TS)
         j = 0;
         fprintf(fptr, "%d", TS.TI[i].Count);
         if (TS.TI[i].Count != 0) fprintf(fptr, "\n");
-        while(j < TS.TI[i].Count){
+        while(j < TS.TI[i].Count-1){
             char* name = wordToString(TS.TI[i].Elements[j].user);
-            fprintf(fptr, "%s %d", name, TS.TI[i].Elements[j].score);
+            fprintf(fptr, "%s %d\n", name, TS.TI[i].Elements[j].score);
             j++;
         }
+        char* name = wordToString(TS.TI[i].Elements[j].user);
+        fprintf(fptr, "%s %d", name, TS.TI[i].Elements[j].score);
 
         fclose(fptr);
         printf("Berhasil melakukan save\n");
