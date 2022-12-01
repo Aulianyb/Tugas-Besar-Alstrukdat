@@ -125,7 +125,7 @@ int main(){
                 
             }
         }
-        else{
+        else if (isWordEqual(currentWord, "ACTION")){
             printf("So.. You're gonna Stand There and Do Nothing?\n");
         }
 

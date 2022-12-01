@@ -209,10 +209,11 @@ void buat_pesanan(Tab *T, int label){
 	Insert_pesanan(T, label, GenRand(1,5,5), (GenRand(1,5,5) % 5) + 1, GenRand(10,50,50) * 1000);
 }
 
-void Dinner_Dash(){
+void Dinner_Dash(int *saldo){
+	*saldo = 0;
 	boolean play = true;
 	char command[8];
-	int saldo=0, order_ctr=3, cook_ctr=0, served_ctr=0, made_ctr=2; 
+	int order_ctr=3, cook_ctr=0, served_ctr=0, made_ctr=2; 
 	Tab Orders, Cook, Served, Data;
 	Pesanan temp; 
 	boolean valid=false; 
@@ -236,7 +237,7 @@ void Dinner_Dash(){
 	printf(" ==================================================================\n\n");
 	while (play){
 
-		printf(" SALDO : %d\n\n", saldo);
+		printf(" saldo : %d\n\n", *saldo);
 
 		TulisIsi_pesanan(Orders);
 
@@ -317,7 +318,7 @@ void Dinner_Dash(){
 
 		else if(isServe(currentWord)){
 			dequeue_cook(&Served, &temp);
-			saldo += Harga(temp);
+			*saldo += Harga(temp);
 			served_ctr++;
 			printf(" Berhasil Menyajikan M%d\n", CommandInt(currentWord));
 		}
@@ -349,6 +350,6 @@ void Dinner_Dash(){
 	printf(" |   __|  _  |     |   __|  |     |  |  |   __| __  |\n");
 	printf(" |  |  |     | | | |   __|  |  |  |  |  |   __|    -|\n");
 	printf(" |_____|__|__|_|_|_|_____|  |_____|\\___/|_____|__|__|\n\n");
-	printf(" SCORE AKHIR : %d\n", saldo);         
+	printf(" SCORE AKHIR : %d\n", *saldo);         
 	printf(" Served Meals : %d\n", served_ctr);                                                       
 }

@@ -59,6 +59,8 @@ void InsertMap(Map *M, Word k, valuetype v);
         M mungkin sudah beranggotakan v dengan User k */
 /* F.S. v menjadi anggota dari M dengan User k. Jika k sudah ada, operasi tidak dilakukan */
 
+void InsertMapLOAD(Map *M, Word k, int v);
+
 void DeleteMap(Map *M, Word k);
 /* Menghapus Elmt dari Map M. */
 /* I.S. M tidak kosong
