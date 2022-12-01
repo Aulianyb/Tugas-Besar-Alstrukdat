@@ -7,4 +7,6 @@
 #include "../../random_generator.h"
 #include "../ADT/Tree/tree.h"
 
+void MoveTree(BinTree *Move);
+ 
 #endif
