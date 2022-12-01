@@ -106,8 +106,8 @@ void hangman(int *score) {
 
             if(InputLetter >= 'a' && InputLetter <= 'z') {
                 InputLetter = InputLetter - 32;
-            } else if(InputLetter < 'a' || InputLetter > 'z') {
-                printf("Input yang dimasukkan salah! input yang diperbolehkan hanya huruf\n");
+            } else if (InputLetter < 'A' || InputLetter > 'Z') {
+                printf("Input yang diperbolehkan hanya huruf!\n");
                 continue;
             }
             
