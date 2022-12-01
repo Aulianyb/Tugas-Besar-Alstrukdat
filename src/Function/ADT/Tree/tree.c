@@ -1,33 +1,34 @@
 #include "tree.h"
 
 /*** Konstruktor ***/
-BinTree Tree (Infotype Akar, BinTree L, BinTree R) {
+BinTree Tree (keytype keyakar, valuetype valueakar, BinTree L, BinTree R) {
 	BinTree T;
 
 	T= (AddressTree) malloc (sizeof(Node));
-	if (T == Nil) {
-		return Nil;
+	if (T == NilTree) {
+		return NilTree;
 	} else {
-		Akar(T)= Akar;
+		Akar(T).Key= keyakar;
+		Akar(T).Value= valueakar;
 		Left(T)= L;
 		Right(T)= R;
 		return T;
 	}
 }
 /* Menghasilkan sebuah pohon biner dari A, L, dan R, jika alokasi berhasil */
-/* Menghasilkan pohon kosong (Nil) jika alokasi gagal */
+/* Menghasilkan pohon kosong (NilTree) jika alokasi gagal */
 
-void MakeTree (Infotype Akar, BinTree L, BinTree R, BinTree *P) {
-	*P= Tree(Akar, L, R);
+void MakeTree (keytype keyakar, valuetype valueakar, BinTree L, BinTree R, BinTree *P) {
+	*P= Tree(keyakar, valueakar, L, R);
 }
 /* I.S. Sembarang */
 /* F.S. Menghasilkan sebuah pohon P */
 /* Menghasilkan sebuah pohon biner P dari A, L, dan R, jika alokasi berhasil */
-/* Menghasilkan pohon P yang kosong (Nil) jika alokasi gagal */
+/* Menghasilkan pohon P yang kosong (NilTree) jika alokasi gagal */
 
 /*** Predikat-Predikat Penting ***/
 boolean IsTreeEmpty (BinTree P) {
-	if (P == Nil) {
+	if (P == NilTree) {
 		return true;
 	} else {
 		return false;
@@ -37,7 +38,7 @@ boolean IsTreeEmpty (BinTree P) {
 
 boolean IsOneElmt (BinTree P) {
 	if (!IsTreeEmpty(P)) {
-		if (Left(P) == Nil && Right(P) == Nil) {
+		if (Left(P) == NilTree && Right(P) == NilTree) {
 			return true;
 		}
 		else {
@@ -91,7 +92,7 @@ boolean IsBiner (BinTree P) {
 }
 
 /*** Searching ***/
-boolean SearchTree (BinTree P, Infotype X) {
+boolean SearchTree (BinTree P, keytype X) {
 	if (IsTreeEmpty(P)) {
 		return false;
 	}
@@ -164,9 +165,9 @@ boolean IsSkewRight (BinTree P) {
 /* Mengirimkan true jika P adalah pohon condong kanan */
 
 /*** Operasi lain ***/
-void AddDaunTerkiri (BinTree *P, Infotype X) {
+void AddDaunTerkiri (BinTree *P, keytype X, valuetype Y) {
 	if (IsTreeEmpty(*P)) {
-		*P= Tree(X, Nil, Nil);
+		*P= Tree(X, Y, NilTree, NilTree);
 	}
 	else if (IsUnerLeft(*P) || IsBiner(*P) || IsOneElmt(*P)) {
 		AddDaunTerkiri(&Left(*P), X);
@@ -178,19 +179,19 @@ void AddDaunTerkiri (BinTree *P, Infotype X) {
 /* I.S. P boleh kosong */
 /* F.S. P bertambah simpulnya, dengan X sebagai simpul daun terkiri */
 
-void AddDaun (BinTree *P, Infotype X, Infotype Y, boolean Kiri) {
+void AddDaun (BinTree *P, keytype X, keytype keyY, valuetype valueY, boolean Kiri) {
 	if (!IsTreeEmpty(*P)) {
 		if (Akar(*P) == X) {
 			if (Kiri) {
-				Left(*P)= Tree(Y, Nil, Nil);
+				Left(*P)= Tree(keyY, valueY, NilTree, NilTree);
 			}
 			else {
-				Right(*P)= Tree(Y, Nil, Nil);
+				Right(*P)= Tree(keyY, valueY, NilTree, NilTree);
 			}
 		}
 		else {
-			AddDaun(&Left(*P), X, Y, Kiri);
-			AddDaun(&Right(*P), X, Y, Kiri);
+			AddDaun(&Left(*P), X, keyY, valueY, Kiri);
+			AddDaun(&Right(*P), X, keyY, valueY, Kiri);
 		}
 	}
 }
@@ -198,11 +199,11 @@ void AddDaun (BinTree *P, Infotype X, Infotype Y, boolean Kiri) {
 /* F.S. P bertambah simpulnya, dengan Y sebagai anak kiri X (jika Kiri = true), atau
 sebagai anak k@anan X (jika Kiri = false) */
 
-void DelDaunTerkiri (BinTree *P, Infotype *X) {
+void DelDaunTerkiri (BinTree *P, keytype *X) {
 	if (IsOneElmt(*P)) {
 		*X= Akar(*P);
 		free(*P);
-		*P= Nil;
+		*P= NilTree;
 	} else {
 		if (IsUnerRight(*P)) {
 			DelDaunTerkiri(&Right(*P), X);
@@ -216,11 +217,11 @@ void DelDaunTerkiri (BinTree *P, Infotype *X) {
 /* F.S. P dihapus daun terkirinya, dan didealokasi, dengan X adalah info yang semula
 disimpan pada daun terkiri yang dihapus */
 
-void DelDaun (BinTree *P, Infotype X) {
+void DelDaun (BinTree *P, keytype X) {
 	if (!IsTreeEmpty(*P)) {
 		if (Akar(*P) == X) {
 			free(*P);
-			*P= Nil;
+			*P= NilTree;
 		}
 		else {
 			DelDaun(&Left(*P), X);

@@ -1,8 +1,14 @@
-#include <stdio.h>
-#include "../ADT/mesinkata.h"
-#include "../../boolean.h"
-#include "../../random_generator.h"
-
+#include "Tree_Game.h"
+void MoveTree(){
+    BinTree Move;
+    MakeTree (move, -1, NilTree, NilTree, BinTree *Move);
+    AddDaun (&Move, move, action, -2, true);
+    AddDaun (&Move, move, attack, -3, false);
+    AddDaun (&Left(*Move), action, heal, 2, true);
+    AddDaun (&Left(*Move), action, skip, 5, false);
+    AddDaun (&Right(*Move), action, spell, 2, true);
+    AddDaun (&Right(*Move), action, sword, 6, false);
+}
 int main(){
     boolean alive=true, win=false;
     int hp_player=100, hp_monster=100, score=0, RNG;
