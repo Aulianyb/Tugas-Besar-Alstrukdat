@@ -71,7 +71,6 @@ void hangman(int *score) {
 	int lengthOfWord = StringLen(guessWords[randomIndex]);
 	int letterGuessed[16] = { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 };
 	
-	int quit = 0;
     int IndexLetter = 0;	
 	
 	int IndexLooping = 0;
@@ -104,12 +103,6 @@ void hangman(int *score) {
         
             printf("Masukkan huruf tebakanmu! :\n");
             STARTFILE();
-
-            // Penambahan opsi quit ditengah game
-            if(isWordEqual(GetKataFirst(currentWord), "quit")) {
-                quit = 1;
-                break;
-            }
 
             InputLetter = currentWord.TabWord[0];
             reguessed = 0; 
@@ -252,11 +245,7 @@ void hangman(int *score) {
             }
         }
         
-        if( quit == 1 ) {	
-            // Jika input berupa quit, maka game akan langsung berhenti
-            printf("\nTelah keluar dari permainan\n");
-            replay = 1;
-        } else if (livescount == 0) {
+        if (livescount == 0) {
             // Jika nyawa habis, maka game akan langsung berhenti dan jawaban di spill
             printf("\n Kamu kalah :( Kata yang benar adalah: %s\n",
             guessWords[randomIndex]);
