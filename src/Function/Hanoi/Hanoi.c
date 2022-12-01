@@ -91,51 +91,40 @@ void printLabel(int n){
     printf("|");
     int j=0;
     int len=0;
-    while (j<((2*n-1)/2)){
-        printf(" ");
-        j++;  
-        len++;  
-    }
-    printf("A");
-    j++;
-    len++;  
-    while (j<(2*n-1)){
-        printf(" ");
+    for (int i=0;i<3;i++){
+        while (j<((2*n-1)/2)){
+            printf(" ");
+            j++;  
+            len++;  
+        }
+        switch (i)
+        {
+        case 0:
+            printf("A");
+            break;
+        
+        case 1:
+            printf("B");
+            break;
+        case 2:
+            printf("C");
+            break;
+        default:
+            break;
+        }
         j++;
         len++;  
-    }
-    j=0;  
-    printf("   |   ");
-    len+=8;  
-    while (j<((2*n-1)/2)){
-        printf(" ");
-        j++;    
-        len++;  
-    }
-    printf("B");
-    j++;
-    len++;  
-    while (j<(2*n-1)){
-        printf(" ");
-        j++;
-        len++;  
-    }
-    j=0;
-    printf("   |   ");
-    len+=8;  
-    while (j<((2*n-1)/2)){
-        printf(" ");
-        j++;    
-        len++;  
-    }
-    printf("C");
-    j++;
-    len++;  
-    while (j<(2*n-1)){
-        printf(" ");
-        j++;
-        len++;  
-    }
+        while (j<(2*n-1)){
+            printf(" ");
+            j++;
+            len++;  
+        }
+        j=0;  
+        if (i < 2){
+           printf("   |   ");
+            len+=8;   
+        }   
+    } 
     while (len<((2*n-1)*3)+22){
         printf(" ");
         len++; 
@@ -223,7 +212,7 @@ void Hanoi(int *score){
                 printf("-- INPUT TIDAK VALID! MASUKKAN A, B ATAU C! --\n");
             }
             else if(isTwoWordEqual(Dest, Source)){
-                printf("-- TIANG ASAL DAN TIANG TUJUAN TIDAK BOLEH SAMA! --");
+                printf("-- TIANG ASAL DAN TIANG TUJUAN TIDAK BOLEH SAMA! --\n");
             }
             else{
                 if (IsEmpty_S(*AssignTiang(Source))){
