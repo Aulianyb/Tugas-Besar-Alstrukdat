@@ -14,7 +14,7 @@
 //typedef char keytype
 
 /*** Definisi Type Pohon Biner ***/
-typedef char keytype;
+typedef char *keytype;
 typedef int valuetype;
 typedef struct {
 	keytype Key;

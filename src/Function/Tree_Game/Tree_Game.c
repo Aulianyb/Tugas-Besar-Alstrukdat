@@ -1,17 +1,24 @@
 #include "Tree_Game.h"
-void MoveTree(){
-    BinTree Move;
-    MakeTree (move, -1, NilTree, NilTree, BinTree *Move);
-    AddDaun (&Move, move, action, -2, true);
-    AddDaun (&Move, move, attack, -3, false);
-    AddDaun (&Left(*Move), action, heal, 2, true);
-    AddDaun (&Left(*Move), action, skip, 5, false);
-    AddDaun (&Right(*Move), action, spell, 2, true);
-    AddDaun (&Right(*Move), action, sword, 6, false);
+void MoveTree(BinTree *PlayerMove){
+    BinTree PlayerMove;
+    Move = Tree ("move", -1, NilTree, NilTree);
+    AddDaun (&Move, "move", "action", -2, true);
+    AddDaun (&Move, "move", "attack", -3, false);
+    AddDaun (&Left(*Move), "action", "heal", 2, true);
+    AddDaun (&Left(*Move), "action", "skip", 5, false);
+    AddDaun (&Right(*Move), "attack", "spell", 2, true);
+    AddDaun (&Right(*Move), "attack", "sword", 6, false);
 }
 int main(){
     boolean alive=true, win=false;
-    int hp_player=100, hp_monster=100, score=0, RNG;
+    BinTree PlayerMove;
+    MoveTree(&PlayerMove);
+    int hp_player=100, hp_monster=100, score=0, RNG, heal, sword, spell, skip;
+    heal = Akar(Left(Left(PlayerMove))).Value;
+    skip = Akar(Left(Right(PlayerMove))).Value;
+    sword = Akar(Right(Right(PlayerMove))).Value;
+    spell = Akar(Right(Left(PlayerMove))).Value;
+    
     printf("\n _____ _       _____   __  _____ _   _  _____ \n");
     printf("/  ___| |     / _ \\ \\ / / |_   _| | | ||  ___|\n");
     printf("\\ `--.| |    / /_\\ \\ V /    | | | |_| || |__  \n");
@@ -36,13 +43,87 @@ int main(){
     while (alive && (!win)){
         printf("HP MONSTER : %d\n", hp_monster);
         printf("YOUR HP : %d\n", hp_player);
-        printf(" > WHAT DO YOU DO?\n > "); 
+        printf("INI JUMLAH GERAKAN YANG KAMU MILIKI:\n");
+        printf("ACTION:\n");
+        printf("1. HEAL: %d\n", heal);
+        printf("2. SKIP: %d\n", skip);
+        printf("ATTACK:\n");
+        printf("3. SWORD: %d\n", sword);
+        printf("4. SPELL: %d\n\n", spell);
+        printf(" > WHAT DO YOU DO? (ATTACK/ACTION)\n > "); 
         STARTFILE();
 
-        //INSERT BIT TREE APPLICATION HERE
-        
+            //INSERT BIT TREE APPLICATION HERE
         if (isWordEqual(currentWord, "ATTACK")){
-            hp_monster-= 25; 
+            BinTree p = PlayerMove;
+            p = Right(PlayerMove);
+            printf("> WHAT ATTACK DO YOU WANT? (SWORD/SPELL)\n > ");
+            STARTFILE();
+            if (isWordEqual(currentWord, "SWORD")){
+                p = Right(p);
+                if(p->Info.Value > 0){
+                    p->Info.Value -= 1;
+                    sword = p->Info.Value;
+                    printf("SERANGAN BERHASIL\n");
+                    hp_monster-= 25;
+                }
+                else{
+                    printf("PEDANG KAMU SUDAH TUMPUL, DAN KAMU DISERANG\n");
+                    
+                }
+            } 
+            else if(isWordEqual(currentWord, "SPELL")){
+                p = Left(p);
+                if(p->Info.Value > 0){
+                    p->Info.Value -= 1;
+                    spell = p->Info.Value;
+                    printf("MANTRA BERHASIL\n");
+                    hp_monster-= 40;
+                }
+                else{
+                    printf("ENERGI MAGIS HABIS, DAN KAMU DISERANG\n");
+                    
+                }
+            }
+            else{
+                printf("COMMAND TIDAK DIKENALI, DAN KAMU DISERANG\n");
+                
+            }
+        }
+        else if(isWordEqual(currentWord, "ACTION")){
+            p = PlayerMove;
+            p = Left(PlayerMove);
+            printf("> WHAT ACTION DO YOU DO? (SKIP/HEAL)\n > ");
+            STARTFILE();
+            if (isWordEqual(currentWord, "HEAL")){
+                p = Left(p);
+                if(p->Info.Value > 0){
+                    p->Info.Value -= 1;
+                    heal = p->Info.Value;
+                    printf("HEAL BERHASIL\n");
+                    hp_player += 25;
+                }
+                else{
+                    printf("RAMUAN PENYEMBUH HABIS, DAN KAMU DISERANG\n");
+                    
+                }
+            } 
+            else if(isWordEqual(currentWord, "SKIP")){
+                p = RIGHT(p);
+                if(p->Info.Value > 0){
+                    p->Info.Value -= 1;
+                    skip = p->Info.Value;
+                    printf("KAMU BERISTIRAHAT DAN TIDAK BERBUAT APA-APA\n");
+                }
+                else{
+                    printf("KAMU TIDAK BISA BERISTIRAHAT LAGI, DAN KAMU DISERANG\n");
+                    
+                }
+            }
+            else{
+                printf("COMMAND TIDAK DIKENALI, DAN KAMU DISERANG\n");
+                
+            }
         }
         else{
             printf("So.. You're gonna Stand There and Do Nothing?\n");
@@ -70,7 +151,6 @@ int main(){
         }
         score += 2; 
     printf("++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
-
     }
     
     if (win){
