@@ -3,7 +3,8 @@
 void hangman(int *score) {
 
 	srand(time(NULL));
-	
+
+	// List Guess Words
 	char guessWords[][16] = {
         "COMPUTER",
         "SCIENCE",
@@ -14,10 +15,13 @@ void hangman(int *score) {
         "SOFTWARE",
         "HARDWARE",
 	};
+
+    // Insialisasi Variable
     int currentscore = 0;
     int replay = 0;
     int livescount = 10;
     
+    // Masuk ke loop game
     while (replay == 0){	
 	int randomIndex = rand() % 6;
 	
@@ -36,7 +40,7 @@ void hangman(int *score) {
 	char InputLetter;
     char AllEnteredLetters[27] = {0};
 	
-    // game loop
+    // Masuk Ke loop tebak-tebakan
         while ( numCorrect < lengthOfWord ) {
 
             printf("\n\nSeluruh huruf yang telah dicoba: ");
@@ -46,9 +50,10 @@ void hangman(int *score) {
         
             printf("\n\nLengkapi bagian yang kosong dibawah!:\n");
             printf("Kata yang harus diisi: \n");
-        
-            for( IndexLooping = 0; IndexLooping < lengthOfWord; IndexLooping++) {
             
+            // Proses Print Soal
+            for( IndexLooping = 0; IndexLooping < lengthOfWord; IndexLooping++) {
+                
                 if(letterGuessed[IndexLooping] == 1) {
                     printf("%c",guessWords[randomIndex][IndexLooping]);				
                 } else {
@@ -62,6 +67,7 @@ void hangman(int *score) {
             printf("Masukkan huruf tebakanmu! :\n");
             STARTFILE();
 
+            // Proses pengecekan input user saat menjawab
             if(isWordEqual(GetKataFirst(currentWord), "quit")) {
                 quit = 1;
                 break;
@@ -71,6 +77,7 @@ void hangman(int *score) {
             reguessed = 0; 
             oldCorrect = numCorrect;
 
+            // Konversi jika input pengguna berupa lowercase
             if(InputLetter >= 'a' && InputLetter <= 'z') {
                 InputLetter -= 32;
             } else if(InputLetter < 'a' || InputLetter > 'z') {
