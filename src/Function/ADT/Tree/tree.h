@@ -14,7 +14,7 @@
 //typedef char Infotype
 
 /*** Definisi Type Pohon Biner ***/
-typedef char Infotype;
+typedef int Infotype;
 typedef struct tNode *AddressTree;
 typedef struct tNode {
 	Infotype Info;

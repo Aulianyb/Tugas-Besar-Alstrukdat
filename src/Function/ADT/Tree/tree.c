@@ -92,7 +92,9 @@ boolean IsBiner (BinTree P) {
 
 /*** Searching ***/
 boolean SearchTree (BinTree P, Infotype X) {
-	if (IsTreeEmpty(P)) return false;
+	if (IsTreeEmpty(P)) {
+		return false;
+	}
 	else {
 		if (Akar(P) == X) {
 			return true;
@@ -105,7 +107,9 @@ boolean SearchTree (BinTree P, Infotype X) {
 
 /*** Fungsi-Fungsi Lain ***/
 int NbElmt (BinTree P) {
-	if (IsTreeEmpty(P)) return 0;
+	if (IsTreeEmpty(P)) {
+		return 0;
+	}
 	else {
 		return (1 + NbElmt(Left(P)) + NbElmt(Right(P)));
 	} 
@@ -113,8 +117,12 @@ int NbElmt (BinTree P) {
 /* Mengirimkan banyaknya elemen (node) pohon biner P */
 
 int NbDaun (BinTree P) {
-	if (IsTreeEmpty(P)) return 0;
-	if (IsOneElmt(P)) return 1;
+	if (IsTreeEmpty(P)) {
+		return 0;
+	}
+	if (IsOneElmt(P)) {
+		return 1;
+	}
 	return (NbDaun(Left(P)) + NbDaun(Right(P)));
 }
 /* Mengirimkan banyaknya daun (node) pohon biner P */
@@ -122,12 +130,15 @@ int NbDaun (BinTree P) {
 boolean IsSkewLeft (BinTree P) {
 	if (IsTreeEmpty(P)) {
 		return false;
-	} else {
+	}
+	else {
 		if (IsOneElmt(P)) {
 			return true;
-		} else if (IsUnerLeft(P)) {
+		}
+		else if (IsUnerLeft(P)) {
 			return IsSkewLeft(Left(P));
-		} else {
+		}
+		else {
 			return false;
 		}
 	}
@@ -137,12 +148,15 @@ boolean IsSkewLeft (BinTree P) {
 boolean IsSkewRight (BinTree P) {
 	if (IsTreeEmpty(P)) {
 		return false;
-	} else {
+	}
+	else {
 		if (IsOneElmt(P)) {
 			return true;
-		} else if (IsUnerRight(P)) {
+		}
+		else if (IsUnerRight(P)) {
 			return IsSkewRight(Right(P));
-		} else {
+		}
+		else {
 			return false;
 		}
 	}
@@ -153,9 +167,11 @@ boolean IsSkewRight (BinTree P) {
 void AddDaunTerkiri (BinTree *P, Infotype X) {
 	if (IsTreeEmpty(*P)) {
 		*P= Tree(X, Nil, Nil);
-	} else if (IsUnerLeft(*P) || IsBiner(*P) || IsOneElmt(*P)) {
+	}
+	else if (IsUnerLeft(*P) || IsBiner(*P) || IsOneElmt(*P)) {
 		AddDaunTerkiri(&Left(*P), X);
-	} else {
+	}
+	else {
 		AddDaunTerkiri(&Right(*P), X);
 	}
 }
@@ -167,10 +183,12 @@ void AddDaun (BinTree *P, Infotype X, Infotype Y, boolean Kiri) {
 		if (Akar(*P) == X) {
 			if (Kiri) {
 				Left(*P)= Tree(Y, Nil, Nil);
-			} else {
+			}
+			else {
 				Right(*P)= Tree(Y, Nil, Nil);
 			}
-		} else {
+		}
+		else {
 			AddDaun(&Left(*P), X, Y, Kiri);
 			AddDaun(&Right(*P), X, Y, Kiri);
 		}
@@ -188,7 +206,8 @@ void DelDaunTerkiri (BinTree *P, Infotype *X) {
 	} else {
 		if (IsUnerRight(*P)) {
 			DelDaunTerkiri(&Right(*P), X);
-		} else { //left/ biner/ oneelmt
+		}
+		else { 
 			DelDaunTerkiri(&Left(*P), X);
 		}
 	}
@@ -202,7 +221,8 @@ void DelDaun (BinTree *P, Infotype X) {
 		if (Akar(*P) == X) {
 			free(*P);
 			*P= Nil;
-		} else {
+		}
+		else {
 			DelDaun(&Left(*P), X);
 			DelDaun(&Right(*P), X);
 		}
