@@ -5,14 +5,14 @@ void hangman(int *score) {
 	srand(time(NULL));
 	
 	char guessWords[][16] = {
-        "computer",
-        "science",
-        "programming",
-        "mathematics",
-        "engineering",
-        "technology",
-        "software",
-        "hardware",
+        "COMPUTER",
+        "SCIENCE",
+        "PROGRAMMING",
+        "MATHEMATICS",
+        "ENGINEERING",
+        "TECHNOLOGY",
+        "SOFTWARE",
+        "HARDWARE",
 	};
     int currentscore = 0;
     int replay = 0;
@@ -71,8 +71,8 @@ void hangman(int *score) {
             reguessed = 0; 
             oldCorrect = numCorrect;
 
-            if(InputLetter >= 'A' && InputLetter <= 'Z') {
-                InputLetter += 32;
+            if(InputLetter >= 'a' && InputLetter <= 'z') {
+                InputLetter -= 32;
             } else if(InputLetter < 'a' || InputLetter > 'z') {
                 printf("Input yang dimasukkan salah! input yang diperbolehkan hanya huruf\n");
                 continue;
