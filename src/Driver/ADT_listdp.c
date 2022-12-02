@@ -122,5 +122,110 @@ int main(){
     printf("TEST 2 : cek apakah ada element dengan abs = 5 dan ordinat = 4\n");
     printf("TEST 1 : %d\nTEST 2 : %d\n", SearchPoint(L, 4, 5), SearchPoint(L, 5, 4));
     printf("\n");
+
+    printf("==== InsertFirst ====\n");
+    printf("EKSPETASI : Memasukkan elemen dengan alamat yang ditentukan ke awal list\n");
+    printf("TEST : Memasukkan elemen dengan X = 5, abs = 4, ord = 7\n");
+    address p = Alokasi(5, 4, 7);
+    InsertFirst(&L, p);
+    PrintForward(L);
+    printf("\n");
+    printKoordinat(L);
+    printf("\n\n");
+
+    printf("==== InsertLast ====\n");
+    printf("EKSPETASI : Memasukkan elemen dengan alamat yang ditentukan ke akhir list\n");
+    printf("TEST : Memasukkan elemen dengan X = 7, abs =8, ord = 8\n");
+    address p_2 = Alokasi(7, 8, 8);
+    InsertLast(&L, p_2);
+    PrintForward(L);
+    printf("\n");
+    printKoordinat(L);
+    printf("\n\n");
+
+    printf("==== InsertAfter ====\n");
+    printf("EKSPETASI : Memasukkan elemen dengan alamat yang ditentukan setelah address yang ditentukan\n");
+    printf("TEST : Memasukkan elemen dengan X = 8, abs = 6, ord = 9 setelah alamat dengan info 3\n");
+    address p_3 = Alokasi(8, 6, 9);
+    InsertAfter(&L, p_3, Search(L, 3));
+    PrintForward(L);
+    printf("\n");
+    printKoordinat(L);
+    printf("\n\n");
+
+    printf("==== InsertBefore ====\n");
+    printf("EKSPETASI : Memasukkan elemen dengan alamat yang ditentukan sebelum address yang ditentukan\n");
+    printf("TEST : Memasukkan elemen dengan X = 9, abs = 1, ord = 2 setelah alamat dengan info 3\n");
+    address p_4 = Alokasi(9, 1, 2);
+    InsertBefore(&L, p_4, Search(L, 3));
+    PrintForward(L);
+    printf("\n");
+    printKoordinat(L);
+    printf("\n\n");
+    
+    address temp_p; 
+    
+    printf("==== DelFirst ====\n");
+    printf("EKSPETASI : Menghapus elemen pertama dalam list dan menyimpan alamatnya dalam suatu variabel\n");
+    printf("TEST : Menghapus elemen pertama L\n");
+    DelFirst(&L, &temp_p);
+    PrintForward(L);
+    printf("\n");
+    printKoordinat(L);
+    printf("\n\n");
+
+    printf("==== DelLast ====\n");
+    printf("EKSPETASI : Menghapus elemen terakhir dalam list dan menyimpan alamatnya dalam suatu variabel\n");
+    printf("TEST : Menghapus elemen terakhir L\n");
+    DelLast(&L, &temp_p);
+    PrintForward(L);
+    printf("\n");
+    printKoordinat(L);
+    printf("\n\n");
+
+    printf("==== DelP ====\n");
+    printf("EKSPETASI : Menghapus elemen dengan info yang ditentukan dalam list dan menyimpan alamatnya dalam suatu variabel\n");
+    printf("TEST : Menghapus elemen dengan info = 9\n");
+    DelP(&L, 9);
+    PrintForward(L);
+    printf("\n");
+    printKoordinat(L);
+    printf("\n\n");
+
+    printf("==== DelAfter ====\n");
+    printf("EKSPETASI : Menghapus elemen setelah address yang ditentukan dan menyimpan alamatnya dalam suatu variabel\n");
+    printf("TEST : Menghapus elemen setelah elemen yang memiiki info = 3\n");
+    DelAfter(&L, &temp_p, Search(L, 3));
+    PrintForward(L);
+    printf("\n");
+    printKoordinat(L);
+    printf("\n\n");  
+
+    printf("==== DelBefore ====\n");
+    printf("EKSPETASI : Menghapus elemen sebelum address yang ditentukan dan menyimpan alamatnya dalam suatu variabel\n");
+    printf("TEST : Menghapus elemen sebelum elemen yang memiiki info = 3\n");
+    DelBefore(&L, &temp_p, Search(L, 3));
+    PrintForward(L);
+    printf("\n");
+    printKoordinat(L);
+    printf("\n\n");  
+
+    printf("Untuk 2 fungsi selanjutnya harus dilakukan pengisian List\n");
+    InsVLast(&L, 4, 7, 7);
+    InsVLast(&L, 5, 8, 8);
+    InsVLast(&L, 6, 9, 9);
+    printf("==== PrintForward ====\n");
+    printf("EKSPETASI : Mencetak Info List dari awal ke akhir\n");
+    printf("TEST :\n");
+    PrintForward(L);
+    printf("\n\n"); 
+    printf("==== PrintBackward ====\n");
+    printf("EKSPETASI : Mencetak Info List dari akhir ke awal\n");
+    printf("TEST :\n");
+    PrintBackward(L);
+    printf("\n\n");   
+
+
+
     return 0; 
 }
