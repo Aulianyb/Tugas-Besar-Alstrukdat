@@ -89,7 +89,7 @@ void hangman(int *score) {
             for (int i = 0; i < IndexLetter; i++){
                 printf("%c ", AllEnteredLetters[i]);
                 }
-        
+            printf("Nyawamu masih ada %d nih\n", livescount);
             printf("\n\nLengkapi bagian yang kosong dibawah!:\n");
         
             for( IndexLooping = 0; IndexLooping < lengthOfWord; IndexLooping++) {
@@ -141,7 +141,7 @@ void hangman(int *score) {
 
             if( oldCorrect == numCorrect && reguessed == 0) {
                 livescount--;
-                printf("Jawabanmu salah!, nyawamu tinggal %d\n", livescount);
+                printf("Jawabanmu salah!, nyawamu berkurang satu!\n");
                 if (livescount == 9){
                     printf("       \n");
                     printf("       \n");
@@ -244,7 +244,7 @@ void hangman(int *score) {
             } else if( reguessed == 1) {
                 printf("Yahh, kamu udah pernah nebak huruf ini, coba huruf lain!\n");
             } else {
-                printf("Tebakan-mu Benar!, nyawamu masih ada %d nih!\n", livescount);
+                printf("Tebakan-mu Benar!\n");
             }
         }
         
