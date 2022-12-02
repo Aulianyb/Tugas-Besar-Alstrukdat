@@ -54,16 +54,22 @@ void hangman(int *score) {
     TulisIsi(listkata);
     char guessWords[listkata.Neff][16];
 
-    // memindahkan list kata ke array of string
+    // convert listkata list to array of string guessWords
     int i;
-    for (i = 0; i < listkata.Neff; i++)
-    {
+    for (i = 0; i < listkata.Neff; i++){
         int j;
-        for (j = 0; j < listkata.TI[i].Length; j++)
-        {
+        for (j = 0; j < listkata.TI[i].Length; j++){
             guessWords[i][j] = listkata.TI[i].TabWord[j];
         }
         guessWords[i][j] = '\0';
+    }
+
+    // print array of string guessWords
+    for (i = 0; i < listkata.Neff; i++){
+        int j;
+        for (j = 0; j < listkata.TI[i].Length; j++){
+            printf("%c", guessWords[i][j]);
+        }
     }
 
     // memasuki looping game
