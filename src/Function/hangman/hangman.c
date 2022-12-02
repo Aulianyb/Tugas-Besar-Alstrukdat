@@ -248,5 +248,4 @@ void hangman(int *score) {
         } 
     }
     *score = currentscore;
-    printf("Skor finalmu adalah %d\n", currentscore);
 }
