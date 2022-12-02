@@ -53,7 +53,7 @@ void hangman(int *score) {
     while (replay == 0){	
 
     // inisialisasi variable
-	int randomIndex = rand() % 6;
+	int randomIndex = rand() % 10;
 	
 	int numCorrect = 0;
 	int oldCorrect = 0;
