@@ -24,7 +24,7 @@ void SkipGame(Queue *game_queue, int n){
             dequeue(game_queue, &val);
         }
         
-        if (isWordEqual(val, "Diner Dash"))
+        if (isWordEqual(val, "Diner DASH"))
         {
             printf("Loading ");
             PrintKata(val);
@@ -40,17 +40,33 @@ void SkipGame(Queue *game_queue, int n){
             // Play RNG
             score = RNG();
         }
-        else if (isWordEqual(val, "RockPaperScissor"))
+        else if (isWordEqual(val, "ROCK PAPER SCISSOR"))
         {
             printf("Loading ");
             PrintKata(val);
             printf("....\n");
             RockPaperScissor(&score);
         }
-        else if (isWordEqual(val, "DINOSAUR IN EARTH") || isWordEqual(val, "RISEWOMAN") || isWordEqual(val, "EIFFEL TOWER")){
-            printf("Game ");
+        else if(isWordEqual(val, "SNAKE ON METEOR"))
+        {
+            printf("Loading ");
             PrintKata(val);
-            printf(" masih dalam maintenance, belum dapat dimainkan. Silahkan pilih game lain.\n");
+            printf("....\n");
+            SnakeOnMeteor(&score);
+        }
+        else if(isWordEqual(val, "HANGMAN"))
+        {
+            printf("Loading ");
+            PrintKata(val);
+            printf("....\n");
+            hangman(&score);
+        }
+        else if(isWordEqual(val, "TOWER OF HANOI"))
+        {
+            printf("Loading ");
+            PrintKata(val);
+            printf("....\n");
+            Hanoi(&score);
         }
         else if (isWordEqual(val, "SLAY THE DRAGON"))
         {
@@ -70,5 +86,13 @@ void SkipGame(Queue *game_queue, int n){
             printf(" |_____|__|__|_|_|_|_____|  |_____|\\___/|_____|__|__|\n\n");
             printf("SCORE AKHIR : %d\n", GenRand(100,100,2));
         }
+        printf("Skor akhir : %d\n", score);
+        printf("\nMasukkan nama: ");
+        STARTFILE();
+        int idx = findIdxGame(TG, val);
+        InsertMap(&TS->TI[idx], currentWord, score);
+
+        printf("\nBerhasil menambahkan score ke SCOREBOARD!\n");
+        PushHistory(SH, val);
     }
 }

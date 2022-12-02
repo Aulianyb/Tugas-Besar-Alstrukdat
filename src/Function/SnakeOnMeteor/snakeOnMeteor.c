@@ -184,6 +184,11 @@ void PrintGrid(List L, List obs, POINT food, POINT meteor) {
 
 
 void SnakeOnMeteor(int *score) {
+    /* ### Print Intro Screen ### */
+    printf("Selamat datang di Snake On Meteor!\n");
+    printf("Mengenerate peta, snake, obstacle, dan makanan...\n");
+    printf("Berhasil digenerate!\n");
+    
     /* Inisialisasi turn */
     int turn = 1;
 
@@ -429,18 +434,22 @@ void SnakeOnMeteor(int *score) {
         /* Bila Meteor mengenai badan */
         if (hit) {
             printf("Silahkan lanjutkan permainan\n");
+            printf("\n");
         }
         /* Bila tidak ada tempat lagi untuk pertumbuhan panjang badan Snake */
         else if (stopGrow) {
             printf("Tidak ada tempat untuk penambahan panjang tubuh snake. Permainan berakhir!\n");
+            printf("\n");
         }
         /* Bila Head dari Snake menabrak obstacle */
         else if (hitObstacle) {
             printf("Anda menabrak obstacle! Permainan berakhir!\n");
+            printf("\n");
         }
         /* Bila tidak terjadi apa-apa */
         else {
             printf("Anda beruntung tidak terkena meteor! Silahkan lanjutkan permainan\n");
+            printf("\n");
         }
 
         /* Apabila Snake sudah tidak bisa bergerak kemana-mana lagi, maka permainan berakhir */

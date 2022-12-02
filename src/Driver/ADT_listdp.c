@@ -225,7 +225,5 @@ int main(){
     PrintBackward(L);
     printf("\n\n");   
 
-
-
     return 0; 
 }
