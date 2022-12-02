@@ -18,29 +18,16 @@ void hangman(int *score) {
         if (currentWord.TabWord[0] == 'y'){
             printf("Masukkan kata yang ingin ditambahkan (seluruh huruf wajib dalam bentuk KAPITAL): ");
             STARTFILE();
-            // check if the word is already in the list
-            int i = 0;
-            int found = 0;
-            while (i < listkata.Neff && found == 0){
-                if (currentWord.TabWord == listkata.TI[i].TabWord){
-                    found = 1;
-                }
-                i++;
+            int i;
+            // memasukkan kata ke listkata
+            for (i = 0; i < currentWord.Length; i++)
+            {
+                listkata.TI[listkata.Neff].TabWord[i] = currentWord.TabWord[i];
             }
-            if (found == 0){}
-                int i;
-                // memasukkan kata ke listkata
-                for (i = 0; i < currentWord.Length; i++)
-                {
-                    listkata.TI[listkata.Neff].TabWord[i] = currentWord.TabWord[i];
-                }
-                listkata.TI[listkata.Neff].Length = currentWord.Length;
-                listkata.Neff++;
-                saveHANGMAN("listkata", listkata);
-                printf("Kata berhasil ditambahkan!\n");}
-            else {
-                printf("Kata sudah ada dalam list!\n");
-            }
+            listkata.TI[listkata.Neff].Length = currentWord.Length;
+            listkata.Neff++;
+            saveHANGMAN("listkata", listkata);
+            printf("Kata berhasil ditambahkan!\n");
         }
         else if (currentWord.TabWord[0] == 'n'){
             printf("Apakah anda ingin memulai game? (y/n)\n");
