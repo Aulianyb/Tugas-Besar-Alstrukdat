@@ -12,7 +12,7 @@ Deskripsi : Implementasi "listdp.h"
 
 /* PROTOTYPE */
 /****************** TEST LIST KOSONG ******************/
-boolean IsEmpty (List L)
+boolean IsEmpty_L (List L)
 /* Mengirim true jika list kosong. Lihat definisi di atas. */
 {
     return (First(L) == Nil && Last(L) == Nil && Length(L) == 0);
@@ -151,7 +151,7 @@ void InsVFirst (List *L, infotype X, int abs, int ord)
 {
     address p = Alokasi(X, abs, ord);
     if (p != Nil) {
-        if (IsEmpty(*L)) {
+        if (IsEmpty_L(*L)) {
             First(*L) = p;
             Last(*L) = p;
         }
@@ -172,7 +172,7 @@ void InsVLast (List *L, infotype X, int abs, int ord)
 {
     address p = Alokasi(X, abs, ord);
     if (p != Nil) {
-        if (IsEmpty(*L)) {
+        if (IsEmpty_L(*L)) {
             InsVFirst(L,X, abs, ord);
         }
         else {
@@ -213,7 +213,7 @@ void InsertFirst (List *L, address P)
 /* I.S. Sembarang, P sudah dialokasi  */
 /* F.S. Menambahkan elemen ber-address P sebagai elemen pertama */
 {
-    if (IsEmpty(*L)) {
+    if (IsEmpty_L(*L)) {
         First(*L) = P;
         Last(*L) = P;
     }
@@ -229,7 +229,7 @@ void InsertLast (List *L, address P)
 /* I.S. Sembarang, P sudah dialokasi  */
 /* F.S. P ditambahkan sebagai elemen terakhir yang baru */
 {
-    if (IsEmpty(*L)) {
+    if (IsEmpty_L(*L)) {
         InsertFirst(L,P);
     }
     else {
@@ -385,7 +385,7 @@ void PrintForward (List L)
 /* Tidak ada tambahan karakter apa pun di awal, akhir, atau di tengah */
 {
     printf("[");
-    if (!IsEmpty(L)) {
+    if (!IsEmpty_L(L)) {
         address p = First(L);
         while (p != Nil) {
             printf("%d",Info(p));
@@ -407,7 +407,7 @@ void PrintBackward (List L)
 /* Tidak ada tambahan karakter apa pun di awal, akhir, atau di tengah */
 {
     printf("[");
-    if (!IsEmpty(L)) {
+    if (!IsEmpty_L(L)) {
         address p = Last(L);
         while (p != Nil) {
             printf("%d",Info(p));
