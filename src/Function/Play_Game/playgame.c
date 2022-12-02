@@ -10,14 +10,13 @@ void PlayGame(Queue *game_queue, StackHistory *SH, TabScore *TS, TabGame TG){
     else{
         Word val; int score;
         dequeue(game_queue, &val);
-        if (isWordEqual(val, "Diner Dash"))
+        if (isWordEqual(val, "Diner DASH"))
         {
             printf("Loading ");
             PrintKata(val);
             printf("....\n");
             // PLay Diner DASH
-            Dinner_Dash();
-            score = 100;
+            Dinner_Dash(&score);
         }
         else if (isWordEqual(val, "RNG"))
         {

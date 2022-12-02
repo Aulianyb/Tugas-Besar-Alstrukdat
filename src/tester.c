@@ -1,21 +1,10 @@
 #include <stdio.h>
-#include "Function/Hanoi/Hanoi.h"
-
+#include "Function/Dinner_Dash/Dinner_Dash.h"
 
 //INI FILE BUAT NYOBA NYOBA AJA
 
 int main(){
-	// Stack S;
-	// CreateEmpty(&S);
-	// printf("N = ");
-	// STARTFILE();
-	// isiTiang(&S, WordToInt(currentWord));
-
-	// for (int i=Top(S); i >= 0;i--){
-	// 	PrintKata(graph(S.T[i]));
-	// 	printf("\n");
-	// }
 	int temp;
-	Hanoi(&temp);
+	Dinner_Dash(&temp);
 	return 0; 
 }

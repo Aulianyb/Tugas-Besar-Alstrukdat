@@ -5,12 +5,12 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "boolean.h"
+#include "../../../boolean.h"
 
 /* Modul lain yang digunakan */
 #include "../mesinkarakter.h"
 
-#define Nil NULL
+#define NilTree NULL
 //typedef char Infotype
 
 /*** Definisi Type Pohon Biner ***/
@@ -41,15 +41,15 @@ typedef AddressTree BinTree;
 /* Mengirimkan Anak Kanan pohon biner P */
 
 /*** Konstruktor ***/
-BinTree Tree (Infotype Akar, BinTree L, BinTree R);
+BinTree Tree (Infotype X, BinTree L, BinTree R);
 /* Menghasilkan sebuah pohon biner dari A, L, dan R, jika alokasi berhasil */
-/* Menghasilkan pohon kosong (Nil) jika alokasi gagal */
+/* Menghasilkan pohon kosong (NilTree) jika alokasi gagal */
 
-void MakeTree (Infotype Akar, BinTree L, BinTree R, BinTree *P);
+void MakeTree (Infotype X, BinTree L, BinTree R, BinTree *P);
 /* I.S. Sembarang */
 /* F.S. Menghasilkan sebuah pohon P */
 /* Menghasilkan sebuah pohon biner P dari A, L, dan R, jika alokasi berhasil */
-/* Menghasilkan pohon P yang kosong (Nil) jika alokasi gagal */
+/* Menghasilkan pohon P yang kosong (NilTree) jika alokasi gagal */
 
 /*** Predikat-Predikat Penting ***/
 boolean IsTreeEmpty (BinTree P);

@@ -9,7 +9,7 @@
 #include "mesinkata.h"
 
 #define Nil -1
-#define MaxEl_S 100
+#define MaxEl_S 24
 /* Nil adalah stack dengan elemen kosong . */
 
 typedef struct{
