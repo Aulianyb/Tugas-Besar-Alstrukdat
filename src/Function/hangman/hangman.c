@@ -16,7 +16,7 @@ void hangman(int *score) {
         printf("Apakah anda ingin menambahkan kata baru? (y/n)\n");
         STARTFILE();
         if (currentWord.TabWord[0] == 'y'){
-            printf("Masukkan kata yang ingin ditambahkan: ");
+            printf("Masukkan kata yang ingin ditambahkan (seluruh huruf wajib dalam bentuk KAPITAL): ");
             STARTFILE();
             int i;
             // memasukkan kata ke listkata
