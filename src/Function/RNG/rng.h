@@ -8,7 +8,7 @@
 #include "../../boolean.h"
 #include "../ADT/mesinkata.h"
 
-int RNG();
+void RNG();
 /* I.S. sembarang */
 /* F.S. Random number terbentuk dan user dapat memainkan permainan */
 

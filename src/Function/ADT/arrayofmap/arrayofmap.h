@@ -43,7 +43,9 @@ int NbElmtTabScore (TabScore T);
 /* Mengirimkan banyaknya elemen efektif tabel */
 /* Mengirimkan nol jika tabel kosong */
 /* *** Daya tampung container *** */
-
+int MaxNbElTabScore (TabScore T);
+/* Mengirimkan maksimum elemen yang dapat ditampung oleh tabel */
+/* *** Selektor INDEKS *** */
 IdxType GetFirstIdxTabScore (TabScore T);
 /* Prekondisi : Tabel T tidak kosong */
 /* Mengirimkan indeks elemen pertama */
@@ -51,7 +53,6 @@ IdxType GetLastIdxTabScore (TabScore T);
 /* Prekondisi : Tabel T tidak kosong */
 /* Mengirimkan indeks elemen terakhir */
 /* *** Menghasilkan sebuah elemen *** */
-
 Map GetElmtTabScore (TabScore T, IdxType i);
 /* Prekondisi : Tabel tidak kosong, i antara FirstIdx(T)..LastIdx(T) */
 /* Mengirimkan elemen tabel yang ke-i */
@@ -66,6 +67,20 @@ void InsertLastTabScore (TabScore *T, Map map);
 /* I.S. T terdefinisi, sembarang */
 /* F.S. Elemen T yang ke-i bernilai v */
 /* Mengeset nilai elemen tabel yang ke-i sehingga bernilai v */
+void SetNeffTabScore (TabScore *T, IdxType N);
+/* I.S. T terdefinisi, sembarang */
+/* F.S. Nilai indeks efektif T bernilai N */
+/* Mengeset nilai indeks elemen efektif sehingga bernilai N */
+
+/* ********** Test Indeks yang valid ********** */
+boolean IsIdxValidTabScore (TabScore T, IdxType i);
+/* Prekondisi : i sembarang */
+/* Mengirimkan true jika i adalah indeks yang valid utk ukuran tabel */
+/* yaitu antara indeks yang terdefinisi utk container*/
+boolean IsIdxEffTabScore (TabScore T, IdxType i);
+/* Prekondisi : i sembarang*/
+/* Mengirimkan true jika i adalah indeks yang terdefinisi utk tabel */
+/* yaitu antara FirstIdx(T)..LastIdx(T) */
 
 /* ********** TEST KOSONG/PENUH ********** */
 /* *** Test tabel kosong *** */
@@ -76,7 +91,7 @@ boolean IsFullTabScore (TabScore T);
 /* Mengirimkan true jika tabel T penuh, mengirimkan false jika tidak */
 
 /* ********** BACA dan TULIS dengan INPUT/OUTPUT device ********** */
-void TulisIsiTabScore (TabScore M);
+void TulisIsiTabScore (TabScore T);
 /* Proses : Menuliskan isi tabel dengan traversal */
 /* I.S. T boleh kosong */
 /* F.S. Jika T tidak kosong : indeks dan elemen tabel ditulis berderet ke bawah */

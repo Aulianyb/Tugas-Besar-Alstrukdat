@@ -32,23 +32,12 @@ int main(){
     printf("   | |/ /| |\\ \\| | | | |_\\ \\ \\_/ / |\\  |\n");
     printf("   |___/ \\_| \\_\\_| |_/\\____/\\___/\\_| \\_/\n\n");
     printf("++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
-    printf("You slowly make your way up to snowy mountains,\nthe beast's lair.\n\n");
-    delay(1000);
-    printf("You finally reached the lair's entrance. \nYou tried sneaking in but suddenly \na loud roar came from inside the cave. \n\n");
-    delay(1000);
-    printf("Two yellow eyes emerge from the dark, followed by\nthe grand entrance of the Red Dragon.\n\n");
-    delay(1000);
-    printf("                \\||/\n");
-        printf("                |  @___oo\n");
-        printf("      /\\  /\\   / (__,,,,|\n");
-        printf("     ) /^\\) ^\\/ _)\n");
-        printf("     )   /^\\/   _)\n");
-        printf("     )   _ /  / _)\n");
-        printf(" /\\  )/\\/ ||  | )_)\n");
-        printf("<  >      |(,,) )__)\n");
-        printf(" ||      /    \\)___)                O\n");
-        printf(" | \\____(      )___) )___          /|\\ \n");
-        printf("  \\______(_______;;; __;;;         / \\ \n\n");
+    printf("You slowly make your way up to snowy mountains, the beast's lair.\n\n");
+    delay(500);
+    printf("You finally reached the lair's entrance. \nYou tried sneaking in but suddenly a loud roar came from inside the cave. \n\n");
+    delay(500);
+    printf("Two yellow eyes emerge from the dark, followed by the grand entrance of the Red Dragon.\n\n");
+    delay(500);
     printf("++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
 
     while (alive && (!win)){

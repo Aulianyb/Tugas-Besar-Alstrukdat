@@ -1,11 +1,21 @@
 #include <stdio.h>
-#include "Function/SnakeOnMeteor/snakeOnMeteor.h"
+#include "Function/Hanoi/Hanoi.h"
+
 
 //INI FILE BUAT NYOBA NYOBA AJA
 
 int main(){
+	// Stack S;
+	// CreateEmpty(&S);
+	// printf("N = ");
+	// STARTFILE();
+	// isiTiang(&S, WordToInt(currentWord));
+
+	// for (int i=Top(S); i >= 0;i--){
+	// 	PrintKata(graph(S.T[i]));
+	// 	printf("\n");
+	// }
 	int temp;
-	SnakeOnMeteor(&temp);
-	printf("SCORE ANDA : %d\n", temp);
+	Hanoi(&temp);
 	return 0; 
 }

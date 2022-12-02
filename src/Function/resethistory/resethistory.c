@@ -19,5 +19,4 @@ void RESETHISTORY(StackHistory *SH){
             printf("Input salah. Ulangi!\n");
         }
     }
-    printf("\nHistory berhasil dihapus!");
 }
