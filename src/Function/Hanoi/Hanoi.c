@@ -1,5 +1,5 @@
 #include "Hanoi.h"
-//FUNGSI PRINT TIANG
+/* Prosedur printTiang mencetak ketiga tiang untuk display game */
 void printTiang(Stack S1, Stack S2, Stack S3, int n){
     for (int i=n-1;i>=0;i--){
         printf(" ");
@@ -7,7 +7,6 @@ void printTiang(Stack S1, Stack S2, Stack S3, int n){
             int j=0;
             while (j<(2*n-1)/2){
                 printf(" ");
-                // printf("%d", n);
                 j++;    
             }
             printf("|");
@@ -62,7 +61,8 @@ void printTiang(Stack S1, Stack S2, Stack S3, int n){
         printf("\n");
     }
 }
-//FUNGSI UNTUK CEK APAKAH TOWERNYA SUDAH BERURUTAN ATAU BELUM
+
+/* Fungsi isTowerOrdered yang melakukan cek bila Stack sudah berurutan atau belum */
 boolean isTowerOrdered(Stack S, int n){
     boolean ordered=true;
     if (Top(S) == n-1){
@@ -77,7 +77,8 @@ boolean isTowerOrdered(Stack S, int n){
     }
     return ordered;
 }
-//FUNGSI UNTUK PRINT DIVIDER
+
+/* Fungsi printDivider mencetak divider sesuai panjang n */
 void printDivider(int n){
     printf("+");
     for (int i=0;i<((2*n-1)*3)+20;i++){
@@ -86,7 +87,8 @@ void printDivider(int n){
     printf("+");
     printf("\n");
 }
-//FUNGSI UNTUK PRINT LABEL
+
+/* Fungsi printLabel mencetak label untuk setiap menara */
 void printLabel(int n){
     printf("|");
     int j=0;
@@ -174,6 +176,7 @@ void Hanoi(int *score){
     CreateEmpty(&Tiang2);
     CreateEmpty(&Tiang3);
 
+    /* Fungsi AssignTiang mengembalikan Tiang/Stack berdasarkan input */
     Stack *AssignTiang(Word input){
     if (isWordEqual(input, "A")){
             return &Tiang1;
@@ -208,6 +211,8 @@ void Hanoi(int *score){
             Dest = currentWord;
             boolean Source_valid = isWordEqual(Source, "A") || isWordEqual(Source, "B") || isWordEqual(Source, "C");
             boolean Dest_valid = isWordEqual(Dest, "A") || isWordEqual(Dest, "B") || isWordEqual(Dest, "C");
+            
+            /* Validasi Input */
             if (!(Source_valid && Dest_valid)){
                 printf("-- INPUT TIDAK VALID! MASUKKAN A, B ATAU C! --\n");
             }
@@ -229,12 +234,15 @@ void Hanoi(int *score){
             }
         }
 
+        /* Update Score */
         if ((turn > min_steps) && (turn % (n/2) == 0) && (*score != 0)){
             *score--;
         }
-        
+    
         MoveTower(AssignTiang(Source), AssignTiang(Dest));
         turn++;
+        
+        /* Cek Kondisi Tower */
         if (isTowerOrdered(Tiang3, n)){
             play=false;
         }
