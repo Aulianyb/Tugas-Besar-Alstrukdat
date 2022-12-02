@@ -58,12 +58,23 @@ void PopHistory(StackHistory* S, Word* X);
 /* F.S. X adalah nilai elemen TOP yang lama, TOP berkurang 1 */
 
 void PrintStackHistory(StackHistory S, int n);
+/* Mengeluarkan output dari isi elemen stack secara mengurut dari TOP sebanyak n */
+/* I.S. S terdefinisi */
 
 void SwapStackHistory(StackHistory S, StackHistory *Sout);
+/* Menukarbalikkan urutan elemen pada stack */
+/* I.S. S terdefinisi */
+/* F.S. Urutan elemen pada S terbalik */
 
 void DeleteGameHistory(StackHistory *SH, Word word);
+/* Melakukan delete seluruh game berjudul word */
+/* I.S. SH terdefinisi */
+/* F.S. Seluruh game berjudul word dihapus */
 
 void DeleteAtHistory(StackHistory *SH, int idx);
+/* Menghapus elemen di stack pada indeks ke idx */
+/* I.S. SH terdefinisi */
+/* F.S. elemen pada indeks ke idx di SH terhapus */
 
 int FindIdxStack(StackHistory SH, Word word);
 

@@ -87,7 +87,7 @@ void SkipGame(Queue *game_queue, int n, StackHistory *SH, TabScore *TS, TabGame 
             printf("SCORE AKHIR : %d\n", GenRand(100,100,2));
         }
         printf("Skor akhir : %d\n", score);
-        printf("\nMasukkan nama: ");
+        printf("\nMasukkan nama (hanya satu kata): \n>>>");
         STARTFILE();
         int idx = findIdxGame(T, val);
         InsertMap(&TS->TI[idx], currentWord, score);
