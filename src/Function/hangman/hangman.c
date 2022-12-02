@@ -59,7 +59,7 @@ void hangman(int *score) {
     int i = 0;
     while(i <= listkata.Neff){
         int j = 0;
-        while(j <= listkata.TI[i].Length){
+        while(listkata.TI[i].TabWord[j] != '\0'){
             guessWords[i][j] = listkata.TI[i].TabWord[j];
             j++;
         }
