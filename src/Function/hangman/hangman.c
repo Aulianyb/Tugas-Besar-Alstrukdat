@@ -62,6 +62,11 @@ void hangman(int *score) {
         }
         guessWords[i][j] = '\0';
     }
+    //print all the words
+    for (i = 0; i < listkata.Neff; i++)
+    {
+        printf("%s\n", guessWords[i]);
+    }
 
     // memasuki looping game
     while (replay == 0){	
