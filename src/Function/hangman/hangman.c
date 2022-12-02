@@ -63,19 +63,6 @@ void hangman(int *score) {
         guessWords[i][j] = '\0';
     }
 
-    // make all the guess words that contain non alphabet to be empty
-    for (i = 0; i < listkata.Neff; i++)
-    {
-        int j;
-        for (j = 0; j < listkata.TI[i].Length; j++)
-        {
-            if (guessWords[i][j] < 'A' || guessWords[i][j] > 'Z')
-            {
-                guessWords[i][0] = '\0';
-            }
-        }
-    }
-
     // memasuki looping game
     while (replay == 0){	
 
