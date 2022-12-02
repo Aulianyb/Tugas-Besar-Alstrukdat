@@ -4,7 +4,6 @@ void hangman(int *score) {
     
     // Inisiasi beberapa variable
     TabGame listkata;
-    MakeEmpty(&listkata);
 	srand(time(NULL));
     loadHANGMAN("listkata", &listkata);
     int currentscore = 0;
@@ -53,27 +52,27 @@ void hangman(int *score) {
     // print list kata
 
     TulisIsi(listkata);
-    char guessWords[listkata.Neff][16];
+    // char guessWords[listkata.Neff][16];
 
     // convert listkata list to array of string guessWords
 
-    int i = 0;
-    while(i <= listkata.Neff){
-        int j = 0;
-        while(listkata.TI[i].TabWord[j] != '\0'){
-            guessWords[i][j] = listkata.TI[i].TabWord[j];
-            j++;
-        }
-        i++;
-    }
+    // int i = 0;
+    // while(i <= listkata.Neff){
+    //     int j = 0;
+    //     while(j <= listkata.TI[i].TabWord[j] != '\0'){
+    //         guessWords[i][j] = listkata.TI[i].TabWord[j];
+    //         j++;
+    //     }
+    //     i++;
+    // }
 
-    printf("%s", guessWords[0]);
-    printf("%s", guessWords[1]);
-    printf("%s", guessWords[2]);
-    printf("%s", guessWords[3]);
-    printf("%s", guessWords[4]);
-    printf("%s", guessWords[5]);
-    printf("%s", guessWords[6]);
+    // printf("%s", guessWords[0]);
+    // printf("%s", guessWords[1]);
+    // printf("%s", guessWords[2]);
+    // printf("%s", guessWords[3]);
+    // printf("%s", guessWords[4]);
+    // printf("%s", guessWords[5]);
+    // printf("%s", guessWords[6]);
     // memasuki looping game
     while (replay == 0){	
 
@@ -83,7 +82,7 @@ void hangman(int *score) {
 	int numCorrect = 0;
 	int oldCorrect = 0;
 	
-	int lengthOfWord = StringLen(guessWords[randomIndex]);
+	int lengthOfWord = listkata.TI[randomIndex].Length;
 	int letterGuessed[16] = { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 };
 	
     int IndexLetter = 0;	
@@ -106,7 +105,7 @@ void hangman(int *score) {
             for( IndexLooping = 0; IndexLooping < lengthOfWord; IndexLooping++) {
                 // Looping print soal
                 if(letterGuessed[IndexLooping] == 1) {
-                    printf("%c",guessWords[randomIndex][IndexLooping]);				
+                    printf("%c", listkata.TI[randomIndex].TabWord[IndexLooping]);				
                 } else {
                     printf("_ ");
                 }
@@ -138,7 +137,7 @@ void hangman(int *score) {
                         }
                     }
 
-                if( InputLetter == guessWords[randomIndex][IndexLooping] && reguessed == 0) {
+                if( InputLetter == listkata.TI[randomIndex].TabWord[IndexLooping] && reguessed == 0) {
                     letterGuessed[IndexLooping] = 1;
                     numCorrect++;				
                 }		
@@ -262,11 +261,11 @@ void hangman(int *score) {
         if (livescount == 0) {
             // Jika nyawa habis, maka game akan langsung berhenti dan jawaban di spill
             printf("\n Kamu kalah :( Kata yang benar adalah: %s\n",
-            guessWords[randomIndex]);
+            wordToString(listkata.TI[randomIndex]));
             replay = 1;	
         } else  {	
             currentscore = currentscore + StringLen(guessWords[randomIndex]);
-            printf("\nYeayy! Kamu Menang :D, Kamu mendapatkan %d poin!\n", StringLen(guessWords[randomIndex]));
+            printf("\nYeayy! Kamu Menang :D, Kamu mendapatkan %d poin!\n", listkata.TI[randomIndex].Length);
             replay = 0;
         } 
     }
