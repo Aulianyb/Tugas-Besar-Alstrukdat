@@ -4,6 +4,7 @@ void hangman(int *score) {
     
     // Inisiasi beberapa variable
     TabGame listkata;
+    MakeEmpty(&listkata);
 	srand(time(NULL));
     loadHANGMAN("listkata", &listkata);
     int currentscore = 0;
