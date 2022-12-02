@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "skipgame.h"
 
-void SkipGame(Queue *game_queue, int n){
+void SkipGame(Queue *game_queue, int n, StackHistory *SH, TabScore *TS, TabGame T){
     int panjang;
     printf("Berikut ini adalah daftar Game-mu : \n");
     PrintQueueGame(*game_queue);
@@ -87,9 +87,9 @@ void SkipGame(Queue *game_queue, int n){
             printf("SCORE AKHIR : %d\n", GenRand(100,100,2));
         }
         printf("Skor akhir : %d\n", score);
-        printf("\nMasukkan nama: ");
+        printf("\nMasukkan nama (hanya satu kata): \n>>>");
         STARTFILE();
-        int idx = findIdxGame(TG, val);
+        int idx = findIdxGame(T, val);
         InsertMap(&TS->TI[idx], currentWord, score);
 
         printf("\nBerhasil menambahkan score ke SCOREBOARD!\n");
