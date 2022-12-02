@@ -49,9 +49,11 @@ void hangman(int *score) {
             }
         }
 
+    // print list kata
+
     char guessWords[listkata.Neff][16];
 
-    // memindahkan dari list ke array guesswords
+    // memindahkan list kata ke array of string
     int i;
     for (i = 0; i < listkata.Neff; i++)
     {
@@ -85,13 +87,12 @@ void hangman(int *score) {
         // looping untuk proses penjawaban soal
         while ( numCorrect < lengthOfWord ) {
 
-            printf("\n\nSeluruh huruf yang telah dicoba: ");
+            printf("\n\n\n\n\n\nSeluruh huruf yang telah dicoba: ");
             for (int i = 0; i < IndexLetter; i++){
                 printf("%c ", AllEnteredLetters[i]);
                 }
-        
+            printf("\nNyawamu masih ada %d nih", livescount);
             printf("\n\nLengkapi bagian yang kosong dibawah!:\n");
-            printf("Kata yang harus diisi: \n");
         
             for( IndexLooping = 0; IndexLooping < lengthOfWord; IndexLooping++) {
                 // Looping print soal
@@ -142,7 +143,7 @@ void hangman(int *score) {
 
             if( oldCorrect == numCorrect && reguessed == 0) {
                 livescount--;
-                printf("Jawabanmu salah!, nyawamu tinggal %d\n", livescount);
+                printf("Jawabanmu salah!, nyawamu berkurang satu!\n");
                 if (livescount == 9){
                     printf("       \n");
                     printf("       \n");
@@ -245,7 +246,7 @@ void hangman(int *score) {
             } else if( reguessed == 1) {
                 printf("Yahh, kamu udah pernah nebak huruf ini, coba huruf lain!\n");
             } else {
-                printf("Tebakan-mu Benar!, nyawamu masih ada %d nih!\n", livescount);
+                printf("Tebakan-mu Benar!\n");
             }
         }
         
