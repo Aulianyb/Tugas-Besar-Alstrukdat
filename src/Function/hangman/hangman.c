@@ -236,7 +236,7 @@ void hangman(int *score) {
         
         if (livescount == 0) {
             // Jika nyawa habis, maka game akan langsung berhenti dan jawaban di spill
-            printf("\n Kamu kalah :( Kata yang benar adalah: %s\n",
+            printf("\nKamu kalah :( Kata yang benar adalah: %s\n",
             wordToString(listkata.TI[randomIndex]));
             replay = 1;	
         } else  {	
