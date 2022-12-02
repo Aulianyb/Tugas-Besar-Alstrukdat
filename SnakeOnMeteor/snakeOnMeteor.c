@@ -1,5 +1,8 @@
-#include "snakeOnMeteor.h"
+//#include "snakeOnMeteor.h"
 #include <stdio.h>
+#include "listdp.h"
+#include "../src/random_generator.h"
+#include "../src/Function/ADT/mesinkata.h"
 
 boolean isMoveValid(Word word) {
     /* Mengecek input yang valid */
@@ -181,7 +184,11 @@ void PrintGrid(List L, List obs, POINT food, POINT meteor) {
     }
 }
 
+
 void SnakeOnMeteor(int *score) {
+    /* Inisialisasi turn */
+    int turn = 1;
+
     /* Inisialisasi boolean yang digunakan dalam permainan */
     boolean GameOver = false;
     boolean isEmptySpace = true;
@@ -223,10 +230,13 @@ void SnakeOnMeteor(int *score) {
     spawnFood(Snake,Obstacle,Meteor,&Food);
 
     /* ### Print Grid Pertama Kali ### */
+    printf("Berikut merupakan peta permainan:\n");
     PrintGrid(Snake,Obstacle,Food,Meteor);
+    printf("\n");
 
     /* Core Loop dari permainan Snake On Meteor*/
     while (!GameOver) {
+        printf("TURN %d\n",turn);
         printf("Masukkan gerakan : ");
         STARTFILE();
 
@@ -395,6 +405,7 @@ void SnakeOnMeteor(int *score) {
             if (loc == First(Snake)) {
                 /* Bila mengenai kepala, game berakhir */
                 printf("Kepala Anda terkena meteor! Permainan berakhir!\n");
+                DelP(&Snake,Info(loc));
                 GameOver = true;
             }
             else {
@@ -471,7 +482,7 @@ void SnakeOnMeteor(int *score) {
                 }
             }
         }
-
+        turn++;
     }
 
     /* Menampilkan hasil akhir dari permainan */

@@ -83,6 +83,9 @@ address Search (List L, infotype X)
 }
 
 boolean SearchPoint (List L, int abs, int ord) {
+/* Mencari apakah ada elemen list dengan absis = abs dan ordinat = ord */
+/* Jika ada, mengembalikan true */
+/* Jika tidak, mengembalikan false */
     address p = First(L);
     boolean found = false;
     while (p != Nil && !found) {
@@ -97,6 +100,9 @@ boolean SearchPoint (List L, int abs, int ord) {
 }
 
 address SearchAdrPoint (List L, int abs, int ord) {
+/* Mencari apakah ada elemen list dengan absis = abs dan ordinat = ord */
+/* Jika ada, mengembalikan address elemen tersebut. */
+/* Jika tidak, mengirimkan Nil */
     address p = First(L);
     boolean found = false;
     while (p != Nil && !found) {
@@ -116,6 +122,9 @@ address SearchAdrPoint (List L, int abs, int ord) {
 }
 
 boolean SearchPointInGrid (POINT p, int abs, int ord) {
+/* Mencari apakah ada POINT yang memiliki absis = abs dan ordinat = ord */
+/* Jika ada, mengembalikan true */
+/* Jika tidak, mengembalikan false */
     boolean found = false;
     int i = 0;
     int j = 0;
@@ -170,8 +179,8 @@ void InsVLast (List *L, infotype X, int abs, int ord)
             Prev(p) = Last(*L);
             Next(Last(*L)) = p;
             Last(*L) = p;
+            Length(*L)++;
         }
-        Length(*L)++;
     }
 }
 
@@ -185,7 +194,6 @@ void DelVFirst (List *L, infotype *X)
     DelFirst(L,&p);
     *X = Info(p);
     Dealokasi(p);
-    Length(*L)--;
 }
 
 void DelVLast (List *L, infotype *X)
@@ -197,7 +205,6 @@ void DelVLast (List *L, infotype *X)
     DelLast(L,&p);
     *X = Info(p);
     Dealokasi(p);
-    Length(*L)--;
 }
 
 /****************** PRIMITIF BERDASARKAN ALAMAT ******************/
@@ -229,8 +236,8 @@ void InsertLast (List *L, address P)
         Prev(P) = Last(*L);
         Next(Last(*L)) = P;
         Last(*L) = P;
+        Length(*L)++;
     }
-    Length(*L)++;
 }
 
 void InsertAfter (List *L, address P, address Prec)
@@ -324,9 +331,9 @@ void DelP (List *L, infotype X)
             Prev(Next(p)) = Prev(p);
             Next(p) = Nil;
             Prev(p) = Nil;
+            Length(*L)--;
         }
         Dealokasi(p);
-        Length(*L)--;
     }
 }
 
