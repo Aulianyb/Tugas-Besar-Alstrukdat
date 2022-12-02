@@ -64,6 +64,15 @@ void hangman(int *score) {
         guessWords[i][j] = '\0';
     }
 
+    printf("%s\n", guessWords[0]);
+    printf("%s\n", guessWords[1]);
+    printf("%s\n", guessWords[2]);
+    printf("%s\n", guessWords[3]);
+    printf("%s\n", guessWords[4]);
+    printf("%s\n", guessWords[5]);
+    printf("%s\n", guessWords[6]);
+    printf("%s\n", guessWords[7]);
+
 
     // memasuki looping game
     while (replay == 0){	
