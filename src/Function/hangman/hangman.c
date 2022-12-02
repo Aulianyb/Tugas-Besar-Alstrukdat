@@ -89,7 +89,7 @@ void hangman(int *score) {
             for (int i = 0; i < IndexLetter; i++){
                 printf("%c ", AllEnteredLetters[i]);
                 }
-            printf("Nyawamu masih ada %d nih\n", livescount);
+            printf("\nNyawamu masih ada %d nih", livescount);
             printf("\n\nLengkapi bagian yang kosong dibawah!:\n");
         
             for( IndexLooping = 0; IndexLooping < lengthOfWord; IndexLooping++) {
