@@ -38,7 +38,7 @@ void SkipGame(Queue *game_queue, int n){
             PrintKata(val);
             printf("....\n");
             // Play RNG
-            RNG();
+            score = RNG();
         }
         else if (isWordEqual(val, "RockPaperScissor"))
         {
@@ -51,6 +51,14 @@ void SkipGame(Queue *game_queue, int n){
             printf("Game ");
             PrintKata(val);
             printf(" masih dalam maintenance, belum dapat dimainkan. Silahkan pilih game lain.\n");
+        }
+        else if (isWordEqual(val, "SLAY THE DRAGON"))
+        {
+            printf("Loading ");
+            PrintKata(val);
+            printf("....\n");
+            // Play ROCK PAPER SCISSOR
+            score = SlayTheDragon();
         }
         else {
             printf("Loading ");

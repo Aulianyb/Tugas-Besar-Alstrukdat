@@ -15,6 +15,7 @@
 #include "../Hanoi/Hanoi.h"
 #include "../hangman/hangman.h"
 #include "../SnakeOnMeteor/snakeOnMeteor.h"
+#include "../Tree_Game/Tree_Game.h"
 
 void PlayGame(Queue *game_queue, StackHistory *SH, TabScore *TS, TabGame TG);
 

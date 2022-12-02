@@ -10,6 +10,7 @@
 #include "../RockPaperScissor/RockPaperScissor.h"
 #include "../ADT/mesinkata.h"
 #include "../../random_generator.h"
+#include "../Tree_Game/Tree_Game.h"
 
 void SkipGame(Queue *game_queue, int n);
 
