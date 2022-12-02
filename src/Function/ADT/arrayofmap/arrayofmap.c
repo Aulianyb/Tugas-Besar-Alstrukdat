@@ -13,12 +13,6 @@ int NbElmtTabScore (TabScore T){
 	return T.Neff;
 }
 
-
-/* *** Daya tampung container *** */
-int MaxNbElTabScore (TabScore T){
-	return IdxMax-IdxMin+1;
-}
-
 /* *** Selektor INDEKS *** */
 IdxType GetFirstIdxTabScore (TabScore T){
 	return IdxMin;
@@ -62,21 +56,6 @@ void InsertLastTabScore (TabScore *T, Map map){
 	SetElTabScore(T, idx, map);
 }
 
-void SetNeffTabScore (TabScore *T, IdxType N){
-	T->Neff = N;
-}
-
-/* ********** Test Indeks yang valid ********** */
-boolean IsIdxValidTabScore (TabScore T, IdxType i){
-	//Valid = antara IdxMin dan IdxMax
-	return (IdxMin <= i) && (i <= IdxMax);
-}
-
-boolean IsIdxEffTabScore (TabScore T, IdxType i){
-	//KALAU EFEKTIF : antara IdxMin sama T.Neff
-	return (IdxMin <= i) && (i <= T.Neff);
-}
-
 /* ********** TEST KOSONG/PENUH ********** */
 /* *** Test tabel kosong *** */
 boolean IsEmptyTabScore (TabScore T){
@@ -84,24 +63,42 @@ boolean IsEmptyTabScore (TabScore T){
 	return (T.Neff == 0);
 }
 
+boolean IsFullTabScore (TabScore T){
+/* Mengirimkan true jika tabel T penuh, mengirimkan false jika tidak */
+	return (T.Neff == IdxMax);
+}
+
 /* ********** BACA dan TULIS dengan INPUT/OUTPUT device ********** */
-void TulisIsiTabScore (TabScore T){
+void TulisIsiTabScore (TabScore M){
 	//JANGAN LUPA SPASI WOY
 	//BACA, KALAU TRANSVERSAL YA TULIS TRANSVERSAL
-	IdxType i, j;
-	if (IsEmptyTabScore(T)){
-		printf("Tabel kosong\n");
-	}
-	else {
-		printf("---------------------\n");
-		for (i=GetFirstIdxTabScore(T); i<=T.Neff; i++){
-			for (j = NilMap; j <= T.TI[i].Count; j++){
-				PrintKata(T.TI[i].Elements[j].user);
-				printf(" %d\n", T.TI[i].Elements[j].score);
-			}
-		}
-		printf("---------------------\n");
-	}
+    for (int i = 0; i <= M.Neff-1; i++)
+    {
+        printf("\n***** ELEMEN KE-%d ", i+1);
+        printf(" *****\n");
+        printf("| NAMA          | SKOR          |\n");
+        printf("---------------------------------\n");
+        if (IsEmptyMap(M.TI[i])){
+            printf("------- ELEMEN KOSONG --------\n");
+        } else {
+            int ctr = M.TI[i].Count;
+            for (int j = 0; j < M.TI[i].Count; j++)
+            {
+                printf("| ");
+                PrintKata(M.TI[i].Elements[j].user);
+                if (M.TI[i].Elements[j].user.Length <= 13)
+                {
+                    printf("\t");
+                    if (M.TI[i].Elements[j].user.Length <= 5) {
+                        printf("\t");
+                    }
+                }
+                printf("| ");
+                printf("%d", M.TI[i].Elements[j].score);
+                printf("\t\t|\n");
+            }
+        }
+    }
 }
 
 void DeleteAtTabScore (TabScore *T, IdxType x){

@@ -5,7 +5,8 @@
         "array.h": "c",
         "help.h": "c",
         "queue.h": "c",
-        "stackhistory.h": "c"
+        "stackhistory.h": "c",
+        "listdp.h": "c"
     },
     "C_Cpp.errorSquiggles": "Disabled"
 }
