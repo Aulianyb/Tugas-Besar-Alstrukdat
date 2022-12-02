@@ -79,7 +79,7 @@ int SlayTheDragon(){
                     hp_monster-= 25;
                 }
                 else{
-                    printf("Your sword has become dull, the Dragon attacks you!!\n\n");
+                    printf("You have no moves left, the Dragon attacks you!!\n\n");
                     
                 }
             } 
@@ -92,7 +92,7 @@ int SlayTheDragon(){
                     hp_monster-= 40;
                 }
                 else{
-                    printf("You ran out of Mana, the Dragon attacks you!!\n\n");
+                    printf("You have no moves left, the Dragon attacks you!!\n\n");
                     
                 }
             }
@@ -116,7 +116,7 @@ int SlayTheDragon(){
                     printf("HP +25\n\n");
                 }
                 else{
-                    printf("You ran out of healing potions, the Dragon attacks you!!\n\n");
+                    printf("You have no moves left, the Dragon attacks you!!\n\n");
                     
                 }
             } 
@@ -144,7 +144,7 @@ int SlayTheDragon(){
                     }
                 }
                 else{
-                    printf("You rested too many times, the Dragon attacks you!!\n\n");
+                    printf("You have no moves left, the Dragon attacks you!!\n\n");
                     
                 }
             }
