@@ -6,8 +6,8 @@
 #ifndef listdp_H
 #define listdp_H
 
-#include "../src/boolean.h"
-#include "../SnakeOnMeteor/point.h"
+#include "../../boolean.h"
+#include "point.h"
 
 #define Nil NULL
 
@@ -41,7 +41,7 @@ typedef struct {
 
 /* PROTOTYPE */
 /****************** TEST LIST KOSONG ******************/
-boolean IsEmpty (List L);
+boolean IsEmpty_L(List L);
 /* Mengirim true jika list kosong. Lihat definisi di atas. */
 
 /****************** PEMBUATAN LIST KOSONG ******************/

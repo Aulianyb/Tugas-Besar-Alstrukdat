@@ -1,10 +1,11 @@
 #include <stdio.h>
-#include "Function/Dinner_Dash/Dinner_Dash.h"
+#include "Function/SnakeOnMeteor/snakeOnMeteor.h"
 
 //INI FILE BUAT NYOBA NYOBA AJA
 
 int main(){
 	int temp;
-	Dinner_Dash(&temp);
+	SnakeOnMeteor(&temp);
+	printf("SCORE ANDA : %d\n", temp);
 	return 0; 
 }

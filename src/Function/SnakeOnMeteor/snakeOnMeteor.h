@@ -1,9 +1,9 @@
 #ifndef __SNAKE_ON_METEOR__
 #define __SNAKE_ON_METEOR__
 
-#include "listdp.h"
-#include "../src/random_generator.h"
-#include "../src/Function/ADT/mesinkata.h"
+#include "../ADT/listdp.h"
+#include "../../random_generator.h"
+#include "../ADT/mesinkata.h"
 
 boolean isMoveValid(Word word);
 /* Menghasilkan true apabila input merupakan masukan yang valid */
