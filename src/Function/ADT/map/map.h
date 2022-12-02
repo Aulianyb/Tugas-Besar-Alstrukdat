@@ -10,7 +10,7 @@ Deklarasi stack yang dengan implementasi array eksplisit-statik rata kiri
 */
 
 #define NilMap 0
-#define MaxElMap 10
+#define MaxElMap 20
 #define Undefined -999
 
 // typedef int bool;
