@@ -51,6 +51,7 @@ void hangman(int *score) {
 
     // print list kata
 
+    TulisIsi(listkata);
     char guessWords[listkata.Neff][16];
 
     // memindahkan list kata ke array of string
