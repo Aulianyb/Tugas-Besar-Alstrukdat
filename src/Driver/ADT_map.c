@@ -20,12 +20,11 @@ int main()
     printf("\n=========== TEST IsFullMap ===========\n");
     printf("\n%d", IsFullMap(M));
 
-    // Memasukkan elemen ke map dalam keadaan sudah disort. Elemen terakhir yang dimasukkan
-    // dengan skor yang sama akan berada di atas.
+    // Memasukkan elemen ke map dalam keadaan sudah disort.
     // Expected Output: pada map elemen ke-1 berisi user Mikasa dengan skor 85
     //                  pada map elemen ke-2 berisi user Eren dengan skor 80
-    //                  pada map elemen ke-3 berisi user Erwin dengan skor 80
-    //                  pada map elemen ke-4 berisi user Levi dengan skor 70
+    //                  pada map elemen ke-3 berisi user Levi dengan skor 70
+    //                  pada map elemen ke-4 berisi user Erwin dengan skor 70
     //                  pada map elemen ke-5 berisi user Armin dengan skor 65
 
     printf("\n=========== TEST InsertMap ===========\n");
@@ -40,20 +39,18 @@ int main()
             // ---------------------------------
             // | Mikasa        | 85            |
             // | Eren          | 80            |
-            // | Erwin         | 70            |
             // | Levi          | 70            |
+            // | Erwin         | 70            |
             // | Armin         | 65            |
             // ---------------------------------
     TulisMap(M);
 
-    // Memasukkan elemen ke map menggunakan InsertMapLOAD. Perbedaannya dengan yang 
-    // biasa adalah ketika dimasukkan elemen dengan skor yang sama, maka akan berada di bawah
-    // dengan yang sebelumnya.
+    // Memasukkan elemen ke map menggunakan InsertMapLOAD.
     // Expected Output: pada map elemen ke-1 berisi user Mikasa dengan skor 85
     //                  pada map elemen ke-2 berisi user Eren dengan skor 80
-    //                  pada map elemen ke-3 berisi user Erwin dengan skor 80
-    //                  pada map elemen ke-4 berisi user Annie dengan skor 80
-    //                  pada map elemen ke-5 berisi user Levi dengan skor 70
+    //                  pada map elemen ke-3 berisi user Annie dengan skor 80
+    //                  pada map elemen ke-4 berisi user Levi dengan skor 80
+    //                  pada map elemen ke-5 berisi user Erwin dengan skor 70
     //                  pada map elemen ke-6 berisi user Reiner dengan skor 70
     //                  pada map elemen ke-7 berisi user Armin dengan skor 65
     //                  pada map elemen ke-8 berisi user Berutoroto dengan skor 65
@@ -64,16 +61,16 @@ int main()
 
     // Menulis isi map
     // Expected Output:
-            // ---------------------------------
-            // | Mikasa        | 85            |
-            // | Eren          | 80            |
-            // | Annie         | 80            |
-            // | Erwin         | 70            |
-            // | Reiner        | 70            |
-            // | Levi          | 70            |
-            // | Berutoruto    | 65            |
-            // | Armin         | 65            |
-            // ---------------------------------
+        // ---------------------------------
+        // | Mikasa        | 85            |
+        // | Eren          | 80            |
+        // | Annie         | 80            |
+        // | Levi          | 70            |
+        // | Erwin         | 70            |
+        // | Reiner        | 70            |
+        // | Armin         | 65            |
+        // | Berutoruto    | 65            |
+        // ---------------------------------
     TulisMap(M);
 
 }
