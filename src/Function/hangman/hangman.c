@@ -128,7 +128,7 @@ void hangman(int *score) {
 
             if( oldCorrect == numCorrect && reguessed == 0) {
                 livescount--;
-                printf("\nJawabanmu salah!, nyawamu berkurang satu!\n");
+                printf("\nJawabanmu salah! Nyawamu berkurang satu!\n");
                 if (livescount == 9){
                     printf("       \n");
                     printf("       \n");
