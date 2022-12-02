@@ -8,5 +8,7 @@
 #include "../ADT/Tree/tree.h"
 
 void MoveTree(BinTree *Move);
- 
+
+int SlayTheDragon();
+
 #endif

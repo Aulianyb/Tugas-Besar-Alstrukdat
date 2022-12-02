@@ -10,7 +10,7 @@ Deskripsi : implementasi fungsi dan prosedur pada file "point.h"
 #include "point.h"
 #include <math.h>
 
-POINT MakePOINT(float X, float Y) {
+POINT MakePOINT(int X, int Y) {
 
     POINT P;
 
@@ -22,17 +22,16 @@ POINT MakePOINT(float X, float Y) {
 
 void BacaPOINT(POINT * P) {
 
-    float x;
-    float y;
+    int x;
+    int y;
 
-    scanf("%f  %f",&x,&y);
+    scanf("%d  %d",&x,&y);
 
     *P = MakePOINT(x,y);
 }
 
 void TulisPOINT(POINT P) {
-
-    printf("(%.2f,%.2f)",Absis(P),Ordinat(P));
+    printf("(%d,%d)",Absis(P),Ordinat(P));
 }
 
 boolean EQ(POINT P1, POINT P2) {
@@ -70,7 +69,7 @@ int Kuadran(POINT P) {
     }
 }
 
-POINT PlusDelta (POINT P, float deltaX, float deltaY) {
+POINT PlusDelta (POINT P, int deltaX, int deltaY) {
     POINT P_Result;
 
     Absis(P_Result) = Absis(P) + deltaX;
@@ -79,15 +78,15 @@ POINT PlusDelta (POINT P, float deltaX, float deltaY) {
     return P_Result;
 }
 
-void Geser (POINT *P, float deltaX, float deltaY) {
+void Geser (POINT *P, int deltaX, int deltaY) {
     Absis(*P) += deltaX;
     Ordinat(*P) += deltaY;
 }
 
-float Jarak0 (POINT P) {
+int Jarak0 (POINT P) {
     return (sqrt(pow(Absis(P),2) + pow(Ordinat(P),2)));
 }
 
-float Panjang (POINT P1, POINT P2) {
+int Panjang (POINT P1, POINT P2) {
     return (sqrt(pow(Absis(P1)-Absis(P2),2) + pow(Ordinat(P1)-Ordinat(P2),2)));
 }

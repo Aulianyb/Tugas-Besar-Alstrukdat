@@ -56,6 +56,14 @@ void PlayGame(Queue *game_queue, StackHistory *SH, TabScore *TS, TabGame TG){
             // Play ROCK PAPER SCISSOR
             RockPaperScissor(&score);
         }
+        else if (isWordEqual(val, "SLAY THE DRAGON"))
+        {
+            printf("Loading ");
+            PrintKata(val);
+            printf("....\n");
+            // Play ROCK PAPER SCISSOR
+            score = SlayTheDragon();
+        }
         // else if (isWordEqual(val, "DINOSAUR IN EARTH") || isWordEqual(val, "RISEWOMAN") || isWordEqual(val, "EIFFEL TOWER")){
         //     printf("Game ");
         //     PrintKata(val);

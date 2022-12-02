@@ -4,12 +4,12 @@ void MoveTree(BinTree *Move){
     *Move = Tree (-1, NilTree, NilTree);
     AddDaun (Move, -1, -2, true);
     AddDaun (Move, -1, -3, false);
-    AddDaun (&Left(*Move), -2, 2, true);
+    AddDaun (&Left(*Move), -2, 3, true);
     AddDaun (&Left(*Move), -2, 5, false);
     AddDaun (&Right(*Move), -3, 2, true);
     AddDaun (&Right(*Move), -3, 6, false);
 }
-int main(){
+int SlayTheDragon(){
     boolean alive=true, win=false;
     BinTree PlayerMove;
     MoveTree(&PlayerMove);
@@ -54,7 +54,7 @@ int main(){
     while (alive && (!win)){
         printf("HP MONSTER : %d\n", hp_monster);
         printf("YOUR HP : %d\n", hp_player);
-        printf("INI JUMLAH GERAKAN YANG KAMU MILIKI:\n");
+        printf("THIS IS THE NUMBER OF MOVES AVAILABLE TO YOU:\n");
         printf("ACTION:\n");
         printf("1. HEAL: %d\n", heal);
         printf("2. SKIP: %d\n", skip);
@@ -75,11 +75,11 @@ int main(){
                 if(p->Info > 0){
                     p->Info -= 1;
                     sword = p->Info;
-                    printf("SERANGAN BERHASIL\n\n");
+                    printf("You slashed the Dragon.\n\n");
                     hp_monster-= 25;
                 }
                 else{
-                    printf("PEDANG KAMU SUDAH TUMPUL, DAN KAMU DISERANG\n\n");
+                    printf("Your sword has become dull, the Dragon attacks you!!\n\n");
                     
                 }
             } 
@@ -88,16 +88,16 @@ int main(){
                 if(p->Info > 0){
                     p->Info -= 1;
                     spell = p->Info;
-                    printf("MANTRA BERHASIL\n\n");
+                    printf("You casted a spell and hit the Dragon.\n\n");
                     hp_monster-= 40;
                 }
                 else{
-                    printf("ENERGI MAGIS HABIS, DAN KAMU DISERANG\n\n");
+                    printf("You ran out of Mana, the Dragon attacks you!!\n\n");
                     
                 }
             }
             else{
-                printf("COMMAND TIDAK DIKENALI, DAN KAMU DISERANG\n\n");
+                printf("Command not recognized, the Dragon attacks you for wasting your turn!!\n\n");
                 
             }
         }
@@ -111,11 +111,12 @@ int main(){
                 if(p->Info > 0){
                     p->Info -= 1;
                     heal = p->Info;
-                    printf("HEAL BERHASIL\n\n");
+                    printf("You drank your healing potion and heal yourself.\n");
                     hp_player += 25;
+                    printf("HP +25\n\n");
                 }
                 else{
-                    printf("RAMUAN PENYEMBUH HABIS, DAN KAMU DISERANG\n\n");
+                    printf("You ran out of healing potions, the Dragon attacks you!!\n\n");
                     
                 }
             } 
@@ -124,33 +125,36 @@ int main(){
                 if(p->Info > 0){
                     p->Info -= 1;
                     skip = p->Info;
+                    printf("You take a rest and prepare yourself.\n");
                     int Generate = GenRand(1, 3, 3);
                     if(Generate == 1){
                         Akar(Left(Left(PlayerMove))) += 1;
                         heal = Akar(Left(Left(PlayerMove)));
+                        printf("Heal +1\n\n");
                     }
                     else if(Generate == 2){
                         Akar(Left(Right(PlayerMove))) += 1;
                         spell = Akar(Left(Right(PlayerMove)));
+                        printf("Spell +1\n\n");
                     }
                     else if(Generate == 3){
                         Akar(Right(Right(PlayerMove))) += 1;
                         sword = Akar(Right(Right(PlayerMove)));
+                        printf("Sword +1\n\n");
                     }
-                    printf("KAMU BERISTIRAHAT DAN MEMPERSIAPKAN DIRI\n\n");
                 }
                 else{
-                    printf("KAMU TIDAK BISA BERISTIRAHAT LAGI, DAN KAMU DISERANG\n\n");
+                    printf("You rested too many times, the Dragon attacks you!!\n\n");
                     
                 }
             }
             else{
-                printf("COMMAND TIDAK DIKENALI, DAN KAMU DISERANG\n\n");
+                printf("Command not recognized, the Dragon attacks you for wasting your turn!!\n\n");
                 
             }
         }
         else{
-            printf("So.. You're gonna Stand There and Do Nothing?\n\n");
+            printf("Command not recognized, the Dragon attacks you for wasting your turn!!\n\n");
         }
 
         RNG = GenRand(1, 3, 3);
@@ -173,7 +177,12 @@ int main(){
         else if (hp_player < 1){
             alive = false; 
         }
-        score += 2; 
+        if(hp_player >= 100){
+            score = 100;
+        } 
+        else{
+            score = hp_player;
+        }
     printf("++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
     }
     

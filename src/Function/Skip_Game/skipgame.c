@@ -68,6 +68,14 @@ void SkipGame(Queue *game_queue, int n){
             printf("....\n");
             Hanoi(&score);
         }
+        else if (isWordEqual(val, "SLAY THE DRAGON"))
+        {
+            printf("Loading ");
+            PrintKata(val);
+            printf("....\n");
+            // Play ROCK PAPER SCISSOR
+            score = SlayTheDragon();
+        }
         else {
             printf("Loading ");
             PrintKata(val);
