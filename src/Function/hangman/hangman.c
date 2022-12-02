@@ -264,7 +264,7 @@ void hangman(int *score) {
             wordToString(listkata.TI[randomIndex]));
             replay = 1;	
         } else  {	
-            currentscore = currentscore + StringLen(guessWords[randomIndex]);
+            currentscore = currentscore + listkata.TI[randomIndex].Length ;
             printf("\nYeayy! Kamu Menang :D, Kamu mendapatkan %d poin!\n", listkata.TI[randomIndex].Length);
             replay = 0;
         } 
