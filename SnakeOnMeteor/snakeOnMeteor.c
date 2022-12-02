@@ -1,8 +1,5 @@
-//#include "snakeOnMeteor.h"
+#include "snakeOnMeteor.h"
 #include <stdio.h>
-#include "listdp.h"
-#include "../src/random_generator.h"
-#include "../src/Function/ADT/mesinkata.h"
 
 boolean isMoveValid(Word word) {
     /* Mengecek input yang valid */
