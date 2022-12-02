@@ -56,7 +56,7 @@ void hangman(int *score) {
 
     // convert listkata list to array of string guessWords
     int i;
-    for (i = 0; i < listkata.Neff; i++){
+    for (i = 1; i < listkata.Neff; i++){
         int j;
         for (j = 0; j < listkata.TI[i].Length; j++){
             guessWords[i][j] = listkata.TI[i].TabWord[j];
