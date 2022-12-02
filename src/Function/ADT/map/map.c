@@ -48,7 +48,7 @@ void InsertMap(Map *M, Word k, int v)
     Word temp_key;
 	for (int i = 0; i < n - 1; i++){
 		for (int j = 0; j < n - i - 1; j++){
-			if (M->Elements[j].score <= M->Elements[j+1].score){
+			if (M->Elements[j].score < M->Elements[j+1].score){
 				temp_val = M->Elements[j].score; temp_key = M->Elements[j].user;					
 				M->Elements[j].score = M->Elements[j+1].score; M->Elements[j].user = M->Elements[j+1].user;
 				M->Elements[j+1].score = temp_val; M->Elements[j+1].user = temp_key;
