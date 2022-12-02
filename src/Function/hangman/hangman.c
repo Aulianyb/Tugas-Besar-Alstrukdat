@@ -64,13 +64,6 @@ void hangman(int *score) {
         guessWords[i][j] = '\0';
     }
 
-    // print array of string guessWords
-    for (i = 0; i < listkata.Neff; i++){
-        int j;
-        for (j = 0; j < listkata.TI[i].Length; j++){
-            printf("%c", guessWords[i][j]);
-        }
-    }
 
     // memasuki looping game
     while (replay == 0){	
