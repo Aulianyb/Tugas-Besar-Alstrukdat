@@ -60,7 +60,6 @@ void hangman(int *score) {
     char guessWords[listkata.Neff][16];
 
     // memindahkan list kata ke array of string
-    int i;
     for (i = 0; i < listkata.Neff; i++)
     {
         int j;
