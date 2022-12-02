@@ -3,3 +3,6 @@ driver map:
 
 driver array of map:
     gcc src/Driver/ADT_ArrayOfMap.c src/Function/ADT/arrayofmap/arrayofmap.c src/Function/ADT/map/map.c src/Function/ADT/mesinkata.c src/Function/ADT/mesinkarakter.c -o driver_arrayofmap
+
+driver stackhistory:
+    gcc src/Driver/ADT_StackHistory.c src/Function/ADT/stackhistory/stackhistory.c src/Function/ADT/mesinkata.c src/Function/ADT/mesinkarakter.c -o driver_stackhistory
