@@ -49,9 +49,6 @@ boolean IsFullMap(Map M);
 /* Ciri Map penuh : count berNilMapai MaxElMap */
 
 /* ********** Operator Dasar Map ********* */
-valuetype ValueMap(Map M, Word k);
-/* Mengembalikan NilMapai value dengan User k dari M */
-/* Jika tidak ada User k pada M, akan mengembalikan Undefined */
 
 void InsertMap(Map *M, Word k, valuetype v);
 /* Menambahkan Elmt sebagai elemen Map M. */
@@ -60,15 +57,11 @@ void InsertMap(Map *M, Word k, valuetype v);
 /* F.S. v menjadi anggota dari M dengan User k. Jika k sudah ada, operasi tidak dilakukan */
 
 void InsertMapLOAD(Map *M, Word k, int v);
-
-void DeleteMap(Map *M, Word k);
-/* Menghapus Elmt dari Map M. */
-/* I.S. M tidak kosong
-        element dengan User k mungkin anggota / bukan anggota dari M */
-/* F.S. element dengan User k bukan anggota dari M */
-
+/* Fungsi Insert Map khusus untuk LOAD */
 boolean IsMemberMap(Map M, Word k);
 /* Mengembalikan true jika k adalah member dari M */
+
+void TulisMap(Map M);
 
 boolean isWordandWordEqual(Word word1, Word word2);
 
