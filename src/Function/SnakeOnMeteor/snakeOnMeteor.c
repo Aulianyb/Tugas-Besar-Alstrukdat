@@ -185,7 +185,14 @@ void PrintGrid(List L, List obs, POINT food, POINT meteor) {
 
 void SnakeOnMeteor(int *score) {
     /* ### Print Intro Screen ### */
-    printf("Selamat datang di Snake On Meteor!\n");
+    printf("Selamat datang di . . .\n");
+    printf("  ___ _  _   _   _  _____    ___  _  _ \n");
+    printf(" / __| \\| | /_\\ | |/ / __|  / _ \\| \\| |\n");
+    printf(" \\__ \\ .` |/ _ \\| ' <| _|  | (_) | .` |\n");
+    printf(" |___/_|\\_/_/_\\_\\_|\\_\\___|  \\___/|_|\\_|\n");
+    printf(" |  \\/  | __|_   _| __/ _ \\| _ \\       \n");
+    printf(" | |\\/| | _|  | | | _| (_) |   /       \n");
+    printf(" |_|  |_|___| |_| |___\\___/|_|_\\       \n");
     printf("Mengenerate peta, snake, obstacle, dan makanan...\n");
     printf("Berhasil digenerate!\n");
     
