@@ -14,23 +14,6 @@ boolean IsFullMap(Map M){
     return (M.Count == MaxElMap);
 }
 
-int GetScoreMap(Map M, Word k){
-    boolean found = false;
-    int idx;
-    int i = 0;
-
-    while (i < M.Count && !found){
-        if (isWordandWordEqual(M.Elements[i].user, k)){
-            found = true;
-            idx = i;
-        }
-        i++;
-    }
-
-    if (found) return M.Elements[idx].score;
-    else return Undefined;
-}
-
 void InsertMap(Map *M, Word k, int v)
 {
     if (!IsMemberMap(*M, k)){
@@ -119,29 +102,6 @@ void InsertMapLOAD(Map *M, Word k, int v)
 	}
 }
 
-void DeleteMap(Map *M, Word k){
-    boolean found = false;
-    int idx;
-    int i = 0;
-
-    while (i < (*M).Count && !found){
-        if (isWordandWordEqual(M->Elements[i].user, k)){
-            found = true;
-            idx = i;
-        }
-        i++;
-    }
-
-    if (found)
-    {
-        for (i = idx; i < (*M).Count - 1; i++){
-            (*M).Elements[i].user = (*M).Elements[i + 1].user;
-            (*M).Elements[i].score = (*M).Elements[i + 1].score;
-        }
-        (*M).Count -= 1;
-    }
-}
-
 boolean IsMemberMap(Map M, Word k){
     boolean found = false;
     int i = 0;
@@ -156,6 +116,29 @@ boolean IsMemberMap(Map M, Word k){
     return found;
 }
 
+void TulisMap(Map M)
+{
+    if (IsEmptyMap(M)) printf("Map kosong\n");
+    else {
+        printf("---------------------------------\n");
+        for (int j = 0; j < M.Count; j++)
+        {
+            printf("| ");
+            PrintKata(M.Elements[j].user);
+            if (M.Elements[j].user.Length <= 13)
+            {
+                printf("\t");
+                if (M.Elements[j].user.Length <= 5) {
+                    printf("\t");
+                }
+            }
+            printf("| ");
+            printf("%d", M.Elements[j].score);
+            printf("\t\t|\n");
+        }
+        printf("---------------------------------\n");
+    }
+}
 boolean isWordandWordEqual(Word word1, Word word2)
 {
     boolean sama = true;
