@@ -23,5 +23,5 @@ F.S. Menampilkan seluruh command yang dapat dipanggil di dalam sistem.
     printf("11. | SCOREBOARD        | Menampilkan daftar scoreboard pada setiap permainan\n");
     printf("12. | RESET SCOREBOARD  | Menghapus scoreboard pada suatu permainan yang diinginkan\n");
     printf("11. | HISTORY           | Menampilkan daftar riwayat permainan yang dimainkan pemain.\n");
-    printf("12. | RESET HISTORY     | Menghapus riwayat permainan yang dimainkan pemain\n")
+    printf("12. | RESET HISTORY     | Menghapus riwayat permainan yang dimainkan pemain\n");
 }
