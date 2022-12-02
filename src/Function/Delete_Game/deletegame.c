@@ -11,9 +11,10 @@ void DeleteGame (TabGame *T, StackHistory *SH, TabScore *TS){
         printf("Game gagal dihapus\n");
     }
     else{
+        Word game = T->TI[idx];
         DeleteAt(T, idx);
         DeleteAtTabScore(TS, idx);
-        DeleteGameHistory(SH, T->TI[idx]);
+        DeleteGameHistory(SH, game);
         printf("Game berhasil dihapus\n");
     }
 }

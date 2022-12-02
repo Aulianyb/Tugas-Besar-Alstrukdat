@@ -51,10 +51,10 @@ void SwapStackHistory(StackHistory S, StackHistory *Sout){
 void DeleteGameHistory(StackHistory *SH, Word word)
 {
     int count = countWordInStack(SH, word);
-    printf("\nCheckpoint 1: %d\n", count);
+    // printf("\nCheckpoint 1: %d\n", count);
     for (int i = 0; i < count; i++)
     {
-        printf("Checkpoint %d", i);
+        // printf("Checkpoint %d", i);
         int idx = FindIdxStack(*SH, word);
         DeleteAtHistory(SH, idx);
     }
