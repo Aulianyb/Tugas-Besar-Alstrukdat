@@ -53,10 +53,10 @@ void hangman(int *score) {
     printf("List kata yang tersedia: \n");
     int i;
     for (i = 0; i <= listkata.Neff; i++){
-        printWord(listkata.TI[i]);
+        PrintKata(listkata.TI[i]);
         printf("\n");
     }
-    
+
     char guessWords[listkata.Neff][16];
 
     // memindahkan list kata ke array of string
