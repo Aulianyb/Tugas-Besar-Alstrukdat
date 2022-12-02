@@ -50,11 +50,46 @@ void SwapStackHistory(StackHistory S, StackHistory *Sout){
 
 void DeleteGameHistory(StackHistory *SH, Word word)
 {
-    for (int i = 0; i < Top(*SH); i++)
+    int count = countWordInStack(SH, word);
+    printf("\nCheckpoint 1: %d\n", count);
+    for (int i = 0; i < count; i++)
     {
-        if (isTwoWordEqual(SH->T[i], word)){
-            (*SH).T[i] = (*SH).T[i+1];
-            SH->TOP -= 1;
+        printf("Checkpoint %d", i);
+        int idx = FindIdxStack(*SH, word);
+        DeleteAtHistory(SH, idx);
+    }
+}
+
+void DeleteAtHistory(StackHistory *SH, int idx)
+{
+	for(int i=idx; i<=Top(*SH); i++){
+		(*SH).T[i] = (*SH).T[i+1];
+	}
+	Top(*SH) -= 1;
+}
+
+int FindIdxStack(StackHistory SH, Word word)
+{
+    int count = Top(SH);
+    int i = 0;
+    boolean found = false;
+    while (!found)
+    {
+        if (isWordandWordEqual(SH.T[i], word)){
+            return i;
+        }
+        i++;
+    }
+    return Nil;
+}
+
+int countWordInStack(StackHistory *SH, Word word)
+{
+    int ctr = 0, count = Top(*SH);
+    for (int i = 0; i < count+1; i++){
+        if (isWordandWordEqual(SH->T[i], word)){
+            ctr++;
         }
     }
+    return ctr;
 }

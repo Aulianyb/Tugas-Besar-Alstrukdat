@@ -7,6 +7,7 @@
 
 #include "../../../boolean.h"
 #include "../mesinkata.h"
+#include "../map/map.h"
 
 #define Nil -1
 #define MaxElStack 100
@@ -61,5 +62,11 @@ void PrintStackHistory(StackHistory S, int n);
 void SwapStackHistory(StackHistory S, StackHistory *Sout);
 
 void DeleteGameHistory(StackHistory *SH, Word word);
+
+void DeleteAtHistory(StackHistory *SH, int idx);
+
+int FindIdxStack(StackHistory SH, Word word);
+
+int countWordInStack(StackHistory *SH, Word word);
 
 #endif
