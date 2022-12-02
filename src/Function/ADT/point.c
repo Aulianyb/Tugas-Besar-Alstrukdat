@@ -1,10 +1,3 @@
-/*
-Nama : Farhan Algani Putra
-NIM : 18221108
-Tanggal : 18 September 2022
-Topik : Pra Praktikum 3
-Deskripsi : implementasi fungsi dan prosedur pada file "point.h"
-*/
 
 #include <stdio.h>
 #include "point.h"
