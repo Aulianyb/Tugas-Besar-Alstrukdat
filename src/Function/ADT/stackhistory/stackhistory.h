@@ -60,4 +60,6 @@ void PrintStackHistory(StackHistory S, int n);
 
 void SwapStackHistory(StackHistory S, StackHistory *Sout);
 
+void DeleteGameHistory(StackHistory *SH, Word word);
+
 #endif

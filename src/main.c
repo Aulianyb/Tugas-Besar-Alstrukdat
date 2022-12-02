@@ -80,14 +80,14 @@ int main()
 			ListGame(T);
 		}
 		else if(isWordEqual(currentWord, "DELETE GAME")){
-			DeleteGame(&T);
+			DeleteGame(&T, &SH, &TS);
 		}	
 		else if(isWordEqual(currentWord, "QUEUE GAME")){
 			QueueGame(&Q, T); //PLACEHOLDER, MASIH KOSONG
 		}
 		else if(((isWordEqual(GetKataFirst(currentWord), "SKIP")) && (isWordEqual(GetKataSecond(currentWord), "GAME")))){
 			int n = WordToInt(GetKataThird(currentWord));
-			SkipGame(&Q,n);
+			SkipGame(&Q,n,&SH,&TS,T);
 		}
 		else if(isWordEqual(currentWord, "QUIT")){
 			printf("Sebelum keluar dari program, apakah mau melakukan save terlebih dahulu? (y/n) ");

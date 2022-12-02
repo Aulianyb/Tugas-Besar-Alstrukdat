@@ -16,8 +16,11 @@
 #include "../hangman/hangman.h"
 #include "../SnakeOnMeteor/snakeOnMeteor.h"
 #include "../Tree_Game/Tree_Game.h"
+#include "../ADT/stackhistory/stackhistory.h"
+#include "../ADT/arrayofmap/arrayofmap.h"
+#include "../ADT/array.h"
 
-void SkipGame(Queue *game_queue, int n);
+void SkipGame(Queue *game_queue, int n, StackHistory *SH, TabScore *TS, TabGame T);
 
 // I.S Sembarang
 // F.S Menampilkan seluruh game yang terdapat di queue dan memainkan game sesuai dengan input user mengenai banyaknya game yang di skip

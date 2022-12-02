@@ -135,8 +135,8 @@ int main(){
     printf("==== NbElmt ====\n");
     printf("EKSPEKTASI : mengembalikan jumlah elemen\n");
     printf("TEST : Testing menggunakan T1 dan T2\n");
-    printf("NbElmt - T1: %d\n", NbElmt(T1));
-    printf("NbElmt - T2: %d\n", NbElmt(T2));
+    printf("NbElmt - T1: %d\n", NbElmtTree(T1));
+    printf("NbElmt - T2: %d\n", NbElmtTree(T2));
     printf("\n");
 
     printf("==== NbDaun ====\n");

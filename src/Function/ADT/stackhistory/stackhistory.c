@@ -47,3 +47,14 @@ void SwapStackHistory(StackHistory S, StackHistory *Sout){
         PushHistory(Sout, val);
     }
 }
+
+void DeleteGameHistory(StackHistory *SH, Word word)
+{
+    for (int i = 0; i < Top(*SH); i++)
+    {
+        if (isTwoWordEqual(SH->T[i], word)){
+            (*SH).T[i] = (*SH).T[i+1];
+            SH->TOP -= 1;
+        }
+    }
+}

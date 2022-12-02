@@ -106,12 +106,12 @@ boolean SearchTree (BinTree P, Infotype X) {
 /* Mengirimkan true jika ada node dari P yang bernilai X */
 
 /*** Fungsi-Fungsi Lain ***/
-int NbElmt (BinTree P) {
+int NbElmtTree (BinTree P) {
 	if (IsTreeEmpty(P)) {
 		return 0;
 	}
 	else {
-		return (1 + NbElmt(Left(P)) + NbElmt(Right(P)));
+		return (1 + NbElmtTree(Left(P)) + NbElmtTree(Right(P)));
 	} 
 }
 /* Mengirimkan banyaknya elemen (node) pohon biner P */

@@ -1,7 +1,7 @@
 #include "deletegame.h"
 #include <stdio.h>
 
-void DeleteGame (TabGame *T){
+void DeleteGame (TabGame *T, StackHistory *SH, TabScore *TS){
     ListGame(*T);
     printf("Masukkan nomor yang akan dihapus :");
     STARTFILE();
@@ -12,6 +12,8 @@ void DeleteGame (TabGame *T){
     }
     else{
         DeleteAt(T, idx);
+        DeleteAtTabScore(TS, idx);
+        DeleteGameHistory(SH, T->TI[idx]);
         printf("Game berhasil dihapus\n");
     }
 }
