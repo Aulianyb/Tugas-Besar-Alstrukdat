@@ -50,6 +50,7 @@ void hangman(int *score) {
         }
 
     TulisIsi(listkata);
+    printf("kelar")
     // memasuki looping game
     while (replay == 0){	
 
