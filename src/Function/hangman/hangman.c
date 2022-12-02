@@ -70,8 +70,8 @@ void hangman(int *score) {
     char AllEnteredLetters[27] = {0};
         // looping untuk proses penjawaban soal
         while ( numCorrect < lengthOfWord ) {
-
-            printf("\n\n\n\n\n\nSeluruh huruf yang telah dicoba: ");
+	    printf("\n\n\n\n\n\n++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
+            printf("Seluruh huruf yang telah dicoba: ");
             for (int i = 0; i < IndexLetter; i++){
                 printf("%c ", AllEnteredLetters[i]);
                 }
