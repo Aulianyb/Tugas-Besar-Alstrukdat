@@ -27,7 +27,7 @@ void hangman(int *score) {
                 }
                 j++;
             }
-            if (found ==1){
+            if (found == 1){
                 printf("Kata sudah ada dalam list kata! Masukkan kata lain\n");
             }
             else{
