@@ -75,7 +75,7 @@ void hangman(int *score) {
             for (int i = 0; i < IndexLetter; i++){
                 printf("%c ", AllEnteredLetters[i]);
                 }
-            printf("\nNyawamu masih ada %d nih", livescount);
+            printf("\nNyawamu masih ada %d nih!", livescount);
             printf("\n\nLengkapi bagian yang kosong dibawah!:\n");
             
             printf("Panjang Kata: %d\n", lengthOfWord);
@@ -91,7 +91,7 @@ void hangman(int *score) {
             
             printf("\n");
         
-            printf("Masukkan huruf tebakanmu! :\n");
+            printf("\nMasukkan huruf tebakanmu! :\n");
             STARTFILE();
 
             InputLetter = currentWord.TabWord[0];
@@ -128,7 +128,7 @@ void hangman(int *score) {
 
             if( oldCorrect == numCorrect && reguessed == 0) {
                 livescount--;
-                printf("Jawabanmu salah!, nyawamu berkurang satu!\n");
+                printf("\nJawabanmu salah! Nyawamu berkurang satu!\n");
                 if (livescount == 9){
                     printf("       \n");
                     printf("       \n");
