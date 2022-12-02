@@ -22,7 +22,7 @@ void hangman(int *score) {
             int j = 0;
             int found = 0;
             while (j <= listkata.Neff && found == 0){
-                if (isWordEqual(listkata.TI[j],currentWord)){
+                if (isWordEqual(currentWord, listkata.TI[j])){
                     found = 1;
                 }
                 j++;
