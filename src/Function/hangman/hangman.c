@@ -62,7 +62,7 @@ void hangman(int *score) {
         }
         guessWords[i][j] = '\0';
     }
-    
+
     // memasuki looping game
     while (replay == 0){	
 
@@ -85,13 +85,12 @@ void hangman(int *score) {
         // looping untuk proses penjawaban soal
         while ( numCorrect < lengthOfWord ) {
 
-            printf("\n\nSeluruh huruf yang telah dicoba: ");
+            printf("\n\n\n\n\n\nSeluruh huruf yang telah dicoba: ");
             for (int i = 0; i < IndexLetter; i++){
                 printf("%c ", AllEnteredLetters[i]);
                 }
         
             printf("\n\nLengkapi bagian yang kosong dibawah!:\n");
-            printf("Kata yang harus diisi: \n");
         
             for( IndexLooping = 0; IndexLooping < lengthOfWord; IndexLooping++) {
                 // Looping print soal
