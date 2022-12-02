@@ -80,6 +80,7 @@ void hangman(int *score) {
         
             for( IndexLooping = 0; IndexLooping < lengthOfWord; IndexLooping++) {
                 // Looping print soal
+                printf("Length of word: %d\n", lengthOfWord);
                 if(letterGuessed[IndexLooping] == 1) {
                     printf("%c", listkata.TI[randomIndex].TabWord[IndexLooping]);				
                 } else {
