@@ -15,7 +15,7 @@ Deskripsi : Implementasi "listdp.h"
 boolean IsEmpty (List L)
 /* Mengirim true jika list kosong. Lihat definisi di atas. */
 {
-    return (First(L) == Nil && Last(L) == Nil);
+    return (First(L) == Nil && Last(L) == Nil && Length(L) == 0);
 }
 
 /****************** PEMBUATAN LIST KOSONG ******************/
@@ -25,6 +25,7 @@ void CreateEmpty (List *L)
 {
     First(*L) = Nil;
     Last(*L) = Nil;
+    Length(*L) = 0;
 }
 
 /****************** Manajemen Memori ******************/
@@ -114,6 +115,24 @@ address SearchAdrPoint (List L, int abs, int ord) {
     }
 }
 
+boolean SearchPointInGrid (POINT p, int abs, int ord) {
+    boolean found = false;
+    int i = 0;
+    int j = 0;
+    while (i < 5 && !found) {
+        while (j < 5 && !found) {
+            if (Absis(p) == abs && Ordinat(p) == ord) {
+                found = true;
+            }
+            else {
+                j++;
+            }
+        }
+        i++;
+    }
+    return found;
+}
+
 /****************** PRIMITIF BERDASARKAN NILAI ******************/
 /*** PENAMBAHAN ELEMEN ***/
 void InsVFirst (List *L, infotype X, int abs, int ord)
@@ -132,6 +151,7 @@ void InsVFirst (List *L, infotype X, int abs, int ord)
             Prev(First(*L)) = p;
             First(*L) = p;
         }
+        Length(*L)++;
     }
 }
 
@@ -151,6 +171,7 @@ void InsVLast (List *L, infotype X, int abs, int ord)
             Next(Last(*L)) = p;
             Last(*L) = p;
         }
+        Length(*L)++;
     }
 }
 
@@ -163,16 +184,8 @@ void DelVFirst (List *L, infotype *X)
     address p;
     DelFirst(L,&p);
     *X = Info(p);
-    // if (First(*L) == Last(*L)) {
-    //     First(*L) = Nil;
-    //     Last(*L) = Nil;
-    // }
-    // else {
-    //     First(*L) = Next(p);
-    //     Prev(First(*L)) = Nil;
-    //     Next(p) = Nil;
-    // }
     Dealokasi(p);
+    Length(*L)--;
 }
 
 void DelVLast (List *L, infotype *X)
@@ -183,15 +196,8 @@ void DelVLast (List *L, infotype *X)
     address p;
     DelLast(L,&p);
     *X = Info(p);
-    // if (First(*L) == Last(*L)) {
-    //     DelVFirst(L,X);
-    // }
-    // else {
-    //     Last(*L) = Prev(p);
-    //     Next(Last(*L)) = Nil;
-    //     Prev(p) = Nil;
-    // }
     Dealokasi(p);
+    Length(*L)--;
 }
 
 /****************** PRIMITIF BERDASARKAN ALAMAT ******************/
@@ -209,6 +215,7 @@ void InsertFirst (List *L, address P)
         Prev(First(*L)) = P;
         First(*L) = P;
     }
+    Length(*L)++;
 }
 
 void InsertLast (List *L, address P)
@@ -223,6 +230,7 @@ void InsertLast (List *L, address P)
         Next(Last(*L)) = P;
         Last(*L) = P;
     }
+    Length(*L)++;
 }
 
 void InsertAfter (List *L, address P, address Prec)
@@ -238,6 +246,7 @@ void InsertAfter (List *L, address P, address Prec)
         Prev(Next(Prec)) = P;
     }
     Next(Prec) = P;
+    Length(*L)++;
 }
 
 void InsertBefore (List *L, address P, address Succ)
@@ -253,6 +262,7 @@ void InsertBefore (List *L, address P, address Succ)
         Next(Prev(Succ)) = P;
     }
     Prev(Succ) = P;
+    Length(*L)++;
 }
 
 /*** PENGHAPUSAN SEBUAH ELEMEN ***/
@@ -272,6 +282,7 @@ void DelFirst (List *L, address *P)
         Next(*P) = Nil;
         Prev(First(*L)) = Nil;
     }
+    Length(*L)--;
 }
 
 void DelLast (List *L, address *P)
@@ -290,6 +301,7 @@ void DelLast (List *L, address *P)
         Prev(*P) = Nil;
         Next(Last(*L)) = Nil;
     }
+    Length(*L)--;
 }
 
 void DelP (List *L, infotype X)
@@ -314,6 +326,7 @@ void DelP (List *L, infotype X)
             Prev(p) = Nil;
         }
         Dealokasi(p);
+        Length(*L)--;
     }
 }
 
@@ -333,6 +346,7 @@ void DelAfter (List *L, address *Pdel, address Prec)
     }
     Next(*Pdel) = Nil;
     Prev(*Pdel) = Nil;
+    Length(*L)--;
 }
 
 void DelBefore (List *L, address *Pdel, address Succ)
@@ -351,6 +365,7 @@ void DelBefore (List *L, address *Pdel, address Succ)
     }
     Next(*Pdel) = Nil;
     Prev(*Pdel) = Nil;
+    Length(*L)--;
 }
 
 /****************** PROSES SEMUA ELEMEN LIST ******************/

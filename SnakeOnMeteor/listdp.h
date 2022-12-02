@@ -6,8 +6,8 @@
 #ifndef listdp_H
 #define listdp_H
 
-#include "boolean.h"
-#include "point.h"
+#include "../src/boolean.h"
+#include "../SnakeOnMeteor/point.h"
 
 #define Nil NULL
 
@@ -23,6 +23,7 @@ typedef struct tElmtlist {
 typedef struct {
 	address First;
 	address Last;
+	int Length;
 } List;
 
 /* Definisi list : */
@@ -36,6 +37,7 @@ typedef struct {
 #define Prev(P) (P)->prev
 #define First(L) ((L).First)
 #define Last(L) ((L).Last)
+#define Length(L) ((L).Length)
 
 /* PROTOTYPE */
 /****************** TEST LIST KOSONG ******************/
@@ -65,8 +67,19 @@ address Search (List L, infotype X);
 /* Jika tidak ada, mengirimkan Nil */
 
 boolean SearchPoint (List L, int abs, int ord);
+/* Mencari apakah ada elemen list dengan absis = abs dan ordinat = ord */
+/* Jika ada, mengembalikan true */
+/* Jika tidak, mengembalikan false */
 
 address SearchAdrPoint (List L, int abs, int ord);
+/* Mencari apakah ada elemen list dengan absis = abs dan ordinat = ord */
+/* Jika ada, mengembalikan address elemen tersebut. */
+/* Jika tidak, mengirimkan Nil */
+
+boolean SearchPointInGrid (POINT p, int abs, int ord);
+/* Mencari apakah ada POINT yang memiliki absis = abs dan ordinat = ord */
+/* Jika ada, mengembalikan true */
+/* Jika tidak, mengembalikan false */
 
 /****************** PRIMITIF BERDASARKAN NILAI ******************/
 /*** PENAMBAHAN ELEMEN ***/
