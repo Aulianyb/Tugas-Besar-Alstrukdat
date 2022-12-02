@@ -49,6 +49,7 @@ void hangman(int *score) {
             }
         }
 
+    TulisIsi(listkata);
     // memasuki looping game
     while (replay == 0){	
 
