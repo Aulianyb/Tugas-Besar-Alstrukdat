@@ -63,14 +63,26 @@ void hangman(int *score) {
         guessWords[i][j] = '\0';
     }
 
-    //print all the words
-    printf("List kata yang dapat ditebak: \n");
+    //delete all the gusswords that contain non-alphabet
+    int j = 0;
     for (i = 0; i < listkata.Neff; i++)
     {
-        int j;
-        for (j = 0; j < listkata.TI[i].Length; j++)
+        int k;
+        for (k = 0; k < listkata.TI[i].Length; k++)
         {
-            printf("%c", guessWords[i][j]);
+            if (guessWords[i][k] < 'A' || guessWords[i][k] > 'Z')
+            {
+                break;
+            }
+        }
+        if (k == listkata.TI[i].Length)
+        {
+            for (k = 0; k < listkata.TI[i].Length; k++)
+            {
+                guessWords[j][k] = guessWords[i][k];
+            }
+            guessWords[j][k] = '\0';
+            j++;
         }
     }
 
