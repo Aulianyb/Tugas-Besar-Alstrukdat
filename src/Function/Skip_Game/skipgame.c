@@ -74,7 +74,7 @@ void SkipGame(Queue *game_queue, int n, StackHistory *SH, TabScore *TS, TabGame 
             PrintKata(val);
             printf("....\n");
             // Play ROCK PAPER SCISSOR
-            score = SlayTheDragon();
+            SlayTheDragon(&score);
         }
         else {
             printf("Loading ");

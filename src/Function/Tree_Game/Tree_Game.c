@@ -9,11 +9,12 @@ void MoveTree(BinTree *Move){
     AddDaun (&Right(*Move), -3, 2, true);
     AddDaun (&Right(*Move), -3, 6, false);
 }
-int SlayTheDragon(){
+void SlayTheDragon(int *score){
+    *score = 0;
     boolean alive=true, win=false;
     BinTree PlayerMove;
     MoveTree(&PlayerMove);
-    int hp_player=100, hp_monster=100, score=0, RNG, heal, sword, spell, skip;
+    int hp_player=100, hp_monster=100, RNG, heal, sword, spell, skip;
     heal = Akar(Left(Left(PlayerMove)));
     skip = Akar(Right(Left(PlayerMove)));
     spell = Akar(Left(Right(PlayerMove)));
@@ -178,22 +179,22 @@ int SlayTheDragon(){
             alive = false; 
         }
         if(hp_player >= 100){
-            score = 100;
+            *score = 100;
         } 
         else{
-            score = hp_player;
+            *score = hp_player;
         }
     printf("++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
     }
     
     if (win){
         printf("YOU SLAYED THE BEAST!\n");
-        printf("SCORE : %d\n", score);
+        printf("*score : %d\n", *score);
     }
     else{
-        score = 0;
+        *score = 0;
         printf("YOU LOSE...\n");
-        printf("SCORE : %d\n", score);
+        printf("*score : %d\n", *score);
     }
     printf("++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
 }

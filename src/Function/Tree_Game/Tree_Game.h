@@ -9,6 +9,6 @@
 
 void MoveTree(BinTree *Move);
 
-int SlayTheDragon();
+void SlayTheDragon(int *score);
 
 #endif
