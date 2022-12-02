@@ -306,7 +306,7 @@ void loadHANGMAN(char* filename, TabGame *listGame)
         delay(250); printf(".");
         delay(250); printf(".");
         delay(250); printf(".\n");
-        printf("File konfigurasi BNMO berhasil dibaca. GLHF!!\n");      
+        printf("File konfigurasi untuk HANGMAN berhasil dibaca. GLHF!!\n");      
     }
 
 }

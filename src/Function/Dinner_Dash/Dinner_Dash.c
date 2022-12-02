@@ -214,19 +214,19 @@ void Dinner_Dash(int *saldo){
 	boolean play = true;
 	char command[8];
 	int order_ctr=3, cook_ctr=0, served_ctr=0, made_ctr=2; 
-	Tab Orders, Cook, Served, Data;
+	Tab Orders, Cook, Served;
 	Pesanan temp; 
 	boolean valid=false; 
 	MakeEmpty_pesanan(&Orders);
 	MakeEmpty_pesanan(&Cook);
 	MakeEmpty_pesanan(&Served);
-	MakeEmpty_pesanan(&Data);
-
+	printf("Generating Orders");
 	for (int i = 0;i<3;i++){
+		printf(". ");
 		delay(700);
 		buat_pesanan(&Orders, i);
-		Insert_pesanan(&Data, i, Durasi(Orders.buffer[i]), Ketahanan(Orders.buffer[i]), Harga(Orders.buffer[i]));
 	}
+	printf("\n");
 
 	printf("\n");
 	printf(" ===================== Selamat Datang di ... =====================\n");
@@ -256,25 +256,30 @@ void Dinner_Dash(int *saldo){
 			STARTFILE();
 			if (((isCook(currentWord) || isServe(currentWord)) && GetKataSecond(currentWord).TabWord[0] == 'M') || (isSkip(currentWord))){
 				if (isCook(currentWord)){
-					if (made_ctr >= CommandInt(currentWord)){
+					if (isMember_cook(Orders, CommandInt(currentWord))){
 						if (cook_ctr < 5){
 							valid=true;
 						}
 						else{
-							printf("Jumlah Maksimal Yang dapat dimasak adalah 5 Pesanan!\n");
+							printf(" Jumlah Maksimal Yang dapat dimasak adalah 5 Pesanan!\n");
 						}
 					}
 					else{
-						printf(" Belum ada yang memesan M%d!\n", CommandInt(currentWord));
+						printf(" Indeks Pesanan tidak valid!\n", CommandInt(currentWord));
 					}
 				}
 				else if(isServe(currentWord)){
 					if (isMember_cook(Served, CommandInt(currentWord))){
-						if (served_ctr >= CommandInt(currentWord)){
+						if (isMember_cook(Orders, CommandInt(currentWord))){
+							if (served_ctr >= CommandInt(currentWord)){
 							valid=true;
+							}
+							else{
+								printf(" Pesanan M%d belum dapat disajikan karena antrian sebelumnya belum disajikan!\n", CommandInt(currentWord));
+							}
 						}
 						else{
-							printf(" Pesanan M%d belum dapat disajikan karena antrian sebelumnya belum disajikan!\n", CommandInt(currentWord));
+							printf(" Pesanan tidak dapat disajikan karena tidak ada di daftar pesanan !\n");
 						}
 					}
 					else{
@@ -308,9 +313,8 @@ void Dinner_Dash(int *saldo){
 
 		//ALGORITMA UTAMA
 		if (isCook(currentWord)) {
-			order_ctr--;
-			Delete_pesanan(&Orders, CommandInt(currentWord), &temp);
-			temp = Data.buffer[CommandInt(currentWord)];
+			// Delete_pesanan(&Orders, CommandInt(currentWord), &temp);
+			temp = Orders.buffer[CommandInt(currentWord)];
 			enqueue_cook(&Cook, temp);
 			cook_ctr++; 
 			printf(" Berhasil Memasak M%d\n", CommandInt(currentWord));
@@ -318,6 +322,8 @@ void Dinner_Dash(int *saldo){
 
 		else if(isServe(currentWord)){
 			dequeue_cook(&Served, &temp);
+			Delete_pesanan(&Orders, CommandInt(currentWord), &temp);
+			order_ctr--;
 			*saldo += Harga(temp);
 			served_ctr++;
 			printf(" Berhasil Menyajikan M%d\n", CommandInt(currentWord));
@@ -327,13 +333,10 @@ void Dinner_Dash(int *saldo){
 		made_ctr++;
 		buat_pesanan(&Orders, made_ctr);
 		order_ctr++; 
-		Insert_pesanan(&Data, made_ctr, Durasi(Orders.buffer[Neff(Orders)-1]), Ketahanan(Orders.buffer[Neff(Orders)-1]), Harga(Orders.buffer[Neff(Orders)-1]));
 
 		for (int i=0; i < Neff(Served);i++){
 			if (Ketahanan(Served.buffer[i]) == 0){
 				printf(" PESANAN M%d HANGUS! PESANAN HARUS DIMASAK ULANG!\n", Label_int(Served.buffer[i]));
-				temp = Data.buffer[Label_int(Served.buffer[i])];
-				enqueue_cook(&Orders, temp);
 				Delete_pesanan(&Served, Label_int(Served.buffer[i]), &temp);
 				order_ctr++;
 			}

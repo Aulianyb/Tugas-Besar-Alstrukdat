@@ -1,5 +1,6 @@
 #include "snakeOnMeteor.h"
 #include <stdio.h>
+#include "../ADT/listdp.h"
 
 boolean isMoveValid(Word word) {
     /* Mengecek input yang valid */
@@ -59,7 +60,7 @@ void MoveSnake(List *L, POINT meteor, Word input, char keyword, boolean* valid) 
     }
 
     if (*valid) {
-        address p = Next(First(*L));
+        address_L p = Next(First(*L));
         while (p != Last(*L)) {
             Info(p) = Info(Next(p));
             p = Next(p);
@@ -97,7 +98,7 @@ void AddBody(List *L, int abs, int ord, List obstacle, POINT food, POINT meteor,
     }
 
     if (!SearchPoint(*L,insAbs,insOrd)) {
-        address p = Alokasi(Info(Last(*L))+1,insAbs,insOrd);
+        address_L p = Alokasi(Info(Last(*L))+1,insAbs,insOrd);
         InsertLast(L,p);
     }
 }
@@ -114,7 +115,7 @@ void spawnObstacle(List *obstacle) {
             Absis(tempObs) = GenRand(0,4,5);
             Ordinat(tempObs) = GenRand(0,4,5);
         }
-        address p = Alokasi(i+1,Absis(tempObs),Ordinat(tempObs));
+        address_L p = Alokasi(i+1,Absis(tempObs),Ordinat(tempObs));
         InsertLast(obstacle,p);
     }
 }
@@ -145,11 +146,11 @@ void PrintGrid(List L, List obs, POINT food, POINT meteor) {
     /* Menampilkan isi grid/peta permainan */
     for (int j = 0; j < 5; j++) {
         for (int i = 0; i < 5; i++) {
-            address p = SearchAdrPoint(L,i,j);
+            address_L p = SearchAdrPoint(L,i,j);
             if (Absis(meteor) == i && Ordinat(meteor) == j) {
                 printf("[m ]");
             }
-            else if (p != Nil) {
+            else if (p != Nil_L) {
                 if (Info(p) == 0) {
                     printf("[H ]");
                 }
@@ -163,8 +164,8 @@ void PrintGrid(List L, List obs, POINT food, POINT meteor) {
                 }
             }
             else {
-                address q = SearchAdrPoint(obs,i,j);
-                if (q != Nil) {
+                address_L q = SearchAdrPoint(obs,i,j);
+                if (q != Nil_L) {
                     printf("[X ]");
                 }
                 else {
@@ -196,7 +197,7 @@ void SnakeOnMeteor(int *score) {
 
     /* ### Inisialisasi Obstacle ### */
     List Obstacle;
-    CreateEmpty(&Obstacle);
+    CreateEmpty_L(&Obstacle);
     spawnObstacle(&Obstacle);
 
     /* ### Inisialisasi Food dan Meteor ### */
@@ -211,14 +212,14 @@ void SnakeOnMeteor(int *score) {
 
     /* ### Inisialisasi Snake ### */
     List Snake;
-    CreateEmpty(&Snake);
+    CreateEmpty_L(&Snake);
     int absHead = GenRand(0,4,5);
     int ordHead = GenRand(0,4,5);
     while (SearchPoint(Obstacle,absHead,ordHead)) {
         absHead = GenRand(0,4,5);
         ordHead = GenRand(0,4,5);
     }
-    address p = Alokasi(0,absHead,ordHead);
+    address_L p = Alokasi(0,absHead,ordHead);
     InsertFirst(&Snake,p);
     AddBody(&Snake,Absis(Last(Snake)->point),Ordinat(Last(Snake)->point),Obstacle,Food,Meteor,&isEmptySpace);
     AddBody(&Snake,Absis(Last(Snake)->point),Ordinat(Last(Snake)->point),Obstacle,Food,Meteor,&isEmptySpace);
@@ -398,7 +399,7 @@ void SnakeOnMeteor(int *score) {
         /* Mengecek apabila ada bagian badan Snake yang terkena Meteor */
         if (SearchPoint(Snake,Absis(Meteor),Ordinat(Meteor))) {
             hit = true;
-            address loc = SearchAdrPoint(Snake,Absis(Meteor),Ordinat(Meteor));
+            address_L loc = SearchAdrPoint(Snake,Absis(Meteor),Ordinat(Meteor));
             if (loc == First(Snake)) {
                 /* Bila mengenai kepala, game berakhir */
                 printf("Kepala Anda terkena meteor! Permainan berakhir!\n");
@@ -411,9 +412,9 @@ void SnakeOnMeteor(int *score) {
                 PrintGrid(Snake,Obstacle,Food,Meteor);
                 printf("\n");
                 printf("Anda terkena meteor!\n");
-                address updInfo = Next(loc);
+                address_L updInfo = Next(loc);
                 DelP(&Snake,Info(loc));
-                while (updInfo != Nil) {
+                while (updInfo != Nil_L) {
                     Info(updInfo) -= 1;
                     updInfo = Next(updInfo);
                 }
@@ -486,5 +487,4 @@ void SnakeOnMeteor(int *score) {
     printf("Permainan berakhir!\n");
     *score = Length(Snake)*2;
     printf("Skor : %d\n",(*score));
-    return 0;
 }
