@@ -49,8 +49,6 @@ void hangman(int *score) {
             }
         }
 
-    TulisIsi(listkata);
-    printf("kelar");
     // memasuki looping game
     while (replay == 0){	
 
@@ -85,7 +83,7 @@ void hangman(int *score) {
                 if(letterGuessed[IndexLooping] == 1) {
                     printf("%c", listkata.TI[randomIndex].TabWord[IndexLooping]);				
                 } else {
-                    printf("_ ");
+                    printf(" _ ");
                 }
             
             }	
