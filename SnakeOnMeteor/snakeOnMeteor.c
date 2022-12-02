@@ -2,11 +2,13 @@
 #include <stdio.h>
 
 boolean isMoveValid(Word word) {
+    /* Mengecek input yang valid */
     return (isWordEqual(word,"w") || isWordEqual(word,"W") || isWordEqual(word,"a") || isWordEqual(word,"A") ||
     isWordEqual(word,"s") || isWordEqual(word,"S") || isWordEqual(word,"d") || isWordEqual(word,"D"));
 }
 
 void MoveSnake(List *L, POINT meteor, Word input, char keyword, boolean* valid) {
+    /* Menggerakkan badan Snake */
     if (keyword == 'w') {
         if (Ordinat(First(*L)->point) == 0 && !SearchPointInGrid(meteor,Absis(First(*L)->point),4)) {
             InsVFirst(L,0,Absis(First(*L)->point),4);
@@ -67,6 +69,7 @@ void MoveSnake(List *L, POINT meteor, Word input, char keyword, boolean* valid) 
 }
 
 void AddBody(List *L, int abs, int ord, List obstacle, POINT food, POINT meteor, boolean* emptySpace) {
+    /* Menambahkan badan Snake */
     int insAbs = abs;
     int insOrd = ord;
     if ((abs - 1) >= 0 && !SearchPoint(*L,abs-1,ord) && !SearchPoint(obstacle,abs-1,ord) && !SearchPointInGrid(food,abs-1,ord) && !SearchPointInGrid(meteor,abs-1,ord)) {
@@ -100,6 +103,7 @@ void AddBody(List *L, int abs, int ord, List obstacle, POINT food, POINT meteor,
 }
 
 void spawnObstacle(List *obstacle) {
+    /* Mengenerate obstacle ke dalam permainan */
     int numObs = GenRand(1,3,4);
     POINT tempObs;
 
@@ -116,6 +120,7 @@ void spawnObstacle(List *obstacle) {
 }
 
 void spawnFood(List L, List Obs, POINT meteor, POINT *food) {
+    /* Mengenerate Food ke dalam permainan */
     Absis(*food) = GenRand(0,4,5);
     Ordinat(*food) = GenRand(0,4,5);
 
@@ -126,6 +131,7 @@ void spawnFood(List L, List Obs, POINT meteor, POINT *food) {
 }
 
 void spawnMeteor(List obstacle, POINT food, POINT *meteor, int prevAbs, int prevOrd) {
+    /* Mengenerate Meteor ke dalam permainan */
     Absis(*meteor) = GenRand(0,4,5);
     Ordinat(*meteor) = GenRand(0,4,5);
 
@@ -136,6 +142,7 @@ void spawnMeteor(List obstacle, POINT food, POINT *meteor, int prevAbs, int prev
 }
 
 void PrintGrid(List L, List obs, POINT food, POINT meteor) {
+    /* Menampilkan isi grid/peta permainan */
     for (int j = 0; j < 5; j++) {
         for (int i = 0; i < 5; i++) {
             address p = SearchAdrPoint(L,i,j);
@@ -175,6 +182,7 @@ void PrintGrid(List L, List obs, POINT food, POINT meteor) {
 }
 
 void SnakeOnMeteor(int *score) {
+    /* Inisialisasi boolean yang digunakan dalam permainan */
     boolean GameOver = false;
     boolean isEmptySpace = true;
     boolean moveValid = true;
@@ -217,6 +225,7 @@ void SnakeOnMeteor(int *score) {
     /* ### Print Grid Pertama Kali ### */
     PrintGrid(Snake,Obstacle,Food,Meteor);
 
+    /* Core Loop dari permainan Snake On Meteor*/
     while (!GameOver) {
         printf("Masukkan gerakan : ");
         STARTFILE();
@@ -225,11 +234,13 @@ void SnakeOnMeteor(int *score) {
         hit = false;
         boolean valid = false;
         while (!valid) {
+            /* Mengecek apakah input valid */
             if (!isMoveValid(currentWord)) {
                 printf("Gerakan tidak valid! Masukkan ulang gerakan : ");
                 STARTFILE();
             }
             else {
+                /* Mengecek gerakan yang sesuai dengan input yang diberikan pengguna */
                 if (isWordEqual(currentWord,"a") || isWordEqual(currentWord,"A")) {
                     if (Absis(First(Snake)->point)-1 >= 0) {
                         if (SearchPoint(Snake,(Absis(First(Snake)->point)-1)%5,Ordinat(First(Snake)->point))) {
@@ -356,30 +367,38 @@ void SnakeOnMeteor(int *score) {
                 }
             }
         }
+        /* Men-generate meteor */
         spawnMeteor(Obstacle,Food,&Meteor,Absis(Meteor),Ordinat(Meteor));
 
+        /* Mengecek apabila Head memakan food, maka badan bertambah panjang (apabila masih bisa menambah panjang) */
         if (Absis(First(Snake)->point) == Absis(Food) && Ordinat(First(Snake)->point) == Ordinat(Food)) {
             if (isEmptySpace) {
+                /* Bila berhasil (masih ada slot tersedia untuk penambahan panjang badan) */
                 AddBody(&Snake,Absis(Last(Snake)->point),Ordinat(Last(Snake)->point),Obstacle,Food,Meteor,&isEmptySpace);
                 spawnFood(Snake,Obstacle,Meteor,&Food);
             }
             else {
+                /* Bila gagal (POINT yang adjacent dengan tail sudah terisi semua) */
                 stopGrow = true;
                 GameOver = true;
             }
         }
+        /* Mengecek apabila Head menabrak obstacle */
         if (SearchPoint(Obstacle,Absis(First(Snake)->point),Ordinat(First(Snake)->point))) {
             hitObstacle = true;
             GameOver = true;
         }
+        /* Mengecek apabila ada bagian badan Snake yang terkena Meteor */
         if (SearchPoint(Snake,Absis(Meteor),Ordinat(Meteor))) {
             hit = true;
             address loc = SearchAdrPoint(Snake,Absis(Meteor),Ordinat(Meteor));
             if (loc == First(Snake)) {
+                /* Bila mengenai kepala, game berakhir */
                 printf("Kepala Anda terkena meteor! Permainan berakhir!\n");
                 GameOver = true;
             }
             else {
+                /* Bila mengenai badan, panjang badan berkurang satu */
                 printf("Berikut merupakan peta permainan:\n");
                 PrintGrid(Snake,Obstacle,Food,Meteor);
                 printf("\n");
@@ -393,23 +412,29 @@ void SnakeOnMeteor(int *score) {
             }
         }
 
+        /* Menampilak Grid/Peta permainan di akhir Turn */
         printf("Berikut merupakan peta permainan:\n");
         PrintGrid(Snake,Obstacle,Food,Meteor);
         printf("\n");
 
+        /* Bila Meteor mengenai badan */
         if (hit) {
             printf("Silahkan lanjutkan permainan\n");
         }
+        /* Bila tidak ada tempat lagi untuk pertumbuhan panjang badan Snake */
         else if (stopGrow) {
             printf("Tidak ada tempat untuk penambahan panjang tubuh snake. Permainan berakhir!\n");
         }
+        /* Bila Head dari Snake menabrak obstacle */
         else if (hitObstacle) {
             printf("Anda menabrak obstacle! Permainan berakhir!\n");
         }
+        /* Bila tidak terjadi apa-apa */
         else {
             printf("Anda beruntung tidak terkena meteor! Silahkan lanjutkan permainan\n");
         }
 
+        /* Apabila Snake sudah tidak bisa bergerak kemana-mana lagi, maka permainan berakhir */
         if (SearchPoint(Snake,(Absis(First(Snake)->point)+1)%5,Ordinat(First(Snake)->point)) && SearchPointInGrid(Meteor,Absis(First(Snake)->point),(Ordinat(First(Snake)->point)+1)%5) ||
             SearchPointInGrid(Meteor,(Absis(First(Snake)->point)+1)%5,Ordinat(First(Snake)->point)) && SearchPoint(Snake,Absis(First(Snake)->point),(Ordinat(First(Snake)->point)+1)%5) ||
             SearchPoint(Snake,(Absis(First(Snake)->point)+1)%5,Ordinat(First(Snake)->point)) && SearchPoint(Snake,Absis(First(Snake)->point),(Ordinat(First(Snake)->point)+1)%5)) {
@@ -449,6 +474,7 @@ void SnakeOnMeteor(int *score) {
 
     }
 
+    /* Menampilkan hasil akhir dari permainan */
     printf("Permainan berakhir!\n");
     *score = Length(Snake)*2;
     printf("Skor : %d\n",(*score));
