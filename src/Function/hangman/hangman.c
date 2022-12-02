@@ -44,18 +44,8 @@ void hangman(int *score) {
             }
         }
         else if (currentWord.TabWord[0] == 'n'){
-            printf("Apakah anda ingin memulai game? (y/n)\n");
-            STARTFILE();
-            if (currentWord.TabWord[0] == 'y'){
-                // exit main menu, masuk ke gam
-                mainmenu = 1;
-            }
-            else if (currentWord.TabWord[0] == 'n'){
-                printf("Terima kasih sudah bermain!\n");
-                // exit main menu, exit game
-                mainmenu = 1;
-                replay = 1;
-                }
+            printf("Selamat bermain hangman!\n");
+            mainmenu = 1;
             }
         }
 
