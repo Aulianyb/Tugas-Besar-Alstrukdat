@@ -49,6 +49,14 @@ void hangman(int *score) {
             }
         }
 
+    // print list kata
+    printf("List kata yang tersedia: \n");
+    int i;
+    for (i = 0; i <= listkata.Neff; i++){
+        printWord(listkata.TI[i]);
+        printf("\n");
+    }
+    
     char guessWords[listkata.Neff][16];
 
     // memindahkan list kata ke array of string
@@ -60,7 +68,7 @@ void hangman(int *score) {
         {
             guessWords[i][j] = listkata.TI[i].TabWord[j];
         }
-        // guessWords[i][j] = '\0';
+        guessWords[i][j] = '\0';
     }
 
     printf("Guess words: %s\n", guessWords[0]);
