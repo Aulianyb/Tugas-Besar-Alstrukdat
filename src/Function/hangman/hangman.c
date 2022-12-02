@@ -63,25 +63,20 @@ void hangman(int *score) {
         guessWords[i][j] = '\0';
     }
 
-    //delete all the gusswords that contain non-alphabet
+    //delete all the gusswords that contain less than 5 characters
     int j = 0;
     for (i = 0; i < listkata.Neff; i++)
     {
-        int k;
-        for (k = 0; k < listkata.TI[i].Length; k++)
+        if (listkata.TI[i].Length < 5)
         {
-            if (guessWords[i][k] < 'A' || guessWords[i][k] > 'Z')
+            int k;
+            for (k = i; k < listkata.Neff; k++)
             {
-                break;
+                guessWords[k][0] = guessWords[k + 1][0];
             }
         }
-        if (k == listkata.TI[i].Length)
+        else
         {
-            for (k = 0; k < listkata.TI[i].Length; k++)
-            {
-                guessWords[j][k] = guessWords[i][k];
-            }
-            guessWords[j][k] = '\0';
             j++;
         }
     }
