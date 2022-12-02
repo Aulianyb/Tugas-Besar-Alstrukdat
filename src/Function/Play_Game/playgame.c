@@ -47,7 +47,6 @@ void PlayGame(Queue *game_queue, StackHistory *SH, TabScore *TS, TabGame TG){
             PrintKata(val);
             printf("....\n");
             SnakeOnMeteor(&score);
-            score = 100;
         }
         else if (isWordEqual(val, "ROCK PAPER SCISSOR"))
         {
