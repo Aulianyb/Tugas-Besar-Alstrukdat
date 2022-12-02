@@ -245,7 +245,7 @@ void hangman(int *score) {
             } else if( reguessed == 1) {
                 printf("Yahh, kamu udah pernah nebak huruf ini, coba huruf lain!\n");
             } else {
-                printf("Tebakan-mu Benar!\n");
+                printf("Tebakan-mu Benar!, nyawamu masih ada %d nih!\n", livescount);
             }
         }
         
